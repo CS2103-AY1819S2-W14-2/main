@@ -30,10 +30,11 @@
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#import-feature">3.1. Import feature</a></li>
-<li><a href="#image-filters">3.2. Image Filters</a></li>
-<li><a href="#image-manipulation">3.3. Image Manipulation</a></li>
-<li><a href="#undo-redo-feature">3.4. Undo/Redo feature</a></li>
-<li><a href="#logging">3.5. Logging</a></li>
+<li><a href="#open-feature">3.2. Open Feature</a></li>
+<li><a href="#image-filters">3.3. Image Filters</a></li>
+<li><a href="#image-manipulation">3.4. Image Manipulation</a></li>
+<li><a href="#undo-redo-feature">3.5. Undo/Redo feature</a></li>
+<li><a href="#logging">3.6. Logging</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -647,9 +648,61 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 </div>
 </div>
 <div class="sect2">
-<h3 id="image-filters"><a class="link" href="#image-filters">3.2. Image Filters</a></h3>
+<h3 id="open-feature"><a class="link" href="#open-feature">3.2. Open Feature</a></h3>
+<div class="paragraph">
+<p>The open command allows users to open a previously imported image for image-editing.</p>
+</div>
 <div class="sect3">
 <h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.2.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The open function is facilitated by the ModelManager and contains the following operations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Model#setCurrentImage(Image)</code> - Sets the <code>currentImage</code> to the opened image.</p>
+</li>
+<li>
+<p><code>Model#createTempImage(Image)</code> - Creates a new temporary image inside the directory: "src/main/resources/temp/"</p>
+</li>
+<li>
+<p><code>Model#displayImage()</code> - Displays the temporary image stored in directory: "src/main/resources/temp/"</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the open mechanism behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user executes <code>open sample1.png</code> and the open function checks whether the image exists in the directory: "src/main/resources/assets".</p>
+</div>
+<div class="paragraph">
+<p>Step 2. The open function retrieves the image before it calls <code>Model#setCurrentImage(Image)</code> to store a new <code>Image</code> instance of the retrieved image into <code>currentImage</code>. Subsequent edits will be done on <code>currentImage</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. <code>Model#createTempImage(Image)</code> creates a copy of <code>currentImage</code> as a temporary image file "temp_img" and stores it in directory: "src/main/resources/temp/".</p>
+</div>
+<div class="paragraph">
+<p>Step 4. <code>Model#displayImage()</code> displays "temp_img" on Graphical User Interface.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the open command works:</p>
+</div>
+<div class="paragraph">
+<p>&lt;to be added&gt;</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.2.2. Design Considerations</a></h4>
+<div class="paragraph">
+<p>Open command must be called before the user can edit the image. The command initialises <code>currentImage</code>, which all edits will be applied on. Users are unable to edit other images unless the open command is called again.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="image-filters"><a class="link" href="#image-filters">3.3. Image Filters</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.3.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The filter mechanism is facilitated by <a href="https://github.com/sksamuel/scrimage" class="bare">https://github.com/sksamuel/scrimage</a> [<code>scrimage</code>], an external API Library that provides image filters methods for our image editor. The gradle script declares a compile-time dependency on this external API through the coordinates:  <code>group: 'com.sksamuel.scrimage'</code>, <code>name: 'scrimage-filters_2.12'</code>, <code>version: '3.0.0-alpha4'</code>.</p>
 </div>
@@ -674,7 +727,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 </div>
 </div>
 <div class="sect3">
-<h4 id="contrastcommand"><a class="link" href="#contrastcommand">3.2.2. ContrastCommand:</a></h4>
+<h4 id="contrastcommand"><a class="link" href="#contrastcommand">3.3.2. ContrastCommand:</a></h4>
 <div class="paragraph">
 <p>This command calls for an adjustment of contrast on a targetted image and adds this specific command called by the user to <code>Image&#8217;s `List&lt;EditCommands&gt;</code> which saves the editing history of the targetted image.</p>
 </div>
@@ -697,7 +750,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <p>Step 5. Calling <code>Model#displayImage</code> updates the user interface and the user interface will now display the image with the filepath: "src/main/resources/temp/" + <code>currentImage#getFileName()</code></p>
 </div>
 <div class="sect4">
-<h5 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h5>
+<h5 id="design-considerations-3"><a class="link" href="#design-considerations-3">Design Considerations</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -715,9 +768,9 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 </div>
 </div>
 <div class="sect2">
-<h3 id="image-manipulation"><a class="link" href="#image-manipulation">3.3. Image Manipulation</a></h3>
+<h3 id="image-manipulation"><a class="link" href="#image-manipulation">3.4. Image Manipulation</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.3.1. Current Implementation</a></h4>
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.4.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>This segment involves manipulating the physical image itself, such as rotating, cropping and resizing. The implementations of these features are facilitated by <a href="https://github.com/rkalla/imgscalr"><code>ImgScalr Library</code></a>, which is an external API Library that helps process the target image.</p>
 </div>
@@ -739,7 +792,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 </div>
 </div>
 <div class="sect3">
-<h4 id="rotate-command"><a class="link" href="#rotate-command">3.3.2. Rotate Command</a></h4>
+<h4 id="rotate-command"><a class="link" href="#rotate-command">3.4.2. Rotate Command</a></h4>
 <div class="paragraph">
 <p>This command allows the user to rotate images by specifying a degree (90, 180 or 270 only). Upon receiving an input degree by the user, the degree will be checked for its validity and will throw an error if the degree is not within the specified range. The command will then be added to the <code>Image&#8217;s `List&lt;EditCommands&gt;</code> which saves the editing history of the targetted image.</p>
 </div>
@@ -763,7 +816,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.3.3. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.4.3. Design Considerations</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -783,9 +836,9 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 </div>
 </div>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.4. Undo/Redo feature</a></h3>
+<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.5. Undo/Redo feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.4.1. Current Implementation</a></h4>
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">3.5.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by <code>VersionedAddressBook</code>.
 It extends <code>AddressBook</code> with an undo/redo history, stored internally as an <code>addressBookStateList</code> and <code>currentStatePointer</code>.
@@ -915,7 +968,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.4.2. Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.5.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -985,7 +1038,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.5. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.6. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
@@ -2514,4 +2567,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-19 14:54:41 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-19 15:22:01 UTC</div></div></div></body></html>
