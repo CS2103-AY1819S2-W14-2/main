@@ -183,10 +183,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>import f/FILEPATH</code>, <code>FILEPATH</code> is a parameter which can be used as <code>import f/desktop/photoalbum/image1</code>.</p>
+<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>import FILEPATH</code>, <code>FILEPATH</code> is a parameter which can be used as <code>import desktop/photoalbum/image1</code>.</p>
 </li>
 <li>
-<p>Items in square brackets are optional e.g <code>o/OPERATOR [n/DEGREE]</code> can be used as <code>o/Subtract n/20</code> or as <code>o/Subtract</code>.</p>
+<p>Items in square brackets are optional e.g <code>brightness [BRIGHTNESS_RATIO]</code> can be used as <code>brightnees or as `brightness 0.9</code>.</p>
 </li>
 <li>
 <p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/friend</code>, <code>t/friend t/family</code> etc.</p>
@@ -206,7 +206,7 @@ Format: <code>bw</code></p>
 <h3 id="brightness-code-brightness-code"><a class="link" href="#brightness-code-brightness-code">4.2. Brightness: <code>brightness</code></a></h3>
 <div class="paragraph">
 <p>Adjusts the brightness of the image.<br>
-Format: <code>brightness o/OPERATOR [n/DEGREE]</code></p>
+Format: <code>brightness [BRIGHTNESS_RATIO]</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -214,10 +214,10 @@ Format: <code>brightness o/OPERATOR [n/DEGREE]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>brightness o/subtract</code></p>
+<p><code>brightness 1.9</code></p>
 </li>
 <li>
-<p><code>brightness o/add n/40</code></p>
+<p><code>brightness</code> (brightness ratio preset to 1.1)</p>
 </li>
 </ul>
 </div>
@@ -226,7 +226,7 @@ Format: <code>brightness o/OPERATOR [n/DEGREE]</code></p>
 <h3 id="contrast-code-contrast-code"><a class="link" href="#contrast-code-contrast-code">4.3. Contrast: <code>contrast</code></a></h3>
 <div class="paragraph">
 <p>Adjusts the contrast of the image.<br>
-Format: <code>contrast o/OPERATOR [n/DEGREE]</code></p>
+Format: <code>contrast CONTRAST_RATIO</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -234,10 +234,13 @@ Format: <code>contrast o/OPERATOR [n/DEGREE]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>contrast o/add</code></p>
+<p><code>contrast 1.4</code> (increase contrast)</p>
 </li>
 <li>
-<p><code>contrast o/subtract n/30</code></p>
+<p><code>contrast 0.3</code> (reduce contrast)</p>
+</li>
+<li>
+<p><code>contrast</code> (contrast ratio preset to 1.1)</p>
 </li>
 </ul>
 </div>
@@ -246,7 +249,7 @@ Format: <code>contrast o/OPERATOR [n/DEGREE]</code></p>
 <h3 id="crop-an-image-code-crop-code"><a class="link" href="#crop-an-image-code-crop-code">4.4. Crop an image : <code>crop</code></a></h3>
 <div class="paragraph">
 <p>Crops an image based on given top left hand corner coordinates, width and height of final cropped image wanted.<br>
-Format: <code>crop x/POINTCOORD y/POINTCOORD w/WIDTH h/HEIGHT</code></p>
+Format: <code>crop X_POINTCOORD Y_POINTCOORD WIDTH HEIGHT</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -281,7 +284,7 @@ Format: <code>exit</code></p>
 <h3 id="export-edited-image-code-export-code"><a class="link" href="#export-edited-image-code-export-code">4.6. Export edited image : <code>export</code></a></h3>
 <div class="paragraph">
 <p>Exports the edited image into the specified filepath<br>
-Format: <code>export f/FILEPATH</code></p>
+Format: <code>export FILEPATH</code></p>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -289,7 +292,7 @@ Format: <code>export f/FILEPATH</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>export f/desktop/editedphotoalbum</code></p>
+<p><code>export desktop/editedphotoalbum</code></p>
 </li>
 </ul>
 </div>
@@ -313,7 +316,7 @@ Format: <code>import FILEPATH</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>import C:/Users/Fomo/Pictures/sample.jpg</code></p>
+<p><code>import Users/Fomo/Pictures/sample.jpg</code></p>
 </li>
 </ul>
 </div>
@@ -329,7 +332,7 @@ Format: <code>listfiles</code></p>
 <h3 id="open-an-image-code-open-code"><a class="link" href="#open-an-image-code-open-code">4.10. Open an image : <code>open</code></a></h3>
 <div class="paragraph">
 <p>Opens an image inside assets folder for editing.<br>
-Format: <code>import FILENAME</code></p>
+Format: <code>open FILENAME</code></p>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -369,16 +372,16 @@ Format: <code>redo</code></p>
 <ul>
 <li>
 <p><code>rotate 180</code><br>
-<code>brightness add</code><br>
-<code>undo</code> (reverses the <code>brightness add</code> command)<br>
-<code>redo</code> (runs <code>brightness add</code> again)</p>
+<code>brightness</code><br>
+<code>undo</code> (reverses the <code>brightness</code> command)<br>
+<code>redo</code> (runs <code>brightness</code> again)</p>
 </li>
 <li>
-<p><code>contrast subtract</code><br>
+<p><code>contrast 0.3</code><br>
 <code>crop 2 3 500 500</code><br>
 <code>undo</code> (reverses the <code>crop 2 3 500 500</code> command<br>
-<code>undo</code> (reverses the <code>contrast subtract</code>)<br>
-<code>redo</code> (runs <code>contrast subtract</code> command again)<br>
+<code>undo</code> (reverses the <code>contrast 0.3</code>)<br>
+<code>redo</code> (runs <code>contrast 0.3</code> command again)<br>
 <code>redo</code> (runs <code>crop 2 3 500 500</code> command again)</p>
 </li>
 </ul>
@@ -428,14 +431,14 @@ Format: <code>undo</code></p>
 <ul>
 <li>
 <p><code>rotate 180</code><br>
-<code>brightness add</code><br>
-<code>undo</code> (reverses the <code>brightness add</code> command)<br></p>
+<code>brightness 1.9</code><br>
+<code>undo</code> (reverses the <code>brightness 1.9</code> command)<br></p>
 </li>
 <li>
-<p><code>contrast subtract</code><br>
+<p><code>contrast 0.3</code><br>
 <code>crop 2 3 500 500</code><br>
 <code>undo</code> (reverses the <code>crop 2 3 500 500</code> command<br>
-<code>undo</code> (reverses the <code>contrast subtract</code>)</p>
+<code>undo</code> (reverses the <code>contrast 0.3</code>)</p>
 </li>
 </ul>
 </div>
@@ -451,15 +454,15 @@ Format: <code>undo</code></p>
 <p><strong>Black/White</strong> <code>bw</code></p>
 </li>
 <li>
-<p><strong>Brightness</strong> <code>brightness o/OPERATOR [n/DEGREE]</code><br>
-e.g. <code>brightness o/add n/20</code><br></p>
+<p><strong>Brightness</strong> <code>brightness [BRIGHTNESS_RATIO]</code><br>
+e.g. <code>brightness 0.8</code><br></p>
 </li>
 <li>
-<p><strong>Contrast</strong> <code>contrast o/OPERATOR [n/DEGREE]</code><br>
-e.g. <code>contrast o/subtract n/30</code><br></p>
+<p><strong>Contrast</strong> <code>contrast [CONTRAST_RATIO]]</code><br>
+e.g. <code>contrast 1.9</code><br></p>
 </li>
 <li>
-<p><strong>Crop</strong> <code>crop x/POINTCOORD y/POINTCOORD w/WIDTH h/HEIGHT</code><br>
+<p><strong>Crop</strong> <code>crop X_POINTCOORD Y_POINTCOORD W_WIDTH H_HEIGHT</code><br>
 e.g. <code>crop 2 4 500 500</code></p>
 </li>
 <li>
@@ -474,7 +477,7 @@ e.g. <code>export MyNewImage.jpg</code></p>
 </li>
 <li>
 <p><strong>Import</strong> <code>import FILEPATH</code><br>
-e.g. <code>import C:/Users/Fomo/Pictures/sample.jpg</code><br></p>
+e.g. <code>import Users/Fomo/Pictures/sample.jpg</code><br></p>
 </li>
 <li>
 <p><strong>List Files</strong> <code>listfiles</code><br></p>
@@ -496,4 +499,4 @@ e.g. <code>rotate 270</code><br></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-20 10:35:50 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-20 10:52:43 UTC</div></div></div></body></html>
