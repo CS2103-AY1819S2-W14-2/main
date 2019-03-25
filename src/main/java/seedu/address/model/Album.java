@@ -14,8 +14,8 @@ import seedu.address.model.image.Image;
  * single instance of Album is available.
  */
 public class Album {
-    private final String assetsFilePath = "src/main/resources/assets/";
     private static Album instance = null;
+    private final String assetsFilePath = "src/main/resources/assets/";
     private List<Image> imageList;
 
     public Album() {
