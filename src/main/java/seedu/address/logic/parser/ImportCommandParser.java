@@ -47,11 +47,9 @@ public class ImportCommandParser implements Parser<ImportCommand> {
                 File[] listOfFiles = folder.listFiles();
                 for (File f : listOfFiles) {
                     String path = f.getAbsolutePath();
-                    System.out.println(path);
                     if (validFormat(path)) {
                         Image image = new Image(path);
                         if (!duplicateFile(image)) {
-                            System.out.println("non dup");
                             try {
                                 // Add each image to Album.
                                 album.addImage(image);

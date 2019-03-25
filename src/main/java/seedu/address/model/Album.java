@@ -2,6 +2,7 @@
 
 package seedu.address.model;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,11 +14,16 @@ import seedu.address.model.image.Image;
  * single instance of Album is available.
  */
 public class Album {
+    private final String assetsFilePath = "src/main/resources/assets/";
     private static Album instance = null;
     private List<Image> imageList;
 
     public Album() {
         imageList = new ArrayList<>();
+        File folder = new File(assetsFilePath);
+        for (File file: folder.listFiles()) {
+            imageList.add(new Image(file.getAbsolutePath()));
+        }
     }
 
     public static Album getInstance() {
