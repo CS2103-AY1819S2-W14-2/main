@@ -358,7 +358,7 @@ The following class plays an important role at the architecture level:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>The rest of the App consists of four components.</p>
+<p>The rest of the App consists of five components.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -369,15 +369,18 @@ The following class plays an important role at the architecture level:</p>
 <p><a href="#Design-Logic"><strong><code>Logic</code></strong></a>: The command executor.</p>
 </li>
 <li>
-<p><a href="#Design-Model"><strong><code>Model</code></strong></a>: Holds the data of the App in-memory.</p>
+<p><a href="#Design-CurrentEdit"><strong><code>CurrentEdit</code></strong></a>: Holds the image that the App is currently editing in-memory.</p>
 </li>
 <li>
 <p><a href="#Design-Storage"><strong><code>Storage</code></strong></a>: Reads data from, and writes data to, the hard disk.</p>
 </li>
+<li>
+<p><a href="#Design-Album"><strong><code>Album</code></strong></a>: Stores the pool of images that has been imported into the App.</p>
+</li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Each of the four components</p>
+<p>The first four components:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -400,13 +403,19 @@ The following class plays an important role at the architecture level:</p>
 </div>
 <h4 id="how-the-architecture-components-interact-with-each-other" class="discrete">How the architecture components interact with each other</h4>
 <div class="paragraph">
-<p>The <em>Sequence Diagram</em> below shows how the components interact with each other for the scenario where the user issues the command <code>delete 1</code>.</p>
+<p>The <em>Sequence Diagram</em> below shows how the components interact with each other for the scenarios where the user issues the commands <code>import C:\Users\XXX\Desktop\Pictures</code> and <code>rotate 90</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/SDforDeletePerson.png" alt="SDforDeletePerson" width="800">
+<img src="images/SDforImportcommand.png" alt="SDforImportcommand" width="800">
 </div>
-<div class="title">Figure 3. Component interactions for <code>delete 1</code> command</div>
+<div class="title">Figure 3. Component interactions for <code>import C:\Users\XXX\Desktop\Pictures</code> command</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SDforRotatecommand.png" alt="SDforRotatecommand" width="800">
+</div>
+<div class="title">Figure 4. Component interactions for <code>rotate 90</code> command</div>
 </div>
 <div class="paragraph">
 <p>The sections below give more details of each component.</p>
@@ -418,7 +427,7 @@ The following class plays an important role at the architecture level:</p>
 <div class="content">
 <img src="images/UiClassDiagram.png" alt="UiClassDiagram" width="800">
 </div>
-<div class="title">Figure 4. Structure of the UI Component</div>
+<div class="title">Figure 5. Structure of the UI Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/CS2103-AY1819S2-W14-2/main/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
@@ -449,7 +458,7 @@ The following class plays an important role at the architecture level:</p>
 <div class="content">
 <img src="images/LogicClassDiagram.png" alt="LogicClassDiagram" width="800">
 </div>
-<div class="title">Figure 5. Structure of the Logic Component</div>
+<div class="title">Figure 6. Structure of the Logic Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
@@ -481,13 +490,13 @@ The following class plays an important role at the architecture level:</p>
 <div class="content">
 <img src="images/LogicImportSd.png" alt="LogicImportSd" width="800">
 </div>
-<div class="title">Figure 6. Interactions Inside the Logic Component for the <code>import C:\User\Pictures\image.png</code> Command</div>
+<div class="title">Figure 7. Interactions Inside the Logic Component for the <code>import C:\User\Pictures\image.png</code> Command</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/LogicRotateSd.png" alt="LogicRotateSd" width="800">
 </div>
-<div class="title">Figure 7. Interactions Inside the Logic Component for the <code>rotate 90</code> Command</div>
+<div class="title">Figure 8. Interactions Inside the Logic Component for the <code>rotate 90</code> Command</div>
 </div>
 </div>
 <div class="sect2">
@@ -496,7 +505,7 @@ The following class plays an important role at the architecture level:</p>
 <div class="content">
 <img src="images/ModelClassDiagram.png" alt="ModelClassDiagram" width="800">
 </div>
-<div class="title">Figure 8. Structure of the Model Component</div>
+<div class="title">Figure 9. Structure of the Model Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/CS2103-AY1819S2-W14-2/main/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
@@ -541,7 +550,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <div class="content">
 <img src="images/StorageArchitectureDiagram.png" alt="StorageArchitectureDiagram" width="800">
 </div>
-<div class="title">Figure 9. Structure of the Storage Component</div>
+<div class="title">Figure 10. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
 <p>The <code>assets</code> and <code>temp</code> folders form the storage component of FomoFoto:</p>
@@ -787,7 +796,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="content">
 <img src="images/ContrastCommandSequenceDiagram.png" alt="ContrastCommandSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 10. Sequence Diagram for Contrast Command</div>
+<div class="title">Figure 11. Sequence Diagram for Contrast Command</div>
 </div>
 </div>
 </div>
@@ -803,7 +812,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="content">
 <img src="images/BrightnessCommandSequenceDiagram.png" alt="BrightnessCommandSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 11. Sequence Diagram for Brightness Command</div>
+<div class="title">Figure 12. Sequence Diagram for Brightness Command</div>
 </div>
 </div>
 <div class="sect3">
@@ -818,7 +827,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="content">
 <img src="images/BlackWhiteCommandSequenceDiagram.png" alt="BlackWhiteCommandSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 12. Sequence Diagram for BlackWhite Command</div>
+<div class="title">Figure 13. Sequence Diagram for BlackWhite Command</div>
 </div>
 </div>
 </div>
@@ -886,7 +895,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="content">
 <img src="images/RotateCommandSequenceDiagram.png" alt="RotateCommandSequenceDiagram" width="1280">
 </div>
-<div class="title">Figure 13. Sequence Diagram for Rotate Command</div>
+<div class="title">Figure 14. Sequence Diagram for Rotate Command</div>
 </div>
 </div>
 </div>
@@ -1201,7 +1210,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 14. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 15. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 <div class="sect2">
@@ -2632,4 +2641,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-30 09:41:24 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-30 09:48:27 UTC</div></div></div></body></html>
