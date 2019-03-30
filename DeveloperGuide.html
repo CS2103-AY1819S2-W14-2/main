@@ -458,13 +458,13 @@ The following class plays an important role at the architecture level:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><code>Logic</code> uses the <code>AddressBookParser</code> class to parse the user command.</p>
+<p><code>Logic</code> uses the <code>FomoFotoParser</code> class to parse the user command.</p>
 </li>
 <li>
 <p>This results in a <code>Command</code> object which is executed by the <code>LogicManager</code>.</p>
 </li>
 <li>
-<p>The command execution can affect the <code>Model</code> (e.g. adding a person).</p>
+<p>The command execution can affect the <code>CurrentEdit</code> (e.g. rotating an image).</p>
 </li>
 <li>
 <p>The result of the command execution is encapsulated as a <code>CommandResult</code> object which is passed back to the <code>Ui</code>.</p>
@@ -475,13 +475,19 @@ The following class plays an important role at the architecture level:</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("delete 1")</code> API call.</p>
+<p>Given below are the Sequence Diagrams for interactions within the <code>Logic</code> component for the <code>execute("import C:\User\Pictures\image.png")</code> and <code>execute("rotate 90")</code> API call.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/DeletePersonSdForLogic.png" alt="DeletePersonSdForLogic" width="800">
+<img src="images/LogicImportSd.png" alt="LogicImportSd" width="800">
 </div>
-<div class="title">Figure 6. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
+<div class="title">Figure 6. Interactions Inside the Logic Component for the <code>import C:\User\Pictures\image.png</code> Command</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/LogicRotateSd.png" alt="LogicRotateSd" width="800">
+</div>
+<div class="title">Figure 7. Interactions Inside the Logic Component for the <code>rotate 90</code> Command</div>
 </div>
 </div>
 <div class="sect2">
@@ -490,7 +496,7 @@ The following class plays an important role at the architecture level:</p>
 <div class="content">
 <img src="images/ModelClassDiagram.png" alt="ModelClassDiagram" width="800">
 </div>
-<div class="title">Figure 7. Structure of the Model Component</div>
+<div class="title">Figure 8. Structure of the Model Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/CS2103-AY1819S2-W14-2/main/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
@@ -533,23 +539,23 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <h3 id="Design-Storage"><a class="link" href="#Design-Storage">2.5. Storage component</a></h3>
 <div class="imageblock">
 <div class="content">
-<img src="images/StorageClassDiagram.png" alt="StorageClassDiagram" width="800">
+<img src="images/StorageArchitectureDiagram.png" alt="StorageArchitectureDiagram" width="800">
 </div>
-<div class="title">Figure 8. Structure of the Storage Component</div>
-</div>
-<div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/CS2103-AY1819S2-W14-2/main/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
+<div class="title">Figure 9. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
-<p>The <code>Storage</code> component,</p>
+<p>The <code>assets</code> and <code>temp</code> folders form the storage component of FomoFoto:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>can save <code>UserPref</code> objects in json format and read it back.</p>
+<p>The <code>assets</code> folder stores images that the user imported while the <code>temp</code> folder stores the image that the program is currently editing on.</p>
 </li>
 <li>
-<p>can save the Address Book data in json format and read it back.</p>
+<p>The <code>Album</code> class contains methods to save and retrieve images from the <code>assets</code> folder.</p>
+</li>
+<li>
+<p>The <code>CurrentEdit</code> class contains methods to overwrite and retrieve the image that the program is currently editing on.</p>
 </li>
 </ul>
 </div>
@@ -712,13 +718,13 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <div class="ulist">
 <ul>
 <li>
-<p><code>contrastCommand</code>: Applies the specified contrast ratio value on the targetted image</p>
+<p><code>ContrastCommand</code>: Applies a contrast ratio value on the targetted image. The contrast ratio value is preset to 1.1 if a specified ratio value is not given by the user.  A value above 1 (e.g 1.3) increases the contrast of the image while a positive value below 1 (e.g 0.5) decreases the contrast of the image.</p>
 </li>
 <li>
-<p><code>brightnessCommand</code>: Applies the specified brightness ratio value on the targetted image</p>
+<p><code>BrightnessCommand</code>: Applies a brightness ratio value on the targetted image. The brightness ratio value is preset to 1.1 if a specified ratio value is not given by the user. A value above 1 (e.g 1.3) increases the brightness of the image while a positive value below 1 (e.g 0.5) decreases the brightness of the image.</p>
 </li>
 <li>
-<p><code>black/whiteCommand</code>: Transforms colored targetted image to a black and white image</p>
+<p><code>BlackWhiteCommand</code>: Transforms targetted image to a black and white image through a threshold value. The brightness ratio value is preset to 127 if a specified ratio value is not given by the user. Pixels on the image lighter than the threshold value becomes white and pixels darker than the threshold value becomes black.</p>
 </li>
 </ul>
 </div>
@@ -729,25 +735,44 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <div class="sect3">
 <h4 id="contrastcommand"><a class="link" href="#contrastcommand">3.3.2. ContrastCommand:</a></h4>
 <div class="paragraph">
-<p>This command calls for an adjustment of contrast on a targetted image and adds this specific command called by the user to <code>Image&#8217;s `List&lt;EditCommands&gt;</code> which saves the editing history of the targetted image.</p>
+<p>This command calls for an adjustment of contrast on a targetted image. After adjusting the contrast, it adds this specific command called by the user to the <code>List&lt;Commands&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targetted image.</p>
 </div>
 <div class="paragraph">
-<p>Given below is an example usage scenario and how the command should behave at each step.</p>
+<p>Given below is an example usage scenario and how the command should behave at each step. [This applies to the other image filter commands as well.]</p>
 </div>
 <div class="paragraph">
-<p>Step 1. When the users run the application and open an image to edit, a new <code>Image</code> object is created which stores the filename of the image,  history of edits [<code>List&lt;EditCommand&gt;</code>] and the image&#8217;s metadata. This <code>Image</code> object will be set as the <code>currentImage</code> in <code>Model</code> for editing.</p>
+<p>Step 1. When the user runs an <code>open</code> command to edit an image, it invokes a method which creates an instance of an <code>Image</code> that stores the filepath of the image, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata. This <code>Image</code> object is saved under the variable name <code>tempImage</code> in <code>currentEdit</code> for editing.</p>
 </div>
 <div class="paragraph">
 <p>Step 2. When the user enters the command (e.g. <code>contrast 0.3</code>), the entered command is parsed and the command will be executed.</p>
 </div>
-<div class="paragraph">
-<p>Step 3. During execution, the <code>execute</code> method in the <code>contrastCommand</code> class calls for the methods <code>Model#applyContrast()</code> and <code>Model#displayImage()</code>.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If an invalid command is provided, a reminder of how to use the command will be given to the user and no command will be run.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>Step 4. Calling <code>Model#applyContrast()</code> creates a <code>BufferedOpFilter</code> object in the external library [<code>scrimage</code>] named <code>contrastFilter</code> which is applied on the image with the filepath: "src/main/resources/temp/" + <code>currentImage#getFileName()</code></p>
+<p>Step 3. During execution, the <code>execute</code> method in the <code>contrastCommand</code> class invokes <code>currentEdit#getTempImage()</code> to get the <code>tempImage</code> from <code>currentEdit</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 5. Calling <code>Model#displayImage</code> updates the user interface and the user interface will now display the image with the filepath: "src/main/resources/temp/" + <code>currentImage#getFileName()</code></p>
+<p>Step 4. Upon retrieving the <code>tempImage</code>, the <code>execute</code> method creates a <code>ContrastFilter</code> instance provided by the external libary [<code>scrimage</code>] which takes in a double-valued contrast ratio value. This <code>ContrastFilter</code> will then be applied on the image retrieved from the filepath: "src/main/resources/temp/" + <code>tempImage#getURL()</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 5. After applying the <code>ContrastFilter</code> on the targetted image, <code>currentEdit#updateTempImage()</code> is invoked to save the newly edited image and replace the previous one in the filepath: "src/main/resources/temp/" + <code>tempImage#getURL()</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 6. The <code>execute</code> method then checks if the boolean <code>isNewCommand</code> is true. If it is <code>true</code>, it indicates that the command is a new contrast command called directly from the user and not through an <code>undo/redo</code> command which triggers Step 7 in the line below. Otherwise, the command&#8217;s execution ends in this step.</p>
+</div>
+<div class="paragraph">
+<p>Step 7. <code>isNewCommand</code> is set to <code>false</code> to signal that this command is not a new contrast command if it is executed again through the undo/redo function.
+<code>currentEdit#addCommand(this)</code> is invoked to add this command to the <code>List&lt;Command&gt; in `tempImage</code> for the undo/redo function and <code>currentEdit#displayTempImage()</code> is used to display the edited image on the graphical user interface.</p>
 </div>
 <div class="sect4">
 <h5 id="design-considerations-3"><a class="link" href="#design-considerations-3">Design Considerations</a></h5>
@@ -760,10 +785,40 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/ContrastCommandSequenceDiagram.png" alt="ContrastCommandSequenceDiagram" width="740">
+<img src="images/ContrastCommandSequenceDiagram.png" alt="ContrastCommandSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 9. Sequence Diagram for Contrast Command</div>
+<div class="title">Figure 10. Sequence Diagram for Contrast Command</div>
 </div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="brightnesscommand"><a class="link" href="#brightnesscommand">3.3.3. BrightnessCommand:</a></h4>
+<div class="paragraph">
+<p>This command calls for an adjustment of brightness on a targetted image. After adjusting the brightness, it adds this specific command called by the user to the <code>List&lt;Commands&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targetted image.</p>
+</div>
+<div class="paragraph">
+<p>Refer to the example usage scenario and design considerations in <a href="#ContrastCommand">[ContrastCommand]</a>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/BrightnessCommandSequenceDiagram.png" alt="BrightnessCommandSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 11. Sequence Diagram for Brightness Command</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="blackwhitecommand"><a class="link" href="#blackwhitecommand">3.3.4. BlackWhiteCommand:</a></h4>
+<div class="paragraph">
+<p>This command calls for a transformation of a targetted image to a black and white image. After applying the black and white transformation, it adds this specific command called by the user to the <code>List&lt;Commands&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targetted image.</p>
+</div>
+<div class="paragraph">
+<p>Refer to the example usage scenario and design considerations in <a href="#ContrastCommand">[ContrastCommand]</a>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/BlackWhiteCommandSequenceDiagram.png" alt="BlackWhiteCommandSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 12. Sequence Diagram for BlackWhite Command</div>
 </div>
 </div>
 </div>
@@ -831,7 +886,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <div class="content">
 <img src="images/RotateCommandSequenceDiagram.png" alt="RotateCommandSequenceDiagram" width="1280">
 </div>
-<div class="title">Figure 10. Sequence Diagram for Rotate Command</div>
+<div class="title">Figure 13. Sequence Diagram for Rotate Command</div>
 </div>
 </div>
 </div>
@@ -1146,7 +1201,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 11. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 14. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 <div class="sect2">
@@ -2577,4 +2632,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-30 09:03:28 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-30 09:05:07 UTC</div></div></div></body></html>
