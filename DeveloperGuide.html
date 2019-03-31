@@ -30,11 +30,12 @@
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#import-feature">3.1. Import feature</a></li>
-<li><a href="#open-feature">3.2. Open Feature</a></li>
-<li><a href="#image-filters">3.3. Image Filters</a></li>
-<li><a href="#image-manipulation">3.4. Image Manipulation</a></li>
-<li><a href="#undo-redo-feature">3.5. Undo/Redo feature</a></li>
-<li><a href="#logging">3.6. Logging</a></li>
+<li><a href="#tab-feature">3.2. Tab feature</a></li>
+<li><a href="#open-feature">3.3. Open Feature</a></li>
+<li><a href="#image-filters">3.4. Image Filters</a></li>
+<li><a href="#image-manipulation">3.5. Image Manipulation</a></li>
+<li><a href="#undo-redo-feature">3.6. Undo/Redo feature</a></li>
+<li><a href="#logging">3.7. Logging</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -433,7 +434,8 @@ The following class plays an important role at the architecture level:</p>
 <p><strong>API</strong> : <a href="https://github.com/CS2103-AY1819S2-W14-2/main/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
-<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code>, <code>BrowserPanel</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
+<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code>, <code>ImagePanel</code>, <code>InitPanel</code>, <code>InformationPanel</code> and <code>ImageCard</code>.
+All of these components inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/CS2103-AY1819S2-W14-2/main/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/CS2103-AY1819S2-W14-2/main/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
@@ -447,7 +449,10 @@ The following class plays an important role at the architecture level:</p>
 <p>Executes user commands using the <code>Logic</code> component.</p>
 </li>
 <li>
-<p>Listens for changes to <code>Model</code> data so that the UI can be updated with the modified data.</p>
+<p>Utilizes the <code>Notifier</code> class which implements Java&#8217;s <code>propertyChangeListener</code> to propagate changes.</p>
+</li>
+<li>
+<p>Components are registered as listeners as will update with modified data when triggered.</p>
 </li>
 </ul>
 </div>
@@ -591,15 +596,25 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">3.1.1. Current implementation</a></h4>
 <div class="paragraph">
-<p>The implementation of the import feature is largely similar to that of linux&#8217;s <code>cp</code> command, with the exception the output path is fixed. It is facilitated by he <code>ModelManager</code> and <code>ImportCommandParser</code> and contains the follow operation:</p>
+<p>The implementation of the import feature is largely similar to that of linux&#8217;s <code>cp</code> command, with the exception the output path is fixed.</p>
+</div>
+<div class="paragraph">
+<p>The command allows for users to pass in directory paths as well. All valid images in the directory will be copied over,
+but the traversal is not recursive i.e. folders in that directory will not be searched.</p>
+</div>
+<div class="paragraph">
+<p>It is facilitated by <code>Model</code>, <code>Album</code> and <code>ImportCommandParser</code> and contains the follow operation:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>Model#displayImage(Image)</code> - Retrives the image from <code>assets</code> folder by <code>Image</code> name field.</p>
+<p><code>Model#refreshAlbum()</code> - Fires the <sub>propertyChangeListener</sub> to update the information panel.</p>
 </li>
 <li>
 <p><code>ImportCommandParser#parse(String)</code> - Takes in an absolute path and copies the image to <code>assets</code> directory.</p>
+</li>
+<li>
+<p><code>Album#populateAlbum()</code> - Calls on the <code>Album</code> class to update the list of image based on photos in <code>assets</code> folder.</p>
 </li>
 </ul>
 </div>
@@ -615,10 +630,13 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <p><code>ImportCommandParser</code> takes in arguments and performs validation on given path. Image is copied to <code>assets</code> folder if the path is valid.</p>
 </li>
 <li>
-<p><code>Model</code> display the imported image to UI by calling the <code>Notifier</code> class which calls on the display panel listening to the notifier.</p>
+<p><code>Album</code> adds this image to its list of imported image.</p>
 </li>
 <li>
-<p><code>ImagePanel</code> updates to reflect the imported image.</p>
+<p><code>Model</code> calls the <code>Notifier</code> class which fires a notifier to any listeners registered to it.</p>
+</li>
+<li>
+<p><code>InformationPanel</code> updates to reflect the imported image.</p>
 </li>
 </ol>
 </div>
@@ -633,27 +651,14 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice)</strong>: Import images with absolute path.</p>
+<p>The command does not traverse inner directories.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy and clement implementation.</p>
+<p>This design consideration was made to prevent excessive number of images being added to the program.</p>
 </li>
 <li>
-<p>Cons: Limited to single image import.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2</strong> : Open images within a directory.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Can import many images without repeating the command.</p>
-</li>
-<li>
-<p>Cons: Can result in errors in too mny images or images are of alternative formats.</p>
+<p>This design consideration also mitigates cyclic graphs such as symbolic or hard links.</p>
 </li>
 </ul>
 </div>
@@ -663,12 +668,75 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 </div>
 </div>
 <div class="sect2">
-<h3 id="open-feature"><a class="link" href="#open-feature">3.2. Open Feature</a></h3>
+<h3 id="tab-feature"><a class="link" href="#tab-feature">3.2. Tab feature</a></h3>
+<div class="paragraph">
+<p>The Tab command allow users to cycle through tabs in <code>informationPanel</code> without using the mouse.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.2.1. Current implementation</a></h4>
+<div class="paragraph">
+<p>The implementation of the tab command is largely for convenience reasons and calls a single method.</p>
+</div>
+<div class="paragraph">
+<p>It is facilitated by <code>Model</code> and contains the follow operation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Model#switchTab()</code> - Fires the <code>propertyChangeListener</code> to switch tabs in <code>informationPanel</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example usage scenario:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User launches application and enters <code>tab</code></p>
+</li>
+<li>
+<p><code>Model</code> calls the <code>Notifier</code> class which fires a notifier to any listeners registered to it.</p>
+</li>
+<li>
+<p><code>InformationPanel</code> updates to switch to the next available tab.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/TabSequenceDiagram.png" alt="TabSequenceDiagram" width="800">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.2.2. Design Considerations</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p>The command cycle tabs in a single fashion.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This design consideration means that users cannot indicate which tab they would like to switch to.</p>
+</li>
+<li>
+<p>A potential feature could include a command argument i.e. <code>tab 2</code> which would open the second tab of <code>informationPanel</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="open-feature"><a class="link" href="#open-feature">3.3. Open Feature</a></h3>
 <div class="paragraph">
 <p>The open command allows users to open a previously imported image for image-editing.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.2.1. Current Implementation</a></h4>
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.3.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The open function is facilitated by the ModelManager and contains the following operations:</p>
 </div>
@@ -708,16 +776,16 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.2.2. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.3.2. Design Considerations</a></h4>
 <div class="paragraph">
 <p>Open command must be called before the user can edit the image. The command initialises <code>currentImage</code>, which all edits will be applied on. Users are unable to edit other images unless the open command is called again.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="image-filters"><a class="link" href="#image-filters">3.3. Image Filters</a></h3>
+<h3 id="image-filters"><a class="link" href="#image-filters">3.4. Image Filters</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.3.1. Current Implementation</a></h4>
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.4.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The filter mechanism is facilitated by <a href="https://github.com/sksamuel/scrimage"><code>scrimage</code></a>, an external API Library that provides image filters methods for our image editor. The gradle script declares a compile-time dependency on this external API through the coordinates:  <code>group: 'com.sksamuel.scrimage'</code>, <code>name: 'scrimage-filters_2.12'</code>, <code>version: '3.0.0-alpha4'</code>.</p>
 </div>
@@ -742,7 +810,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 </div>
 </div>
 <div class="sect3">
-<h4 id="contrastcommand"><a class="link" href="#contrastcommand">3.3.2. ContrastCommand:</a></h4>
+<h4 id="contrastcommand"><a class="link" href="#contrastcommand">3.4.2. ContrastCommand:</a></h4>
 <div class="paragraph">
 <p>This command calls for an adjustment of contrast on a targetted image. After adjusting the contrast, it adds this specific command called by the user to the <code>List&lt;Commands&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targetted image.</p>
 </div>
@@ -784,7 +852,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <code>currentEdit#addCommand(this)</code> is invoked to add this command to the <code>List&lt;Command&gt; in `tempImage</code> for the undo/redo function and <code>currentEdit#displayTempImage()</code> is used to display the edited image on the graphical user interface.</p>
 </div>
 <div class="sect4">
-<h5 id="design-considerations-3"><a class="link" href="#design-considerations-3">Design Considerations</a></h5>
+<h5 id="design-considerations-4"><a class="link" href="#design-considerations-4">Design Considerations</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -801,7 +869,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </div>
 </div>
 <div class="sect3">
-<h4 id="brightnesscommand"><a class="link" href="#brightnesscommand">3.3.3. BrightnessCommand:</a></h4>
+<h4 id="brightnesscommand"><a class="link" href="#brightnesscommand">3.4.3. BrightnessCommand:</a></h4>
 <div class="paragraph">
 <p>This command calls for an adjustment of brightness on a targetted image. After adjusting the brightness, it adds this specific command called by the user to the <code>List&lt;Commands&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targetted image.</p>
 </div>
@@ -816,7 +884,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </div>
 </div>
 <div class="sect3">
-<h4 id="blackwhitecommand"><a class="link" href="#blackwhitecommand">3.3.4. BlackWhiteCommand:</a></h4>
+<h4 id="blackwhitecommand"><a class="link" href="#blackwhitecommand">3.4.4. BlackWhiteCommand:</a></h4>
 <div class="paragraph">
 <p>This command calls for a transformation of a targetted image to a black and white image. After applying the black and white transformation, it adds this specific command called by the user to the <code>List&lt;Commands&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targetted image.</p>
 </div>
@@ -832,9 +900,9 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </div>
 </div>
 <div class="sect2">
-<h3 id="image-manipulation"><a class="link" href="#image-manipulation">3.4. Image Manipulation</a></h3>
+<h3 id="image-manipulation"><a class="link" href="#image-manipulation">3.5. Image Manipulation</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.4.1. Current Implementation</a></h4>
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">3.5.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>This segment involves manipulating the physical image itself, such as rotating, cropping and resizing. The implementations of these features are facilitated by <a href="https://github.com/rkalla/imgscalr"><code>ImgScalr Library</code></a>, which is an external API Library that helps process the target image.</p>
 </div>
@@ -859,7 +927,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </div>
 </div>
 <div class="sect3">
-<h4 id="rotate-command"><a class="link" href="#rotate-command">3.4.2. Rotate Command</a></h4>
+<h4 id="rotate-command"><a class="link" href="#rotate-command">3.5.2. Rotate Command</a></h4>
 <div class="paragraph">
 <p>This command allows the user to rotate the targetted image by specifying a degree (90, 180 or 270 only). Upon receiving an input degree by the user, the degree will be checked for its validity and will throw an error if the degree is not within the specified range. The command will then be added to the <code>List&lt;Commands&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targetted image.</p>
 </div>
@@ -901,7 +969,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.4.3. Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.5.3. Design Considerations</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -917,12 +985,12 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </div>
 </div>
 <div class="sect3">
-<h4 id="crop-command"><a class="link" href="#crop-command">3.4.4. Crop Command</a></h4>
+<h4 id="crop-command"><a class="link" href="#crop-command">3.5.4. Crop Command</a></h4>
 <div class="paragraph">
 <p>This command allows the user to crop the targetted image by specifying the coordinates of the top left hand corner of the desired image, the width of the desired image and the height of the desired image. Upon receiving the inputs, the values will be checked for their validity and will throw an error if the any value is not within the specified range. The command will then be added to the <code>List&lt;Commands&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targetted image.</p>
 </div>
 <div class="paragraph">
-<p>Refer to the example usage scenario and design considerations in <a href="#rotate-command">Section 3.4.2, &#8220;Rotate Command&#8221;</a></p>
+<p>Refer to the example usage scenario and design considerations in <a href="#rotate-command">Section 3.5.2, &#8220;Rotate Command&#8221;</a></p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -932,12 +1000,12 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </div>
 </div>
 <div class="sect3">
-<h4 id="resize-command"><a class="link" href="#resize-command">3.4.5. Resize Command</a></h4>
+<h4 id="resize-command"><a class="link" href="#resize-command">3.5.5. Resize Command</a></h4>
 <div class="paragraph">
 <p>This command allows the user to resize the targetted image by specifying the width and height of the desired image. Upon receiving the inputs, the values will be checked for their validity and will throw an error if any value is not within the specified range. The command will then be added to the <code>List&lt;Commands&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targetted image.</p>
 </div>
 <div class="paragraph">
-<p>Refer to the example usage scenario and design considerations in <a href="#rotate-command">Section 3.4.2, &#8220;Rotate Command&#8221;</a></p>
+<p>Refer to the example usage scenario and design considerations in <a href="#rotate-command">Section 3.5.2, &#8220;Rotate Command&#8221;</a></p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -948,9 +1016,9 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </div>
 </div>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.5. Undo/Redo feature</a></h3>
+<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.6. Undo/Redo feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">3.5.1. Current Implementation</a></h4>
+<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">3.6.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by <code>Image</code>. It contains a list of commands applied to the current image. Additionally, it implements the following operations:</p>
 </div>
@@ -1095,7 +1163,7 @@ If the <code>index</code> is at index <code>commandHistory.size()</code>, pointi
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.5.2. Design Considerations</a></h4>
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.6.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -1165,7 +1233,7 @@ If the <code>index</code> is at index <code>commandHistory.size()</code>, pointi
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.6. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.7. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
@@ -2749,4 +2817,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-31 12:54:24 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-31 16:29:35 UTC</div></div></div></body></html>
