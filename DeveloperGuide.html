@@ -359,7 +359,7 @@ The following class plays an important role at the architecture level:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>The rest of the App consists of five components.</p>
+<p>The rest of the App consists of four components.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -370,18 +370,15 @@ The following class plays an important role at the architecture level:</p>
 <p><a href="#Design-Logic"><strong><code>Logic</code></strong></a>: The command executor.</p>
 </li>
 <li>
-<p><a href="#Design-CurrentEdit"><strong><code>CurrentEdit</code></strong></a>: Holds the image that the App is currently editing in-memory.</p>
-</li>
-<li>
 <p><a href="#Design-Storage"><strong><code>Storage</code></strong></a>: Reads data from, and writes data to, the hard disk.</p>
 </li>
 <li>
-<p><a href="#Design-Album"><strong><code>Album</code></strong></a>: Stores the pool of images that has been imported into the App.</p>
+<p><a href="#Design-Model"><strong><code>Model</code></strong></a>: Holds the data of images in the App in memory.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The first four components:</p>
+<p>Each of the first three components do the following:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -391,16 +388,29 @@ The following class plays an important role at the architecture level:</p>
 <li>
 <p>Exposes its functionality using a <code>{Component Name}Manager</code> class.</p>
 </li>
-</ul>
-</div>
-<div class="paragraph">
+<li>
 <p>For example, the <code>Logic</code> component (see the class diagram given below) defines it&#8217;s API in the <code>Logic.java</code> interface and exposes its functionality using the <code>LogicManager.java</code> class.</p>
+</li>
+</ul>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/LogicClassDiagram.png" alt="LogicClassDiagram" width="800">
 </div>
 <div class="title">Figure 2. Class Diagram of the Logic Component</div>
+</div>
+<div class="paragraph">
+<p>The <code>Model</code> component consists of two components:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>CurrentEdit</code> which holds the image that the App is currently editing in-memory.</p>
+</li>
+<li>
+<p><code>Album</code> which stores the pool of images that has been imported into the App.</p>
+</li>
+</ul>
 </div>
 <h4 id="how-the-architecture-components-interact-with-each-other" class="discrete">How the architecture components interact with each other</h4>
 <div class="paragraph">
@@ -2817,4 +2827,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-31 16:29:35 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-31 16:30:23 UTC</div></div></div></body></html>
