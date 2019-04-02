@@ -360,7 +360,7 @@ The following class plays an important role at the architecture level:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>The rest of the App consists of five components.</p>
+<p>The rest of the App consists of four components.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -371,18 +371,15 @@ The following class plays an important role at the architecture level:</p>
 <p><a href="#Design-Logic"><strong><code>Logic</code></strong></a>: The command executor.</p>
 </li>
 <li>
-<p><a href="#Design-CurrentEdit"><strong><code>CurrentEdit</code></strong></a>: Holds the image that the App is currently editing in-memory.</p>
+<p><a href="#Design-Model"><strong><code>Model</code></strong></a>: Holds the data of the App in-memory.</p>
 </li>
 <li>
 <p><a href="#Design-Storage"><strong><code>Storage</code></strong></a>: Reads data from, and writes data to, the hard disk.</p>
 </li>
-<li>
-<p><a href="#Design-Album"><strong><code>Album</code></strong></a>: Stores the pool of images that has been imported into the App.</p>
-</li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The first four components:</p>
+<p>Each of the four components</p>
 </div>
 <div class="ulist">
 <ul>
@@ -405,19 +402,13 @@ The following class plays an important role at the architecture level:</p>
 </div>
 <h4 id="how-the-architecture-components-interact-with-each-other" class="discrete">How the architecture components interact with each other</h4>
 <div class="paragraph">
-<p>The <em>Sequence Diagram</em> below shows how the components interact with each other for the scenarios where the user issues the commands <code>import C:\Users\XXX\Desktop\Pictures</code> and <code>rotate 90</code>.</p>
+<p>The <em>Sequence Diagram</em> below shows how the components interact with each other for the scenario where the user issues the command <code>delete 1</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/SDforImportcommand.png" alt="SDforImportcommand" width="800">
+<img src="images/SDforDeletePerson.png" alt="SDforDeletePerson" width="800">
 </div>
-<div class="title">Figure 3. Component interactions for <code>import C:\Users\XXX\Desktop\Pictures</code> command</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/SDforRotatecommand.png" alt="SDforRotatecommand" width="800">
-</div>
-<div class="title">Figure 4. Component interactions for <code>rotate 90</code> command</div>
+<div class="title">Figure 3. Component interactions for <code>delete 1</code> command</div>
 </div>
 <div class="paragraph">
 <p>The sections below give more details of each component.</p>
@@ -429,7 +420,7 @@ The following class plays an important role at the architecture level:</p>
 <div class="content">
 <img src="images/UiClassDiagram.png" alt="UiClassDiagram" width="800">
 </div>
-<div class="title">Figure 5. Structure of the UI Component</div>
+<div class="title">Figure 4. Structure of the UI Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
@@ -460,7 +451,7 @@ The following class plays an important role at the architecture level:</p>
 <div class="content">
 <img src="images/LogicClassDiagram.png" alt="LogicClassDiagram" width="800">
 </div>
-<div class="title">Figure 6. Structure of the Logic Component</div>
+<div class="title">Figure 5. Structure of the Logic Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
@@ -469,13 +460,13 @@ The following class plays an important role at the architecture level:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><code>Logic</code> uses the <code>FomoFotoParser</code> class to parse the user command.</p>
+<p><code>Logic</code> uses the <code>AddressBookParser</code> class to parse the user command.</p>
 </li>
 <li>
 <p>This results in a <code>Command</code> object which is executed by the <code>LogicManager</code>.</p>
 </li>
 <li>
-<p>The command execution can affect the <code>CurrentEdit</code> (e.g. rotating an image).</p>
+<p>The command execution can affect the <code>Model</code> (e.g. adding a person).</p>
 </li>
 <li>
 <p>The result of the command execution is encapsulated as a <code>CommandResult</code> object which is passed back to the <code>Ui</code>.</p>
@@ -486,19 +477,13 @@ The following class plays an important role at the architecture level:</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>Given below are the Sequence Diagrams for interactions within the <code>Logic</code> component for the <code>execute("import C:\User\Pictures\image.png")</code> and <code>execute("rotate 90")</code> API call.</p>
+<p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("delete 1")</code> API call.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/LogicImportSd.png" alt="LogicImportSd" width="800">
+<img src="images/DeletePersonSdForLogic.png" alt="DeletePersonSdForLogic" width="800">
 </div>
-<div class="title">Figure 7. Interactions Inside the Logic Component for the <code>import C:\User\Pictures\image.png</code> Command</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/LogicRotateSd.png" alt="LogicRotateSd" width="800">
-</div>
-<div class="title">Figure 8. Interactions Inside the Logic Component for the <code>rotate 90</code> Command</div>
+<div class="title">Figure 6. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
 </div>
 </div>
 <div class="sect2">
@@ -507,7 +492,7 @@ The following class plays an important role at the architecture level:</p>
 <div class="content">
 <img src="images/ModelComponents.png" alt="ModelComponents" width="800">
 </div>
-<div class="title">Figure 9. Structure of the Model Component</div>
+<div class="title">Figure 7. Structure of the Model Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/model/CurrentEdit.java"><code>CurrentEdit.java</code></a>, <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/model/Album.java"><code>Album.java</code></a></p>
@@ -555,9 +540,12 @@ The following class plays an important role at the architecture level:</p>
 <h3 id="Design-Storage"><a class="link" href="#Design-Storage">2.5. Storage component</a></h3>
 <div class="imageblock">
 <div class="content">
-<img src="images/StorageArchitectureDiagram.png" alt="StorageArchitectureDiagram" width="800">
+<img src="images/StorageClassDiagram.png" alt="StorageClassDiagram" width="800">
 </div>
-<div class="title">Figure 10. Structure of the Storage Component</div>
+<div class="title">Figure 8. Structure of the Storage Component</div>
+</div>
+<div class="paragraph">
+<p><strong>API</strong> : <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>assets</code> and <code>temp</code> folders form the storage component of FomoFoto.</p>
@@ -726,7 +714,7 @@ The following class plays an important role at the architecture level:</p>
 <div class="content">
 <img src="images/OpenCommandSequenceDiagram.png" alt="OpenCommandSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 11. Sequence Diagram for Open Command</div>
+<div class="title">Figure 9. Sequence Diagram for Open Command</div>
 </div>
 </div>
 <div class="sect3">
@@ -799,7 +787,7 @@ The following class plays an important role at the architecture level:</p>
 <div class="content">
 <img src="images/ListFilesCommandSequenceDiagram.png" alt="ListFilesCommandSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 12. Sequence Diagram for ListFiles</div>
+<div class="title">Figure 10. Sequence Diagram for ListFiles</div>
 </div>
 </div>
 <div class="sect3">
@@ -841,13 +829,13 @@ The following class plays an important role at the architecture level:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>ContrastCommand</code>: Applies a contrast ratio value on the targetted image. The contrast ratio value is preset to 1.1 if a specified ratio value is not given by the user.  A value above 1 (e.g 1.3) increases the contrast of the image while a positive value below 1 (e.g 0.5) decreases the contrast of the image.</p>
+<p><code>contrastCommand</code>: Applies the specified contrast ratio value on the targetted image</p>
 </li>
 <li>
-<p><code>BrightnessCommand</code>: Applies a brightness ratio value on the targetted image. The brightness ratio value is preset to 1.1 if a specified ratio value is not given by the user. A value above 1 (e.g 1.3) increases the brightness of the image while a positive value below 1 (e.g 0.5) decreases the brightness of the image.</p>
+<p><code>brightnessCommand</code>: Applies the specified brightness ratio value on the targetted image</p>
 </li>
 <li>
-<p><code>BlackWhiteCommand</code>: Transforms targetted image to a black and white image through a threshold value. The brightness ratio value is preset to 127 if a specified ratio value is not given by the user. Pixels on the image lighter than the threshold value becomes white and pixels darker than the threshold value becomes black.</p>
+<p><code>black/whiteCommand</code>: Transforms colored targetted image to a black and white image</p>
 </li>
 </ul>
 </div>
@@ -858,40 +846,22 @@ The following class plays an important role at the architecture level:</p>
 <div class="sect3">
 <h4 id="contrast-command"><a class="link" href="#contrast-command">3.4.2. Contrast Command</a></h4>
 <div class="paragraph">
-<p>This command calls for an adjustment of contrast on a targetted image. After adjusting the contrast, it adds this specific command called by the user to the <code>List&lt;Commands&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targetted image.</p>
+<p>This command calls for an adjustment of contrast on a targetted image and adds this specific command called by the user to <code>Image&#8217;s `List&lt;EditCommands&gt;</code> which saves the editing history of the targetted image.</p>
 </div>
 <div class="paragraph">
-<p>Given below is an example usage scenario and how the command should behave at each step. [This applies to the other image filter commands as well.]</p>
+<p>Given below is an example usage scenario and how the command should behave at each step.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. When the user runs an <code>open</code> command to edit an image, it invokes a method which creates an instance of an <code>Image</code> that stores the filepath of the image, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata. This <code>Image</code> object is saved under the variable name <code>tempImage</code> in <code>currentEdit</code> for editing.</p>
+<p>Step 1. When the users run the application and open an image to edit, a new <code>Image</code> object is created which stores the filename of the image,  history of edits [<code>List&lt;EditCommand&gt;</code>] and the image&#8217;s metadata. This <code>Image</code> object will be set as the <code>currentImage</code> in <code>Model</code> for editing.</p>
 </div>
 <div class="paragraph">
 <p>Step 2. When the user enters the command (e.g. <code>contrast 0.3</code>), the entered command is parsed and the command will be executed.</p>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If an invalid command is provided, a reminder of how to use the command will be given to the user and no command will be run.
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>Step 3. During execution, the <code>execute</code> method in the <code>contrastCommand</code> class calls for the methods <code>Model#applyContrast()</code> and <code>Model#displayImage()</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 3. During execution, the <code>execute</code> method in the <code>contrastCommand</code> class invokes <code>currentEdit#getTempImage()</code> to get the <code>tempImage</code> from <code>currentEdit</code>.</p>
-</div>
-<div class="paragraph">
-<p>Step 4. Upon retrieving the <code>tempImage</code>, the <code>execute</code> method creates a <code>ContrastFilter</code> instance provided by the external libary [<code>scrimage</code>] which takes in a double-valued contrast ratio value. This <code>ContrastFilter</code> will then be applied on the image retrieved from the filepath: "src/main/resources/temp/" + <code>tempImage#getURL()</code>.</p>
-</div>
-<div class="paragraph">
-<p>Step 5. After applying the <code>ContrastFilter</code> on the targetted image, <code>currentEdit#updateTempImage()</code> is invoked to save the newly edited image and replace the previous one in the filepath: "src/main/resources/temp/" + <code>tempImage#getURL()</code>.</p>
-</div>
-<div class="paragraph">
-<p>Step 6. The <code>execute</code> method then checks if the boolean <code>isNewCommand</code> is true. If it is <code>true</code>, it indicates that the command is a new contrast command called directly from the user and not through an <code>undo/redo</code> command which triggers Step 7 in the line below. Otherwise, the command&#8217;s execution ends in this step.</p>
+<p>Step 4. Calling <code>Model#applyContrast()</code> creates a <code>BufferedOpFilter</code> object in the external library [<code>scrimage</code>] named <code>contrastFilter</code> which is applied on the image with the filepath: "src/main/resources/temp/" + <code>currentImage#getFileName()</code></p>
 </div>
 <div class="paragraph">
 <p>Step 7. <code>isNewCommand</code> is set to <code>false</code> to signal that this command is not a new contrast command if it is executed again through the undo/redo function.
@@ -910,7 +880,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="content">
 <img src="images/ContrastCommandSequenceDiagram.png" alt="ContrastCommandSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 13. Sequence Diagram for Contrast Command</div>
+<div class="title">Figure 11. Sequence Diagram for Contrast Command</div>
 </div>
 </div>
 </div>
@@ -926,7 +896,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="content">
 <img src="images/BrightnessCommandSequenceDiagram.png" alt="BrightnessCommandSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 14. Sequence Diagram for Brightness Command</div>
+<div class="title">Figure 12. Sequence Diagram for Brightness Command</div>
 </div>
 </div>
 <div class="sect3">
@@ -941,7 +911,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="content">
 <img src="images/BlackWhiteCommandSequenceDiagram.png" alt="BlackWhiteCommandSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 15. Sequence Diagram for BlackWhite Command</div>
+<div class="title">Figure 13. Sequence Diagram for BlackWhite Command</div>
 </div>
 </div>
 </div>
@@ -1046,7 +1016,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="content">
 <img src="images/RotateCommandSequenceDiagram.png" alt="RotateCommandSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 16. Sequence Diagram for Rotate Command</div>
+<div class="title">Figure 14. Sequence Diagram for Rotate Command</div>
 </div>
 </div>
 <div class="sect3">
@@ -1061,7 +1031,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="content">
 <img src="images/CropCommandSequenceDiagram.png" alt="CropCommandSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 17. Sequence Diagram for Crop Command</div>
+<div class="title">Figure 15. Sequence Diagram for Crop Command</div>
 </div>
 </div>
 <div class="sect3">
@@ -1076,7 +1046,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="content">
 <img src="images/ResizeCommandSequenceDiagram.png" alt="ResizeCommandSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 18. Sequence Diagram for Resize Command</div>
+<div class="title">Figure 16. Sequence Diagram for Resize Command</div>
 </div>
 </div>
 </div>
@@ -1118,11 +1088,6 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="paragraph">
 <p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoSeqTEMP.PNG" alt="UndoSeqTEMP" width="800">
-</div>
-</div>
 <div class="paragraph">
 <p>Step 1. The user opens an image. The <code>Image</code> will be initialized with an empty commandHistory List.</p>
 </div>
@@ -1159,7 +1124,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If a command fails its execution, it will not call <code>Model#commitAddressBook()</code>, so the address book state will not be saved into the <code>addressBookStateList</code>.
+If a command fails its execution, it will return the image before undo was called and produce an error message.
 </td>
 </tr>
 </table>
@@ -1213,11 +1178,6 @@ If the <code>index</code> is at index <code>commandHistory.size()</code>, pointi
 <div class="paragraph">
 <p>Step 5. The user executes <code>saves</code>, which calls <code>CurrentEdit#saveToAssets()</code>. This replaces the original image with the temp image since a name is not specified. When this happens, the user can no longer call <code>undo</code> as there is no original image to work on. The command history is also cleared.</p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoNewCommand4StateListDiagram.png" alt="UndoRedoNewCommand4StateListDiagram" width="800">
-</div>
-</div>
 <div class="paragraph">
 <p>The following activity diagram summarizes what happens when a user executes a new command:</p>
 </div>
@@ -1247,7 +1207,7 @@ If the <code>index</code> is at index <code>commandHistory.size()</code>, pointi
 </div>
 </li>
 <li>
-<p><strong>Alternative 2(current choice):</strong> Save all transformation in a list and apply them when undo/redo is called.</p>
+<p><strong>Alternative 2(current choice):</strong> Save all transformation in a list and apply them when undo/redo is called. We chose this method as we do not want our application to take up too much space in the PC.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1267,7 +1227,7 @@ If the <code>index</code> is at index <code>commandHistory.size()</code>, pointi
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of commands.</p>
+<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of commands. We chose this so as to preserve good Object Oriented Programming principles.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1369,7 +1329,7 @@ If the <code>index</code> is at index <code>commandHistory.size()</code>, pointi
 <div class="content">
 <img src="images/SaveCommandSequenceDiagram.png" alt="SaveCommandSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 19. Sequence Diagram for Save Command</div>
+<div class="title">Figure 17. Sequence Diagram for Save Command</div>
 </div>
 </div>
 <div class="sect3">
@@ -1505,7 +1465,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 20. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 18. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 <div class="sect2">
@@ -2988,4 +2948,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 03:00:57 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 08:53:06 UTC</div></div></div></body></html>

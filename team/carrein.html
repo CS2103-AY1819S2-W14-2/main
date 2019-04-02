@@ -189,11 +189,6 @@
 <div class="paragraph">
 <p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoSeqTEMP.PNG" alt="UndoSeqTEMP" width="800">
-</div>
-</div>
 <div class="paragraph">
 <p>Step 1. The user opens an image. The <code>Image</code> will be initialized with an empty commandHistory List.</p>
 </div>
@@ -230,7 +225,7 @@
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If a command fails its execution, it will not call <code>Model#commitAddressBook()</code>, so the address book state will not be saved into the <code>addressBookStateList</code>.
+If a command fails its execution, it will return the image before undo was called and produce an error message.
 </td>
 </tr>
 </table>
@@ -284,11 +279,6 @@ If the <code>index</code> is at index <code>commandHistory.size()</code>, pointi
 <div class="paragraph">
 <p>Step 5. The user executes <code>saves</code>, which calls <code>CurrentEdit#saveToAssets()</code>. This replaces the original image with the temp image since a name is not specified. When this happens, the user can no longer call <code>undo</code> as there is no original image to work on. The command history is also cleared.</p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand4StateListDiagram.png" alt="UndoRedoNewCommand4StateListDiagram" width="800">
-</div>
-</div>
 <div class="paragraph">
 <p>The following activity diagram summarizes what happens when a user executes a new command:</p>
 </div>
@@ -318,7 +308,7 @@ If the <code>index</code> is at index <code>commandHistory.size()</code>, pointi
 </div>
 </li>
 <li>
-<p><strong>Alternative 2(current choice):</strong> Save all transformation in a list and apply them when undo/redo is called.</p>
+<p><strong>Alternative 2(current choice):</strong> Save all transformation in a list and apply them when undo/redo is called. We chose this method as we do not want our application to take up too much space in the PC.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -338,7 +328,7 @@ If the <code>index</code> is at index <code>commandHistory.size()</code>, pointi
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of commands.</p>
+<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of commands. We chose this so as to preserve good Object Oriented Programming principles.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -378,4 +368,4 @@ If the <code>index</code> is at index <code>commandHistory.size()</code>, pointi
 <p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 03:00:57 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 08:53:06 UTC</div></div></div></body></html>
