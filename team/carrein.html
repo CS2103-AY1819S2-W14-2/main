@@ -185,203 +185,107 @@
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">Undo/Redo feature</a></h3>
-<div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<h3 id="ui-component"><a class="link" href="#ui-component">UI component</a></h3>
+<div class="imageblock">
+<div class="content">
+<img src="../images/UiClassDiagram.png" alt="UiClassDiagram" width="800">
+</div>
+<div class="title">Figure 1. Structure of the UI Component</div>
+</div>
 <div class="paragraph">
-<p>The undo/redo mechanism is facilitated by <code>Image</code>. It contains a list of commands applied to the current image. Additionally, it implements the following operations:</p>
+<p><strong>API</strong> : <a href="{repoURL}/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
+</div>
+<div class="paragraph">
+<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code>, <code>BrowserPanel</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
+</div>
+<div class="paragraph">
+<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="{repoURL}/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="{repoURL}/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
+</div>
+<div class="paragraph">
+<p>The <code>UI</code> component,</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>Image#addHistory()</code>&#8201;&#8212;&#8201;Saves the current edit command into commandHistory list and increments index.</p>
+<p>Executes user commands using the <code>Logic</code> component.</p>
 </li>
 <li>
-<p><code>Image#setUndo()</code>&#8201;&#8212;&#8201;Decreases index by 1.</p>
+<p>Listens for changes to <code>Model</code> data so that the UI can be updated with the modified data.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="import-feature"><a class="link" href="#import-feature">Import feature</a></h3>
+<div class="paragraph">
+<p>The Import Command allow users to import a file of image format into FomoFoto for editing.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current implementation</a></h4>
+<div class="paragraph">
+<p>The implementation of the import feature is largely similar to that of linux&#8217;s <code>cp</code> command, with the exception the output path is fixed. It is facilitated by he <code>ModelManager</code> and <code>ImportCommandParser</code> and contains the follow operation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Model#displayImage(Image)</code> - Retrives the image from <code>assets</code> folder by <code>Image</code> name field.</p>
 </li>
 <li>
-<p><code>Image#setRedo()</code>&#8201;&#8212;&#8201;Increases index by 1.</p>
-</li>
-<li>
-<p><code>Image#getHistory()</code>&#8201;&#8212;&#8201;Returns commandHistory as List.</p>
-</li>
-<li>
-<p><code>Image#getSubHistory()</code>&#8201;&#8212;&#8201;Returns commandHistory sublist using index to track which commands should be included.</p>
-</li>
-<li>
-<p><code>Image#canUndo()</code>&#8201;&#8212;&#8201;Returns true if index &gt; 0.</p>
-</li>
-<li>
-<p><code>Image#canRedo()</code>&#8201;&#8212;&#8201;Returns true if index &lt; CommandHistory.size().</p>
+<p><code>ImportCommandParser#parse(String)</code> - Takes in an absolute path and copies the image to <code>assets</code> directory.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>These operations are exposed in the <code>CurrentEdit</code> interface as <code>CurrentEdit#addCommand()</code>, <code>CurrentEdit#setUndoTemp()</code>, <code>CurrentEdit#setRedoTemp()</code>, <code>CurrentEdit#getHistoryTemp()</code>, <code>CurrentEdit#getSubHistoryTemp()</code>, <code>CurrentEdit#canUndoTemp()</code> and <code>CurrentEdit#canRedoTemp()</code> respectively.</p>
+<p>Example usage scenario:</p>
 </div>
-<div class="paragraph">
-<p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
-</div>
-<div class="paragraph">
-<p>Step 1. The user opens an image. The <code>Image</code> will be initialized with an empty commandHistory List.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoStartingStateListDiagram.png" alt="UndoRedoStartingStateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 2. The user executes a series of transformations on the image. These transformations are stored in the commandHistory list and for each transformation stored, the index is incremented by 1 to point to that transformation.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand1StateListDiagram.png" alt="UndoRedoNewCommand1StateListDiagram" width="800">
-</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User launches application and enters <code>import C:\Users\images\sample.png</code></p>
+</li>
+<li>
+<p><code>ImportCommandParser</code> takes in arguments and performs validation on given path. Image is copied to <code>assets</code> folder if the path is valid.</p>
+</li>
+<li>
+<p><code>Model</code> display the imported image to UI by calling the <code>Notifier</code> class which calls on the display panel listening to the notifier.</p>
+</li>
+<li>
+<p><code>ImagePanel</code> updates to reflect the imported image.</p>
+</li>
+</ol>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/UndoRedoNewCommand2StateListDiagram.png" alt="UndoRedoNewCommand2StateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 3. The user wants to undo the previous transformation by using the <code>undo</code> command. It will call <code>CurrentEdit#replaceTempWithOriginal()</code> which will replace the edited image in temp folder with the original image. It will then call <code>CurrentEdit#setUndoTemp()</code> to set the index in <code>tempImage</code> to the required index and retrieve the list with <code>CurrentEdit#getHistoryTemp()</code>. Using the list, it will apply the commands onto the original image till it reaches the command just before the set index.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand3StateListDiagram.png" alt="UndoRedoNewCommand3StateListDiagram" width="800">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If a command fails its execution, it will return the image before undo was called and produce an error message.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 4. After executing Undo, <code>index</code> will be less than size of commandHistory. If redo is not executed before a new command is added, all commands in the list after <code>index</code> will be deleted.</p>
-</div>
-<div class="paragraph">
-<p>For redo, it will call <code>setRedo</code> and retrieve that command to apply it on the current image.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoExecuteUndoStateListDiagram.png" alt="UndoRedoExecuteUndoStateListDiagram" width="800">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>Image#index</code> is 0, pointing to the initial photo, then there are no previous commands to restore. The <code>undo</code> command uses <code>CurrentEdit#canUndoTemp()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows how the undo operation works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoSequenceDiagram.png" alt="UndoRedoSequenceDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>CurrentEdit#setRedoTemp()</code>, which shifts the <code>index</code> once to the right, pointing to the previously undone command, and executes that command to perform the transformation.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>index</code> is at index <code>commandHistory.size()</code>, pointing to the latest image state, then there are no undone transformation to restore. The <code>redo</code> command uses <code>CurrentEdit#canRedoTemp()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 5. The user executes <code>saves</code>, which calls <code>CurrentEdit#saveToAssets()</code>. This replaces the original image with the temp image since a name is not specified. When this happens, the user can no longer call <code>undo</code> as there is no original image to work on. The command history is also cleared.</p>
-</div>
-<div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a new command:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoActivityDiagram.png" alt="UndoRedoActivityDiagram" width="650">
+<img src="../images/ImportSequenceDiagram.png" alt="ImportSequenceDiagram" width="800">
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1:</strong> Saves the each transformation as a separate image.</p>
+<p><strong>Alternative 1 (current choice)</strong>: Import images with absolute path.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy to implement.</p>
+<p>Pros: Easy and clement implementation.</p>
 </li>
 <li>
-<p>Cons: May have performance issues in terms of memory usage.</p>
+<p>Cons: Limited to single image import.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2(current choice):</strong> Save all transformation in a list and apply them when undo/redo is called. We chose this method as we do not want our application to take up too much space in the PC.</p>
+<p><strong>Alternative 2</strong> : Open images within a directory.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Will use less memory</p>
+<p>Pros: Can import many images without repeating the command.</p>
 </li>
 <li>
-<p>Cons: We must ensure that the implementation of each individual command are correct.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of commands. We chose this so as to preserve good Object Oriented Programming principles.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.</p>
-</li>
-<li>
-<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>Image</code>.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: We do not need to maintain a separate list, and just reuse what is already in the codebase.</p>
-</li>
-<li>
-<p>Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.</p>
+<p>Cons: Can result in errors in too mny images or images are of alternative formats.</p>
 </li>
 </ul>
 </div>
@@ -391,14 +295,4 @@ If the <code>index</code> is at index <code>commandHistory.size()</code>, pointi
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
-<div class="sectionbody">
-<hr>
-<div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
-</div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 13:53:07 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 13:53:55 UTC</div></div></div></body></html>
