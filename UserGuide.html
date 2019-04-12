@@ -16,21 +16,22 @@
 <ul class="sectlevel2">
 <li><a href="#black-and-white-filter-code-bw-code">4.1. Black and White Filter : <code>bw</code></a></li>
 <li><a href="#brightness-code-brightness-code">4.2. Brightness: <code>brightness</code></a></li>
-<li><a href="#contrast-code-contrast-code">4.3. Contrast: <code>contrast</code></a></li>
-<li><a href="#crop-an-image-code-crop-code">4.4. Crop an image : <code>crop</code></a></li>
-<li><a href="#exit-the-program-code-exit-code">4.5. Exit the program : <code>exit</code></a></li>
-<li><a href="#export-edited-image-code-export-code">4.6. Export edited image : <code>export</code></a></li>
-<li><a href="#help-view-code-help-code">4.7. Help view: <code>help</code></a></li>
-<li><a href="#import-an-image-code-import-code">4.8. Import an image : <code>import</code></a></li>
-<li><a href="#list-files-code-listfiles-code">4.9. List Files: <code>listfiles</code></a></li>
-<li><a href="#open-an-image-code-open-code">4.10. Open an image : <code>open</code></a></li>
-<li><a href="#redo-edit-steps-code-redo-code">4.11. Redo edit steps : <code>redo</code></a></li>
-<li><a href="#rotate-an-image-code-rotate-code">4.12. Rotate an image : <code>rotate</code></a></li>
-<li><a href="#resize-an-image-code-resize-code">4.13. Resize an image : <code>resize</code></a></li>
-<li><a href="#save-image-code-save-code">4.14. Save image : <code>save</code></a></li>
-<li><a href="#tab-switching-code-tab-code">4.15. Tab switching: <code>tab</code></a></li>
-<li><a href="#undo-edit-steps-code-undo-code">4.16. Undo edit steps : <code>undo</code></a></li>
-<li><a href="#watermark-code-wm-code">4.17. WaterMark : <code>wm</code></a></li>
+<li><a href="#clear-album-code-clear-code">4.3. Clear Album: <code>clear</code></a></li>
+<li><a href="#contrast-code-contrast-code">4.4. Contrast: <code>contrast</code></a></li>
+<li><a href="#crop-an-image-code-crop-code">4.5. Crop an image : <code>crop</code></a></li>
+<li><a href="#exit-the-program-code-exit-code">4.6. Exit the program : <code>exit</code></a></li>
+<li><a href="#export-edited-image-code-export-code">4.7. Export edited image : <code>export</code></a></li>
+<li><a href="#help-view-code-help-code">4.8. Help view: <code>help</code></a></li>
+<li><a href="#import-an-image-code-import-code">4.9. Import an image : <code>import</code></a></li>
+<li><a href="#list-files-code-listfiles-code">4.10. List Files: <code>listfiles</code></a></li>
+<li><a href="#open-an-image-code-open-code">4.11. Open an image : <code>open</code></a></li>
+<li><a href="#redo-edit-steps-code-redo-code">4.12. Redo edit steps : <code>redo</code></a></li>
+<li><a href="#rotate-an-image-code-rotate-code">4.13. Rotate an image : <code>rotate</code></a></li>
+<li><a href="#resize-an-image-code-resize-code">4.14. Resize an image : <code>resize</code></a></li>
+<li><a href="#save-image-code-save-code">4.15. Save image : <code>save</code></a></li>
+<li><a href="#tab-switching-code-tab-code">4.16. Tab switching: <code>tab</code></a></li>
+<li><a href="#undo-edit-steps-code-undo-code">4.17. Undo edit steps : <code>undo</code></a></li>
+<li><a href="#watermark-code-wm-code">4.18. WaterMark : <code>wm</code></a></li>
 </ul>
 </li>
 <li><a href="#upcoming-features-in-v2-0">5. Upcoming Features (in v2.0)</a>
@@ -270,7 +271,28 @@ Format: <code>brightness [BRIGHTNESS_RATIO]</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="contrast-code-contrast-code"><a class="link" href="#contrast-code-contrast-code">4.3. Contrast: <code>contrast</code></a></h3>
+<h3 id="clear-album-code-clear-code"><a class="link" href="#clear-album-code-clear-code">4.3. Clear Album: <code>clear</code></a></h3>
+<div class="paragraph">
+<p>Clear all images imported in to the Album.<br>
+Format: <code>clear</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Clear does not remove the image currently being edited i.e. Images opened with the <code>open</code> command.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="contrast-code-contrast-code"><a class="link" href="#contrast-code-contrast-code">4.4. Contrast: <code>contrast</code></a></h3>
 <div class="paragraph">
 <p>Adjusts the contrast of the opened image based on a double-valued ratio. If the contrast ratio is not specified, a preset ratio value of 1.1 will be used.+
 Format: <code>contrast CONTRAST_RATIO</code></p>
@@ -293,7 +315,7 @@ Format: <code>contrast CONTRAST_RATIO</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="crop-an-image-code-crop-code"><a class="link" href="#crop-an-image-code-crop-code">4.4. Crop an image : <code>crop</code></a></h3>
+<h3 id="crop-an-image-code-crop-code"><a class="link" href="#crop-an-image-code-crop-code">4.5. Crop an image : <code>crop</code></a></h3>
 <div class="paragraph">
 <p>Crops an image based on given top left hand corner coordinates, width and height of final cropped image wanted.<br>
 Format: <code>crop X_POINTCOORD Y_POINTCOORD WIDTH HEIGHT</code></p>
@@ -321,14 +343,14 @@ Format: <code>crop X_POINTCOORD Y_POINTCOORD WIDTH HEIGHT</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exit-the-program-code-exit-code"><a class="link" href="#exit-the-program-code-exit-code">4.5. Exit the program : <code>exit</code></a></h3>
+<h3 id="exit-the-program-code-exit-code"><a class="link" href="#exit-the-program-code-exit-code">4.6. Exit the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="export-edited-image-code-export-code"><a class="link" href="#export-edited-image-code-export-code">4.6. Export edited image : <code>export</code></a></h3>
+<h3 id="export-edited-image-code-export-code"><a class="link" href="#export-edited-image-code-export-code">4.7. Export edited image : <code>export</code></a></h3>
 <div class="paragraph">
 <p>Exports the edited image into the specified Directory<br>
 Format: <code>export f/FILENAME d/DIRECTORY</code></p>
@@ -345,14 +367,14 @@ Format: <code>export f/FILENAME d/DIRECTORY</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="help-view-code-help-code"><a class="link" href="#help-view-code-help-code">4.7. Help view: <code>help</code></a></h3>
+<h3 id="help-view-code-help-code"><a class="link" href="#help-view-code-help-code">4.8. Help view: <code>help</code></a></h3>
 <div class="paragraph">
 <p>Displays help view to user.
 Format: <code>help</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="import-an-image-code-import-code"><a class="link" href="#import-an-image-code-import-code">4.8. Import an image : <code>import</code></a></h3>
+<h3 id="import-an-image-code-import-code"><a class="link" href="#import-an-image-code-import-code">4.9. Import an image : <code>import</code></a></h3>
 <div class="paragraph">
 <p>Imports an image to assets folder from specified filepath<br>
 Format: <code>import FILEPATH</code></p>
@@ -383,14 +405,14 @@ Format: <code>import FILEPATH</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="list-files-code-listfiles-code"><a class="link" href="#list-files-code-listfiles-code">4.9. List Files: <code>listfiles</code></a></h3>
+<h3 id="list-files-code-listfiles-code"><a class="link" href="#list-files-code-listfiles-code">4.10. List Files: <code>listfiles</code></a></h3>
 <div class="paragraph">
 <p>Lists all files in assets folder.<br>
 Format: <code>listfiles</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="open-an-image-code-open-code"><a class="link" href="#open-an-image-code-open-code">4.10. Open an image : <code>open</code></a></h3>
+<h3 id="open-an-image-code-open-code"><a class="link" href="#open-an-image-code-open-code">4.11. Open an image : <code>open</code></a></h3>
 <div class="paragraph">
 <p>Opens an image inside assets folder for editing.<br>
 Format: <code>open FILENAME</code></p>
@@ -407,7 +429,7 @@ Format: <code>open FILENAME</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="redo-edit-steps-code-redo-code"><a class="link" href="#redo-edit-steps-code-redo-code">4.11. Redo edit steps : <code>redo</code></a></h3>
+<h3 id="redo-edit-steps-code-redo-code"><a class="link" href="#redo-edit-steps-code-redo-code">4.12. Redo edit steps : <code>redo</code></a></h3>
 <div class="paragraph">
 <p>Returns to a previously undone state.<br>
 Format: <code>redo</code></p>
@@ -449,7 +471,7 @@ Format: <code>redo</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="rotate-an-image-code-rotate-code"><a class="link" href="#rotate-an-image-code-rotate-code">4.12. Rotate an image : <code>rotate</code></a></h3>
+<h3 id="rotate-an-image-code-rotate-code"><a class="link" href="#rotate-an-image-code-rotate-code">4.13. Rotate an image : <code>rotate</code></a></h3>
 <div class="paragraph">
 <p>Rotates the photo by a given degree provided by the user. Only 90, 180 or 270 degrees of rotation is allowed.<br>
 Format: <code>rotate ANGLE</code></p>
@@ -466,7 +488,7 @@ Format: <code>rotate ANGLE</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="resize-an-image-code-resize-code"><a class="link" href="#resize-an-image-code-resize-code">4.13. Resize an image : <code>resize</code></a></h3>
+<h3 id="resize-an-image-code-resize-code"><a class="link" href="#resize-an-image-code-resize-code">4.14. Resize an image : <code>resize</code></a></h3>
 <div class="paragraph">
 <p>Resizes the image to a given width and height provided by the user.<br>
 Format: <code>resize WIDTH HEIGHT</code></p>
@@ -483,7 +505,7 @@ Format: <code>resize WIDTH HEIGHT</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="save-image-code-save-code"><a class="link" href="#save-image-code-save-code">4.14. Save image : <code>save</code></a></h3>
+<h3 id="save-image-code-save-code"><a class="link" href="#save-image-code-save-code">4.15. Save image : <code>save</code></a></h3>
 <div class="paragraph">
 <p>Applies and saves your edits.<br>
 Format: <code>save</code> or <code>save FILENAME</code></p>
@@ -500,9 +522,10 @@ Format: <code>save</code> or <code>save FILENAME</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="tab-switching-code-tab-code"><a class="link" href="#tab-switching-code-tab-code">4.15. Tab switching: <code>tab</code></a></h3>
+<h3 id="tab-switching-code-tab-code"><a class="link" href="#tab-switching-code-tab-code">4.16. Tab switching: <code>tab</code></a></h3>
 <div class="paragraph">
-<p>Cycle between available tabs in the side <strong>Information Panel</strong>.</p>
+<p>Cycle between available tabs in the side <strong>Information Panel</strong>.<br>
+Format: <code>tab</code></p>
 </div>
 <div class="paragraph">
 <p>The three available tabs are listed below:</p>
@@ -544,7 +567,7 @@ image such as metadata information like <strong>Date and Time</strong> and <stro
 </div>
 </div>
 <div class="sect2">
-<h3 id="undo-edit-steps-code-undo-code"><a class="link" href="#undo-edit-steps-code-undo-code">4.16. Undo edit steps : <code>undo</code></a></h3>
+<h3 id="undo-edit-steps-code-undo-code"><a class="link" href="#undo-edit-steps-code-undo-code">4.17. Undo edit steps : <code>undo</code></a></h3>
 <div class="paragraph">
 <p>Goes back to the previous state of the image.<br>
 Format: <code>undo</code></p>
@@ -565,7 +588,7 @@ Format: <code>undo</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="watermark-code-wm-code"><a class="link" href="#watermark-code-wm-code">4.17. WaterMark : <code>wm</code></a></h3>
+<h3 id="watermark-code-wm-code"><a class="link" href="#watermark-code-wm-code">4.18. WaterMark : <code>wm</code></a></h3>
 <div class="paragraph">
 <p>Adds a watermark to the image with a &#169; at the start of the input message.<br>
 Format: <code>wm MESSAGE</code></p>
@@ -729,4 +752,4 @@ e.g. <code>wm FomoFoto</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-12 10:29:37 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-12 11:38:44 UTC</div></div></div></body></html>
