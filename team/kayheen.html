@@ -7,16 +7,13 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="overview-of-the-project"><a class="link" href="#overview-of-the-project">Overview of the project</a></h2>
+<h2 id="1-overview-of-the-project"><a class="link" href="#1-overview-of-the-project">1. Overview of the Project</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>My team and I were tasked with enhancing a basic command line addressbook for our Software Engineering project. We decided to morph the project into a image editor.<br></p>
 </div>
 <div class="paragraph">
-<p>FomoFoto is a robust yet simple image-editing tool. Users interact with the application through worded commands from their keyboard, and receive visual feedback from it through the displayed image on the application.<br></p>
-</div>
-<div class="paragraph">
-<p>Unlike other heavy image editors, FomoFoto has a very gentle learning curve as it abstracts out clutter by providing the more essential features (complex editing can still be done with special commands). The features and implementations are well documented in guides for users and developers respectively.<br></p>
+<p>FomoFoto is a robust yet simple image-editing tool. Users interact with the application through worded commands from their keyboard, and receive visual feedback from it through the displayed image on the application. Unlike other heavy image editors, FomoFoto has a very gentle learning curve as it abstracts out clutter by providing the more essential features (complex editing can still be done with special commands). The features and implementations are well documented in guides for users and developers respectively.<br></p>
 </div>
 <div class="paragraph">
 <p>In addition, FomoFoto is well maintained with high reliability and code quality as it is covered by rigorous tests and checks.</p>
@@ -24,7 +21,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<h2 id="2-summary-of-contributions"><a class="link" href="#2-summary-of-contributions">2. Summary of Contributions</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This section provides a summary of my coding, documentation and miscellaneous contributions to FomoFoto, our team project.</p>
@@ -32,11 +29,11 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: I added <strong>image manipulation commands</strong></p>
+<p><strong>Major Enhancement</strong>: I added <strong>image manipulation commands</strong>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><em>What it does:</em> This feature allows the user manipulate images on a physical level, such as rotating, cropping and resizing the target image. Users key in keywords like <code>rotate</code>, <code>crop</code> and <code>resize</code> to activate the respective commands.</p>
+<p><em>What it does:</em> This feature allows the user to manipulate images on a physical level, such as rotating, cropping and resizing the target image. Users key in keywords like <code>rotate</code>, <code>crop</code> and <code>resize</code> to activate the respective commands.</p>
 </li>
 <li>
 <p><em>Justification:</em> This feature improves the product significantly because it is an essential feature of an image editor. Users might want to <code>rotate</code> their images because the position is wrong or <code>crop</code> out certain unwanted parts in the image. Should the image be too large, the user can <code>resize</code> it as well.</p>
@@ -51,34 +48,50 @@
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: I added a feature where the <code>Image</code> returns a file type (e.g. JPEG), because edits to images are affected by the file type.</p>
-</li>
-<li>
-<p><strong>Code contributed</strong>: <a href="https://github.com/CS2103-AY1819S2-W14-2/main/commits?author=kayheen">List of commits</a></p>
-</li>
-<li>
-<p><strong>Other contributions</strong>:</p>
+<p><strong>Major Enhancement</strong>: I added a <strong>watermark command</strong>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Project management:</p>
-<div class="ulist">
-<ul>
+<p><em>What it does:</em> This feature allows the user to add a watermark (any text or numbers) with the (c) sign to the target image. Users key in the keyword <code>wm</code> to activate this command.</p>
+</li>
 <li>
-<p>Ensured that we are on task with our project documentation by allocating roles and ensuring consistency with our words and diagrams. (user guide and developer guide)</p>
+<p><em>Justification:</em> This feature improves the product significantly because it helps users such as professional photographers protect their images after editing it on our image editor. The copyright watermark prevents unauthorised third parties from using the images for their own private purposes.</p>
+</li>
+<li>
+<p><em>Highlights:</em> It was especially challenging to integrate this command with all other commands acting on the same image, because a watermark should only be allowed to be added once to an image. This implied that we had to ensure that the <code>Image</code> class contains a flag that indicates the presence of a watermark on the image, and this flag had to be constantly updated accurately in every command that can possibly add or remove a watermark from an image, which includes the watermark command, setpreset command and undo-redo commands.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Enhancements to existing features (to be updated):</p>
+<p><strong>Minor Enhancement</strong>: I added a feature where the <code>Image</code> returns a file type (e.g. JPEG, PNG), because edits to images are affected by the file type.</p>
+</li>
+<li>
+<p><strong>Code Contributed</strong>: <a href="https://github.com/CS2103-AY1819S2-W14-2/main/commits?author=kayheen">List of commits</a></p>
+</li>
+<li>
+<p><strong>Other Contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Project Management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Ensured that we are on task with our project documentation by allocating roles and ensuring consistency with our words and diagrams. (User Guide and Developer Guide)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Enhancements to Existing Features:</p>
 <div class="ulist">
 <ul>
 <li>
 <p>EXAMPLE: Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
 </li>
 <li>
-<p>EXAMPLE: Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
+<p>Wrote tests for image manipulation and watermark commands to increase coverage. (Pull requests <a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/188">#188</a>, <a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/208">#208</a>, <a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/222">#222</a>)</p>
 </li>
 </ul>
 </div>
@@ -93,21 +106,25 @@
 <li>
 <p>Did the documentation for image manipulation: <a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/123/files">#123</a></p>
 </li>
+<li>
+<p>Did the documentation for the watermark command: <a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/229">#229</a></p>
+</li>
 </ul>
 </div>
 </li>
 <li>
-<p>Community (to be updated):</p>
+<p>Community:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>EXAMPLE: PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
+<p>PRs reviewed (with non-trivial review comments):
+<a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/220">#220</a>,
+<a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/225">#225</a>, <a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/235">#235</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
 </li>
 <li>
-<p>EXAMPLE: Contributed to forum discussions (to be updated) (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>EXAMPLE: Reported bugs and suggestions for other teams in the class (to be updated once we review other people&#8217;s code) (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
+<p>Reported bugs and suggestions for other teams in the class:  <a href="https://github.com/CS2103-AY1819S2-W16-2/main/issues/102">#102</a>, <a href="https://github.com/CS2103-AY1819S2-W16-2/main/issues/108">#108</a>, <a href="https://github.com/CS2103-AY1819S2-W16-2/main/issues/112">#112</a>,
+<a href="https://github.com/CS2103-AY1819S2-W16-2/main/issues/115">#115</a>,
+<a href="https://github.com/CS2103-AY1819S2-W16-2/main/issues/117">#117</a>,</p>
 </li>
 </ul>
 </div>
@@ -127,13 +144,10 @@
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p><em>{to add/remove categories in the list above once our coding is completed}</em></p>
-</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<h2 id="3-contributions-to-the-user-guide"><a class="link" href="#3-contributions-to-the-user-guide">3. Contributions to the User Guide</a></h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -633,6 +647,189 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="watermark-feature"><a class="link" href="#watermark-feature">WaterMark Feature</a></h3>
+<div class="paragraph">
+<p>This command allows the user to add a watermark to their image. Upon receiving an input message by the user, the message will be checked for its validity and will throw an error if it is empty or contains only spaces. Messages can contain spaces in between the words or numbers. The command will then be added to the <code>List&lt;Commands&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targetted image.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Each image can only have 1 watermark at a time.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The manipulation feature is facilitated by <code>CurrentEdit</code> and <code>Image</code>. It uses the following operations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>CurrentEdit#getTempImage()</code> - Retrieves the temporary image <code>tempImage</code> which stores the filepath of the temporary image in <code>temp</code> folder, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata.</p>
+</li>
+<li>
+<p><code>CurrenEdit#updateTempImage(BufferedImage)</code> - Replaces the temporary image in <code>temp</code> folder with the newly edited image and update the <code>tempImage</code> instance in the class.</p>
+</li>
+<li>
+<p><code>CurrentEdit#addCommand(Command)</code> - add this command to the edit history [<code>List&lt;Command&gt;</code>] in <code>tempImage</code> for the undo/redo function</p>
+</li>
+<li>
+<p><code>CurrenEdit#displayTempImage()</code> - Displays the temporary image stored in directory: "src/main/resources/temp/".</p>
+</li>
+<li>
+<p><code>Image#hasWaterMark()</code> - Checks if the <code>Image</code> already has a watermark.</p>
+</li>
+<li>
+<p><code>Image#setWaterMark(boolean)</code> - Sets the <code>Image</code> object&#8217;s <code>hasWaterMark</code> field accordingly, if the <code>Image</code> has or does not have a watermark.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the command should behave at each step:</p>
+</div>
+<div class="paragraph">
+<p>Step 1. When the user runs an open command to edit an image, it invokes a method which creates an instance of an <code>Image</code> that stores the filepath of the image, its history of edits <code>List&lt;Command&gt;</code> and its metadata. This <code>Image</code> object is saved under the variable name <code>tempImage</code> in <code>currentEdit</code> for editing.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. When the user enters the command (e.g. <code>wm FomoFoto</code>), the entered command is parsed and the command will be executed.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If an invalid command is provided, a reminder of how to use the command will be given to the user and no command will be run.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Step 3. During execution, the <code>execute</code> method in the <code>WaterMarkCommand</code> class invokes <code>currentEdit#getTempIMage()</code> to get the <code>tempImage</code> from the <code>currentEdit</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. Upon retrieving the <code>tempImage</code>, the <code>execute</code> method in the <code>WaterMarkCommand</code> gets the  <code>BufferedImage</code> instance of the <code>tempImage</code> object and copies the <code>BufferedImage</code> object to a temporary <code>BufferedImage</code> object with the same width, height and image type. The <code>execute</code> method then initialises the necessary graphic properties using the <code>Graphics2D</code> Java class. The message is centralised and overlayed on the temporary <code>BufferedImage</code> object.</p>
+</div>
+<div class="paragraph">
+<p>Step 5. The <code>execute</code> method then checks for a few conditions listed below:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>isNewCommand</code>: Checks if the <code>WaterMark</code> command is from an input by the user, from an <code>Undo</code> or <code>Redo</code> command or from a <code>SetPreset</code> command.</p>
+</li>
+<li>
+<p><code>isPreset</code>: Checks if the <code>WaterMark</code> command is from a Preset.</p>
+</li>
+<li>
+<p><code>initialImage#hasWaterMark()</code>: Checks if the <code>tempImage</code> already has a watermark.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Step 6. According to the above 3 conditions, the following combinations will result in different actions:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>isNewCommand</code> = <code>True</code> and <code>initialImage#hasWaterMark()</code> = <code>False</code>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Invokes <code>initialImage#setWaterMark(True)</code> to indicate that the image has a watermark.<br></p>
+</li>
+<li>
+<p>Invokes <code>currentEdit#updateTempImage()</code> to overwrite the current image in filepath: "src/main/resources/temp/" + <code>tempImage#getUrl</code> with a new <code>BufferedImage</code> object.</p>
+</li>
+<li>
+<p>Sets <code>isNewCommand</code> to false to signal that this command is not a new rotate command if it is executed again through the <code>undo/redo</code> function.</p>
+</li>
+<li>
+<p>Invokes <code>currentEdit#addCommand(this)</code> to add this command to the <code>List&lt;Command&gt;</code> in <code>tempImage</code> for the <code>undo/redo</code> function and <code>currentEdit#displayTempImage()</code> is used to display the edited image on the graphical user interface.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>isNewCommand</code> = <code>True</code> and <code>initialImage#hasWaterMark()</code> = <code>True</code>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Throws an exception as there is already a watermark on <code>tempImage</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>isNewCommand</code> = <code>False</code> and <code>isPreset</code> = <code>False</code>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Indicates that it is an <code>undo/redo</code> function.</p>
+</li>
+<li>
+<p>Invokes <code>initialImage#setWaterMark(true)</code> to indicate that the image has a watermark.</p>
+</li>
+<li>
+<p>Invokes <code>currentEdit#updateTempImage()</code> to overwrite the current image in filepath: "src/main/resources/temp/" + <code>tempImage#getUrl</code> with a new <code>BufferedImage</code> object.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>isNewCommand</code> = <code>False</code> and <code>isPreset</code> = <code>True</code> and <code>initialImage#hasWaterMark()</code> = <code>False</code>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Indicates that a preset is added to a image with no watermark.</p>
+</li>
+<li>
+<p>Invokes <code>initialImage#setWaterMark(true)</code> to indicate that the image has a watermark.</p>
+</li>
+<li>
+<p>Invokes <code>currentEdit#updateTempImage()</code> to overwrite the current image in filepath: "src/main/resources/temp/" + <code>tempImage#getUrl</code> with a new <code>BufferedImage</code> object.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Anything else:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Throws an exception as there is already a watermark on <code>tempImage</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Intermediate images have to be stored and edited in a temp folder first due to our <code>undo/redo</code> implementation.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/RotateCommandSequenceDiagram.png" alt="RotateCommandSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 16. Sequence Diagram for Rotate Command</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -640,4 +837,4 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="sectionbody">
 <hr>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-12 12:38:11 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-12 15:31:11 UTC</div></div></div></body></html>
