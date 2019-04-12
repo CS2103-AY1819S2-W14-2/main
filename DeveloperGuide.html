@@ -36,7 +36,8 @@
 <li><a href="#image-manipulation">3.5. Image Manipulation</a></li>
 <li><a href="#undo-redo-feature">3.6. Undo/Redo feature</a></li>
 <li><a href="#save-feature">3.7. Save Feature</a></li>
-<li><a href="#logging">3.8. Logging</a></li>
+<li><a href="#watermark-feature">3.8. WaterMark Feature</a></li>
+<li><a href="#logging">3.9. Logging</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -993,7 +994,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <p><code>CropCommand</code>: Allows user to crop images by specifying the coordinates of the top left corner, the width and the height of the desired cropped image.</p>
 </li>
 <li>
-<p><code>resizeCommand</code>: Allows user to resize images to the desired width and height.</p>
+<p><code>ResizeCommand</code>: Allows user to resize images to the desired width and height.</p>
 </li>
 </ul>
 </div>
@@ -1407,7 +1408,107 @@ If the <code>index</code> is at index <code>commandHistory.size()</code>, pointi
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.8. Logging</a></h3>
+<h3 id="watermark-feature"><a class="link" href="#watermark-feature">3.8. WaterMark Feature</a></h3>
+<div class="paragraph">
+<p>This command allows the user to add a watermark to their image. Upon receiving an input message by the user, the message will be checked for its validity and will throw an error if it is empty or contains only spaces. The message can contain spaces in between the words or numbers. The command will then be added to the <code>List&lt;Commands&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targetted image.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Each image can only have 1 watermark at a time.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the command should behave at each step:</p>
+</div>
+<div class="paragraph">
+<p>Step 1. When the user runs an open command to edit an image, it invokes a method which creates an instance of an <code>Image</code> that stores the filepath of the image, its history of edits <code>List&lt;Command&gt;</code> and its metadata. This <code>Image</code> object is saved under the variable name <code>tempImage</code> in <code>currentEdit</code> for editing.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. When the user enters the command (e.g. <code>wm FomoFoto</code>), the entered command is parsed and the command will be executed.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If an invalid command is provided, a reminder of how to use the command will be given to the user and no command will be run.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Step 3. During execution, the <code>execute</code> method in the <code>WaterMarkCommand</code> class invokes <code>currentEdit#getTempIMage()</code> to get the <code>tempImage</code> from the <code>currentEdit</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. Upon retrieving the <code>tempImage</code>, the <code>execute</code> method in the <code>WaterMarkCommand</code> gets the  <code>BufferedImage</code> instance of the <code>tempImage</code> object and copies the <code>BufferedImage</code> object to a temporary <code>BufferedImage</code> object with the same width, height and image type. The <code>execute</code> method then initialises the necessary graphic properties using the <code>Graphics2D</code> Java class. The message is centralised and overlayed on the temporary <code>BufferedImage</code> object.</p>
+</div>
+<div class="paragraph">
+<p>Step 5. The <code>execute</code> method then checks for a few conditions listed below:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>isNewCommand</code>: Checks if the <code>WaterMark</code> command is from an input by the user, from an <code>Undo</code> or <code>Redo</code> command or from a <code>SetPreset</code> command.</p>
+</li>
+<li>
+<p><code>isPreset</code>: Checks if the <code>WaterMark</code> command is from a Preset.</p>
+</li>
+<li>
+<p><code>initialImage#hasWaterMark()</code>: Checks if the <code>tempImage</code> already has a watermark.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Step 6. According to the above 3 conditions, the following combinations will result in different actions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>isNewCommand</code> = <code>True</code> and <code>initialImage#hasWaterMark()</code> = <code>False</code>: invokes <code>initialImage#setWaterMark(True)</code> to indicate that the image has a watermark and invokes <code>currentEdit#updateTempImage()</code> to overwrite the current image in filepath: "src/main/resources/temp/" + <code>tempImage#getUrl</code> with a new <code>BufferedImage</code> object. <code>isNewCommand</code> is set to false to signal that this command is not a new rotate command if it is executed again through the <code>undo/redo</code> function. <code>currentEdit#addCommand(this)</code> is invoked to add this command to the <code>List&lt;Command&gt;</code> in <code>tempImage</code> for the <code>undo/redo</code> function and <code>currentEdit#displayTempImage()</code> is used to display the edited image on the graphical user interface.</p>
+</li>
+<li>
+<p><code>isNewCommand</code> = <code>True</code> and <code>initialImage#hasWaterMark()</code> = <code>True</code>:
+throws an exception as there is already a watermark on <code>tempImage</code>.</p>
+</li>
+<li>
+<p><code>isNewCommand</code> = <code>False</code> and <code>isPreset</code> = <code>False</code>: indicates that it is an <code>undo/redo</code> function and invokes <code>initialImage#setWaterMark(True)</code> to indicate that the image has a watermark and invokes <code>currentEdit#updateTempImage()</code> to overwrite the current image in filepath: "src/main/resources/temp/" + <code>tempImage#getUrl</code> with a new <code>BufferedImage</code> object.</p>
+</li>
+<li>
+<p><code>isNewCommand</code> = <code>False</code> and <code>isPreset</code> = <code>True</code> and <code>initialImage#hasWaterMark()</code> = <code>False</code>: indicates that a preset is added to a image with no watermark and invokes <code>initialImage#setWaterMark(True)</code> to indicate that the image has a watermark and invokes <code>currentEdit#updateTempImage()</code> to overwrite the current image in filepath: "src/main/resources/temp/" + <code>tempImage#getUrl</code> with a new <code>BufferedImage</code> object.</p>
+</li>
+<li>
+<p>Anything else: throws an exception as there is already a watermark on <code>tempImage</code>.</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-8"><a class="link" href="#design-considerations-8">3.8.1. Design Considerations</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Intermediate images have to be stored and edited in a temp folder first due to our <code>undo/redo</code> implementation.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/RotateCommandSequenceDiagram.png" alt="RotateCommandSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 20. Sequence Diagram for Rotate Command</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">3.9. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
@@ -1505,7 +1606,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 20. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 21. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 <div class="sect2">
@@ -2988,4 +3089,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-12 05:02:09 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-12 06:49:25 UTC</div></div></div></body></html>
