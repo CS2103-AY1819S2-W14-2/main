@@ -1041,7 +1041,16 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <p>Step 6. The <code>execute</code> method then checks if the boolean <code>isNewCommand</code> is true. If it is true, it indicates that the command is a new rotate command called directly from the user and not through an undo/redo command which triggers Step 7 in the line below. Otherwise, the command’s execution ends in this step.</p>
 </div>
 <div class="paragraph">
-<p>Step 7. <code>isNewCommand</code> is set to false to signal that this command is not a new rotate command if it is executed again through the <code>undo/redo</code> function. <code>currentEdit#addCommand(this)</code> is invoked to add this command to the <code>List&lt;Command&gt;</code> in <code>tempImage</code> for the <code>undo/redo</code> function and <code>currentEdit#displayTempImage()</code> is used to display the edited image on the graphical user interface.</p>
+<p>Step 7. <code>isNewCommand</code> is set to false to signal that this command is not a new rotate command if it is executed again through the <code>undo/redo</code> function. <code>currentEdit#addCommand(this)</code> is invoked to add this command to the <code>List&lt;Command&gt;</code> in <code>tempImage</code> for the <code>undo/redo</code> function and <code>currentEdit#displayTempImage()</code> is used to display the edited image on the graphical user interface.<br></p>
+</div>
+<div class="paragraph">
+<p>The diagram below illustrates how the Rotate Command works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/RotateCommandSequenceDiagram.png" alt="RotateCommandSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 16. Sequence Diagram for Rotate Command</div>
 </div>
 </div>
 <div class="sect3">
@@ -1053,12 +1062,6 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </li>
 </ul>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="images/RotateCommandSequenceDiagram.png" alt="RotateCommandSequenceDiagram" width="800">
-</div>
-<div class="title">Figure 16. Sequence Diagram for Rotate Command</div>
-</div>
 </div>
 <div class="sect3">
 <h4 id="crop-command"><a class="link" href="#crop-command">3.5.4. Crop Command</a></h4>
@@ -1066,7 +1069,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <p>This command allows the user to crop the targetted image by specifying the coordinates of the top left hand corner of the desired image, the width of the desired image and the height of the desired image. Upon receiving the inputs, the values will be checked for their validity and will throw an error if any value is not within the specified range. The command will then be added to the <code>List&lt;Commands&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targetted image.</p>
 </div>
 <div class="paragraph">
-<p>Refer to the example usage scenario and design considerations in <a href="#rotate-command">Section 3.5.2, &#8220;Rotate Command&#8221;</a></p>
+<p>Refer to the example usage scenario and design considerations in <a href="#rotate-command">Section 3.5.2, &#8220;Rotate Command&#8221;</a>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1081,7 +1084,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <p>This command allows the user to resize the targetted image by specifying the width and height of the desired image. Upon receiving the inputs, the values will be checked for their validity and will throw an error if any value is not within the specified range. The command will then be added to the <code>List&lt;Commands&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targetted image.</p>
 </div>
 <div class="paragraph">
-<p>Refer to the example usage scenario and design considerations in <a href="#rotate-command">Section 3.5.2, &#8220;Rotate Command&#8221;</a></p>
+<p>Refer to the example usage scenario and design considerations in <a href="#rotate-command">Section 3.5.2, &#8220;Rotate Command&#8221;</a>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1572,6 +1575,15 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </li>
 </ol>
 </div>
+<div class="paragraph">
+<p>The diagram below illustrates how the WaterMark Command works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/WaterMarkCommandSequenceDiagram.png" alt="WaterMarkCommandSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 20. Sequence Diagram for WaterMark Command (Note: Some classes have been omitted for clarity of the diagram)</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations-8"><a class="link" href="#design-considerations-8">3.8.2. Design Considerations</a></h4>
@@ -1581,12 +1593,6 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <p>Intermediate images have to be stored and edited in a temp folder first due to our <code>undo/redo</code> implementation.</p>
 </li>
 </ul>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/RotateCommandSequenceDiagram.png" alt="RotateCommandSequenceDiagram" width="800">
-</div>
-<div class="title">Figure 20. Sequence Diagram for Rotate Command</div>
 </div>
 </div>
 </div>
@@ -3172,4 +3178,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 02:16:17 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 10:41:25 UTC</div></div></div></body></html>
