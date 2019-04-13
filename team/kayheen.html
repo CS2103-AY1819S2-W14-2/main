@@ -10,7 +10,7 @@
 <h2 id="1-overview-of-the-project"><a class="link" href="#1-overview-of-the-project">1. Overview of the Project</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>My team and I were tasked with enhancing a basic command line addressbook for our Software Engineering project. We decided to morph the project into a image editor.<br></p>
+<p>My team and I were tasked with enhancing a basic command line AddressBook for our Software Engineering project. We decided to morph the project into an image editor.<br></p>
 </div>
 <div class="paragraph">
 <p>FomoFoto is a robust yet simple image-editing tool. Users interact with the application through worded commands from their keyboard, and receive visual feedback from it through the displayed image on the application. Unlike other heavy image editors, FomoFoto has a very gentle learning curve as it abstracts out clutter by providing the more essential features (complex editing can still be done with special commands). The features and implementations are well documented in guides for users and developers respectively.<br></p>
@@ -78,7 +78,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Ensured that we are on task with our project documentation by allocating roles and ensuring consistency with our words and diagrams. (User Guide and Developer Guide)</p>
+<p>Ensured that we were on task with our project documentation by allocating roles and ensuring consistency with our words and diagrams. (User Guide and Developer Guide)</p>
 </li>
 </ul>
 </div>
@@ -87,9 +87,6 @@
 <p>Enhancements to Existing Features:</p>
 <div class="ulist">
 <ul>
-<li>
-<p>EXAMPLE: Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
-</li>
 <li>
 <p>Wrote tests for image manipulation and watermark commands to increase coverage. (Pull requests <a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/188">#188</a>, <a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/208">#208</a>, <a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/222">#222</a>)</p>
 </li>
@@ -101,13 +98,16 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Did architecture and sequence diagram for the overall App: <a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/118">#118</a></p>
+<p>Did Developer Guide architecture and sequence diagram for the overall application: <a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/118">#118</a></p>
 </li>
 <li>
-<p>Did the documentation for image manipulation: <a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/123/files">#123</a></p>
+<p>Did the Developer Guide documentation for image manipulation: <a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/123/files">#123</a></p>
 </li>
 <li>
-<p>Did the documentation for the watermark command: <a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/229">#229</a></p>
+<p>Did the Devloper Guide documentation for the watermark command: <a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/229">#229</a></p>
+</li>
+<li>
+<p>Did the overall walkthrough for the User Guide: <a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/65">#65</a></p>
 </li>
 </ul>
 </div>
@@ -119,10 +119,10 @@
 <li>
 <p>PRs reviewed (with non-trivial review comments):
 <a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/220">#220</a>,
-<a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/225">#225</a>, <a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/235">#235</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
+<a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/225">#225</a>, <a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/235">#235</a>,</p>
 </li>
 <li>
-<p>Reported bugs and suggestions for other teams in the class:  <a href="https://github.com/CS2103-AY1819S2-W16-2/main/issues/102">#102</a>, <a href="https://github.com/CS2103-AY1819S2-W16-2/main/issues/108">#108</a>, <a href="https://github.com/CS2103-AY1819S2-W16-2/main/issues/112">#112</a>,
+<p>Reported bugs and suggestions for other teams in the class:  <a href="https://github.com/CS2103-AY1819S2-W16-2/main/issues/102">#102</a>, <a href="https://github.com/CS2103-AY1819S2-W16-2/main/issues/112">#112</a>,
 <a href="https://github.com/CS2103-AY1819S2-W16-2/main/issues/115">#115</a>,
 <a href="https://github.com/CS2103-AY1819S2-W16-2/main/issues/117">#117</a>,</p>
 </li>
@@ -531,7 +531,7 @@ The following class plays an important role at the architecture level:</p>
 <p><code>CurrenEdit#updateTempImage</code> - Replaces the temporary image in <code>temp</code> folder with the newly edited image and update the <code>tempImage</code> instance in the class.</p>
 </li>
 <li>
-<p><code>CurrentEdit#addCommand</code> - add this command to the edit history [<code>List&lt;Command&gt;</code>] in <code>tempImage</code> for the undo/redo function</p>
+<p><code>CurrentEdit#addCommand</code> - Adds this command to the edit history [<code>List&lt;Command&gt;</code>] in <code>tempImage</code> for the undo/redo function.</p>
 </li>
 <li>
 <p><code>CurrenEdit#displayTempImage()</code> - Displays the temporary image stored in directory: "src/main/resources/temp/".</p>
@@ -555,13 +555,13 @@ The following class plays an important role at the architecture level:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>The follwing describes main operations and processes for each command stated above.</p>
+<p>The following describes main operations and processes for each command stated above.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="rotate-command"><a class="link" href="#rotate-command">Rotate Command</a></h4>
 <div class="paragraph">
-<p>This command allows the user to rotate the targetted image by specifying a degree (90, 180 or 270 only). Upon receiving an input degree by the user, the degree will be checked for its validity and will throw an error if the degree is not within the specified range. The command will then be added to the <code>List&lt;Commands&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targetted image.</p>
+<p>This command allows the user to rotate the targetted image by specifying a degree (90, 180 or 270 only). Upon receiving an input degree from the user, the degree will be checked for its validity and will throw an error if the degree is not within the specified range. The command will then be added to the <code>List&lt;Commands&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targetted image.</p>
 </div>
 <div class="paragraph">
 <p>Given below is an example usage scenario and how the command should behave at each step [This applies to the other image manipulation commands as well.]:</p>
@@ -579,13 +579,13 @@ The following class plays an important role at the architecture level:</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If an invalid command is provided, a reminder of how to use the command will be given to the user and no command will be run.
+If an invalid command is provided, a reminder of how to use the command will be given to the user and no command will be executed.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Step 3. During execution, the <code>execute</code> method in the <code>RotateCommand</code> class invokes <code>currentEdit#getTempIMage()</code> to get the <code>tempImage</code> from the <code>currentEdit</code>.</p>
+<p>Step 3. During execution, the <code>execute</code> method in the <code>RotateCommand</code> class invokes <code>currentEdit#getTempImage()</code> to get the <code>tempImage</code> from the <code>currentEdit</code>.</p>
 </div>
 <div class="paragraph">
 <p>Step 4. Upon retrieving the <code>tempImage</code>, the <code>execute</code> method in <code>RotateCommand</code> gets a <code>BufferedImage</code> instance from <code>tempImage</code>.The method then calls the external library <a href="https://github.com/rkalla/imgscalr"><code>ImgScalr</code></a>'s class <code>rotate</code> and passes the <code>BufferedImage</code> object in.</p>
@@ -594,13 +594,13 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <p>Step 5. A <code>BufferedImage</code> object is returned from the external library and <code>currentEdit#updateTempImage()</code> is invoked to overwrite the current image in the filepath: "src/main/resources/temp/" + <code>tempImage#getUrl</code> with a new <code>BufferedImage</code> object.</p>
 </div>
 <div class="paragraph">
-<p>Step 6. The <code>execute</code> method then checks if the boolean <code>isNewCommand</code> is true. If it is true, it indicates that the command is a new rotate command called directly from the user and not through an undo/redo command which triggers Step 7 in the line below. Otherwise, the command’s execution ends in this step.</p>
+<p>Step 6. The <code>execute</code> method then checks if the boolean <code>isNewCommand</code> is true. If it is true, it indicates that the command is a new <code>Rotate</code> command called directly from the user and not through an <code>Undo/Redo</code> command which triggers Step 7 in the line below. Otherwise, the command’s execution ends in this step.</p>
 </div>
 <div class="paragraph">
-<p>Step 7. <code>isNewCommand</code> is set to false to signal that this command is not a new rotate command if it is executed again through the <code>undo/redo</code> function. <code>currentEdit#addCommand(this)</code> is invoked to add this command to the <code>List&lt;Command&gt;</code> in <code>tempImage</code> for the <code>undo/redo</code> function and <code>currentEdit#displayTempImage()</code> is used to display the edited image on the graphical user interface.<br></p>
+<p>Step 7. <code>isNewCommand</code> is set to false to signal that this command is not a new rotate command if it is executed again through the <code>Undo/Redo</code> function. <code>currentEdit#addCommand(this)</code> is invoked to add this command to the <code>List&lt;Command&gt;</code> in <code>tempImage</code> for the <code>Undo/Redo</code> function and <code>currentEdit#displayTempImage()</code> is used to display the edited image on the graphical user interface.<br></p>
 </div>
 <div class="paragraph">
-<p>The diagram below illustrates how the Rotate Command works:</p>
+<p>The diagram below illustrates how the <code>Rotate</code> Command works:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -614,7 +614,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="ulist">
 <ul>
 <li>
-<p>Intermediate images have to be stored and edited in a temp folder first due to our <code>undo/redo</code> implementation.</p>
+<p>Intermediate images have to be stored and edited in a temp folder first due to our <code>Undo/Redo</code> implementation.</p>
 </li>
 </ul>
 </div>
@@ -653,7 +653,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="sect2">
 <h3 id="watermark-feature"><a class="link" href="#watermark-feature">WaterMark Feature</a></h3>
 <div class="paragraph">
-<p>This command allows the user to add a watermark to their image. Upon receiving an input message by the user, the message will be checked for its validity and will throw an error if it is empty or contains only spaces. Messages can contain spaces in between the words or numbers. The command will then be added to the <code>List&lt;Commands&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targetted image.</p>
+<p>This command allows the user to add a watermark to their image. Upon receiving an input message from the user, the message will be checked for its validity and will throw an error if the message is empty or contains only spaces. Messages can contain words and numbers separated by spaces. The command will then be added to the <code>List&lt;Commands&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targetted image.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -662,7 +662,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Each image can only have 1 watermark at a time.
+Each image can only have 1 watermark. If the user would like to edit the watermark, the user can remove the watermark by using the <code>Undo</code> function and then add a new watermark.
 </td>
 </tr>
 </table>
@@ -681,7 +681,7 @@ Each image can only have 1 watermark at a time.
 <p><code>CurrenEdit#updateTempImage(BufferedImage)</code> - Replaces the temporary image in <code>temp</code> folder with the newly edited image and update the <code>tempImage</code> instance in the class.</p>
 </li>
 <li>
-<p><code>CurrentEdit#addCommand(Command)</code> - add this command to the edit history [<code>List&lt;Command&gt;</code>] in <code>tempImage</code> for the undo/redo function</p>
+<p><code>CurrentEdit#addCommand(Command)</code> - Adds this command to the edit history [<code>List&lt;Command&gt;</code>] in <code>tempImage</code> for the undo/redo function.</p>
 </li>
 <li>
 <p><code>CurrenEdit#displayTempImage()</code> - Displays the temporary image stored in directory: "src/main/resources/temp/".</p>
@@ -690,7 +690,7 @@ Each image can only have 1 watermark at a time.
 <p><code>Image#hasWaterMark()</code> - Checks if the <code>Image</code> already has a watermark.</p>
 </li>
 <li>
-<p><code>Image#setWaterMark(boolean)</code> - Sets the <code>Image</code> object&#8217;s <code>hasWaterMark</code> field accordingly, if the <code>Image</code> has or does not have a watermark.</p>
+<p><code>Image#setWaterMark(boolean)</code> - Sets the <code>Image</code> object&#8217;s <code>hasWaterMark</code> field accordingly, if the <code>Image</code> object has or does not have a watermark.</p>
 </li>
 </ul>
 </div>
@@ -716,7 +716,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </table>
 </div>
 <div class="paragraph">
-<p>Step 3. During execution, the <code>execute</code> method in the <code>WaterMarkCommand</code> class invokes <code>currentEdit#getTempIMage()</code> to get the <code>tempImage</code> from the <code>currentEdit</code>.</p>
+<p>Step 3. During execution, the <code>execute</code> method in the <code>WaterMarkCommand</code> class invokes <code>currentEdit#getTempImage()</code> to get the <code>tempImage</code> from the <code>currentEdit</code>.</p>
 </div>
 <div class="paragraph">
 <p>Step 4. Upon retrieving the <code>tempImage</code>, the <code>execute</code> method in the <code>WaterMarkCommand</code> gets the  <code>BufferedImage</code> instance of the <code>tempImage</code> object and copies the <code>BufferedImage</code> object to a temporary <code>BufferedImage</code> object with the same width, height and image type. The <code>execute</code> method then initialises the necessary graphic properties using the <code>Graphics2D</code> Java class. The message is centralised and overlayed on the temporary <code>BufferedImage</code> object.</p>
@@ -837,10 +837,4 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
-<div class="sectionbody">
-<hr>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 10:41:25 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 14:14:47 UTC</div></div></div></body></html>
