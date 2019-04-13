@@ -1,141 +1,206 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Addison Ho&#8217;s Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="../images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level3">AB-3</a></li><li class="nav-item"><a class="nav-link active" href="../index.html">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">AddressBook-Level4</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="../LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level4"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Addison Ho&#8217;s Project Portfolio</h1></div><div id="content"><div class="sect1">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">FomoFoto</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://cs2103-ay1819s2-w14-2.github.io/main/"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Addison Ho&#8217;s Project Portfolio</h1></div><div id="content"><div class="sect1">
 <h2 id="project-title-fomofoto"><a class="link" href="#project-title-fomofoto">Project Title: FomoFoto</a></h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="overview"><a class="link" href="#overview">Overview</a></h3>
 <div class="paragraph">
-<p>My team and I were tasked with enhancing a basic command line addressbook for our Software Engineering project. We decided to morph the project into a image editor.<br></p>
+<p>My team and I were tasked with enhancing a basic command line Address Book for our Software Engineering project. We decided to morph the project into a image editor.<br></p>
 </div>
 <div class="paragraph">
 <p>FomoFoto is a robust yet simple image-editing tool. Users interact with the application through worded commands from their keyboard, and receive visual feedback from it through the displayed image on the application.<br></p>
 </div>
 <div class="paragraph">
-<p>Unlike other heavy image editors, FomoFoto has a very gentle learning curve as it abstracts out clutter by providing the more essential features (complex editing can still be done with special commands). The features and implementations are well documented in guides for users and developers respectively.</p>
+<p>Unlike other heavy image editors, FomoFoto has a gentle learning curve, removing clutter while still retaining essential features. All features and their implementations are well documented in guides for both users and developers respectively.</p>
 </div>
+<hr>
 </div>
 <div class="sect2">
 <h3 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h3>
+<div class="sect3">
+<h4 id="major-enhancements"><a class="link" href="#major-enhancements">Major Enhancements:</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Importing of Images.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>overall UI/UX design and interaction</strong>.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>What it does: As a photo editor, it is pivotal for end-users to be able to see the images they are editing. Updates to the UI/UX allows for end-users to see their updates and image data in realtime. Adds an interface in the form of <code>Notifier</code> for components to interact with each other and draw updates to the UI.</p>
+<p><strong>What it does:</strong>
+Allow users to import images into FomoFoto for editing. Imported images are added to an Album in FomoFoto that can be opened for edits such as Image Transformation and Filters.</p>
 </li>
 <li>
-<p>Justification: This feature comprise of five components, the init panel the image view, imported images panel, exif panel, and command history panel. The initpanel gives a detailed help message on application start. The image view is core to a photo editor for end-users to see the changes they making to their image. The three panels enhances to product significantly, by allowing users an intutive way to see all a) the images they have one in one look b) the exif data attached to that image and c) any command they have previously commited to the image.</p>
+<p><strong>Justification:</strong>
+This feature is core to the operation of FomoFoto. Without the ability to import images, an image editor cannot function properly since there is no image to modify.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects all exisiting commands that redraws the UI. This is in part due to the redesign of the overall UI and interface for components attached to it. The implementation is incredibly complex due the sheer number of UI elements working in tandem. Extensive research has been placed to ensure the UI remains as intuitive as possible i.e. hidding elements/image padding and color scheme to ensure end-users have the best user experience.</p>
+<p><strong>Highlights:</strong>
+This enhancement is tough to implement as it requires many checks to ensure the image is valid. Files that are not of an image format are not allowed to be imported. Images that are extremely big are not allowed to be imported as the limitation of the JavaFX library means the program might run out of space. Users are also given the flexibility to import a single image or an entire directory.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>importing of images</strong>.</p>
+<p>Overall user interaction and interface/experience design.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: Allows for end-users to import any image into FomoFoto that they wish to edit. This can be done by means of a single file or an entire directory (non-recursive).</p>
+<p><strong>What it does:</strong>
+FomoFoto has an intuitive, human-centric design. Users are able to see the images they are editing, the information of images in the Album, their details and all edits applied. All Graphical User Interface elements are updated in real-time using a Notifier which allows commands to interact easily and draw updates on the interface.</p>
 </li>
 <li>
-<p>Justification: This feature is core to the operation of FomoFoto. Without importing images, FomoFoto cannot run i.e. edit images sine there are no images in the system to modify.</p>
+<p><strong>Justification:</strong> A good user interface facilitates easy usage of the editor. Users are able to get a good overview on the edits they are doing simply by observing the image and information available on screen. This feature comprises of five components:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Initial Panel</code> - Contains a quick start message on FomoFoto&#8217;s first start, giving users a high level overview on the commands available.</p>
 </li>
 <li>
-<p>Highlights: This enhancement requires many checks to ensure the image is valid and the system can handle. For example, images that are two big will be reject by JavaFX. Images that are too large in size will also trigger a out-of-memory error. Images that do not fit the MIME image format are rejected since they cannot be edited not opened by the image panel.</p>
+<p><code>Image Panel</code> - Displays the image currently opened for editing.</p>
+</li>
+<li>
+<p><code>Album Images Panel</code> - Displays all images imported to FomoFoto&#8217;s Album.</p>
+</li>
+<li>
+<p><code>EXIF Profile Panel</code> - Displays core details such as Time and Location Taken about the opened image shown on the Image Panel.</p>
+</li>
+<li>
+<p><code>Command History Panel</code> - Displays all previously applied edits on the opened image shown on the Image Panel.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>Image Class</strong>.</p>
+<p><strong>Highlights:</strong> This enhancement is core to the operation of FomoFoto. Since we are dealing with images, it is paramount to show the item that is being worked on. Without it, there is no visual cue on if the edits being carried out is accurate. The implementation is complex as all edit commands needs to update graphical user interface instantly. Careful attention has been paid to ensure images are aligned accurately with a clean colour scheme.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="minor-enhancements"><a class="link" href="#minor-enhancements">Minor Enhancements:</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Tab Command.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: Breaksdown any opened image into a reusable, extensible Image object with helper fields and methods.</p>
-</li>
-<li>
-<p>Justification: This feature allows for other operations to utilize any imported image more efficiently since it is hard to parse the raw image format. The creation of this feature also allows for each image to manage its own edit history therby allowing the functionality of redo and undo.</p>
-</li>
-<li>
-<p>Highlights: This enhancement affects all files being imported into FomoFoto. This means any command interacting with images in the system should conform to the Image class and its fields. The fields include validation checks to ensure the fields being created are valid for an image object.</p>
+<p>Added a Tab Command that allows user to interact with the Information Panel without using a mouse.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enchancement</strong>: Added a Tab Command. The inclusion of the Tab Command allows GUI-less interaction of the information panel.</p>
-</li>
-<li>
-<p><strong>Minor enchancement</strong>: Added Album Class. The inclusion of the singleton Album Class allows for components to interact with <code>assets</code> folder with a single method call.</p>
-</li>
-<li>
-<p><strong>Minor enchancement</strong>: Added a sample image folder. The folder comprises of a large list of <code>valid</code> and <code>invalid</code> images that can be further used for code testing and feature testing.</p>
-</li>
-<li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103-AY1819S2-W14-2/main/commits?author=carrein">List of commits</a>].</p>
-</li>
-<li>
-<p><strong>Other contributions</strong>:</p>
+<p>Inclusion of <code>sample</code> image folder.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Project management:</p>
+<p>Added a folder containing a list of valid and invalid images. These images can be used for command and feature testing.</p>
+</li>
+<li>
+<p>Examples:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.0, v1.1, v1.2</code> (3 releases) on GitHub.</p>
+<p><code>validJPGTest.jpg</code></p>
+</li>
+<li>
+<p><code>validPNGTest.png</code></p>
+</li>
+<li>
+<p><code>invalidPDFTest.pdf</code></p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Enhancements to existing features:</p>
+<p>Image and Album classes.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>).</p>
-</li>
-<li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com"><mark>--</a>, <a href="https://github.com"></mark>--</a>).</p>
+<p>Breaks down imported images in FomoFoto to an extensible Image class which is added to an Album. This ensures all images are valid and allows the creation of other commands by tapping on Album&#8217;s methods.</p>
 </li>
 </ul>
 </div>
 </li>
-<li>
-<p>Documentation:</p>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="code-contributed-a-href-https-github-com-cs2103-ay1819s2-w14-2-main-commits-author-carrein-list-of-commits-a"><a class="link" href="#code-contributed-a-href-https-github-com-cs2103-ay1819s2-w14-2-main-commits-author-carrein-list-of-commits-a">Code Contributed: <a href="https://github.com/CS2103-AY1819S2-W14-2/main/commits?author=carrein">List of commits</a>.</a></h4>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="other-contributions"><a class="link" href="#other-contributions">Other Contributions</a></h3>
+<div class="sect3">
+<h4 id="project-management"><a class="link" href="#project-management">Project Management:</a></h4>
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#--</a>.</p>
+<p>Managed 2 version releases on GitHub:<br>
+<a href="https://github.com/CS2103-AY1819S2-W14-2/main/releases/tag/v1.1">v1.1</a>,
+<a href="https://github.com/CS2103-AY1819S2-W14-2/main/releases/tag/v1.3">v1.3</a></p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p>Community:</p>
+</div>
+<div class="sect3">
+<h4 id="enhancements-to-existing-features"><a class="link" href="#enhancements-to-existing-features">Enhancements to Existing Features:</a></h4>
 <div class="ulist">
 <ul>
 <li>
-<p>Core PRs reviewed: <a href="https://github.com">#75</a>, <a href="https://github.com">#45</a>.</p>
-</li>
-<li>
-<p>Core Issues raised: <a href="https://github.com">#109</a>, <a href="https://github.com">#149</a>, <a href="https://github.com">#78</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#77</a>, <a href="https://github.com">#76</a>, <a href="https://github.com">#43</a>.</p>
+<p>Additional unit tests for existing features to increase overall coverage:<br>
+<a href="https://github.com">#187</a>, <a href="https://github.com">#193</a>, <a href="https://github.com">#230</a>, <a href="https://github.com">#236</a></p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p>Tools:</p>
+</div>
+<div class="sect3">
+<h4 id="documentation"><a class="link" href="#documentation">Documentation:</a></h4>
 <div class="ulist">
 <ul>
 <li>
-<p>Integrated a third party library (Google&#8217;s Guava) to the project (<a href="https://github.com">#--</a>).</p>
+<p>Addendum tweaks to existing contents of the User Guide: <a href="https://github.com">#236</a>.</p>
 </li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="community"><a class="link" href="#community">Community:</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Core PRs Contributed:<br>
+   <a href="https://github.com">#10</a>, <a href="https://github.com">#56</a>, <a href="https://github.com">#75</a>, <a href="https://github.com">#87</a>, <a href="https://github.com">#105</a>, <a href="https://github.com">#111</a>, <a href="https://github.com">#119</a>, <a href="https://github.com">#125</a>, <a href="https://github.com">#156</a>, <a href="https://github.com">#163</a>, <a href="https://github.com">#193</a>, <a href="https://github.com">#195</a>, <a href="https://github.com">#202</a>, <a href="https://github.com">#203</a>,
+<a href="https://github.com">#215</a>, <a href="https://github.com">#239</a></p>
+</li>
+<li>
+<p>Core PRs Reviewed:<br>
+<a href="https://github.com">#45</a>, <a href="https://github.com">#56</a>, <a href="https://github.com">#72</a>, <a href="https://github.com">#75</a>, <a href="https://github.com">#84</a>, <a href="https://github.com">#87</a>, <a href="https://github.com">#157</a>, <a href="https://github.com">#194</a></p>
+</li>
+<li>
+<p>Core Issues Opened:<br>
+<a href="https://github.com">#11</a>, <a href="https://github.com">#13</a>, <a href="https://github.com">#30</a>, <a href="https://github.com">#31</a>, <a href="https://github.com">#41</a>, <a href="https://github.com">#42</a>, <a href="https://github.com">#43</a>, <a href="https://github.com">#44</a>, <a href="https://github.com">#73</a>, <a href="https://github.com">#76</a>, <a href="https://github.com">#77</a>, <a href="https://github.com">#78</a>, <a href="https://github.com">#79</a>, <a href="https://github.com">#81</a>, <a href="https://github.com">#82</a>, <a href="https://github.com">#83</a>, <a href="https://github.com">#85</a>, <a href="https://github.com">#95</a>, <a href="https://github.com">#109</a>, <a href="https://github.com">#149</a></p>
+</li>
+<li>
+<p>Core Issues Reviewed:<br>
+<a href="https://github.com">#64</a>, <a href="https://github.com">#108</a>, <a href="https://github.com">#148</a> <a href="https://github.com">#165</a>, <a href="https://github.com">#166</a>, <a href="https://github.com">#169</a>, <a href="https://github.com">#170</a>, <a href="https://github.com">#175</a>, <a href="https://github.com">#176</a>, <a href="https://github.com">#177</a>, <a href="https://github.com">#178</a>, <a href="https://github.com">#181</a>, <a href="https://github.com">#183</a>, <a href="https://github.com">#185</a>, <a href="https://github.com">#186</a>, <a href="https://github.com">#236</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="tools"><a class="link" href="#tools">Tools:</a></h4>
+<div class="ulist">
+<ul>
 <li>
 <p>Integrated TravisCI to the team repo.</p>
 </li>
@@ -143,15 +208,10 @@
 <p>Integrated Coveralls to the team repo.</p>
 </li>
 <li>
-<p>Added Issue temples to the team repo.</p>
+<p>Added Issue Templates to the team repo.</p>
 </li>
 </ul>
 </div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
 </div>
 </div>
 </div>
@@ -172,6 +232,201 @@
 </div>
 </div>
 <div class="sect1">
+<h2 id="quick-start"><a class="link" href="#quick-start">Quick Start</a></h2>
+<div class="sectionbody">
+<hr>
+<div class="paragraph">
+<p>System Requirements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Windows 10 or newer / OS X 10.8 or newer.</strong></p>
+</li>
+<li>
+<p><strong>Java 9 or newer.</strong></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Follow the steps below to set up your computer to run FomoFoto:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Ensure your system meets the system requirements.</p>
+</li>
+<li>
+<p>Download the latest FomoFoto.jar <a href="https://github.com/CS2103-AY1819S2-W14-2/main/releases">here</a>.</p>
+</li>
+<li>
+<p>Copy the JAR to the folder you want to use as the home folder for your FomoFoto application.</p>
+</li>
+<li>
+<p>Double-click the JAR to start the application. The Graphical User Interface should appear in a few seconds.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ui.png" alt="ui" width="800">
+</div>
+<div class="title">Figure 1. Home Page of FomoFoto</div>
+</div>
+</li>
+<li>
+<p>You have just successfully setup FomoFoto on your device. To see the command available in FomoFoto, refer to <a href="#Features">[Features]</a> for details of each command. A step-by-step walkthrough of FomoFoto is available at the next section: <a href="#A Walk Through">[A Walk Through]</a>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="import-command"><a class="link" href="#import-command">Import Command</a></h2>
+<div class="sectionbody">
+<hr>
+<div class="sect2">
+<h3 id="import-an-image-code-import-code"><a class="link" href="#import-an-image-code-import-code">Import an image : <code>import</code></a></h3>
+<div class="paragraph">
+<p>Imports images to FomoFoto&#8217;s Album from a specified filepath or a directory.<br>
+Format: <code>import FILEPATH</code></p>
+</div>
+<div class="paragraph">
+<p>Example of single filepath import:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>import C:\Users\Addison\Desktop\sample.jpg</code></p>
+</li>
+<li>
+<p><code>import C:\Home\sample.png</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example of directory import:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>import C:\Users\Addison\Desktop</code></p>
+</li>
+<li>
+<p><code>import C:\Home</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For directory import, invalid files are skipped and only valid images will be imported.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Images should be of the following formats: <code>bmp</code>, <code>jpg</code> , <code>jpeg</code>, <code>png</code>, <code>tif</code>, <code>tiff</code> or <code>gif</code>. Images with <code>tif</code> or <code>tiff</code> formats are not rendered on screen due to a bug with Java but edits made will still be applied.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Additionally, images must also adhere to the following additional requirements:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Not be hidden or prepended by a <code>.</code> dot identifier.</p>
+</li>
+<li>
+<p>Not be over 10MB in size.</p>
+</li>
+<li>
+<p>Not have the same name of an existing image in the Album.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="clear-command"><a class="link" href="#clear-command">Clear Command</a></h2>
+<div class="sectionbody">
+<hr>
+<div class="sect2">
+<h3 id="clear-album-code-clear-code"><a class="link" href="#clear-album-code-clear-code">Clear Album: <code>clear</code></a></h3>
+<div class="paragraph">
+<p>Clear all images imported in to the Album.<br>
+Format: <code>clear</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Clear does not remove the image currently being edited i.e. Images opened with the <code>open</code> command.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="tab-command"><a class="link" href="#tab-command">Tab Command</a></h2>
+<div class="sectionbody">
+<hr>
+<div class="sect2">
+<h3 id="tab-switching-code-tab-code"><a class="link" href="#tab-switching-code-tab-code">Tab Switching: <code>tab</code></a></h3>
+<div class="paragraph">
+<p>Cycle between available tabs in the side <strong>Information Panel</strong>.<br>
+Format: <code>tab</code></p>
+</div>
+<div class="paragraph">
+<p>The three available tabs are listed below:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Album Images</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Displays all images currently opened in the Album and available for editing.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>EXIF Profile</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Displays all ancillary tags attached to the currently opened
+image such as metadata information like <strong>Date and Time</strong> and <strong>Copyright information</strong>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Command History</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Display all <strong>Image Transformation</strong> and <strong>Image Filters</strong> applied to the currently opened image.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all spread">
@@ -184,56 +439,279 @@
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="album-and-image-class"><a class="link" href="#album-and-image-class">Album and Image Class</a></h2>
+<div class="sectionbody">
+<hr>
+<div class="paragraph">
+<p>The <code>Album</code> class is implemented using the Singleton pattern. This design choice was purposely made as only a single instance of <code>Album</code> should reside in FomoFoto any any one time. This design also reduces the need for passing instance variables across all logic and model components.</p>
+</div>
+<div class="paragraph">
+<p>The core functions of the <code>Album</code> class are listed below.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Stores a reference to all imported images as List.</p>
+</li>
+<li>
+<p>Contains various helper method to access <code>assets folder</code>, the storage for the raw image files.</p>
+</li>
+<li>
+<p>Fires property changes to listeners attached to the <code>Notifier</code> to redraw UI elements.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The Model also comprises of a smaller subclass, <code>Image</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>Image</code> class encapsulates the fields of a raw image file. This design choice allows for better abstraction between classes and easy reuse between commands.</p>
+</div>
+<div class="paragraph">
+<p>The core functions of the <code>Image</code> class are listed below.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Validation checks to see if raw image is a valid Image.</p>
+</li>
+<li>
+<p>Keeps a command history of edits executed on this Image.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="user-interface-overhaul"><a class="link" href="#user-interface-overhaul">User Interface Overhaul</a></h2>
+<div class="sectionbody">
+<hr>
 <div class="sect2">
 <h3 id="ui-component"><a class="link" href="#ui-component">UI component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="../images/UiClassDiagram.png" alt="UiClassDiagram" width="800">
 </div>
-<div class="title">Figure 1. Structure of the UI Component</div>
+<div class="title">Figure 2. Structure of the UI Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="{repoURL}/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
-<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code>, <code>BrowserPanel</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
-</div>
-<div class="paragraph">
-<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="{repoURL}/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="{repoURL}/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
-</div>
-<div class="paragraph">
-<p>The <code>UI</code> component,</p>
+<p>The UI consists of a <code>MainWindow</code> that is made up of the following
+components:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Executes user commands using the <code>Logic</code> component.</p>
+<p><code>CommandBox</code></p>
 </li>
 <li>
-<p>Listens for changes to <code>Model</code> data so that the UI can be updated with the modified data.</p>
+<p><code>ResultDisplay</code></p>
+</li>
+<li>
+<p><code>ImagePanel</code></p>
+</li>
+<li>
+<p><code>InitPanel</code></p>
+</li>
+<li>
+<p><code>InformationPanel</code></p>
+</li>
+<li>
+<p><code>StatusBarFooter</code></p>
+</li>
+<li>
+<p><code>HelpWindow</code></p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>All components, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
+<div class="paragraph">
+<p>The <code>InformationPanel</code> comprises of three tabs:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Album Images</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Displays all images currently opened in the <code>assets</code> folder and available for editing.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>EXIF Profile</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Displays all ancillary tags attached to the currently opened
+image such as metadata information like <strong>Date and Time</strong> and <strong>Copyright information</strong>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Command History</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Display all <strong>Image Transformation</strong> and <strong>Image Filters</strong> applied to the currently opened image.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The <code>UI</code> component is supported by a <code>Notifier</code> class. The class implements Java&#8217;s <code>propertyChangeListener</code> as means of drawing updates to the User Interface.</p>
+</div>
+<div class="paragraph">
+<p>For example, the <code>ImageView</code> component draws updates to an opened image in the following sequence:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Register the <code>ImageView</code> component with the <code>Notifier</code> class.</p>
+</li>
+<li>
+<p><code>Notifier</code> is called when <code>Open</code> command is executed with a given Property Name.</p>
+</li>
+<li>
+<p><code>Notifier</code> fires an alert with the Property Name to all registered listener.</p>
+</li>
+<li>
+<p><code>ImageView</code> checks if the Property Name is pertaining to it and redraws the image shown by accessing <code>Album</code>.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="{repoURL}/src/main/java/seedu/address/ui/MainWindow.java"><code>InitPanel</code></a> is specified in <a href="{repoURL}/src/main/resources/view/InitPanel.fxml"><code>InitPanel.fxml</code></a>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="import-and-importparser-class"><a class="link" href="#import-and-importparser-class">Import and ImportParser Class</a></h2>
+<div class="sectionbody">
+<hr>
 <div class="sect2">
 <h3 id="import-feature"><a class="link" href="#import-feature">Import feature</a></h3>
 <div class="paragraph">
-<p>The Import Command allow users to import a file of image format into FomoFoto for editing.</p>
+<p>The Import Command allow users to import a file of an image format into FomoFoto for editing.</p>
 </div>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">Current implementation</a></h4>
 <div class="paragraph">
-<p>The implementation of the import feature is largely similar to that of linux&#8217;s <code>cp</code> command, with the exception the output path is fixed. It is facilitated by he <code>ModelManager</code> and <code>ImportCommandParser</code> and contains the follow operation:</p>
+<p>The implementation of the import feature allows for users to either:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>Model#displayImage(Image)</code> - Retrives the image from <code>assets</code> folder by <code>Image</code> name field.</p>
+<p>Import a single image file.</p>
 </li>
 <li>
-<p><code>ImportCommandParser#parse(String)</code> - Takes in an absolute path and copies the image to <code>assets</code> directory.</p>
+<p>Import all image files in a directory.</p>
+</li>
+<li>
+<p>Import a sample list of image files.</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>Image file must adhere to a subset of the following formats as describe by its MIME type standardized in IETF&#8217;s RFC 6838:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>.bmp</code></p>
+</li>
+<li>
+<p><code>.jpeg</code> or <code>.jpg</code></p>
+</li>
+<li>
+<p><code>.png</code></p>
+</li>
+<li>
+<p><code>.tif</code> or <code>.tiff</code></p>
+</li>
+<li>
+<p><code>.gif</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Images with <code>.tif</code> or <code>.tiff</code> formats are not rendered on screen due to a limitation with JavaFX but edits made will still be applied.
+Support for additional formats will be available past V2.0.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Images must also adhere to the following additional requirements:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Not be hidden or prepended by a <code>.</code> dot identifier.</p>
+</li>
+<li>
+<p>Not be over 10MB in size.</p>
+</li>
+<li>
+<p>Not have the same name of an existing image in the Album.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Implementation of these checks can be found in <code>ImportCommandParser</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Images found in the given arguments will be copied to an <code>assets</code> folder created at runtime in FomoFoto&#8217;s home directory. Details of this folder can be found here. This is facilitated by the <code>Album</code> class and <code>ImportCommandParser</code> and contains the follow operation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Album#refreshAlbum()</code> - Fires a property change to all registered listeners. Listeners addressing this particular property will trigger and update accordingly.</p>
+</li>
+<li>
+<p><code>ImportCommandParser#parse(String)</code> - Takes in an absolute path, perform sanity checks on availability, size, format and copies the image to <code>assets</code> directory.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Additionally, the <code>import sample</code> command is supported by the <code>ResourceWalker</code> class. This class traverses through a sample folder of valid image files and populates FomoFoto.</p>
 </div>
 <div class="paragraph">
 <p>Example usage scenario:</p>
@@ -241,16 +719,16 @@
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User launches application and enters <code>import C:\Users\images\sample.png</code></p>
+<p>User launches application and enters <code>import C:\Users\Addison\Desktop\sample.png</code></p>
 </li>
 <li>
-<p><code>ImportCommandParser</code> takes in arguments and performs validation on given path. Image is copied to <code>assets</code> folder if the path is valid.</p>
+<p><code>ImportCommandParser</code> takes in arguments and performs validation on given path. Image is copied to <code>assets</code> folder and added to Album if it is valid.</p>
 </li>
 <li>
-<p><code>Model</code> display the imported image to UI by calling the <code>Notifier</code> class which calls on the display panel listening to the notifier.</p>
+<p><code>Album</code> display the imported image to UI by calling the <code>Notifier</code> class which calls on the display panel listening to the notifier.</p>
 </li>
 <li>
-<p><code>ImagePanel</code> updates to reflect the imported image.</p>
+<p><code>InformationPanel</code> updates to reflect the imported image in the Album.</p>
 </li>
 </ol>
 </div>
@@ -258,6 +736,7 @@
 <div class="content">
 <img src="../images/ImportSequenceDiagram.png" alt="ImportSequenceDiagram" width="800">
 </div>
+<div class="title">Figure 3. Sequence Diagram for Import Command</div>
 </div>
 </div>
 <div class="sect3">
@@ -265,27 +744,27 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice)</strong>: Import images with absolute path.</p>
+<p><strong>Alternative 1</strong>: Import single images only.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy and clement implementation.</p>
+<p>Pros: Easy to implement.</p>
 </li>
 <li>
-<p>Cons: Limited to single image import.</p>
+<p>Cons: Importing multiple images from same folder needs repeated commands.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2</strong> : Open images within a directory.</p>
+<p><strong>Alternative 2 (Current Choice)</strong>: Import images from directory as well.</p>
 <div class="ulist">
 <ul>
 <li>
 <p>Pros: Can import many images without repeating the command.</p>
 </li>
 <li>
-<p>Cons: Can result in errors in too mny images or images are of alternative formats.</p>
+<p>Cons: Can result in errors if too many images are imported or images are of alternative formats.</p>
 </li>
 </ul>
 </div>
@@ -295,4 +774,31 @@
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 14:14:47 UTC</div></div></div></body></html>
+</div>
+<div class="sect1">
+<h2 id="assets-and-temp-folder"><a class="link" href="#assets-and-temp-folder">Assets and Temp Folder</a></h2>
+<div class="sectionbody">
+<hr>
+<div class="paragraph">
+<p>The <code>assets</code> and <code>temp</code> folder from the storage component of FomoFoto. Both folder are created during runtime of the application.</p>
+</div>
+<div class="paragraph">
+<p>The <code>assets</code> folder is created in the same directory where FomoFoto is first launched and persist between sessions. The <code>assets</code> folder is marked as <code>FomoFoto.assets</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>temp</code> folder is created per FomoFoto session. The target folder for the <code>Temporary File</code> directory is in both Windows and OS X. The <code>temp</code> folder is removed on program exit.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If FomoFoto is not given the permissions to write <code>assets</code> and <code>temp</code> to their respective directories i.e. limited write permissions, the application might not function properly.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 18:13:07 UTC</div></div></div></body></html>

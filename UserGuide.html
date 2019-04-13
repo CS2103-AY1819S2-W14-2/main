@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>FomoFoto</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level3">AB-3</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">AddressBook-Level4</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level4"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>FomoFoto</h1></div><div id="content"><div id="preamble">
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">FomoFoto</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://cs2103-ay1819s2-w14-2.github.io/main/"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>FomoFoto</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>By: <code>W14-2</code>      Since: <code>Feb 2019</code>      Licence: <code>MIT</code></p>
@@ -29,7 +29,7 @@
 <li><a href="#rotate-an-image-code-rotate-code">4.13. Rotate an image : <code>rotate</code></a></li>
 <li><a href="#resize-an-image-code-resize-code">4.14. Resize an image : <code>resize</code></a></li>
 <li><a href="#save-image-code-save-code">4.15. Save image : <code>save</code></a></li>
-<li><a href="#tab-switching-code-tab-code">4.16. Tab switching: <code>tab</code></a></li>
+<li><a href="#tab-switching-code-tab-code">4.16. Tab Switching: <code>tab</code></a></li>
 <li><a href="#undo-edit-steps-code-undo-code">4.17. Undo edit steps : <code>undo</code></a></li>
 <li><a href="#watermark-code-wm-code">4.18. WaterMark : <code>wm</code></a></li>
 </ul>
@@ -48,7 +48,10 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>FomoFoto is a image processing software suite written in Java. This application is optimised for users who are <strong>familiar with the Command Line Interface (CLI)</strong>, while providing a <strong>Graphical User Interface (GUI)</strong> for easy reference. For those who love the CLI, this is written for you! If you are not familiar, don&#8217;t worry, we&#8217;ll take you through and you&#8217;ll be a pro in no time! Who knows? You might even be editing your pictures faster than your friends who use Photoshop! Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
+<p>FomoFoto is a image processing software suite written in Java. This application is optimised for users who are <strong>familiar with the Command Line Interface (CLI)</strong>, while providing a <strong>Graphical User Interface (GUI)</strong> for easy reference. The application is optimized for users who prefer text-based instructions.</p>
+</div>
+<div class="paragraph">
+<p>For new users, jump to <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> for an overview on how to use FomoFoto and view the tools available.</p>
 </div>
 </div>
 </div>
@@ -56,21 +59,34 @@
 <h2 id="quick-start"><a class="link" href="#quick-start">2. Quick Start</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Follow the steps below to set up your computer to run FomoFoto.</p>
+<p>System Requirements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Windows 10 or newer / OS X 10.8 or newer.</strong></p>
+</li>
+<li>
+<p><strong>Java 9 or newer.</strong></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Follow the steps below to set up your computer to run FomoFoto:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Ensure you have Java version 9 or later installed in your Computer.</p>
+<p>Ensure your system meets the system requirements.</p>
 </li>
 <li>
-<p>Download the latest FomoFoto.jar here.</p>
+<p>Download the latest FomoFoto.jar <a href="https://github.com/CS2103-AY1819S2-W14-2/main/releases">here</a>.</p>
 </li>
 <li>
-<p>Copy the file to the folder you want to use as the home folder for your FomoFoto application.</p>
+<p>Copy the JAR to the folder you want to use as the home folder for your FomoFoto application.</p>
 </li>
 <li>
-<p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
+<p>Double-click the JAR to start the application. The Graphical User Interface should appear in a few seconds.</p>
 <div class="imageblock">
 <div class="content">
 <img src="images/ui.png" alt="ui" width="800">
@@ -79,7 +95,7 @@
 </div>
 </li>
 <li>
-<p>And you have just started up FomoFoto on your device! You can refer to <a href="#Features">Section 4, &#8220;Features&#8221;</a> for details of each command. If you would like a step-by-step walk through of our application, scroll down to the next section: A Walk Through.</p>
+<p>You have just successfully setup FomoFoto on your device. To see the command available in FomoFoto, refer to <a href="#Features">Section 4, &#8220;Features&#8221;</a> for details of each command. A step-by-step walkthrough of FomoFoto is available at the next section: <a href="#a-walk-through">Section 3, &#8220;A Walk Through&#8221;</a>.</p>
 </li>
 </ol>
 </div>
@@ -376,18 +392,37 @@ Format: <code>help</code></p>
 <div class="sect2">
 <h3 id="import-an-image-code-import-code"><a class="link" href="#import-an-image-code-import-code">4.9. Import an image : <code>import</code></a></h3>
 <div class="paragraph">
-<p>Imports an image to assets folder from specified filepath<br>
+<p>Imports images to FomoFoto&#8217;s Album from a specified filepath or a directory.<br>
 Format: <code>import FILEPATH</code></p>
 </div>
 <div class="paragraph">
-<p>Example:</p>
+<p>Example of single filepath import:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>import Users/Fomo/Pictures/sample.jpg</code></p>
+<p><code>import C:\Users\Addison\Desktop\sample.jpg</code></p>
+</li>
+<li>
+<p><code>import C:\Home\sample.png</code></p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>Example of directory import:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>import C:\Users\Addison\Desktop</code></p>
+</li>
+<li>
+<p><code>import C:\Home</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For directory import, invalid files are skipped and only valid images will be imported.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -396,12 +431,26 @@ Format: <code>import FILEPATH</code></p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<div class="paragraph">
-<p>The <code>import</code> command only accepts files with a maximum size of 10MB.</p>
-</div>
+Images should be of the following formats: <code>bmp</code>, <code>jpg</code> , <code>jpeg</code>, <code>png</code>, <code>tif</code>, <code>tiff</code> or <code>gif</code>. Images with <code>tif</code> or <code>tiff</code> formats are not rendered on screen due to a bug with Java but edits made will still be applied.
 </td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>Additionally, images must also adhere to the following additional requirements:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Not be hidden or prepended by a <code>.</code> dot identifier.</p>
+</li>
+<li>
+<p>Not be over 10MB in size.</p>
+</li>
+<li>
+<p>Not have the same name of an existing image in the Album.</p>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect2">
@@ -522,7 +571,7 @@ Format: <code>save</code> or <code>save FILENAME</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="tab-switching-code-tab-code"><a class="link" href="#tab-switching-code-tab-code">4.16. Tab switching: <code>tab</code></a></h3>
+<h3 id="tab-switching-code-tab-code"><a class="link" href="#tab-switching-code-tab-code">4.16. Tab Switching: <code>tab</code></a></h3>
 <div class="paragraph">
 <p>Cycle between available tabs in the side <strong>Information Panel</strong>.<br>
 Format: <code>tab</code></p>
@@ -533,17 +582,17 @@ Format: <code>tab</code></p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><strong>Album Images</strong></p>
+<p>Album Images</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Displays all images currently opened in the <code>assets</code> folder and available for editing.</p>
+<p>Displays all images currently opened in the Album and available for editing.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>EXIF Profile</strong></p>
+<p>EXIF Profile</p>
 <div class="ulist">
 <ul>
 <li>
@@ -554,7 +603,7 @@ image such as metadata information like <strong>Date and Time</strong> and <stro
 </div>
 </li>
 <li>
-<p><strong>Command History</strong></p>
+<p>Command History</p>
 <div class="ulist">
 <ul>
 <li>
@@ -752,4 +801,4 @@ e.g. <code>wm FomoFoto</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 14:14:47 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 18:13:07 UTC</div></div></div></body></html>
