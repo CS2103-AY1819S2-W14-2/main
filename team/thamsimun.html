@@ -359,7 +359,7 @@ e.g. <code>wm FomoFoto</code></p>
 <p><code>CurrentEdit#tempImageDoNotExist()</code> - Returns <code>true</code> if <code>tempImage</code> in <code>CurrentEdit</code> is null. <code>tempImage</code> is null only if <code>open</code> command is never called.</p>
 </li>
 <li>
-<p><code>CurrentEdit#getTempImage</code> - Retrieves the temporary image <code>tempImage</code> which stores the filepath of the temporary image in the <code>temp</code> directory, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata.</p>
+<p><code>CurrentEdit#getTempImage</code> - Retrieves the temporary image <code>tempImage</code> which stores the filepath of the temporary image, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata.</p>
 </li>
 <li>
 <p><code>CurrentEdit#updateTempImage</code> - Replaces the temporary image in the <code>temp</code> directory with the newly edited image and update the <code>tempImage</code> instance in the class.</p>
@@ -395,13 +395,19 @@ e.g. <code>wm FomoFoto</code></p>
 <div class="sect3">
 <h4 id="contrast-command"><a class="link" href="#contrast-command">Contrast Command</a></h4>
 <div class="paragraph">
-<p>This command calls for an adjustment of contrast on an opened image. After adjusting the contrast, it adds this specific command called by the user to the <code>List&lt;Commands&gt;</code> belonging to the <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the opened image.</p>
+<p>This command calls for an adjustment of contrast on an opened image. After adjusting the contrast, it adds this specific command called by the user to the <code>List&lt;Commands&gt;</code> belonging to the <code>tempImage</code> found in <code>CurrentEdit</code> which saves the editing history of the opened image.</p>
+</div>
+<div id="sequencediagram_contrast" class="imageblock">
+<div class="content">
+<img src="../images/ContrastCommandSequenceDiagram.png" alt="ContrastCommandSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 4. Sequence Diagram for Contrast Command</div>
 </div>
 <div class="paragraph">
-<p>Given below is an example usage scenario and how the command should behave at each step. [This applies to the other image filter commands as well.]</p>
+<p>Given below is an example usage scenario of how <code>contrast</code> behaves at each step as shown in <a href="#sequencediagram_contrast">Sequence Diagram for Contrast Command</a>. [This applies to the other image filter commands as well.]</p>
 </div>
 <div class="paragraph">
-<p>Step 1. When the user runs an <code>open</code> command to edit an image, it invokes a method which creates an instance of an <code>Image</code> that stores the filepath of the image, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata. This <code>Image</code> object is saved under the variable name <code>tempImage</code> in <code>currentEdit</code> for editing.</p>
+<p>Step 1. When the user runs an <code>open</code> command to edit an image, it invokes a method which creates an instance of an <code>Image</code> that stores the filepath of the image, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata. This <code>Image</code> object is saved under the variable name <code>tempImage</code> in <code>CurrentEdit</code> for editing.</p>
 </div>
 <div class="paragraph">
 <p>Step 2. When the user enters the command (e.g. <code>contrast 0.3</code>), the entered command is parsed and the command will be executed.</p>
@@ -419,35 +425,31 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </table>
 </div>
 <div class="paragraph">
-<p>Step 3. During execution, the <code>execute</code> method in the <code>contrastCommand</code> class first invokes <code>currentEdit#tempImageDoNotExist</code> to check if an image is opened. If no image is opened, it will throw an error message to tell the user to open an image for editing first. Else, the <code>execute</code> method will invoke <code>currentEdit#getTempImage()</code> to get the <code>tempImage</code> from <code>currentEdit</code>.</p>
+<p>Step 3. During execution, the <code>execute</code> method in the <code>ContrastCommand</code> class first invokes <code>CurrentEdit#tempImageDoNotExist</code> to check if an image is opened. If no image is opened, it will throw an error message to tell the user to open an image for editing first. Else, the <code>execute</code> method will invoke <code>CurrentEdit#getTempImage()</code> to get the <code>tempImage</code> from <code>CurrentEdit</code>.</p>
 </div>
 <div class="paragraph">
 <p>Step 4. Upon retrieving the <code>tempImage</code>, the <code>execute</code> method creates a <code>ContrastFilter</code> instance provided by the external library [<code>scrimage</code>] which takes in a <code>double</code> contrast ratio value. This <code>ContrastFilter</code> will then be applied on the image retrieved from the filepath of <code>tempImage</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 5. After applying the <code>ContrastFilter</code> on the opened image, <code>currentEdit#updateTempImage()</code> is invoked to save the newly edited image and replace the previous one in the filepath of the <code>tempImage</code>.</p>
+<p>Step 5. After applying the <code>ContrastFilter</code> on the opened image, <code>CurrentEdit#updateTempImage()</code> is invoked to save the newly edited image and replace the previous one in the filepath of the <code>tempImage</code>.</p>
 </div>
 <div class="paragraph">
 <p>Step 6. The <code>execute</code> method then checks if the boolean <code>isNewCommand</code> is true. If it is <code>true</code>, it indicates that the command is a new contrast command called directly from the user and not through an <code>undo/redo</code> command. This triggers Step 7 in the line below. Otherwise, the command&#8217;s execution ends in this step.</p>
 </div>
 <div class="paragraph">
-<p>Step 7. <code>isNewCommand</code> is set to <code>false</code> to signal that this command is not a new contrast command if it is executed again through the <code>undo/redo</code> command.
-<code>currentEdit#addCommand(this)</code> is invoked to add this command to the <code>List&lt;Command&gt;</code> in <code>tempImage</code> for the <code>undo/redo</code> function and <code>currentEdit#displayTempImage()</code> is used to display the edited image on the graphical user interface.</p>
+<p>Step 7. <code>isNewCommand</code> is set to <code>false</code> to signal that this command is not a new contrast command if it is executed again through the <code>undo/redo</code> command.</p>
+</div>
+<div class="paragraph">
+<p>Step 8. <code>CurrentEdit#addCommand(this)</code> is invoked to add this command to the <code>List&lt;Command&gt;</code> in <code>tempImage</code> for the undo/redo function and <code>CurrentEdit#displayTempImage()</code> is used to display the edited image on the graphical user interface.</p>
 </div>
 <div class="sect4">
 <h5 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p>Images that are still being edited have to be stored and edited in a temp folder first due to our <code>undo/redo</code> implementation.</p>
+<p>Intermediate images that are still being edited have to be stored in a temp folder first due to our <code>undo/redo</code> implementation.</p>
 </li>
 </ul>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/ContrastCommandSequenceDiagram.png" alt="ContrastCommandSequenceDiagram" width="800">
-</div>
-<div class="title">Figure 4. Sequence Diagram for Contrast Command</div>
 </div>
 </div>
 </div>
@@ -477,4 +479,4 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="sectionbody">
 
 </div>
-</div></div><div id="footnotes"><hr><div class="footnote" id="_footnote_1"><a href="#_footnoteref_1">1</a>. Gradle is an open-source build automation tool that is designed to be flexible enough to build almost any type of software.</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 15:20:23 UTC</div></div></div></body></html>
+</div></div><div id="footnotes"><hr><div class="footnote" id="_footnote_1"><a href="#_footnoteref_1">1</a>. Gradle is an open-source build automation tool that is designed to be flexible enough to build almost any type of software.</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 16:14:09 UTC</div></div></div></body></html>

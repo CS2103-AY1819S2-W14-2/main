@@ -35,10 +35,10 @@
 <li><a href="#list-files-feature">3.4. List Files Feature</a></li>
 <li><a href="#image-filters">3.5. Image Filters</a></li>
 <li><a href="#image-manipulation">3.6. Image Manipulation</a></li>
-<li><a href="#undo-redo-feature">3.7. Undo/Redo feature</a></li>
-<li><a href="#save-feature">3.8. Save Feature</a></li>
-<li><a href="#save-preset-feature">3.9. Save Preset Feature</a></li>
-<li><a href="#set-preset-feature">3.10. Set Preset Feature</a></li>
+<li><a href="#save-feature">3.7. Save Feature</a></li>
+<li><a href="#savepreset-feature">3.8. SavePreset Feature</a></li>
+<li><a href="#setpreset-feature">3.9. SetPreset Feature</a></li>
+<li><a href="#undo-redo-feature">3.10. Undo/Redo feature</a></li>
 <li><a href="#watermark-feature">3.11. WaterMark Feature</a></li>
 <li><a href="#logging">3.12. Logging</a></li>
 </ul>
@@ -399,7 +399,7 @@ The following class plays an important role at the architecture level:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>The <code>Model</code> component consists of two components:</p>
+<p>The <code>Model</code> component consists of three components:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -408,6 +408,9 @@ The following class plays an important role at the architecture level:</p>
 </li>
 <li>
 <p><code>CurrentEdit</code> which holds the image that the App is currently editing in-memory.</p>
+</li>
+<li>
+<p><code>TransformationSet</code> which stores the preset commands created by the user to edit the image.</p>
 </li>
 </ul>
 </div>
@@ -613,10 +616,10 @@ The <code>UI</code> component uses JavaFx UI framework. The layout of these UI p
 <p><strong>API</strong> : <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/model/CurrentEdit.java"><code>CurrentEdit.java</code></a>, <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/model/Album.java"><code>Album.java</code></a>, <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/model/Album.java"><code>Image.java</code></a></p>
 </div>
 <div class="paragraph">
-<p>The Model component comprises of two main classes, <code>Album</code> and <code>CurrentEdit</code>.</p>
+<p>The Model component comprises of three main classes, <code>CurrentEdit</code>, <code>TransformationSet</code> and <code>Album</code>.</p>
 </div>
 <div class="paragraph">
-<p><code>CurrentEdit</code> Class:</p>
+<p>The core functions of the <code>CurrentEdit</code> Class are listed below:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -638,10 +641,26 @@ The <code>UI</code> component uses JavaFx UI framework. The layout of these UI p
 </ul>
 </div>
 <div class="paragraph">
-<p>The <code>Album</code> class is implemented using the Singleton pattern. This design choice was purposely made as only a single instance of <code>Album</code> should reside in FomoFoto any any one time. This design also reduces the need for passing instance variables across all logic and model components.</p>
+<p>The <code>TransformationSet</code> class is implemented using the Singleton pattern. This design choice was made to ensure that only a single instance of <code>TransformationSet</code> is used in FomoFoto at runtime. This design also eliminates redundant passing of instance variables of <code>TransformationSet</code> across all logic and model components.</p>
 </div>
 <div class="paragraph">
-<p>The core functions of the <code>Album</code> class are listed below.</p>
+<p>The core functions of the <code>Transformation</code> class are listed below:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Stores a reference to all the preset commands saved by the user as a HashMap that contains a <code>String</code> as a key and a `List&lt;Command&gt;`as a value.</p>
+</li>
+<li>
+<p>Contains various helper methods to access the HashMap that stores the preset commands.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The <code>Album</code> class is also implemented using the Singleton pattern. This design choice was purposely made as only a single instance of <code>Album</code> should reside in FomoFoto at any one time. This design also reduces the need for passing instance variables across all logic and model components.</p>
+</div>
+<div class="paragraph">
+<p>The core functions of the <code>Album</code> class are listed below:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -649,7 +668,7 @@ The <code>UI</code> component uses JavaFx UI framework. The layout of these UI p
 <p>Stores a reference to all imported images as List.</p>
 </li>
 <li>
-<p>Contains various helper method to access the <code>assets</code> directory, the storage for the raw image files.</p>
+<p>Contains various helper methods to access the <code>assets</code> directory, the storage for the raw image files.</p>
 </li>
 <li>
 <p>Fires property changes to listeners attached to the <code>Notifier</code> to redraw UI elements.</p>
@@ -1128,7 +1147,7 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 <p><code>CurrentEdit#tempImageDoNotExist()</code> - Returns <code>true</code> if <code>tempImage</code> in <code>CurrentEdit</code> is null. <code>tempImage</code> is null only if <code>open</code> command is never called.</p>
 </li>
 <li>
-<p><code>CurrentEdit#getTempImage</code> - Retrieves the temporary image <code>tempImage</code> which stores the filepath of the temporary image in the <code>temp</code> directory, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata.</p>
+<p><code>CurrentEdit#getTempImage</code> - Retrieves the temporary image <code>tempImage</code> which stores the filepath of the temporary image, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata.</p>
 </li>
 <li>
 <p><code>CurrentEdit#updateTempImage</code> - Replaces the temporary image in the <code>temp</code> directory with the newly edited image and update the <code>tempImage</code> instance in the class.</p>
@@ -1164,13 +1183,19 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 <div class="sect3">
 <h4 id="contrast-command"><a class="link" href="#contrast-command">3.5.2. Contrast Command</a></h4>
 <div class="paragraph">
-<p>This command calls for an adjustment of contrast on an opened image. After adjusting the contrast, it adds this specific command called by the user to the <code>List&lt;Commands&gt;</code> belonging to the <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the opened image.</p>
+<p>This command calls for an adjustment of contrast on an opened image. After adjusting the contrast, it adds this specific command called by the user to the <code>List&lt;Commands&gt;</code> belonging to the <code>tempImage</code> found in <code>CurrentEdit</code> which saves the editing history of the opened image.</p>
+</div>
+<div id="sequencediagram_contrast" class="imageblock">
+<div class="content">
+<img src="images/ContrastCommandSequenceDiagram.png" alt="ContrastCommandSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 15. Sequence Diagram for Contrast Command</div>
 </div>
 <div class="paragraph">
-<p>Given below is an example usage scenario and how the command should behave at each step. [This applies to the other image filter commands as well.]</p>
+<p>Given below is an example usage scenario of how <code>contrast</code> behaves at each step as shown in <a href="#sequencediagram_contrast">Figure 15, &#8220;Sequence Diagram for Contrast Command&#8221;</a>. [This applies to the other image filter commands as well.]</p>
 </div>
 <div class="paragraph">
-<p>Step 1. When the user runs an <code>open</code> command to edit an image, it invokes a method which creates an instance of an <code>Image</code> that stores the filepath of the image, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata. This <code>Image</code> object is saved under the variable name <code>tempImage</code> in <code>currentEdit</code> for editing.</p>
+<p>Step 1. When the user runs an <code>open</code> command to edit an image, it invokes a method which creates an instance of an <code>Image</code> that stores the filepath of the image, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata. This <code>Image</code> object is saved under the variable name <code>tempImage</code> in <code>CurrentEdit</code> for editing.</p>
 </div>
 <div class="paragraph">
 <p>Step 2. When the user enters the command (e.g. <code>contrast 0.3</code>), the entered command is parsed and the command will be executed.</p>
@@ -1188,35 +1213,31 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </table>
 </div>
 <div class="paragraph">
-<p>Step 3. During execution, the <code>execute</code> method in the <code>contrastCommand</code> class first invokes <code>currentEdit#tempImageDoNotExist</code> to check if an image is opened. If no image is opened, it will throw an error message to tell the user to open an image for editing first. Else, the <code>execute</code> method will invoke <code>currentEdit#getTempImage()</code> to get the <code>tempImage</code> from <code>currentEdit</code>.</p>
+<p>Step 3. During execution, the <code>execute</code> method in the <code>ContrastCommand</code> class first invokes <code>CurrentEdit#tempImageDoNotExist</code> to check if an image is opened. If no image is opened, it will throw an error message to tell the user to open an image for editing first. Else, the <code>execute</code> method will invoke <code>CurrentEdit#getTempImage()</code> to get the <code>tempImage</code> from <code>CurrentEdit</code>.</p>
 </div>
 <div class="paragraph">
 <p>Step 4. Upon retrieving the <code>tempImage</code>, the <code>execute</code> method creates a <code>ContrastFilter</code> instance provided by the external library [<code>scrimage</code>] which takes in a <code>double</code> contrast ratio value. This <code>ContrastFilter</code> will then be applied on the image retrieved from the filepath of <code>tempImage</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 5. After applying the <code>ContrastFilter</code> on the opened image, <code>currentEdit#updateTempImage()</code> is invoked to save the newly edited image and replace the previous one in the filepath of the <code>tempImage</code>.</p>
+<p>Step 5. After applying the <code>ContrastFilter</code> on the opened image, <code>CurrentEdit#updateTempImage()</code> is invoked to save the newly edited image and replace the previous one in the filepath of the <code>tempImage</code>.</p>
 </div>
 <div class="paragraph">
 <p>Step 6. The <code>execute</code> method then checks if the boolean <code>isNewCommand</code> is true. If it is <code>true</code>, it indicates that the command is a new contrast command called directly from the user and not through an <code>undo/redo</code> command. This triggers Step 7 in the line below. Otherwise, the command&#8217;s execution ends in this step.</p>
 </div>
 <div class="paragraph">
-<p>Step 7. <code>isNewCommand</code> is set to <code>false</code> to signal that this command is not a new contrast command if it is executed again through the <code>undo/redo</code> command.
-<code>currentEdit#addCommand(this)</code> is invoked to add this command to the <code>List&lt;Command&gt;</code> in <code>tempImage</code> for the <code>undo/redo</code> function and <code>currentEdit#displayTempImage()</code> is used to display the edited image on the graphical user interface.</p>
+<p>Step 7. <code>isNewCommand</code> is set to <code>false</code> to signal that this command is not a new contrast command if it is executed again through the <code>undo/redo</code> command.</p>
+</div>
+<div class="paragraph">
+<p>Step 8. <code>CurrentEdit#addCommand(this)</code> is invoked to add this command to the <code>List&lt;Command&gt;</code> in <code>tempImage</code> for the undo/redo function and <code>CurrentEdit#displayTempImage()</code> is used to display the edited image on the graphical user interface.</p>
 </div>
 <div class="sect4">
 <h5 id="design-considerations-4"><a class="link" href="#design-considerations-4">Design Considerations</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p>Images that are still being edited have to be stored and edited in a temp folder first due to our <code>undo/redo</code> implementation.</p>
+<p>Intermediate images that are still being edited have to be stored in a temp folder first due to our <code>undo/redo</code> implementation.</p>
 </li>
 </ul>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/ContrastCommandSequenceDiagram.png" alt="ContrastCommandSequenceDiagram" width="800">
-</div>
-<div class="title">Figure 15. Sequence Diagram for Contrast Command</div>
 </div>
 </div>
 </div>
@@ -1255,7 +1276,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <p><code>CurrentEdit#tempImageDoNotExist()</code> - Returns <code>true</code> if <code>tempImage</code> in <code>CurrentEdit</code> is null. <code>tempImage</code> is null only if <code>open</code> command is never called.</p>
 </li>
 <li>
-<p><code>CurrentEdit#getTempImage</code> - Retrieves the temporary image <code>tempImage</code> which stores the filepath of the temporary image in the <code>temp</code> directory, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata.</p>
+<p><code>CurrentEdit#getTempImage</code> - Retrieves the temporary image <code>tempImage</code> which stores the filepath of the temporary image, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata.</p>
 </li>
 <li>
 <p><code>CurrentEdit#updateTempImage</code> - Replaces the temporary image in <code>temp</code> directory with the newly edited image and update the <code>tempImage</code> instance in the class.</p>
@@ -1369,9 +1390,360 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </div>
 </div>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.7. Undo/Redo feature</a></h3>
+<h3 id="save-feature"><a class="link" href="#save-feature">3.7. Save Feature</a></h3>
+<div class="paragraph">
+<p>This command applies the edits to the current image and saves it into <code>assets</code> directory.</p>
+</div>
 <div class="sect3">
 <h4 id="current-implementation-7"><a class="link" href="#current-implementation-7">3.7.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The <code>save</code> function is facilitated by <code>Album</code> and <code>CurrentEdit</code>. It uses the following operations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>CurrentEdit#tempImageDoNotExist()</code> - Returns <code>true</code> if <code>tempImage</code> in <code>CurrentEdit</code> is null. <code>tempImage</code> is null only if <code>open</code> command was never called.</p>
+</li>
+<li>
+<p><code>CurrentEdit#getTempImage()</code> - Returns the latest edited image stored in <code>tempImage</code> in <code>CurrentEdit</code>.</p>
+</li>
+<li>
+<p><code>CurrentEdit#getOriginalName()</code> - Returns the original name of opened image.</p>
+</li>
+<li>
+<p><code>CurrentEdit#overwriteOriginal(String)</code> - Replaces <code>ori_img.png</code> with <code>temp_img.png' in `temp</code> directory. Updates <code>originalImage</code> to <code>tempImage</code> and <code>originalImageName</code> to <code>String</code> in <code>CurrentEdit</code>.</p>
+</li>
+<li>
+<p><code>CurrentEdit#deleteHistory()</code> - Clears the history in <code>CurrentEdit</code>.</p>
+</li>
+<li>
+<p><code>CurrentEdit#updateExif()</code> - Updates the Exif data of the new image.</p>
+</li>
+<li>
+<p><code>Album#checkFileExist(String)</code> - Checks if the file name specified by the <code>String</code> exists in assets directory.</p>
+</li>
+<li>
+<p><code>Album#saveToAssets(Image, String)</code> - Saves the <code>Image</code> as <code>String</code> into <code>assets</code> directory.</p>
+</li>
+<li>
+<p><code>Album#populateAlbum()</code> - Updates list of images in <code>Album</code> class.</p>
+</li>
+<li>
+<p><code>Album#refreshAlbum()</code> - Updates and displays the latest images in <code>assets</code> directory on the GUI.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how <code>save</code> works:</p>
+</div>
+<div id="sequencediagram_save" class="imageblock">
+<div class="content">
+<img src="images/SaveCommandSequenceDiagram.png" alt="SaveCommandSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 17. Sequence Diagram for Save Command</div>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario of how <code>save</code> behaves at each step as shown in <a href="#sequencediagram_save">Figure 17, &#8220;Sequence Diagram for Save Command&#8221;</a>.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user executes <code>save</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. <code>CurrentEdit#tempImageExist()</code> is called to check if an image was previously opened. If <code>open</code> was not called previously, <code>CommandException</code> is thrown.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. <code>CurrentEdit#getTempImage()</code> is called to retrieve the <code>tempImage</code> from <code>CurrentEdit</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. If the user did not input a <code>String</code> after <code>save</code> previously, <code>CurrentEdit#getOriginalName()</code> will retrieve the <code>originalImageName</code> from <code>CurrentEdit</code>. Otherwise, <code>Album#checkFileExist(String)</code> will be called to check if a file name is similar to <code>String</code>. If it is a duplicate, <code>CommandException</code> will be thrown.</p>
+</div>
+<div class="paragraph">
+<p>Step 5. <code>Album#saveToAssets(Image, String)</code> takes in the previously retrieved <code>Image</code> and <code>String</code> to create a new image file in <code>assets</code> directory.</p>
+</div>
+<div class="paragraph">
+<p>Step 6. <code>CurrentEdit#overwriteOriginal(String)</code> is called to update the files in <code>temp</code> directory and their respective instances in <code>CurrentEdit</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 7. <code>CurrentEdit#deleteHistory()</code> is called to delete the edit history in <code>CurrentEdit</code> so that the user can no longer perform <code>undo</code> on the saved image.</p>
+</div>
+<div class="paragraph">
+<p>Step 8.<code>CurrentEdit#updateExif()</code> is called to update the Exif data of the new image.</p>
+</div>
+<div class="paragraph">
+<p>Step 9. <code>Album#populateAlbum()</code> is called to update the list of image in <code>Album</code> class and to ensure it reflects all the files in <code>assets</code> directory.</p>
+</div>
+<div class="paragraph">
+<p>Step 10.<code>Album#refreshAlbum()</code> is called to update the Information Panel on the GUI.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.7.2. Design Considerations</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1</strong>: The user must give a name to the new image.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Advantage: Name of the new image is clear to the user.</p>
+</li>
+<li>
+<p>Disadvantage: May be tedious for the user to type in a name each time <code>save</code> is performed.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2 (current choice)</strong> : The user can choose to save as a new name or overwrite the original image</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Advantage: Convenient for user to <code>save</code> quickly without having to type a new name everytime.</p>
+</li>
+<li>
+<p>Disadvantage: The user may unintentionally overwrite the original image.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Alternative 2 was chosen as the user is likely to use <code>save</code> frequently. Since the <code>assets</code> directory functions like an album, images can be re-imported if they are accidentally overwritten. The user is able to <code>save</code> easily and choose to resume editing immediately or at a later time.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="savepreset-feature"><a class="link" href="#savepreset-feature">3.8. SavePreset Feature</a></h3>
+<div class="paragraph">
+<p>This feature saves a list of commands that were applied to the opened image under a specified name so that they can be applied to other images in the future.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-8"><a class="link" href="#current-implementation-8">3.8.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The <code>savepreset</code> function is facilitated by <code>CurrentEdit</code> and <code>TransformationSet</code>. It uses the following operations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>CurrentEdit#tempImageDoNotExist()</code> - Returns <code>true</code> if <code>tempImage</code> in <code>CurrentEdit</code> is null. <code>tempImage</code> is null only if <code>open</code> command is never called.</p>
+</li>
+<li>
+<p><code>CurrentEdit#getTempSubHistory()</code> - Retrieves the <code>List&lt;Command&gt;</code> from the <code>tempImage</code> in <code>CurrentEdit</code>.</p>
+</li>
+<li>
+<p><code>TransformationSet#isPresent(String)</code> - Returns true if there is already a <code>List&lt;Command&gt;</code> saved under the same preset name.</p>
+</li>
+<li>
+<p><code>TransformationSet#addTransformation(String, List&lt;Command&gt;)</code> - Saves the <code>List&lt;Command&gt;</code> to the <code>transformationMap</code> in <code>TransformationSet</code> under the specified preset name.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how <code>savepreset</code> works:</p>
+</div>
+<div id="sequencediagram_savepreset" class="imageblock">
+<div class="content">
+<img src="images/SavePresetCommandSequenceDiagram.png" alt="SavePresetCommandSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 18. Sequence Diagram for Save Preset Command</div>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario of how <code>savepreset</code> behaves at each step as shown in <a href="#sequencediagram_savepreset">Figure 18, &#8220;Sequence Diagram for Save Preset Command&#8221;</a>.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. When the user enters the command (e.g. <code>savepreset preset1</code>), the entered command is parsed and the command will be executed.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If an invalid command is provided, a reminder of how to use the command will be given to the user and no command will be executed.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Step 2. During execution, the <code>execute</code> method in the <code>SavePresetCommand</code> class first invokes <code>CurrentEdit#tempImageDoNotExist</code> to check if an image is opened. If no image is opened, an error message will be displayed to remind the user to open an image for editing first.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. If an image is opened, the <code>execute</code> method will invoke <code>CurrentEdit#getTempSubHistory()</code> to retrieve the <code>List&lt;Command&gt;</code> from the <code>tempImage</code> in <code>CurrentEdit</code> which consists of the image editing commands used on the opened image.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. If the <code>List&lt;Command&gt;</code> is empty, an error message will be displayed to indicate that the opened image is not edited yet and thus there are no commands to be saved as a preset.</p>
+</div>
+<div class="paragraph">
+<p>Step 5. <code>TransformationSet#isPresent(String)</code> is then invoked to check if the preset name specified by the user is used previously. If it is used previously, an error message will be displayed to tell the user to specify a different preset name.</p>
+</div>
+<div class="paragraph">
+<p>Step 6. Lastly, the method <code>TransformationSet#addTransformation(String, List&lt;Command&gt;)</code> is called to add the <code>List&lt;Command</code> in the <code>TransformationSet</code>, saving it as a preset of commands that can be used in the future with the <code>setpreset</code> command.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">3.8.2. Design Considerations</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice)</strong>: The user can only save a preset of commands after applying these edits on an opened image.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: The user can view the effects of the commands on an image first before deciding to save it as a preset.</p>
+</li>
+<li>
+<p>Cons: It might be inconvenient for users who already have the list of commands they want to save as a preset beforehand and do not have to test them out.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2</strong>: The user can save a preset of commands by typing out all the commands in a row without testing them on an image.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: It will be convenient for professional editors as they do not have to test the commands out on an opened image first.</p>
+</li>
+<li>
+<p>Cons: Beginners in image editing will have a hard time finding the right commands to save as a preset without testing them out first.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In the end, the first alternative is chosen for this application because our photo editor, FomoFoto, is mainly designed for basic photo editing and thus should be more suitable for beginners to use.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="setpreset-feature"><a class="link" href="#setpreset-feature">3.9. SetPreset Feature</a></h3>
+<div class="paragraph">
+<p>This feature applies a preset list of commands that were saved previously using the <code>savepreset</code> command on the opened image.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-9"><a class="link" href="#current-implementation-9">3.9.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The <code>setpreset</code> function is facilitated by <code>CurrentEdit</code> and <code>TransformationSet</code>. It uses the following operations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>CurrentEdit#addCommand(Command)</code> - Adds this command to the edit history [<code>List&lt;Command&gt;</code>] in <code>tempImage</code> for the <code>undo/redo</code> command.</p>
+</li>
+<li>
+<p><code>CurrentEdit#displayTempImage()</code> - Displays the temporary image stored in the temporary directory.</p>
+</li>
+<li>
+<p><code>CurrentEdit#getTempImage()</code> - Retrieves the temporary image <code>tempImage</code> which stores the filepath of the temporary image, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata.</p>
+</li>
+<li>
+<p><code>CurrentEdit#replaceTempWithOriginal()</code> - Replaces the temporary image in the filepath of the <code>tempImage</code> with the original image.</p>
+</li>
+<li>
+<p><code>CurrentEdit#tempImageDoNotExist()</code> - Returns <code>true</code> if <code>tempImage</code> in <code>CurrentEdit</code> is null. <code>tempImage</code> is null only if <code>open</code> command is never called.</p>
+</li>
+<li>
+<p><code>TransformationSet#findTransformation(String)</code> - Retrieves the <code>List&lt;Command&gt;</code> in the <code>transformationMap</code> with the specified preset name.</p>
+</li>
+<li>
+<p><code>TransformationSet#hasWaterMarkCommand(String)</code> - Returns true if the <code>List&lt;Command&gt;</code> contains a <code>WaterMarkCommand</code>.</p>
+</li>
+<li>
+<p><code>TransformationSet#isPresent(String)</code> - Returns true if there is a <code>List&lt;Command&gt;</code> saved under the given preset name.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how <code>savepreset</code> works:</p>
+</div>
+<div id="sequencediagram_setpreset" class="imageblock">
+<div class="content">
+<img src="images/SetPresetCommandSequenceDiagram.png" alt="SetPresetCommandSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 19. Sequence Diagram for Set Preset Command</div>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario of how <code>setpreset</code> behaves at each step as shown in <a href="#sequencediagram_setpreset">Figure 19, &#8220;Sequence Diagram for Set Preset Command&#8221;</a>.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. When the user enters the command (e.g. <code>setpreset preset1</code>), the entered command is parsed and the command will be executed.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If an invalid command is provided, a reminder of how to use the command will be given to the user and no command will be executed.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Step 2. During execution, the <code>execute</code> method in the <code>SetPresetCommand</code> class first invokes <code>CurrentEdit#tempImageDoNotExist</code> to check if an image is opened. If no image is opened, an error message will be displayed to remind the user to open an image for editing first.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. If an image is opened, the <code>execute</code> method will invoke <code>CurrentEdit#getTempImage()</code> to retrieve the <code>tempImage</code> from <code>CurrentEdit</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. <code>TransformationSet#isPresent(String)</code> is then invoked to check if there is a preset of commands saved under the name specified by the user. If the method returns false, an error message will be displayed to inform the user that there is no preset of commands saved under the name he/she specified.</p>
+</div>
+<div class="paragraph">
+<p>Step 5. Else, the method <code>TransformationSet#findTransformation(String)</code> is called to retrieve the <code>List&lt;Command&gt;</code> saved under the specified preset name. Also, <code>TransformationSet#hasWaterMarkCommand(String)</code> is also invoked to check if the <code>List&lt;Command&gt;</code> has a <code>WaterMarkCommand</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 6. Commands in the <code>List&lt;Command&gt;</code> will be executed one by one to apply the respective edits to the opened image. If any of the commands throws an exception (e.g. If a watermark is already applied on an image, the execution of a preset of commands which contains a <code>WaterMarkCommand</code> on the same image will throw an error message to indicate that there is already a watermark.), the method <code>CurrentEdit#replaceTempWithOriginal</code> will undo all the changes made to the image.</p>
+</div>
+<div class="paragraph">
+<p>Step 6. Lastly, <code>CurrentEdit#addCommand(this)</code> is invoked to add this command to the <code>List&lt;Command&gt;</code> in <code>tempImage</code> for the undo/redo function and <code>CurrentEdit#displayTempImage()</code> is used to display the edited image on the graphical user interface.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-8"><a class="link" href="#design-considerations-8">3.9.2. Design Considerations</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice)</strong>: Allows user to apply the preset of commands on only one image (the image that is opened) at each time.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: The user will be able to see the immediate effect of the commands on the image.</p>
+</li>
+<li>
+<p>Cons: The user have to set the preset of commands on each images one by one which takes a longer time.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2</strong>: Allows user to apply the preset of commands on multiple images.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: The user can save time by applying the commands on many images in just one command instead of having to do it one by one.</p>
+</li>
+<li>
+<p>Cons: The effects of the commands on the images are not shown immediately to the user and user will not be able to determine if the preset of commands is suitable for each of the images.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In the end, the first alternative is chosen as we want users to see the immediate effect of the commands so that they can make changes or undo the edits if they do not like what they see.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.10. Undo/Redo feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-10"><a class="link" href="#current-implementation-10">3.10.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by <code>Image</code>. It contains a list of commands applied to the current image. Additionally, it implements the following operations:</p>
 </div>
@@ -1413,7 +1785,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="content">
 <img src="images/UndoRedoStartingStateListDiagram.png" alt="UndoRedoStartingStateListDiagram" width="600">
 </div>
-<div class="title">Figure 17. State list diagram for undo/redo</div>
+<div class="title">Figure 20. State list diagram for undo/redo</div>
 </div>
 <div class="paragraph">
 <p>Step 2. The user executes a series of transformations on the image. These transformations are stored in the commandHistory list and for each transformation stored, the index is incremented by 1 to point to that transformation.</p>
@@ -1422,13 +1794,13 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="content">
 <img src="images/UndoRedoNewCommand1StateListDiagram.png" alt="UndoRedoNewCommand1StateListDiagram" width="600">
 </div>
-<div class="title">Figure 18. First Transformation</div>
+<div class="title">Figure 21. First Transformation</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/UndoRedoNewCommand2StateListDiagram.png" alt="UndoRedoNewCommand2StateListDiagram" width="600">
 </div>
-<div class="title">Figure 19. Second Transformation</div>
+<div class="title">Figure 22. Second Transformation</div>
 </div>
 <div class="paragraph">
 <p>Step 3. The user wants to undo the previous transformation by using the <code>undo</code> command. It will call <code>CurrentEdit#replaceTempWithOriginal()</code> which will replace the edited image in temp folder with the original image. It will then call <code>CurrentEdit#setUndoTemp()</code> to set the index in <code>tempImage</code> to the required index and retrieve the list with <code>CurrentEdit#getHistoryTemp()</code>. Using the list, it will apply the commands onto the original image till it reaches the command just before the set index.</p>
@@ -1437,7 +1809,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="content">
 <img src="images/UndoRedoNewCommand3StateListDiagram.png" alt="UndoRedoNewCommand3StateListDiagram" width="600">
 </div>
-<div class="title">Figure 20. Undo transformation</div>
+<div class="title">Figure 23. Undo transformation</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1461,7 +1833,7 @@ If a command fails its execution, it will return the image before undo was calle
 <div class="content">
 <img src="images/UndoRedoExecuteUndoStateListDiagram.png" alt="UndoRedoExecuteUndoStateListDiagram" width="600">
 </div>
-<div class="title">Figure 21. State List diagram</div>
+<div class="title">Figure 24. State List diagram</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1482,7 +1854,7 @@ If the <code>Image#index</code> is 0, pointing to the initial image, then there 
 <div class="content">
 <img src="images/UndoRedoSequenceDiagram.png" alt="UndoRedoSequenceDiagram" width="600">
 </div>
-<div class="title">Figure 22. Sequence Diagram</div>
+<div class="title">Figure 25. Sequence Diagram</div>
 </div>
 <div class="paragraph">
 <p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>CurrentEdit#setRedoTemp()</code>, which shifts the <code>index</code> once to the right, pointing to the previously undone command, and executes that command to perform the transformation.</p>
@@ -1504,7 +1876,7 @@ If the <code>index</code> is at index <code>commandHistory.size()</code>, pointi
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.7.2. Design Considerations</a></h4>
+<h4 id="design-considerations-9"><a class="link" href="#design-considerations-9">3.10.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -1574,138 +1946,6 @@ If the <code>index</code> is at index <code>commandHistory.size()</code>, pointi
 </div>
 </div>
 <div class="sect2">
-<h3 id="save-feature"><a class="link" href="#save-feature">3.8. Save Feature</a></h3>
-<div class="paragraph">
-<p>This command applies the edits to the current image and saves it into <code>assets</code> directory.</p>
-</div>
-<div class="sect3">
-<h4 id="current-implementation-8"><a class="link" href="#current-implementation-8">3.8.1. Current Implementation</a></h4>
-<div class="paragraph">
-<p>The <code>save</code> function is facilitated by <code>Album</code> and <code>CurrentEdit</code>. It uses the following operations:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>CurrentEdit#tempImageDoNotExist()</code> - Returns <code>true</code> if <code>tempImage</code> in <code>CurrentEdit</code> is null. <code>tempImage</code> is null only if <code>open</code> command was never called.</p>
-</li>
-<li>
-<p><code>CurrentEdit#getTempImage()</code> - Returns the latest edited image stored in <code>tempImage</code> in <code>CurrentEdit</code>.</p>
-</li>
-<li>
-<p><code>CurrentEdit#getOriginalName()</code> - Returns the original name of opened image.</p>
-</li>
-<li>
-<p><code>CurrentEdit#overwriteOriginal(String)</code> - Replaces <code>ori_img.png</code> with <code>temp_img.png' in `temp</code> directory. Updates <code>originalImage</code> to <code>tempImage</code> and <code>originalImageName</code> to <code>String</code> in <code>CurrentEdit</code>.</p>
-</li>
-<li>
-<p><code>CurrentEdit#deleteHistory()</code> - Clears the history in <code>CurrentEdit</code>.</p>
-</li>
-<li>
-<p><code>CurrentEdit#updateExif()</code> - Updates the Exif data of the new image.</p>
-</li>
-<li>
-<p><code>Album#checkFileExist(String)</code> - Checks if the file name specified by the <code>String</code> exists in assets directory.</p>
-</li>
-<li>
-<p><code>Album#saveToAssets(Image, String)</code> - Saves the <code>Image</code> as <code>String</code> into <code>assets</code> directory.</p>
-</li>
-<li>
-<p><code>Album#populateAlbum()</code> - Updates list of images in <code>Album</code> class.</p>
-</li>
-<li>
-<p><code>Album#refreshAlbum()</code> - Updates and displays the latest images in <code>assets</code> directory on the GUI.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows how <code>save</code> works:</p>
-</div>
-<div id="sequencediagram_save" class="imageblock">
-<div class="content">
-<img src="images/SaveCommandSequenceDiagram.png" alt="SaveCommandSequenceDiagram" width="800">
-</div>
-<div class="title">Figure 23. Sequence Diagram for Save Command</div>
-</div>
-<div class="paragraph">
-<p>Given below is an example usage scenario of how <code>save</code> behaves at each step as shown in <a href="#sequencediagram_save">Figure 23, &#8220;Sequence Diagram for Save Command&#8221;</a>.</p>
-</div>
-<div class="paragraph">
-<p>Step 1. The user executes <code>save</code>.</p>
-</div>
-<div class="paragraph">
-<p>Step 2. <code>CurrentEdit#tempImageExist()</code> is called to check if an image was previously opened. If <code>open</code> was not called previously, <code>CommandException</code> is thrown.</p>
-</div>
-<div class="paragraph">
-<p>Step 3. <code>CurrentEdit#getTempImage()</code> is called to retrieve the <code>tempImage</code> from <code>CurrentEdit</code>.</p>
-</div>
-<div class="paragraph">
-<p>Step 4. If the user did not input a <code>String</code> after <code>save</code> previously, <code>CurrentEdit#getOriginalName()</code> will retrieve the <code>originalImageName</code> from <code>CurrentEdit</code>. Otherwise, <code>Album#checkFileExist(String)</code> will be called to check if a file name is similar to <code>String</code>. If it is a duplicate, <code>CommandException</code> will be thrown.</p>
-</div>
-<div class="paragraph">
-<p>Step 5. <code>Album#saveToAssets(Image, String)</code> takes in the previously retrieved <code>Image</code> and <code>String</code> to create a new image file in <code>assets</code> directory.</p>
-</div>
-<div class="paragraph">
-<p>Step 6. <code>CurrentEdit#overwriteOriginal(String)</code> is called to update the files in <code>temp</code> directory and their respective instances in <code>CurrentEdit</code>.</p>
-</div>
-<div class="paragraph">
-<p>Step 7. <code>CurrentEdit#deleteHistory()</code> is called to delete the edit history in <code>CurrentEdit</code> so that the user can no longer perform <code>undo</code> on the saved image.</p>
-</div>
-<div class="paragraph">
-<p>Step 8.<code>CurrentEdit#updateExif()</code> is called to update the Exif data of the new image.</p>
-</div>
-<div class="paragraph">
-<p>Step 9. <code>Album#populateAlbum()</code> is called to update the list of image in <code>Album</code> class and to ensure it reflects all the files in <code>assets</code> directory.</p>
-</div>
-<div class="paragraph">
-<p>Step 10.<code>Album#refreshAlbum()</code> is called to update the Information Panel on the GUI.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">3.8.2. Design Considerations</a></h4>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1</strong>: The user must give a name to the new image.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Advantage: Name of the new image is clear to the user.</p>
-</li>
-<li>
-<p>Disadvantage: May be tedious for the user to type in a name each time <code>save</code> is performed.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2 (current choice)</strong> : The user can choose to save as a new name or overwrite the original image</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Advantage: Convenient for user to <code>save</code> quickly without having to type a new name everytime.</p>
-</li>
-<li>
-<p>Disadvantage: The user may unintentionally overwrite the original image.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Alternative 2 was chosen as the user is likely to use <code>save</code> frequently. Since the <code>assets</code> directory functions like an album, images can be re-imported if they are accidentally overwritten. The user is able to <code>save</code> easily and choose to resume editing immediately or at a later time.</p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="save-preset-feature"><a class="link" href="#save-preset-feature">3.9. Save Preset Feature</a></h3>
-
-</div>
-<div class="sect2">
-<h3 id="set-preset-feature"><a class="link" href="#set-preset-feature">3.10. Set Preset Feature</a></h3>
-
-</div>
-<div class="sect2">
 <h3 id="watermark-feature"><a class="link" href="#watermark-feature">3.11. WaterMark Feature</a></h3>
 <div class="paragraph">
 <p>This command allows the user to add a watermark to their image. Upon receiving an input message from the user, the message will be checked for its validity and will throw an error if the message is empty or contains only spaces. Messages can contain words and numbers separated by spaces. The command will then be added to the <code>List&lt;Commands&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targetted image.</p>
@@ -1723,7 +1963,7 @@ Each image can only have 1 watermark. If the user would like to edit the waterma
 </table>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-9"><a class="link" href="#current-implementation-9">3.11.1. Current Implementation</a></h4>
+<h4 id="current-implementation-11"><a class="link" href="#current-implementation-11">3.11.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The manipulation feature is facilitated by <code>CurrentEdit</code>. It uses the following operations:</p>
 </div>
@@ -1880,11 +2120,11 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="content">
 <img src="images/WaterMarkCommandSequenceDiagram.png" alt="WaterMarkCommandSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 24. Sequence Diagram for WaterMark Command</div>
+<div class="title">Figure 26. Sequence Diagram for WaterMark Command</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-8"><a class="link" href="#design-considerations-8">3.11.2. Design Considerations</a></h4>
+<h4 id="design-considerations-10"><a class="link" href="#design-considerations-10">3.11.2. Design Considerations</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1993,7 +2233,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 25. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 27. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 <div class="sect2">
@@ -2875,4 +3115,4 @@ Expected: GUI should export the selected Album image to target directory.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 15:20:23 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 16:14:09 UTC</div></div></div></body></html>

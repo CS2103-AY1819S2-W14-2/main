@@ -474,7 +474,7 @@ The following class plays an important role at the architecture level:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>The <code>Model</code> component consists of two components:</p>
+<p>The <code>Model</code> component consists of three components:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -483,6 +483,9 @@ The following class plays an important role at the architecture level:</p>
 </li>
 <li>
 <p><code>CurrentEdit</code> which holds the image that the App is currently editing in-memory.</p>
+</li>
+<li>
+<p><code>TransformationSet</code> which stores the preset commands created by the user to edit the image.</p>
 </li>
 </ul>
 </div>
@@ -524,7 +527,7 @@ The following class plays an important role at the architecture level:</p>
 <p><code>CurrentEdit#tempImageDoNotExist()</code> - Returns <code>true</code> if <code>tempImage</code> in <code>CurrentEdit</code> is null. <code>tempImage</code> is null only if <code>open</code> command is never called.</p>
 </li>
 <li>
-<p><code>CurrentEdit#getTempImage</code> - Retrieves the temporary image <code>tempImage</code> which stores the filepath of the temporary image in the <code>temp</code> directory, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata.</p>
+<p><code>CurrentEdit#getTempImage</code> - Retrieves the temporary image <code>tempImage</code> which stores the filepath of the temporary image, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata.</p>
 </li>
 <li>
 <p><code>CurrentEdit#updateTempImage</code> - Replaces the temporary image in <code>temp</code> directory with the newly edited image and update the <code>tempImage</code> instance in the class.</p>
@@ -827,4 +830,4 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 15:20:23 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 16:14:09 UTC</div></div></div></body></html>
