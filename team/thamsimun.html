@@ -311,18 +311,18 @@ e.g. <code>wm FomoFoto</code></p>
 <div class="title">Figure 3. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
-<p>The <code>assets</code> and <code>temp</code> folders form the storage component of FomoFoto.</p>
+<p>The <code>assets</code> and <code>temp</code> directories form the storage component of FomoFoto.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The <code>assets</code> folder stores images that the user imported</p>
+<p>The <code>assets</code> directory stores images that the user imported</p>
 </li>
 <li>
-<p>The <code>temp</code> folder stores the image that the program is currently editing on.</p>
+<p>The <code>temp</code> directory stores the image that the program is currently editing on.</p>
 </li>
 <li>
-<p>The <code>Album</code> class contains methods to save and retrieve images from the <code>assets</code> folder.</p>
+<p>The <code>Album</code> class contains methods to save and retrieve images from the <code>assets</code> directory.</p>
 </li>
 <li>
 <p>The <code>CurrentEdit</code> class contains methods to overwrite and retrieve the image that the program is currently editing on.</p>
@@ -343,10 +343,10 @@ e.g. <code>wm FomoFoto</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>CurrentEdit#getTempImage</code> - Retrieves the temporary image <code>tempImage</code> which stores the filepath of the temporary image in <code>temp</code> folder, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata.</p>
+<p><code>CurrentEdit#getTempImage</code> - Retrieves the temporary image <code>tempImage</code> which stores the filepath of the temporary image in <code>temp</code> directory, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata.</p>
 </li>
 <li>
-<p><code>CurrenEdit#updateTempImage</code> - Replaces the temporary image in <code>temp</code> folder with the newly edited image and update the <code>tempImage</code> instance in the class.</p>
+<p><code>CurrenEdit#updateTempImage</code> - Replaces the temporary image in <code>temp</code> directory with the newly edited image and update the <code>tempImage</code> instance in the class.</p>
 </li>
 <li>
 <p><code>CurrentEdit#addCommand</code> - Adds this command to the edit history [<code>List&lt;Command&gt;</code>] in <code>tempImage</code> for the undo/redo function</p>
@@ -423,7 +423,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="ulist">
 <ul>
 <li>
-<p>Intermediate images have to be stored and edited in a temp folder first due to our <code>undo/redo</code> implementation.</p>
+<p>Intermediate images have to be stored and edited in a temp directory first due to our <code>undo/redo</code> implementation.</p>
 </li>
 </ul>
 </div>
@@ -473,4 +473,4 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="sectionbody">
 
 </div>
-</div></div><div id="footnotes"><hr><div class="footnote" id="_footnote_1"><a href="#_footnoteref_1">1</a>. Gradle is an open-source build automation tool that is designed to be flexible enough to build almost any type of software.</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 06:44:21 UTC</div></div></div></body></html>
+</div></div><div id="footnotes"><hr><div class="footnote" id="_footnote_1"><a href="#_footnoteref_1">1</a>. Gradle is an open-source build automation tool that is designed to be flexible enough to build almost any type of software.</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 07:05:49 UTC</div></div></div></body></html>

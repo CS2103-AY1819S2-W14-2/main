@@ -134,7 +134,17 @@ FomoFoto has an intuitive, human-centric design. Users are able to see the image
 </div>
 </div>
 <div class="sect3">
-<h4 id="code-contributed-a-href-https-github-com-cs2103-ay1819s2-w14-2-main-commits-author-carrein-list-of-commits-a"><a class="link" href="#code-contributed-a-href-https-github-com-cs2103-ay1819s2-w14-2-main-commits-author-carrein-list-of-commits-a">Code Contributed: <a href="https://github.com/CS2103-AY1819S2-W14-2/main/commits?author=carrein">List of commits</a>.</a></h4>
+<h4 id="code-contributed"><a class="link" href="#code-contributed">Code Contributed:</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/CS2103-AY1819S2-W14-2/main/commits?author=carrein">List of commits</a></p>
+</li>
+<li>
+<p><a href="https://nus-cs2103-ay1819s2.github.io/cs2103-dashboard/#search=carrein">Project Code Dashboard</a></p>
+</li>
+</ul>
+</div>
 <hr>
 </div>
 </div>
@@ -168,7 +178,7 @@ FomoFoto has an intuitive, human-centric design. Users are able to see the image
 <div class="ulist">
 <ul>
 <li>
-<p>Addendum tweaks to existing contents of the User Guide: <a href="https://github.com">#236</a>.</p>
+<p>Addendum tweaks to existing contents of the User Guide: <a href="https://github.com">#236</a></p>
 </li>
 </ul>
 </div>
@@ -264,12 +274,6 @@ FomoFoto has an intuitive, human-centric design. Users are able to see the image
 </li>
 <li>
 <p>Double-click the JAR to start the application. The Graphical User Interface should appear in a few seconds.</p>
-<div class="imageblock">
-<div class="content">
-<img src="../images/ui.png" alt="ui" width="800">
-</div>
-<div class="title">Figure 1. Home Page of FomoFoto</div>
-</div>
 </li>
 <li>
 <p>You have just successfully setup FomoFoto on your device. To see the command available in FomoFoto, refer to <a href="#Features">[Features]</a> for details of each command. A step-by-step walkthrough of FomoFoto is available at the next section: <a href="#A Walk Through">[A Walk Through]</a>.</p>
@@ -285,7 +289,7 @@ FomoFoto has an intuitive, human-centric design. Users are able to see the image
 <div class="sect2">
 <h3 id="import-an-image-code-import-code"><a class="link" href="#import-an-image-code-import-code">Import an Image : <code>import</code></a></h3>
 <div class="paragraph">
-<p>Imports images to FomoFoto&#8217;s Album from a specified filepath or a directory.<br>
+<p>Imports images to FomoFoto&#8217;s Album from a specified filepath or a folder.<br>
 Format: <code>import FILEPATH</code></p>
 </div>
 <div class="paragraph">
@@ -302,7 +306,7 @@ Format: <code>import FILEPATH</code></p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Example of directory import:</p>
+<p>Example of folder import:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -315,7 +319,7 @@ Format: <code>import FILEPATH</code></p>
 </ul>
 </div>
 <div class="paragraph">
-<p>For directory import, invalid files are skipped and only valid images will be imported.</p>
+<p>For folder import, invalid files are skipped and only valid images will be imported.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -457,7 +461,7 @@ image such as metadata information like <strong>Date and Time</strong> and <stro
 <p>Stores a reference to all imported images as List.</p>
 </li>
 <li>
-<p>Contains various helper method to access <code>assets folder</code>, the storage for the raw image files.</p>
+<p>Contains various helper method to access <code>assets directory</code>, the storage for the raw image files.</p>
 </li>
 <li>
 <p>Fires property changes to listeners attached to the <code>Notifier</code> to redraw UI elements.</p>
@@ -495,7 +499,7 @@ image such as metadata information like <strong>Date and Time</strong> and <stro
 <div class="content">
 <img src="../images/UiClassDiagram.png" alt="UiClassDiagram" width="800">
 </div>
-<div class="title">Figure 2. Structure of the UI Component</div>
+<div class="title">Figure 1. Structure of the UI Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="{repoURL}/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
@@ -542,7 +546,7 @@ components:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Displays all images currently opened in the <code>assets</code> folder and available for editing.</p>
+<p>Displays all images currently opened in the <code>assets</code> directory and available for editing.</p>
 </li>
 </ul>
 </div>
@@ -599,7 +603,7 @@ image such as metadata information like <strong>Date and Time</strong> and <stro
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="{repoURL}/src/main/java/seedu/address/ui/MainWindow.java"><code>InitPanel</code></a> is specified in <a href="{repoURL}/src/main/resources/view/InitPanel.fxml"><code>InitPanel.fxml</code></a>
+The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> directory. For example, the layout of the <a href="{repoURL}/src/main/java/seedu/address/ui/MainWindow.java"><code>InitPanel</code></a> is specified in <a href="{repoURL}/src/main/resources/view/InitPanel.fxml"><code>InitPanel.fxml</code></a>
 </td>
 </tr>
 </table>
@@ -698,7 +702,7 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 </table>
 </div>
 <div class="paragraph">
-<p>Images found in the given arguments will be copied to an <code>assets</code> folder created at runtime in FomoFoto&#8217;s home directory. Details of this folder can be found here. This is facilitated by the <code>Album</code> class and <code>ImportCommandParser</code> and contains the follow operation:</p>
+<p>Images found in the given arguments will be copied to an <code>assets</code> directory created at runtime in FomoFoto&#8217;s home directory. Details of this directory can be found here. This is facilitated by the <code>Album</code> class and <code>ImportCommandParser</code> and contains the follow operation:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -711,7 +715,7 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 </ul>
 </div>
 <div class="paragraph">
-<p>Additionally, the <code>import sample</code> command is supported by the <code>ResourceWalker</code> class. This class traverses through a sample folder of valid image files and populates FomoFoto.</p>
+<p>Additionally, the <code>import sample</code> command is supported by the <code>ResourceWalker</code> class. This class traverses through a sample directory of valid image files and populates FomoFoto.</p>
 </div>
 <div class="paragraph">
 <p>Example usage scenario:</p>
@@ -722,7 +726,7 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 <p>User launches application and enters <code>import C:\Users\Addison\Desktop\sample.png</code></p>
 </li>
 <li>
-<p><code>ImportCommandParser</code> takes in arguments and performs validation on given path. Image is copied to <code>assets</code> folder and added to Album if it is valid.</p>
+<p><code>ImportCommandParser</code> takes in arguments and performs validation on given path. Image is copied to <code>assets</code> directory and added to Album if it is valid.</p>
 </li>
 <li>
 <p><code>Album</code> display the imported image to UI by calling the <code>Notifier</code> class which calls on the display panel listening to the notifier.</p>
@@ -736,7 +740,7 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 <div class="content">
 <img src="../images/ImportSequenceDiagram.png" alt="ImportSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 3. Sequence Diagram for Import Command</div>
+<div class="title">Figure 2. Sequence Diagram for Import Command</div>
 </div>
 </div>
 <div class="sect3">
@@ -751,7 +755,7 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 <p>Pros: Easy to implement.</p>
 </li>
 <li>
-<p>Cons: Importing multiple images from same folder needs repeated commands.</p>
+<p>Cons: Importing multiple images from same directory needs repeated commands.</p>
 </li>
 </ul>
 </div>
@@ -780,13 +784,13 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 <div class="sectionbody">
 <hr>
 <div class="paragraph">
-<p>The <code>assets</code> and <code>temp</code> folder from the storage component of FomoFoto. Both folder are created during runtime of the application.</p>
+<p>The <code>assets</code> and <code>temp</code> directory from the storage component of FomoFoto. Both directory are created during runtime of the application.</p>
 </div>
 <div class="paragraph">
-<p>The <code>assets</code> folder is created in the same directory where FomoFoto is first launched and persist between sessions. The <code>assets</code> folder is marked as <code>FomoFoto.assets</code>.</p>
+<p>The <code>assets</code> directory is created in the same directory where FomoFoto is first launched and persist between sessions. The <code>assets</code> directory is marked as <code>FomoFoto.assets</code>.</p>
 </div>
 <div class="paragraph">
-<p>The <code>temp</code> folder is created per FomoFoto session. The target folder for the <code>Temporary File</code> directory is in both Windows and OS X. The <code>temp</code> folder is removed on program exit.</p>
+<p>The <code>temp</code> directory is created per FomoFoto session. The target directory for the <code>Temporary File</code> directory is in both Windows and OS X. The <code>temp</code> directory is removed on program exit.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -800,5 +804,27 @@ If FomoFoto is not given the permissions to write <code>assets</code> and <code>
 </tr>
 </table>
 </div>
+<div class="sect3">
+<h4 id="additional-work-contributed"><a class="link" href="#additional-work-contributed">Additional Work Contributed:</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Appendix A</p>
+</li>
+<li>
+<p>Appendix C</p>
+</li>
+<li>
+<p>Appendix D</p>
+</li>
+<li>
+<p>Appendix E</p>
+</li>
+<li>
+<p>Appendix F</p>
+</li>
+</ul>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 06:44:21 UTC</div></div></div></body></html>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 07:05:49 UTC</div></div></div></body></html>

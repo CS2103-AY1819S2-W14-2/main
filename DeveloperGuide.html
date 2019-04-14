@@ -68,23 +68,26 @@
 <li><a href="#managing-dependencies">6.6. Managing Dependencies</a></li>
 </ul>
 </li>
-<li><a href="#GetStartedProgramming">Appendix A: Suggested Programming Tasks to Get Started</a>
+<li><a href="#GetStartedProgramming">Appendix A: Product Scope</a></li>
+<li><a href="#user-stories">Appendix B: User Stories</a></li>
+<li><a href="#use-cases">Appendix C: Use Cases</a>
 <ul class="sectlevel2">
-<li><a href="#GetStartedProgramming-EachComponent">A.1. Improving each component</a></li>
-<li><a href="#GetStartedProgramming-RemarkCommand">A.2. Creating a new command: <code>remark</code></a></li>
+<li><a href="#use-case-view-metadata">C.1. Use case: View Metadata</a></li>
+<li><a href="#use-case-edit-image">C.2. Use case: Edit Image</a></li>
+<li><a href="#use-case-export-image">C.3. Use case: Export Image</a></li>
 </ul>
 </li>
-<li><a href="#product-scope">Appendix B: Product Scope</a></li>
-<li><a href="#user-stories">Appendix C: User Stories</a></li>
-<li><a href="#use-cases">Appendix D: Use Cases</a></li>
-<li><a href="#non-functional-requirements">Appendix E: Non Functional Requirements</a></li>
-<li><a href="#glossary">Appendix F: Glossary</a></li>
-<li><a href="#product-survey">Appendix G: Product Survey</a></li>
-<li><a href="#instructions-for-manual-testing">Appendix H: Instructions for Manual Testing</a>
+<li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
+<li><a href="#glossary">Appendix E: Glossary</a></li>
+<li><a href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
-<li><a href="#launch-and-shutdown">H.1. Launch and Shutdown</a></li>
-<li><a href="#deleting-a-person">H.2. Deleting a person</a></li>
-<li><a href="#saving-data">H.3. Saving data</a></li>
+<li><a href="#launch-and-shutdown">F.1. Launch and Shutdown</a></li>
+<li><a href="#importing-an-image">F.2. Importing an image</a></li>
+<li><a href="#opening-an-image">F.3. Opening an image</a></li>
+<li><a href="#editing-an-image">F.4. Editing an image</a></li>
+<li><a href="#undoing-an-edit">F.5. Undoing an edit</a></li>
+<li><a href="#saving-an-image">F.6. Saving an image</a></li>
+<li><a href="#export-an-image">F.7. Export an image</a></li>
 </ul>
 </li>
 </ul>
@@ -185,7 +188,7 @@ This will generate all resources required by the application and tests.</p>
 </div>
 </li>
 <li>
-<p>Repeat this for the test folder as well (e.g. check <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/test/java/seedu/address/ui/HelpWindowTest.java"><code>HelpWindowTest.java</code></a> for code errors, and if so, resolve it the same way)</p>
+<p>Repeat this for the test directory as well (e.g. check <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/test/java/seedu/address/ui/HelpWindowTest.java"><code>HelpWindowTest.java</code></a> for code errors, and if so, resolve it the same way)</p>
 </li>
 </ol>
 </div>
@@ -303,7 +306,7 @@ Having both Travis and AppVeyor ensures your App works on both Unix-based platfo
 <p>Get some sense of the overall design by reading <a href="#Design-Architecture">Section 2.1, &#8220;Architecture&#8221;</a>.</p>
 </li>
 <li>
-<p>Take a look at <a href="#GetStartedProgramming">Appendix A, <em>Suggested Programming Tasks to Get Started</em></a>.</p>
+<p>Take a look at <a href="#GetStartedProgramming">Appendix A, <em>Product Scope</em></a>.</p>
 </li>
 </ol>
 </div>
@@ -332,7 +335,7 @@ Having both Travis and AppVeyor ensures your App works on both Unix-based platfo
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-The <code>.pptx</code> files used to create diagrams in this document can be found in the <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/docs/diagrams/">diagrams</a> folder. To update a diagram, modify the diagram in the pptx file, select the objects of the diagram, and choose <code>Save as picture</code>.
+The <code>.pptx</code> files used to create diagrams in this document can be found in the <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/docs/diagrams/">diagrams</a> directory. To update a diagram, modify the diagram in the pptx file, select the objects of the diagram, and choose <code>Save as picture</code>.
 </td>
 </tr>
 </table>
@@ -488,7 +491,7 @@ components:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Displays all images currently opened in the <code>assets</code> folder and available for editing.</p>
+<p>Displays all images currently opened in the <code>assets</code> directory and available for editing.</p>
 </li>
 </ul>
 </div>
@@ -545,7 +548,7 @@ image such as metadata information like <strong>Date and Time</strong> and <stro
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/ui/MainWindow.java"><code>InitPanel</code></a> is specified in <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/resources/view/InitPanel.fxml"><code>InitPanel.fxml</code></a>
+The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> directory. For example, the layout of the <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/ui/MainWindow.java"><code>InitPanel</code></a> is specified in <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/resources/view/InitPanel.fxml"><code>InitPanel.fxml</code></a>
 </td>
 </tr>
 </table>
@@ -621,7 +624,7 @@ The <code>UI</code> component uses JavaFx UI framework. The layout of these UI p
 <p>stores an <code>Image</code> instance in <code>tempImage</code> and <code>originalImage</code> when an image is opened.</p>
 </li>
 <li>
-<p>creates a copy of the opened image and the current edited image in <code>temp</code> folder.</p>
+<p>creates a copy of the opened image and the current edited image in <code>temp</code> directory.</p>
 </li>
 <li>
 <p><code>tempImage</code> is updated each time a command to edit the image is called. (e.g. <code>RotateCommand</code>, <code>ContrastCommand</code>)</p>
@@ -630,7 +633,7 @@ The <code>UI</code> component uses JavaFx UI framework. The layout of these UI p
 <p>stores a list of commands that the user input after an image is opened.</p>
 </li>
 <li>
-<p>contains methods to access <code>temp</code> folder.</p>
+<p>contains methods to access <code>temp</code> directory.</p>
 </li>
 </ul>
 </div>
@@ -646,7 +649,7 @@ The <code>UI</code> component uses JavaFx UI framework. The layout of these UI p
 <p>Stores a reference to all imported images as List.</p>
 </li>
 <li>
-<p>Contains various helper method to access <code>assets folder</code>, the storage for the raw image files.</p>
+<p>Contains various helper method to access <code>assets directory</code>, the storage for the raw image files.</p>
 </li>
 <li>
 <p>Fires property changes to listeners attached to the <code>Notifier</code> to redraw UI elements.</p>
@@ -682,18 +685,18 @@ The <code>UI</code> component uses JavaFx UI framework. The layout of these UI p
 <div class="title">Figure 10. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
-<p>The <code>assets</code> and <code>temp</code> folders form the storage component of FomoFoto.</p>
+<p>The <code>assets</code> and <code>temp</code> directories form the storage component of FomoFoto.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The <code>assets</code> folder stores images that the user imported</p>
+<p>The <code>assets</code> directory stores images that the user imported</p>
 </li>
 <li>
-<p>The <code>temp</code> folder stores the image that the program is currently editing on.</p>
+<p>The <code>temp</code> directory stores the image that the program is currently editing on.</p>
 </li>
 <li>
-<p>The <code>Album</code> class contains methods to save and retrieve images from the <code>assets</code> folder.</p>
+<p>The <code>Album</code> class contains methods to save and retrieve images from the <code>assets</code> directory.</p>
 </li>
 <li>
 <p>The <code>CurrentEdit</code> class contains methods to overwrite and retrieve the image that the program is currently editing on.</p>
@@ -701,13 +704,13 @@ The <code>UI</code> component uses JavaFx UI framework. The layout of these UI p
 </ul>
 </div>
 <div class="paragraph">
-<p>The <code>assets</code> and <code>temp</code> folder from the storage component of FomoFoto. Both folder are created during runtime of the application.</p>
+<p>The <code>assets</code> and <code>temp</code> directory from the storage component of FomoFoto. Both directory are created during runtime of the application.</p>
 </div>
 <div class="paragraph">
-<p>The <code>assets</code> folder is created in the same directory where FomoFoto is first launched and persist between sessions. The <code>assets</code> folder is marked as <code>FomoFoto.assets</code>.</p>
+<p>The <code>assets</code> directory is created in the same directory where FomoFoto is first launched and persist between sessions. The <code>assets</code> directory is marked as <code>FomoFoto.assets</code>.</p>
 </div>
 <div class="paragraph">
-<p>The <code>temp</code> folder is created per FomoFoto session. The target folder for the <code>Temporary File</code> directory is in both Windows and OS X. The <code>temp</code> folder is removed on program exit.</p>
+<p>The <code>temp</code> directory is created per FomoFoto session. The target directory for the <code>Temporary File</code> directory is in both Windows and OS X. The <code>temp</code> directory is removed on program exit.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -823,7 +826,7 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 </table>
 </div>
 <div class="paragraph">
-<p>Images found in the given arguments will be copied to an <code>assets</code> folder created at runtime in FomoFoto&#8217;s home directory. Details of this folder can be found here. This is facilitated by the <code>Album</code> class and <code>ImportCommandParser</code> and contains the follow operation:</p>
+<p>Images found in the given arguments will be copied to an <code>assets</code> directory created at runtime in FomoFoto&#8217;s home directory. Details of this directory can be found here. This is facilitated by the <code>Album</code> class and <code>ImportCommandParser</code> and contains the follow operation:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -836,7 +839,7 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 </ul>
 </div>
 <div class="paragraph">
-<p>Additionally, the <code>import sample</code> command is supported by the <code>ResourceWalker</code> class. This class traverses through a sample folder of valid image files and populates FomoFoto.</p>
+<p>Additionally, the <code>import sample</code> command is supported by the <code>ResourceWalker</code> class. This class traverses through a sample directory of valid image files and populates FomoFoto.</p>
 </div>
 <div class="paragraph">
 <p>Example usage scenario:</p>
@@ -847,7 +850,7 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 <p>User launches application and enters <code>import C:\Users\Addison\Desktop\sample.png</code></p>
 </li>
 <li>
-<p><code>ImportCommandParser</code> takes in arguments and performs validation on given path. Image is copied to <code>assets</code> folder and added to Album if it is valid.</p>
+<p><code>ImportCommandParser</code> takes in arguments and performs validation on given path. Image is copied to <code>assets</code> directory and added to Album if it is valid.</p>
 </li>
 <li>
 <p><code>Album</code> display the imported image to UI by calling the <code>Notifier</code> class which calls on the display panel listening to the notifier.</p>
@@ -876,7 +879,7 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 <p>Pros: Easy to implement.</p>
 </li>
 <li>
-<p>Cons: Importing multiple images from same folder needs repeated commands.</p>
+<p>Cons: Importing multiple images from same directory needs repeated commands.</p>
 </li>
 </ul>
 </div>
@@ -911,13 +914,13 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 <div class="ulist">
 <ul>
 <li>
-<p><code>Album#checkFileExist(String)</code> - Checks if file name specified by the <code>String</code> exists in assets folder.</p>
+<p><code>Album#checkFileExist(String)</code> - Checks if file name specified by the <code>String</code> exists in assets directory.</p>
 </li>
 <li>
-<p><code>Album#retrieveImage(String)</code> - Returns an <code>Image</code> specified by the <code>String</code> in assets folder.</p>
+<p><code>Album#retrieveImage(String)</code> - Returns an <code>Image</code> specified by the <code>String</code> in assets directory.</p>
 </li>
 <li>
-<p><code>CurrentEdit#openImage(Image)</code> - Creates two copies of the opened image in <code>temp</code> folder. The duplicated images are instantiated as <code>tempImage</code> and <code>originalImage</code>.</p>
+<p><code>CurrentEdit#openImage(Image)</code> - Creates two copies of the opened image in <code>temp</code> directory. The duplicated images are instantiated as <code>tempImage</code> and <code>originalImage</code>.</p>
 </li>
 <li>
 <p><code>CurrentEdit#updateExif()</code> - Updates the Exif data of the image.</p>
@@ -943,10 +946,10 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 <p>Step 1. The user executes <code>open sample.png</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 2. <code>Album#checkFileExist(String)</code> is called to check if the file specified by the <code>String</code> is in <code>assets</code> folder. If it exists, <code>Album#retrieveImage(String)</code> is called to create an <code>Image</code> object from the specified file. Otherwise, <code>CommandException</code> is thrown.</p>
+<p>Step 2. <code>Album#checkFileExist(String)</code> is called to check if the file specified by the <code>String</code> is in <code>assets</code> directory. If it exists, <code>Album#retrieveImage(String)</code> is called to create an <code>Image</code> object from the specified file. Otherwise, <code>CommandException</code> is thrown.</p>
 </div>
 <div class="paragraph">
-<p>Step 3. The <code>Image</code> is passed to <code>CurrentEdit#openImage(Image)</code> to create two copies of it, named <code>temp_img.png</code> and <code>ori_img.png</code>, in <code>temp</code> folder. These copies are then instantiated as <code>tempImage</code> and <code>originalImage</code>.</p>
+<p>Step 3. The <code>Image</code> is passed to <code>CurrentEdit#openImage(Image)</code> to create two copies of it, named <code>temp_img.png</code> and <code>ori_img.png</code>, in <code>temp</code> directory. These copies are then instantiated as <code>tempImage</code> and <code>originalImage</code>.</p>
 </div>
 <div class="paragraph">
 <p>Step 4. <code>CurrentEdit#updateExif()</code> is called to updates the information of the opened image in the GUI.</p>
@@ -971,7 +974,7 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 <p>Easy to implement.</p>
 </li>
 <li>
-<p>Saves space as <code>temp</code> folder only stores one original image and one temporary image.</p>
+<p>Saves space as <code>temp</code> directory only stores one original image and one temporary image.</p>
 </li>
 <li>
 <p>Clear to users that edits are done to the only opened image.</p>
@@ -997,7 +1000,7 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 <div class="ulist">
 <ul>
 <li>
-<p><code>open</code> has to distinguish whether user is opening an image from <code>assets</code> or <code>temp</code> folder.</p>
+<p><code>open</code> has to distinguish whether user is opening an image from <code>assets</code> or <code>temp</code> directory.</p>
 </li>
 <li>
 <p>Requires many duplicates with different temporary names.</p>
@@ -1021,7 +1024,7 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 <div class="sect2">
 <h3 id="list-files-feature"><a class="link" href="#list-files-feature">3.3. List Files Feature</a></h3>
 <div class="paragraph">
-<p>This command displays the names of all the files in <code>assets</code> folder.</p>
+<p>This command displays the names of all the files in <code>assets</code> directory.</p>
 </div>
 <div class="sect3">
 <h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.3.1. Current Implementation</a></h4>
@@ -1031,7 +1034,7 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 <div class="ulist">
 <ul>
 <li>
-<p><code>Album#getFileNames()</code> - Returns a list of all the files in <code>assets</code> folder.</p>
+<p><code>Album#getFileNames()</code> - Returns a list of all the files in <code>assets</code> directory.</p>
 </li>
 </ul>
 </div>
@@ -1051,7 +1054,7 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 <p>Step 1. The user executes <code>listfiles</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 2. <code>Album#getFileNames()</code> accesses <code>assets</code> folder and returns all the file names in a <code>String</code> array.</p>
+<p>Step 2. <code>Album#getFileNames()</code> accesses <code>assets</code> directory and returns all the file names in a <code>String</code> array.</p>
 </div>
 <div class="paragraph">
 <p>Step 3. The <code>String</code> array is displayed on the GUI.</p>
@@ -1060,7 +1063,7 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 <div class="sect3">
 <h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.3.2. Design Considerations</a></h4>
 <div class="paragraph">
-<p>This command was created to allow the user to know what files are stored in <code>assets</code> folder so that the <code>FILENAME</code> can be easily referenced for <code>open</code>.</p>
+<p>This command was created to allow the user to know what files are stored in <code>assets</code> directory so that the <code>FILENAME</code> can be easily referenced for <code>open</code>.</p>
 </div>
 </div>
 </div>
@@ -1077,10 +1080,10 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 <div class="ulist">
 <ul>
 <li>
-<p><code>CurrentEdit#getTempImage</code> - Retrieves the temporary image <code>tempImage</code> which stores the filepath of the temporary image in <code>temp</code> folder, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata.</p>
+<p><code>CurrentEdit#getTempImage</code> - Retrieves the temporary image <code>tempImage</code> which stores the filepath of the temporary image in <code>temp</code> directory, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata.</p>
 </li>
 <li>
-<p><code>CurrenEdit#updateTempImage</code> - Replaces the temporary image in <code>temp</code> folder with the newly edited image and update the <code>tempImage</code> instance in the class.</p>
+<p><code>CurrenEdit#updateTempImage</code> - Replaces the temporary image in <code>temp</code> directory with the newly edited image and update the <code>tempImage</code> instance in the class.</p>
 </li>
 <li>
 <p><code>CurrentEdit#addCommand</code> - Adds this command to the edit history [<code>List&lt;Command&gt;</code>] in <code>tempImage</code> for the undo/redo function</p>
@@ -1157,7 +1160,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="ulist">
 <ul>
 <li>
-<p>Intermediate images have to be stored and edited in a temp folder first due to our <code>undo/redo</code> implementation.</p>
+<p>Intermediate images have to be stored and edited in a temp directory first due to our <code>undo/redo</code> implementation.</p>
 </li>
 </ul>
 </div>
@@ -1213,10 +1216,10 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="ulist">
 <ul>
 <li>
-<p><code>CurrentEdit#getTempImage</code> - Retrieves the temporary image <code>tempImage</code> which stores the filepath of the temporary image in <code>temp</code> folder, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata.</p>
+<p><code>CurrentEdit#getTempImage</code> - Retrieves the temporary image <code>tempImage</code> which stores the filepath of the temporary image in <code>temp</code> directory, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata.</p>
 </li>
 <li>
-<p><code>CurrenEdit#updateTempImage</code> - Replaces the temporary image in <code>temp</code> folder with the newly edited image and update the <code>tempImage</code> instance in the class.</p>
+<p><code>CurrenEdit#updateTempImage</code> - Replaces the temporary image in <code>temp</code> directory with the newly edited image and update the <code>tempImage</code> instance in the class.</p>
 </li>
 <li>
 <p><code>CurrentEdit#addCommand</code> - Adds this command to the edit history [<code>List&lt;Command&gt;</code>] in <code>tempImage</code> for the undo/redo function.</p>
@@ -1302,7 +1305,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="ulist">
 <ul>
 <li>
-<p>Intermediate images have to be stored and edited in a temp folder first due to our <code>Undo/Redo</code> implementation.</p>
+<p>Intermediate images have to be stored and edited in a temp directory first due to our <code>Undo/Redo</code> implementation.</p>
 </li>
 </ul>
 </div>
@@ -1440,7 +1443,7 @@ If a command fails its execution, it will return the image before undo was calle
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the <code>Image#index</code> is 0, pointing to the initial photo, then there are no previous commands to restore. The <code>undo</code> command uses <code>CurrentEdit#canUndoTemp()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
+If the <code>Image#index</code> is 0, pointing to the initial image, then there are no previous commands to restore. The <code>undo</code> command uses <code>CurrentEdit#canUndoTemp()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
 </td>
 </tr>
 </table>
@@ -1546,7 +1549,7 @@ If the <code>index</code> is at index <code>commandHistory.size()</code>, pointi
 <div class="sect2">
 <h3 id="save-feature"><a class="link" href="#save-feature">3.7. Save Feature</a></h3>
 <div class="paragraph">
-<p>This command applies the edits to the current image and saves it into <code>assets</code> folder.</p>
+<p>This command applies the edits to the current image and saves it into <code>assets</code> directory.</p>
 </div>
 <div class="sect3">
 <h4 id="current-implementation-7"><a class="link" href="#current-implementation-7">3.7.1. Current Implementation</a></h4>
@@ -1565,7 +1568,7 @@ If the <code>index</code> is at index <code>commandHistory.size()</code>, pointi
 <p><code>CurrentEdit#getOriginalName()</code> - Returns the original name of opened image.</p>
 </li>
 <li>
-<p><code>CurrentEdit#overwriteOriginal(String)</code> - Replaces <code>ori_img.png</code> with <code>temp_img.png' in `temp</code> folder. Updates <code>originalImage</code> to <code>tempImage</code> and <code>originalImageName</code> to <code>String</code> in <code>CurrentEdit</code>.</p>
+<p><code>CurrentEdit#overwriteOriginal(String)</code> - Replaces <code>ori_img.png</code> with <code>temp_img.png' in `temp</code> directory. Updates <code>originalImage</code> to <code>tempImage</code> and <code>originalImageName</code> to <code>String</code> in <code>CurrentEdit</code>.</p>
 </li>
 <li>
 <p><code>CurrentEdit#deleteHistory()</code> - Clears the history in <code>CurrentEdit</code>.</p>
@@ -1574,16 +1577,16 @@ If the <code>index</code> is at index <code>commandHistory.size()</code>, pointi
 <p><code>CurrentEdit#updateExif()</code> - Updates the Exif data of the new image.</p>
 </li>
 <li>
-<p><code>Album#checkFileExist(String)</code> - Checks if the file name specified by the <code>String</code> exists in assets folder.</p>
+<p><code>Album#checkFileExist(String)</code> - Checks if the file name specified by the <code>String</code> exists in assets directory.</p>
 </li>
 <li>
-<p><code>Album#saveToAssets(Image, String)</code> - Saves the <code>Image</code> as <code>String</code> into <code>assets</code> folder.</p>
+<p><code>Album#saveToAssets(Image, String)</code> - Saves the <code>Image</code> as <code>String</code> into <code>assets</code> directory.</p>
 </li>
 <li>
 <p><code>Album#populateAlbum()</code> - Updates list of images in <code>Album</code> class.</p>
 </li>
 <li>
-<p><code>Album#refreshAlbum()</code> - Updates and displays the latest images in <code>assets</code> folder on the GUI.</p>
+<p><code>Album#refreshAlbum()</code> - Updates and displays the latest images in <code>assets</code> directory on the GUI.</p>
 </li>
 </ul>
 </div>
@@ -1612,10 +1615,10 @@ If the <code>index</code> is at index <code>commandHistory.size()</code>, pointi
 <p>Step 4. If the user did not input a <code>String</code> after <code>save</code> previously, <code>CurrentEdit#getOriginalName()</code> will retrieve the <code>originalImageName</code> from <code>CurrentEdit</code>. Otherwise, <code>Album#checkFileExist(String)</code> will be called to check if a file name is similar to <code>String</code>. If it is a duplicate, <code>CommandException</code> will be thrown.</p>
 </div>
 <div class="paragraph">
-<p>Step 5. <code>Album#saveToAssets(Image, String)</code> takes in the previously retrieved <code>Image</code> and <code>String</code> to create a new image file in <code>assets</code> folder.</p>
+<p>Step 5. <code>Album#saveToAssets(Image, String)</code> takes in the previously retrieved <code>Image</code> and <code>String</code> to create a new image file in <code>assets</code> directory.</p>
 </div>
 <div class="paragraph">
-<p>Step 6. <code>CurrentEdit#overwriteOriginal(String)</code> is called to update the files in <code>temp</code> folder and their respective instances in <code>CurrentEdit</code>.</p>
+<p>Step 6. <code>CurrentEdit#overwriteOriginal(String)</code> is called to update the files in <code>temp</code> directory and their respective instances in <code>CurrentEdit</code>.</p>
 </div>
 <div class="paragraph">
 <p>Step 7. <code>CurrentEdit#deleteHistory()</code> is called to delete the edit history in <code>CurrentEdit</code> so that the user can no longer perform <code>undo</code> on the saved image.</p>
@@ -1624,7 +1627,7 @@ If the <code>index</code> is at index <code>commandHistory.size()</code>, pointi
 <p>Step 8.<code>CurrentEdit#updateExif()</code> is called to update the Exif data of the new image.</p>
 </div>
 <div class="paragraph">
-<p>Step 9. <code>Album#populateAlbum()</code> is called to update the list of image in <code>Album</code> class and to ensure it reflects all the files in <code>assets</code> folder.</p>
+<p>Step 9. <code>Album#populateAlbum()</code> is called to update the list of image in <code>Album</code> class and to ensure it reflects all the files in <code>assets</code> directory.</p>
 </div>
 <div class="paragraph">
 <p>Step 10.<code>Album#refreshAlbum()</code> is called to update the Information Panel on the GUI.</p>
@@ -1663,7 +1666,7 @@ If the <code>index</code> is at index <code>commandHistory.size()</code>, pointi
 </ul>
 </div>
 <div class="paragraph">
-<p>Alternative 2 was chosen as the user is likely to use <code>save</code> frequently. Since the <code>assets</code> folder functions like an album, images can be re-imported if they are accidentally overwritten. The user is able to <code>save</code> easily and choose to resume editing immediately or at a later time.</p>
+<p>Alternative 2 was chosen as the user is likely to use <code>save</code> frequently. Since the <code>assets</code> directory functions like an album, images can be re-imported if they are accidentally overwritten. The user is able to <code>save</code> easily and choose to resume editing immediately or at a later time.</p>
 </div>
 </div>
 </div>
@@ -1738,10 +1741,10 @@ Each image can only have 1 watermark. If the user would like to edit the waterma
 <div class="ulist">
 <ul>
 <li>
-<p><code>CurrentEdit#getTempImage()</code> - Retrieves the temporary image <code>tempImage</code> which stores the filepath of the temporary image in <code>temp</code> folder, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata.</p>
+<p><code>CurrentEdit#getTempImage()</code> - Retrieves the temporary image <code>tempImage</code> which stores the filepath of the temporary image in <code>temp</code> directory, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata.</p>
 </li>
 <li>
-<p><code>CurrenEdit#updateTempImage(BufferedImage)</code> - Replaces the temporary image in <code>temp</code> folder with the newly edited image and update the <code>tempImage</code> instance in the class.</p>
+<p><code>CurrenEdit#updateTempImage(BufferedImage)</code> - Replaces the temporary image in <code>temp</code> directory with the newly edited image and update the <code>tempImage</code> instance in the class.</p>
 </li>
 <li>
 <p><code>CurrentEdit#addCommand(Command)</code> - Adds this command to the edit history [<code>List&lt;Command&gt;</code>] in <code>tempImage</code> for the undo/redo function.</p>
@@ -1893,7 +1896,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="ulist">
 <ul>
 <li>
-<p>Intermediate images have to be stored and edited in a temp folder first due to our <code>undo/redo</code> implementation.</p>
+<p>Intermediate images have to be stored and edited in a temp directory first due to our <code>undo/redo</code> implementation.</p>
 </li>
 </ul>
 </div>
@@ -1984,7 +1987,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <p>Follow the instructions in <a href="UsingGradle.html#rendering-asciidoc-files">UsingGradle.adoc</a> to convert the AsciiDoc files in the <code>docs/</code> directory to HTML format.</p>
 </li>
 <li>
-<p>Go to your generated HTML files in the <code>build/docs</code> folder, right click on them and select <code>Open with</code> &#8594; <code>Google Chrome</code>.</p>
+<p>Go to your generated HTML files in the <code>build/docs</code> directory, right click on them and select <code>Open with</code> &#8594; <code>Google Chrome</code>.</p>
 </li>
 <li>
 <p>Within Chrome, click on the <code>Print</code> option in Chrome&#8217;s menu.</p>
@@ -2172,7 +2175,7 @@ The most reliable way to run tests is the 3rd one. The first two methods might f
 <div class="ulist">
 <ul>
 <li>
-<p>To run all tests, right-click on the <code>src/test/java</code> folder and choose <code>Run 'All Tests'</code></p>
+<p>To run all tests, right-click on the <code>src/test/java</code> directory and choose <code>Run 'All Tests'</code></p>
 </li>
 <li>
 <p>To run a subset of tests, you can right-click on a test package, test class, or a test and choose <code>Run 'ABC'</code></p>
@@ -2339,723 +2342,7 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="GetStartedProgramming"><a class="link" href="#GetStartedProgramming">Appendix A: Suggested Programming Tasks to Get Started</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Suggested path for new programmers:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>First, add small local-impact (i.e. the impact of the change does not go beyond the component) enhancements to one component at a time. Some suggestions are given in <a href="#GetStartedProgramming-EachComponent">Section A.1, &#8220;Improving each component&#8221;</a>.</p>
-</li>
-<li>
-<p>Next, add a feature that touches multiple components to learn how to implement an end-to-end feature across all components. <a href="#GetStartedProgramming-RemarkCommand">Section A.2, &#8220;Creating a new command: <code>remark</code>&#8221;</a> explains how to go about adding such a feature.</p>
-</li>
-</ol>
-</div>
-<div class="sect2">
-<h3 id="GetStartedProgramming-EachComponent"><a class="link" href="#GetStartedProgramming-EachComponent">A.1. Improving each component</a></h3>
-<div class="paragraph">
-<p>Each individual exercise in this section is component-based (i.e. you would not need to modify the other components to get it to work).</p>
-</div>
-<h4 id="code-logic-code-component" class="discrete"><code>Logic</code> component</h4>
-<div class="paragraph">
-<p><strong>Scenario:</strong> You are in charge of <code>logic</code>. During dog-fooding, your team realize that it is troublesome for the user to type the whole command in order to execute a command. Your team devise some strategies to help cut down the amount of typing necessary, and one of the suggestions was to implement aliases for the command words. Your job is to implement such aliases.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Do take a look at <a href="#Design-Logic">Section 2.3, &#8220;Logic component&#8221;</a> before attempting to modify the <code>Logic</code> component.
-</td>
-</tr>
-</table>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Add a shorthand equivalent alias for each of the individual commands. For example, besides typing <code>clear</code>, the user can also type <code>c</code> to remove all persons in the list.</p>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Hints</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Just like we store each individual command word constant <code>COMMAND_WORD</code> inside <code>*Command.java</code> (e.g.  <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/logic/commands/FindCommand.java"><code>FindCommand#COMMAND_WORD</code></a>, <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/logic/commands/DeleteCommand.java"><code>DeleteCommand#COMMAND_WORD</code></a>), you need a new constant for aliases as well (e.g. <code>FindCommand#COMMAND_ALIAS</code>).</p>
-</li>
-<li>
-<p><a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/logic/parser/AddressBookParser.java"><code>AddressBookParser</code></a> is responsible for analyzing command words.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Solution</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Modify the switch statement in <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/logic/parser/AddressBookParser.java"><code>AddressBookParser#parseCommand(String)</code></a> such that both the proper command word and alias can be used to execute the same intended command.</p>
-</li>
-<li>
-<p>Add new tests for each of the aliases that you have added.</p>
-</li>
-<li>
-<p>Update the user guide to document the new aliases.</p>
-</li>
-<li>
-<p>See this <a href="https://github.com/se-edu/addressbook-level4/pull/785">PR</a> for the full solution.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</li>
-</ol>
-</div>
-<h4 id="code-model-code-component" class="discrete"><code>Model</code> component</h4>
-<div class="paragraph">
-<p><strong>Scenario:</strong> You are in charge of <code>model</code>. One day, the <code>logic</code>-in-charge approaches you for help. He wants to implement a command such that the user is able to remove a particular tag from everyone in the address book, but the model API does not support such a functionality at the moment. Your job is to implement an API method, so that your teammate can use your API to implement his command.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Do take a look at <a href="#Design-Model">Section 2.4, &#8220;Model component&#8221;</a> before attempting to modify the <code>Model</code> component.
-</td>
-</tr>
-</table>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Add a <code>removeTag(Tag)</code> method. The specified tag will be removed from everyone in the address book.</p>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Hints</p>
-<div class="ulist">
-<ul>
-<li>
-<p>The <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/model/Model.java"><code>Model</code></a> and the <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a> API need to be updated.</p>
-</li>
-<li>
-<p>Think about how you can use SLAP to design the method. Where should we place the main logic of deleting tags?</p>
-</li>
-<li>
-<p>Find out which of the existing API methods in  <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a> and <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a> classes can be used to implement the tag removal logic. <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a> allows you to update a person, and <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a> allows you to update the tags.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Solution</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Implement a <code>removeTag(Tag)</code> method in <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a>. Loop through each person, and remove the <code>tag</code> from each person.</p>
-</li>
-<li>
-<p>Add a new API method <code>deleteTag(Tag)</code> in <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/model/ModelManager.java"><code>ModelManager</code></a>. Your <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/model/ModelManager.java"><code>ModelManager</code></a> should call <code>AddressBook#removeTag(Tag)</code>.</p>
-</li>
-<li>
-<p>Add new tests for each of the new public methods that you have added.</p>
-</li>
-<li>
-<p>See this <a href="https://github.com/se-edu/addressbook-level4/pull/790">PR</a> for the full solution.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</li>
-</ol>
-</div>
-<h4 id="code-ui-code-component" class="discrete"><code>Ui</code> component</h4>
-<div class="paragraph">
-<p><strong>Scenario:</strong> You are in charge of <code>ui</code>. During a beta testing session, your team is observing how the users use your address book application. You realize that one of the users occasionally tries to delete non-existent tags from a contact, because the tags all look the same visually, and the user got confused. Another user made a typing mistake in his command, but did not realize he had done so because the error message wasn&#8217;t prominent enough. A third user keeps scrolling down the list, because he keeps forgetting the index of the last person in the list. Your job is to implement improvements to the UI to solve all these problems.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</a> before attempting to modify the <code>UI</code> component.
-</td>
-</tr>
-</table>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Use different colors for different tags inside person cards. For example, <code>friends</code> tags can be all in brown, and <code>colleagues</code> tags can be all in yellow.</p>
-<div class="paragraph">
-<p><strong>Before</strong></p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/getting-started-ui-tag-before.png" alt="getting started ui tag before" width="300">
-</div>
-</div>
-<div class="paragraph">
-<p><strong>After</strong></p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/getting-started-ui-tag-after.png" alt="getting started ui tag after" width="300">
-</div>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Hints</p>
-<div class="ulist">
-<ul>
-<li>
-<p>The tag labels are created inside <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/ui/PersonCard.java">the <code>PersonCard</code> constructor</a> (<code>new Label(tag.tagName)</code>). <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Label.html">JavaFX&#8217;s <code>Label</code> class</a> allows you to modify the style of each Label, such as changing its color.</p>
-</li>
-<li>
-<p>Use the .css attribute <code>-fx-background-color</code> to add a color.</p>
-</li>
-<li>
-<p>You may wish to modify <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/resources/view/DarkTheme.css"><code>DarkTheme.css</code></a> to include some pre-defined colors using css, especially if you have experience with web-based css.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Solution</p>
-<div class="ulist">
-<ul>
-<li>
-<p>You can modify the existing test methods for <code>PersonCard</code> 's to include testing the tag&#8217;s color as well.</p>
-</li>
-<li>
-<p>See this <a href="https://github.com/se-edu/addressbook-level4/pull/798">PR</a> for the full solution.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>The PR uses the hash code of the tag names to generate a color. This is deliberately designed to ensure consistent colors each time the application runs. You may wish to expand on this design to include additional features, such as allowing users to set their own tag colors, and directly saving the colors to storage, so that tags retain their colors even if the hash code algorithm changes.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</li>
-<li>
-<p>Modify <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/commons/events/ui/NewResultAvailableEvent.java"><code>NewResultAvailableEvent</code></a> such that <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/ui/ResultDisplay.java"><code>ResultDisplay</code></a> can show a different style on error (currently it shows the same regardless of errors).</p>
-<div class="paragraph">
-<p><strong>Before</strong></p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/getting-started-ui-result-before.png" alt="getting started ui result before" width="200">
-</div>
-</div>
-<div class="paragraph">
-<p><strong>After</strong></p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/getting-started-ui-result-after.png" alt="getting started ui result after" width="200">
-</div>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Hints</p>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/commons/events/ui/NewResultAvailableEvent.java"><code>NewResultAvailableEvent</code></a> is raised by <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/ui/CommandBox.java"><code>CommandBox</code></a> which also knows whether the result is a success or failure, and is caught by <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/ui/ResultDisplay.java"><code>ResultDisplay</code></a> which is where we want to change the style to.</p>
-</li>
-<li>
-<p>Refer to <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/ui/CommandBox.java"><code>CommandBox</code></a> for an example on how to display an error.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Solution</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Modify <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/commons/events/ui/NewResultAvailableEvent.java"><code>NewResultAvailableEvent</code></a> 's constructor so that users of the event can indicate whether an error has occurred.</p>
-</li>
-<li>
-<p>Modify <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/ui/ResultDisplay.java"><code>ResultDisplay#handleNewResultAvailableEvent(NewResultAvailableEvent)</code></a> to react to this event appropriately.</p>
-</li>
-<li>
-<p>You can write two different kinds of tests to ensure that the functionality works:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>The unit tests for <code>ResultDisplay</code> can be modified to include verification of the color.</p>
-</li>
-<li>
-<p>The system tests <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/test/java/systemtests/AddressBookSystemTest.java"><code>AddressBookSystemTest#assertCommandBoxShowsDefaultStyle() and AddressBookSystemTest#assertCommandBoxShowsErrorStyle()</code></a> to include verification for <code>ResultDisplay</code> as well.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>See this <a href="https://github.com/se-edu/addressbook-level4/pull/799">PR</a> for the full solution.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Do read the commits one at a time if you feel overwhelmed.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</li>
-<li>
-<p>Modify the <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter</code></a> to show the total number of people in the address book.</p>
-<div class="paragraph">
-<p><strong>Before</strong></p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/getting-started-ui-status-before.png" alt="getting started ui status before" width="500">
-</div>
-</div>
-<div class="paragraph">
-<p><strong>After</strong></p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/getting-started-ui-status-after.png" alt="getting started ui status after" width="500">
-</div>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Hints</p>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/resources/view/StatusBarFooter.fxml"><code>StatusBarFooter.fxml</code></a> will need a new <code>StatusBar</code>. Be sure to set the <code>GridPane.columnIndex</code> properly for each <code>StatusBar</code> to avoid misalignment!</p>
-</li>
-<li>
-<p><a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter</code></a> needs to initialize the status bar on application start, and to update it accordingly whenever the address book is updated.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Solution</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Modify the constructor of <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter</code></a> to take in the number of persons when the application just started.</p>
-</li>
-<li>
-<p>Use <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter#handleAddressBookChangedEvent(AddressBookChangedEvent)</code></a> to update the number of persons whenever there are new changes to the addressbook.</p>
-</li>
-<li>
-<p>For tests, modify <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/test/java/guitests/guihandles/StatusBarFooterHandle.java"><code>StatusBarFooterHandle</code></a> by adding a state-saving functionality for the total number of people status, just like what we did for save location and sync status.</p>
-</li>
-<li>
-<p>For system tests, modify <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/test/java/systemtests/AddressBookSystemTest.java"><code>AddressBookSystemTest</code></a> to also verify the new total number of persons status bar.</p>
-</li>
-<li>
-<p>See this <a href="https://github.com/se-edu/addressbook-level4/pull/803">PR</a> for the full solution.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</li>
-</ol>
-</div>
-<h4 id="code-storage-code-component" class="discrete"><code>Storage</code> component</h4>
-<div class="paragraph">
-<p><strong>Scenario:</strong> You are in charge of <code>storage</code>. For your next project milestone, your team plans to implement a new feature of saving the address book to the cloud. However, the current implementation of the application constantly saves the address book after the execution of each command, which is not ideal if the user is working on limited internet connection. Your team decided that the application should instead save the changes to a temporary local backup file first, and only upload to the cloud after the user closes the application. Your job is to implement a backup API for the address book storage.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Do take a look at <a href="#Design-Storage">Section 2.5, &#8220;Storage component&#8221;</a> before attempting to modify the <code>Storage</code> component.
-</td>
-</tr>
-</table>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Add a new method <code>backupAddressBook(ReadOnlyAddressBook)</code>, so that the address book can be saved in a fixed temporary location.</p>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Hint</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Add the API method in <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/storage/AddressBookStorage.java"><code>AddressBookStorage</code></a> interface.</p>
-</li>
-<li>
-<p>Implement the logic in <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/storage/StorageManager.java"><code>StorageManager</code></a> and <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/storage/JsonAddressBookStorage.java"><code>JsonAddressBookStorage</code></a> class.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Solution</p>
-<div class="ulist">
-<ul>
-<li>
-<p>See this <a href="https://github.com/se-edu/addressbook-level4/pull/594">PR</a> for the full solution.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="GetStartedProgramming-RemarkCommand"><a class="link" href="#GetStartedProgramming-RemarkCommand">A.2. Creating a new command: <code>remark</code></a></h3>
-<div class="paragraph">
-<p>By creating this command, you will get a chance to learn how to implement a feature end-to-end, touching all major components of the app.</p>
-</div>
-<div class="paragraph">
-<p><strong>Scenario:</strong> You are a software maintainer for <code>addressbook</code>, as the former developer team has moved on to new projects. The current users of your application have a list of new feature requests that they hope the software will eventually have. The most popular request is to allow adding additional comments/notes about a particular contact, by providing a flexible <code>remark</code> field for each contact, rather than relying on tags alone. After designing the specification for the <code>remark</code> command, you are convinced that this feature is worth implementing. Your job is to implement the <code>remark</code> command.</p>
-</div>
-<div class="sect3">
-<h4 id="description"><a class="link" href="#description">A.2.1. Description</a></h4>
-<div class="paragraph">
-<p>Edits the remark for a person specified in the <code>INDEX</code>.<br>
-Format: <code>remark INDEX r/[REMARK]</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>remark 1 r/Likes to drink coffee.</code><br>
-Edits the remark for the first person to <code>Likes to drink coffee.</code></p>
-</li>
-<li>
-<p><code>remark 1 r/</code><br>
-Removes the remark for the first person.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="step-by-step-instructions"><a class="link" href="#step-by-step-instructions">A.2.2. Step-by-step Instructions</a></h4>
-<div class="sect4">
-<h5 id="step-1-logic-teach-the-app-to-accept-remark-which-does-nothing"><a class="link" href="#step-1-logic-teach-the-app-to-accept-remark-which-does-nothing">[Step 1] Logic: Teach the app to accept 'remark' which does nothing</a></h5>
-<div class="paragraph">
-<p>Let&#8217;s start by teaching the application how to parse a <code>remark</code> command. We will add the logic of <code>remark</code> later.</p>
-</div>
-<div class="paragraph">
-<p><strong>Main:</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Add a <code>RemarkCommand</code> that extends <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/logic/commands/Command.java"><code>Command</code></a>. Upon execution, it should just throw an <code>Exception</code>.</p>
-</li>
-<li>
-<p>Modify <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/logic/parser/AddressBookParser.java"><code>AddressBookParser</code></a> to accept a <code>RemarkCommand</code>.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Tests:</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Add <code>RemarkCommandTest</code> that tests that <code>execute()</code> throws an Exception.</p>
-</li>
-<li>
-<p>Add new test method to <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/test/java/seedu/address/logic/parser/AddressBookParserTest.java"><code>AddressBookParserTest</code></a>, which tests that typing "remark" returns an instance of <code>RemarkCommand</code>.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect4">
-<h5 id="step-2-logic-teach-the-app-to-accept-remark-arguments"><a class="link" href="#step-2-logic-teach-the-app-to-accept-remark-arguments">[Step 2] Logic: Teach the app to accept 'remark' arguments</a></h5>
-<div class="paragraph">
-<p>Let&#8217;s teach the application to parse arguments that our <code>remark</code> command will accept. E.g. <code>1 r/Likes to drink coffee.</code></p>
-</div>
-<div class="paragraph">
-<p><strong>Main:</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Modify <code>RemarkCommand</code> to take in an <code>Index</code> and <code>String</code> and print those two parameters as the error message.</p>
-</li>
-<li>
-<p>Add <code>RemarkCommandParser</code> that knows how to parse two arguments, one index and one with prefix 'r/'.</p>
-</li>
-<li>
-<p>Modify <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/logic/parser/AddressBookParser.java"><code>AddressBookParser</code></a> to use the newly implemented <code>RemarkCommandParser</code>.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Tests:</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Modify <code>RemarkCommandTest</code> to test the <code>RemarkCommand#equals()</code> method.</p>
-</li>
-<li>
-<p>Add <code>RemarkCommandParserTest</code> that tests different boundary values
-for <code>RemarkCommandParser</code>.</p>
-</li>
-<li>
-<p>Modify <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/test/java/seedu/address/logic/parser/AddressBookParserTest.java"><code>AddressBookParserTest</code></a> to test that the correct command is generated according to the user input.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect4">
-<h5 id="step-3-ui-add-a-placeholder-for-remark-in-code-personcard-code"><a class="link" href="#step-3-ui-add-a-placeholder-for-remark-in-code-personcard-code">[Step 3] Ui: Add a placeholder for remark in <code>PersonCard</code></a></h5>
-<div class="paragraph">
-<p>Let&#8217;s add a placeholder on all our <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a> s to display a remark for each person later.</p>
-</div>
-<div class="paragraph">
-<p><strong>Main:</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Add a <code>Label</code> with any random text inside <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/resources/view/PersonListCard.fxml"><code>PersonListCard.fxml</code></a>.</p>
-</li>
-<li>
-<p>Add FXML annotation in <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a> to tie the variable to the actual label.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Tests:</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Modify <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/test/java/guitests/guihandles/PersonCardHandle.java"><code>PersonCardHandle</code></a> so that future tests can read the contents of the remark label.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect4">
-<h5 id="step-4-model-add-code-remark-code-class"><a class="link" href="#step-4-model-add-code-remark-code-class">[Step 4] Model: Add <code>Remark</code> class</a></h5>
-<div class="paragraph">
-<p>We have to properly encapsulate the remark in our <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a> class. Instead of just using a <code>String</code>, let&#8217;s follow the conventional class structure that the codebase already uses by adding a <code>Remark</code> class.</p>
-</div>
-<div class="paragraph">
-<p><strong>Main:</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Add <code>Remark</code> to model component (you can copy from <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/model/person/Address.java"><code>Address</code></a>, remove the regex and change the names accordingly).</p>
-</li>
-<li>
-<p>Modify <code>RemarkCommand</code> to now take in a <code>Remark</code> instead of a <code>String</code>.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Tests:</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Add test for <code>Remark</code>, to test the <code>Remark#equals()</code> method.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect4">
-<h5 id="step-5-model-modify-code-person-code-to-support-a-code-remark-code-field"><a class="link" href="#step-5-model-modify-code-person-code-to-support-a-code-remark-code-field">[Step 5] Model: Modify <code>Person</code> to support a <code>Remark</code> field</a></h5>
-<div class="paragraph">
-<p>Now we have the <code>Remark</code> class, we need to actually use it inside <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a>.</p>
-</div>
-<div class="paragraph">
-<p><strong>Main:</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Add <code>getRemark()</code> in <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a>.</p>
-</li>
-<li>
-<p>You may assume that the user will not be able to use the <code>add</code> and <code>edit</code> commands to modify the remarks field (i.e. the person will be created without a remark).</p>
-</li>
-<li>
-<p>Modify <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/model/util/SampleDataUtil.java/"><code>SampleDataUtil</code></a> to add remarks for the sample data (delete your <code>data/addressbook.json</code> so that the application will load the sample data when you launch it.)</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect4">
-<h5 id="step-6-storage-add-code-remark-code-field-to-code-jsonadaptedperson-code-class"><a class="link" href="#step-6-storage-add-code-remark-code-field-to-code-jsonadaptedperson-code-class">[Step 6] Storage: Add <code>Remark</code> field to <code>JsonAdaptedPerson</code> class</a></h5>
-<div class="paragraph">
-<p>We now have <code>Remark</code> s for <code>Person</code> s, but they will be gone when we exit the application. Let&#8217;s modify <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/storage/JsonAdaptedPerson.java"><code>JsonAdaptedPerson</code></a> to include a <code>Remark</code> field so that it will be saved.</p>
-</div>
-<div class="paragraph">
-<p><strong>Main:</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Add a new JSON field for <code>Remark</code>.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Tests:</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Fix <code>invalidAndValidPersonAddressBook.json</code>, <code>typicalPersonsAddressBook.json</code>, <code>validAddressBook.json</code> etc., such that the JSON tests will not fail due to a missing <code>remark</code> field.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect4">
-<h5 id="step-6b-test-add-withremark-for-code-personbuilder-code"><a class="link" href="#step-6b-test-add-withremark-for-code-personbuilder-code">[Step 6b] Test: Add withRemark() for <code>PersonBuilder</code></a></h5>
-<div class="paragraph">
-<p>Since <code>Person</code> can now have a <code>Remark</code>, we should add a helper method to <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/test/java/seedu/address/testutil/PersonBuilder.java"><code>PersonBuilder</code></a>, so that users are able to create remarks when building a <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a>.</p>
-</div>
-<div class="paragraph">
-<p><strong>Tests:</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Add a new method <code>withRemark()</code> for <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/test/java/seedu/address/testutil/PersonBuilder.java"><code>PersonBuilder</code></a>. This method will create a new <code>Remark</code> for the person that it is currently building.</p>
-</li>
-<li>
-<p>Try and use the method on any sample <code>Person</code> in <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/test/java/seedu/address/testutil/TypicalPersons.java"><code>TypicalPersons</code></a>.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect4">
-<h5 id="step-7-ui-connect-code-remark-code-field-to-code-personcard-code"><a class="link" href="#step-7-ui-connect-code-remark-code-field-to-code-personcard-code">[Step 7] Ui: Connect <code>Remark</code> field to <code>PersonCard</code></a></h5>
-<div class="paragraph">
-<p>Our remark label in <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a> is still a placeholder. Let&#8217;s bring it to life by binding it with the actual <code>remark</code> field.</p>
-</div>
-<div class="paragraph">
-<p><strong>Main:</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Modify <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a>'s constructor to bind the <code>Remark</code> field to the <code>Person</code> 's remark.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Tests:</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Modify <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/test/java/seedu/address/ui/testutil/GuiTestAssert.java"><code>GuiTestAssert#assertCardDisplaysPerson(&#8230;&#8203;)</code></a> so that it will compare the now-functioning remark label.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect4">
-<h5 id="step-8-logic-implement-code-remarkcommand-execute-code-logic"><a class="link" href="#step-8-logic-implement-code-remarkcommand-execute-code-logic">[Step 8] Logic: Implement <code>RemarkCommand#execute()</code> logic</a></h5>
-<div class="paragraph">
-<p>We now have everything set up&#8230;&#8203; but we still can&#8217;t modify the remarks. Let&#8217;s finish it up by adding in actual logic for our <code>remark</code> command.</p>
-</div>
-<div class="paragraph">
-<p><strong>Main:</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Replace the logic in <code>RemarkCommand#execute()</code> (that currently just throws an <code>Exception</code>), with the actual logic to modify the remarks of a person.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Tests:</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Update <code>RemarkCommandTest</code> to test that the <code>execute()</code> logic works.</p>
-</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="full-solution"><a class="link" href="#full-solution">A.2.3. Full Solution</a></h4>
-<div class="paragraph">
-<p>See this <a href="https://github.com/se-edu/addressbook-level4/pull/599">PR</a> for the step-by-step solution.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="product-scope"><a class="link" href="#product-scope">Appendix B: Product Scope</a></h2>
+<h2 id="GetStartedProgramming"><a class="link" href="#GetStartedProgramming">Appendix A: Product Scope</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Target user profile</strong>:</p>
@@ -3063,29 +2350,32 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>has a need to manage a significant number of contacts</p>
+<p>Needs a quick way to perform simple edits on images.</p>
 </li>
 <li>
-<p>prefer desktop apps over other types</p>
+<p>Needs to view tagged information on an image.</p>
 </li>
 <li>
-<p>can type fast</p>
+<p>Prefer desktop apps over other types</p>
 </li>
 <li>
-<p>prefers typing over mouse input</p>
+<p>Can type fast</p>
 </li>
 <li>
-<p>is reasonably comfortable using CLI apps</p>
+<p>Prefers typing over mouse input</p>
+</li>
+<li>
+<p>Is reasonably comfortable using CLI apps</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p><strong>Value proposition</strong>: manage contacts faster than a typical mouse/GUI driven app</p>
+<p><strong>Value proposition</strong>: Edit photos quicker and more intuitively than a typical mouse/GUI driven app. Also provides a easy way to view tagged metadata on images.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="user-stories"><a class="link" href="#user-stories">Appendix C: User Stories</a></h2>
+<h2 id="user-stories"><a class="link" href="#user-stories">Appendix B: User Stories</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Priorities: High (must have) - <code>* * *</code>, Medium (nice to have) - <code>* *</code>, Low (unlikely to have) - <code>*</code></p>
@@ -3115,31 +2405,31 @@ for <code>RemarkCommandParser</code>.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">adjust the brightness of my photo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">adjust the brightness of my image</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">make it brighter or darker</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">adjust the contrast of my photo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">adjust the contrast of my image</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">resize my photo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">resize my image</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">crop my photo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">crop my image</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">trim it into my desired dimensions</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">rotate my photo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rotate my image</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">change its orientation</p></td>
 </tr>
 <tr>
@@ -3157,57 +2447,45 @@ for <code>RemarkCommandParser</code>.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">import my photo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">store a copy of the photo in the application for editing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">import my image</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">store a copy of the image in the application for editing</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">export my photo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">save my edited photos to my computer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">export my image</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">save my edited images to my computer</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">open a photo stored in the application for editing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">open a image stored in the application for editing</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">list the names of the photos stored in the application</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">know what photos are currently stored inside</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">list the names of the images stored in the application</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">know what images are currently stored inside</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 <div class="sect1">
-<h2 id="use-cases"><a class="link" href="#use-cases">Appendix D: Use Cases</a></h2>
+<h2 id="use-cases"><a class="link" href="#use-cases">Appendix C: Use Cases</a></h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>(For all use cases below, the <strong>System</strong> is the <code>AddressBook</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
-</div>
-<h3 id="use-case-editing-an-image" class="discrete">Use case: Editing an image</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
+<h3 id="use-case-view-image" class="discrete">Use case: View Image</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User imports an image</p>
+<p>User import an image.</p>
 </li>
 <li>
-<p>User opens the image</p>
+<p>User opens the image.</p>
 </li>
 <li>
-<p>User specifies transformations using the CLI</p>
-</li>
-<li>
-<p>FomoFoto shows a preview of the transformations</p>
-</li>
-<li>
-<p>User can decide to save the image or not</p>
+<p>Image is displayed on GUI.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3217,49 +2495,37 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="paragraph">
 <p><strong>Extensions</strong></p>
 </div>
-<div class="ulist none">
-<ul class="none">
+<div class="ulist">
+<ul>
 <li>
-<p>2a. The image cannot be opened. FomoFoto shows an error message.</p>
+<p>1a. The filepath does not contain an image. FomoFoto throws an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
 </li>
 <li>
-<p>3a. User is unsatisfied by transformation. User can undo the transformation.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>3a1. AddressBook shows an error message.</p>
+<p>2a. The image name does not exist in Album. FomoFoto throws an error message.</p>
 <div class="paragraph">
-<p>Use case resumes at step 2.</p>
+<p>Use case ends.</p>
 </div>
 </li>
 </ul>
 </div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-editing-an-image-2" class="discrete">Use case: Editing an image</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
+<div class="sect2">
+<h3 id="use-case-view-metadata"><a class="link" href="#use-case-view-metadata">C.1. Use case: View Metadata</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User imports an image</p>
+<p>User import an image.</p>
 </li>
 <li>
-<p>User opens the image</p>
+<p>User opens the image.</p>
 </li>
 <li>
-<p>User specifies transformations using the CLI</p>
+<p>Image is displayed on GUI.</p>
 </li>
 <li>
-<p>FomoFoto shows a preview of the transformations</p>
-</li>
-<li>
-<p>User can decide to save the image or not</p>
+<p>Switch tab to view Metadata.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3269,36 +2535,109 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="paragraph">
 <p><strong>Extensions</strong></p>
 </div>
-<div class="ulist none">
-<ul class="none">
+<div class="ulist">
+<ul>
 <li>
-<p>2a. The image cannot be opened. FomoFoto shows an error message.</p>
+<p>1a. The filepath does not contain an image. FomoFoto throws an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
 </li>
 <li>
-<p>3a. User is unsatisfied by transformation. User can undo the transformation.</p>
-<div class="ulist none">
-<ul class="none">
+<p>2a. The image name does not exist in Album. FomoFoto throws an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-edit-image"><a class="link" href="#use-case-edit-image">C.2. Use case: Edit Image</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>3a1. AddressBook shows an error message.</p>
+<p>User import an image.</p>
+</li>
+<li>
+<p>User opens the image.</p>
+</li>
+<li>
+<p>Image is displayed on GUI.</p>
+</li>
+<li>
+<p>User applies an image filter.</p>
 <div class="paragraph">
-<p>Use case resumes at step 2.</p>
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>1a. The filepath does not contain an image. FomoFoto throws an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+<li>
+<p>2a. The image name does not exist in Album. FomoFoto throws an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+<li>
+<p>4a. The arguments for filters are invalid. FomoFoto throws an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
 </div>
 </li>
 </ul>
 </div>
+</div>
+<div class="sect2">
+<h3 id="use-case-export-image"><a class="link" href="#use-case-export-image">C.3. Use case: Export Image</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User save image to Album.</p>
+</li>
+<li>
+<p>User export image from Album.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>1a. The image name does not exist in Album. FomoFoto throws an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+<li>
+<p>2a. The filepath for export is invalid. FomoFoto throws an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="non-functional-requirements"><a class="link" href="#non-functional-requirements">Appendix E: Non Functional Requirements</a></h2>
+<h2 id="non-functional-requirements"><a class="link" href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></h2>
 <div class="sectionbody">
 <div class="olist arabic">
 <ol class="arabic">
@@ -3306,20 +2645,17 @@ for <code>RemarkCommandParser</code>.</p>
 <p>Should work on any <a href="#mainstream-os">mainstream OS</a> as long as it has Java <code>9</code> or higher installed.</p>
 </li>
 <li>
-<p>Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.</p>
+<p>Should be able to hold up to 100 images without a noticeable sluggishness in performance for typical usage.</p>
 </li>
 <li>
 <p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
-</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="glossary"><a class="link" href="#glossary">Appendix F: Glossary</a></h2>
+<h2 id="glossary"><a class="link" href="#glossary">Appendix E: Glossary</a></h2>
 <div class="sectionbody">
 <div class="dlist">
 <dl>
@@ -3327,53 +2663,12 @@ for <code>RemarkCommandParser</code>.</p>
 <dd>
 <p>Windows, Linux, Unix, OS-X</p>
 </dd>
-<dt class="hdlist1"><a id="private-contact-detail"></a> Private contact detail</dt>
-<dd>
-<p>A contact detail that is not meant to be shared with others</p>
-</dd>
 </dl>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="product-survey"><a class="link" href="#product-survey">Appendix G: Product Survey</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><strong>Product Name</strong></p>
-</div>
-<div class="paragraph">
-<p>Author: &#8230;&#8203;</p>
-</div>
-<div class="paragraph">
-<p>Pros:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Cons:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix H: Instructions for Manual Testing</a></h2>
+<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Given below are instructions to test the app manually.</p>
@@ -3391,25 +2686,25 @@ These instructions only provide a starting point for testers to work on; testers
 </table>
 </div>
 <div class="sect2">
-<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">H.1. Launch and Shutdown</a></h3>
+<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">F.1. Launch and Shutdown</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Initial launch</p>
+<p>Initial launch.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Download the jar file and copy into an empty folder</p>
+<p>Download the jar file and copy into an empty directory.</p>
 </li>
 <li>
 <p>Double-click the jar file<br>
-Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.</p>
+Expected: Shows the GUI with an empty Album. The window size may not be optimum.</p>
 </li>
 </ol>
 </div>
 </li>
 <li>
-<p>Saving window preferences</p>
+<p>Saving window preferences.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
@@ -3422,63 +2717,170 @@ Expected: The most recent window size and location is retained.</p>
 </ol>
 </div>
 </li>
-</ol>
-</div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">H.2. Deleting a person</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
 <li>
-<p>Deleting a person while all persons are listed</p>
+<p>Shutdown and relaunch.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Prerequisites: List all persons using the <code>list</code> command. Multiple persons in the list.</p>
+<p>Shutdown the application by typing <code>exit</code> or closing the window.</p>
 </li>
 <li>
-<p>Test case: <code>delete 1</code><br>
-Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.</p>
-</li>
-<li>
-<p>Test case: <code>delete 0</code><br>
-Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.</p>
-</li>
-<li>
-<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size) <em>{give more}</em><br>
-Expected: Similar to previous.</p>
+<p>Relaunch the jar file.
+Expected: Shows the GUI with any previously opened images in the Album.</p>
 </li>
 </ol>
 </div>
 </li>
 </ol>
-</div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">H.3. Saving data</a></h3>
+<h3 id="importing-an-image"><a class="link" href="#importing-an-image">F.2. Importing an image</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Dealing with missing/corrupted data files</p>
+<p>Prerequisites: Given FILEPATH should be an image or a directory with images.</p>
+</li>
+<li>
+<p>Import a sample list of images.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p><em>{explain how to simulate a missing/corrupted file and the expected behavior}</em></p>
+<p>Enter <code>import sample</code><br>
+Expected: GUI should populate Album Images with a sample list of images.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Import a single image.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Enter <code>import FILEPATH</code><br>
+Expected: GUI should populate Album Images with image from indicated filepath.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Import a directory.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Enter <code>import FILEPATH</code><br>
+Expected: GUI should populate Album Images with images from indicated directory.</p>
 </li>
 </ol>
 </div>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
+</div>
+<div class="sect2">
+<h3 id="opening-an-image"><a class="link" href="#opening-an-image">F.3. Opening an image</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Prerequisites: An album should contain at least a single imported image.</p>
+</li>
+<li>
+<p>Open an image from Album.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Enter <code>open IMAGE_NAME</code><br>
+Expected: GUI should open and display image from Album.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="editing-an-image"><a class="link" href="#editing-an-image">F.4. Editing an image</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Prerequisites: An image should be opened.</p>
+</li>
+<li>
+<p>Apply contrast on an opened image.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Enter <code>contrast</code><br>
+Expected: GUI should apply edit to the opened image with default contrast value.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="undoing-an-edit"><a class="link" href="#undoing-an-edit">F.5. Undoing an edit</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Prerequisites: An image should at least one edit applied to it.</p>
+</li>
+<li>
+<p>Undo a previously applied edit.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Enter <code>undo</code><br>
+Expected: GUI should refresh the opened image to its previous state.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="saving-an-image"><a class="link" href="#saving-an-image">F.6. Saving an image</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Prerequisites: An image should be opened.</p>
+</li>
+<li>
+<p>Save an opened image.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Enter <code>save</code><br>
+Expected: GUI should save the currently opened image as an image in Album with the same name.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="export-an-image"><a class="link" href="#export-an-image">F.7. Export an image</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Prerequisites: Given FILEPATH should be an a valid, writable path. Album should contain at least a single imported image.</p>
+</li>
+<li>
+<p>Export an image from Album.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Enter <code>export f/IMAGE_NAME d/DIRECTORY_NAME</code><br>
+Expected: GUI should export the selected Album image to target directory.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 06:44:21 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 07:05:49 UTC</div></div></div></body></html>

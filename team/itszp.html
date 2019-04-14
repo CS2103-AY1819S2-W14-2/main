@@ -263,7 +263,7 @@ Format: <code>save [FILENAME]</code></p>
 <p>stores an <code>Image</code> instance in <code>tempImage</code> and <code>originalImage</code> when an image is opened.</p>
 </li>
 <li>
-<p>creates a copy of the opened image and the current edited image in <code>temp</code> folder.</p>
+<p>creates a copy of the opened image and the current edited image in <code>temp</code> directory.</p>
 </li>
 <li>
 <p><code>tempImage</code> is updated each time a command to edit the image is called. (e.g. <code>RotateCommand</code>, <code>ContrastCommand</code>)</p>
@@ -272,7 +272,7 @@ Format: <code>save [FILENAME]</code></p>
 <p>stores a list of commands that the user input after an image is opened.</p>
 </li>
 <li>
-<p>contains methods to access <code>temp</code> folder.</p>
+<p>contains methods to access <code>temp</code> directory.</p>
 </li>
 </ul>
 </div>
@@ -290,13 +290,13 @@ Format: <code>save [FILENAME]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>Album#checkFileExist(String)</code> - Checks if file name specified by the <code>String</code> exists in assets folder.</p>
+<p><code>Album#checkFileExist(String)</code> - Checks if file name specified by the <code>String</code> exists in assets directory.</p>
 </li>
 <li>
-<p><code>Album#retrieveImage(String)</code> - Returns an <code>Image</code> specified by the <code>String</code> in assets folder.</p>
+<p><code>Album#retrieveImage(String)</code> - Returns an <code>Image</code> specified by the <code>String</code> in assets directory.</p>
 </li>
 <li>
-<p><code>CurrentEdit#openImage(Image)</code> - Creates two copies of the opened image in <code>temp</code> folder. The duplicated images are instantiated as <code>tempImage</code> and <code>originalImage</code>.</p>
+<p><code>CurrentEdit#openImage(Image)</code> - Creates two copies of the opened image in <code>temp</code> directory. The duplicated images are instantiated as <code>tempImage</code> and <code>originalImage</code>.</p>
 </li>
 <li>
 <p><code>CurrentEdit#updateExif()</code> - Updates the Exif data of the image.</p>
@@ -322,10 +322,10 @@ Format: <code>save [FILENAME]</code></p>
 <p>Step 1. The user executes <code>open sample.png</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 2. <code>Album#checkFileExist(String)</code> is called to check if the file specified by the <code>String</code> is in <code>assets</code> folder. If it exists, <code>Album#retrieveImage(String)</code> is called to create an <code>Image</code> object from the specified file. Otherwise, <code>CommandException</code> is thrown.</p>
+<p>Step 2. <code>Album#checkFileExist(String)</code> is called to check if the file specified by the <code>String</code> is in <code>assets</code> directory. If it exists, <code>Album#retrieveImage(String)</code> is called to create an <code>Image</code> object from the specified file. Otherwise, <code>CommandException</code> is thrown.</p>
 </div>
 <div class="paragraph">
-<p>Step 3. The <code>Image</code> is passed to <code>CurrentEdit#openImage(Image)</code> to create two copies of it, named <code>temp_img.png</code> and <code>ori_img.png</code>, in <code>temp</code> folder. These copies are then instantiated as <code>tempImage</code> and <code>originalImage</code>.</p>
+<p>Step 3. The <code>Image</code> is passed to <code>CurrentEdit#openImage(Image)</code> to create two copies of it, named <code>temp_img.png</code> and <code>ori_img.png</code>, in <code>temp</code> directory. These copies are then instantiated as <code>tempImage</code> and <code>originalImage</code>.</p>
 </div>
 <div class="paragraph">
 <p>Step 4. <code>CurrentEdit#updateExif()</code> is called to updates the information of the opened image in the GUI.</p>
@@ -350,7 +350,7 @@ Format: <code>save [FILENAME]</code></p>
 <p>Easy to implement.</p>
 </li>
 <li>
-<p>Saves space as <code>temp</code> folder only stores one original image and one temporary image.</p>
+<p>Saves space as <code>temp</code> directory only stores one original image and one temporary image.</p>
 </li>
 <li>
 <p>Clear to users that edits are done to the only opened image.</p>
@@ -376,7 +376,7 @@ Format: <code>save [FILENAME]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>open</code> has to distinguish whether user is opening an image from <code>assets</code> or <code>temp</code> folder.</p>
+<p><code>open</code> has to distinguish whether user is opening an image from <code>assets</code> or <code>temp</code> directory.</p>
 </li>
 <li>
 <p>Requires many duplicates with different temporary names.</p>
@@ -400,7 +400,7 @@ Format: <code>save [FILENAME]</code></p>
 <div class="sect2">
 <h3 id="list-files-feature"><a class="link" href="#list-files-feature">List Files Feature</a></h3>
 <div class="paragraph">
-<p>This command displays the names of all the files in <code>assets</code> folder.</p>
+<p>This command displays the names of all the files in <code>assets</code> directory.</p>
 </div>
 <div class="sect3">
 <h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
@@ -410,7 +410,7 @@ Format: <code>save [FILENAME]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>Album#getFileNames()</code> - Returns a list of all the files in <code>assets</code> folder.</p>
+<p><code>Album#getFileNames()</code> - Returns a list of all the files in <code>assets</code> directory.</p>
 </li>
 </ul>
 </div>
@@ -430,7 +430,7 @@ Format: <code>save [FILENAME]</code></p>
 <p>Step 1. The user executes <code>listfiles</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 2. <code>Album#getFileNames()</code> accesses <code>assets</code> folder and returns all the file names in a <code>String</code> array.</p>
+<p>Step 2. <code>Album#getFileNames()</code> accesses <code>assets</code> directory and returns all the file names in a <code>String</code> array.</p>
 </div>
 <div class="paragraph">
 <p>Step 3. The <code>String</code> array is displayed on the GUI.</p>
@@ -439,14 +439,14 @@ Format: <code>save [FILENAME]</code></p>
 <div class="sect3">
 <h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
 <div class="paragraph">
-<p>This command was created to allow the user to know what files are stored in <code>assets</code> folder so that the <code>FILENAME</code> can be easily referenced for <code>open</code>.</p>
+<p>This command was created to allow the user to know what files are stored in <code>assets</code> directory so that the <code>FILENAME</code> can be easily referenced for <code>open</code>.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="save-feature"><a class="link" href="#save-feature">Save Feature</a></h3>
 <div class="paragraph">
-<p>This command applies the edits to the current image and saves it into <code>assets</code> folder.</p>
+<p>This command applies the edits to the current image and saves it into <code>assets</code> directory.</p>
 </div>
 <div class="sect3">
 <h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">Current Implementation</a></h4>
@@ -465,7 +465,7 @@ Format: <code>save [FILENAME]</code></p>
 <p><code>CurrentEdit#getOriginalName()</code> - Returns the original name of opened image.</p>
 </li>
 <li>
-<p><code>CurrentEdit#overwriteOriginal(String)</code> - Replaces <code>ori_img.png</code> with <code>temp_img.png' in `temp</code> folder. Updates <code>originalImage</code> to <code>tempImage</code> and <code>originalImageName</code> to <code>String</code> in <code>CurrentEdit</code>.</p>
+<p><code>CurrentEdit#overwriteOriginal(String)</code> - Replaces <code>ori_img.png</code> with <code>temp_img.png' in `temp</code> directory. Updates <code>originalImage</code> to <code>tempImage</code> and <code>originalImageName</code> to <code>String</code> in <code>CurrentEdit</code>.</p>
 </li>
 <li>
 <p><code>CurrentEdit#deleteHistory()</code> - Clears the history in <code>CurrentEdit</code>.</p>
@@ -474,16 +474,16 @@ Format: <code>save [FILENAME]</code></p>
 <p><code>CurrentEdit#updateExif()</code> - Updates the Exif data of the new image.</p>
 </li>
 <li>
-<p><code>Album#checkFileExist(String)</code> - Checks if the file name specified by the <code>String</code> exists in assets folder.</p>
+<p><code>Album#checkFileExist(String)</code> - Checks if the file name specified by the <code>String</code> exists in assets directory.</p>
 </li>
 <li>
-<p><code>Album#saveToAssets(Image, String)</code> - Saves the <code>Image</code> as <code>String</code> into <code>assets</code> folder.</p>
+<p><code>Album#saveToAssets(Image, String)</code> - Saves the <code>Image</code> as <code>String</code> into <code>assets</code> directory.</p>
 </li>
 <li>
 <p><code>Album#populateAlbum()</code> - Updates list of images in <code>Album</code> class.</p>
 </li>
 <li>
-<p><code>Album#refreshAlbum()</code> - Updates and displays the latest images in <code>assets</code> folder on the GUI.</p>
+<p><code>Album#refreshAlbum()</code> - Updates and displays the latest images in <code>assets</code> directory on the GUI.</p>
 </li>
 </ul>
 </div>
@@ -512,10 +512,10 @@ Format: <code>save [FILENAME]</code></p>
 <p>Step 4. If the user did not input a <code>String</code> after <code>save</code> previously, <code>CurrentEdit#getOriginalName()</code> will retrieve the <code>originalImageName</code> from <code>CurrentEdit</code>. Otherwise, <code>Album#checkFileExist(String)</code> will be called to check if a file name is similar to <code>String</code>. If it is a duplicate, <code>CommandException</code> will be thrown.</p>
 </div>
 <div class="paragraph">
-<p>Step 5. <code>Album#saveToAssets(Image, String)</code> takes in the previously retrieved <code>Image</code> and <code>String</code> to create a new image file in <code>assets</code> folder.</p>
+<p>Step 5. <code>Album#saveToAssets(Image, String)</code> takes in the previously retrieved <code>Image</code> and <code>String</code> to create a new image file in <code>assets</code> directory.</p>
 </div>
 <div class="paragraph">
-<p>Step 6. <code>CurrentEdit#overwriteOriginal(String)</code> is called to update the files in <code>temp</code> folder and their respective instances in <code>CurrentEdit</code>.</p>
+<p>Step 6. <code>CurrentEdit#overwriteOriginal(String)</code> is called to update the files in <code>temp</code> directory and their respective instances in <code>CurrentEdit</code>.</p>
 </div>
 <div class="paragraph">
 <p>Step 7. <code>CurrentEdit#deleteHistory()</code> is called to delete the edit history in <code>CurrentEdit</code> so that the user can no longer perform <code>undo</code> on the saved image.</p>
@@ -524,7 +524,7 @@ Format: <code>save [FILENAME]</code></p>
 <p>Step 8.<code>CurrentEdit#updateExif()</code> is called to update the Exif data of the new image.</p>
 </div>
 <div class="paragraph">
-<p>Step 9. <code>Album#populateAlbum()</code> is called to update the list of image in <code>Album</code> class and to ensure it reflects all the files in <code>assets</code> folder.</p>
+<p>Step 9. <code>Album#populateAlbum()</code> is called to update the list of image in <code>Album</code> class and to ensure it reflects all the files in <code>assets</code> directory.</p>
 </div>
 <div class="paragraph">
 <p>Step 10.<code>Album#refreshAlbum()</code> is called to update the Information Panel on the GUI.</p>
@@ -563,7 +563,7 @@ Format: <code>save [FILENAME]</code></p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Alternative 2 was chosen as the user is likely to use <code>save</code> frequently. Since the <code>assets</code> folder functions like an album, images can be re-imported if they are accidentally overwritten. The user is able to <code>save</code> easily and choose to resume editing immediately or at a later time.</p>
+<p>Alternative 2 was chosen as the user is likely to use <code>save</code> frequently. Since the <code>assets</code> directory functions like an album, images can be re-imported if they are accidentally overwritten. The user is able to <code>save</code> easily and choose to resume editing immediately or at a later time.</p>
 </div>
 </div>
 </div>
@@ -600,31 +600,31 @@ Format: <code>save [FILENAME]</code></p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">adjust the brightness of my photo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">adjust the brightness of my image</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">make it brighter or darker</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">adjust the contrast of my photo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">adjust the contrast of my image</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">resize my photo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">resize my image</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">crop my photo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">crop my image</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">trim it into my desired dimensions</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">rotate my photo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rotate my image</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">change its orientation</p></td>
 </tr>
 <tr>
@@ -642,28 +642,28 @@ Format: <code>save [FILENAME]</code></p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">import my photo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">store a copy of the photo in the application for editing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">import my image</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">store a copy of the image in the application for editing</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">export my photo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">save my edited photos to my computer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">export my image</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">save my edited images to my computer</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">open a photo stored in the application for editing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">open a image stored in the application for editing</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">list the names of the photos stored in the application</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">know what photos are currently stored inside</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">list the names of the images stored in the application</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">know what images are currently stored inside</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 06:44:21 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 07:05:49 UTC</div></div></div></body></html>

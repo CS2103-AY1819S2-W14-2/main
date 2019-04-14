@@ -170,7 +170,7 @@
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Head over to this <a href="https://twistedsifter.files.wordpress.com/2012/03/squirrel-photobomb-banff.jpg"><code>link</code></a> to get a suggested sample image to start from.</p>
+<p>Head over to this <a href="https://twistedsifter.files.wordpress.com/2012/03/squirrel-photobomb-banff.jpg">link</a> to get a suggested sample image to start from.</p>
 </li>
 <li>
 <p>Save the image in any desired folder you like on your device, like your Pictures folder for example. Name your image <strong>squirrel.jpg</strong>.</p>
@@ -179,7 +179,7 @@
 <p>Start FomoFoto by referring to <a href="#Quick Start">[Quick Start]</a>.</p>
 </li>
 <li>
-<p>Open the folder that the image file is stored in. Then, to get the file path of the image:</p>
+<p>Open the folder that the image file is stored in. Then, to get the filepath of the image:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -201,7 +201,7 @@
 </div>
 </li>
 <li>
-<p>Paste the file path by simultaneously pressing <kbd>Ctrl</kbd> and <kbd>V</kbd> keys.</p>
+<p>Paste the filepath of the image you would like to import.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -265,7 +265,7 @@
 </div>
 </li>
 <li>
-<p>Crop your photo by typing the following command: <code>crop 310 250 140 200</code>. Press <kbd>Enter</kbd>. Your image should look similar as the figure below.</p>
+<p>Crop your image by typing the following command: <code>crop 310 250 140 200</code>. Press <kbd>Enter</kbd>. Your image should look similar as the figure below.</p>
 <div class="imageblock">
 <div class="content">
 <img src="../images/cropSuccess.PNG" alt="cropSuccess" width="918">
@@ -323,7 +323,7 @@ Format: <code>resize WIDTH HEIGHT</code></p>
 <div class="sect2">
 <h3 id="rotate-an-image-code-rotate-code"><a class="link" href="#rotate-an-image-code-rotate-code">Rotate an Image : <code>rotate</code></a></h3>
 <div class="paragraph">
-<p>Rotates the photo by a given degree provided by the user. Only 90, 180 or 270 degrees of rotation is allowed.<br>
+<p>Rotates the image by a given degree provided by the user. Only 90, 180 or 270 degrees of rotation is allowed.<br>
 Format: <code>rotate ANGLE</code></p>
 </div>
 <div class="paragraph">
@@ -409,7 +409,7 @@ Format: <code>wm MESSAGE</code></p>
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-The <code>.pptx</code> files used to create diagrams in this document can be found in the <a href="{repoURL}/docs/diagrams/">diagrams</a> folder. To update a diagram, modify the diagram in the pptx file, select the objects of the diagram, and choose <code>Save as picture</code>.
+The <code>.pptx</code> files used to create diagrams in this document can be found in the <a href="{repoURL}/docs/diagrams/">diagrams</a> directory. To update a diagram, modify the diagram in the pptx file, select the objects of the diagram, and choose <code>Save as picture</code>.
 </td>
 </tr>
 </table>
@@ -525,10 +525,10 @@ The following class plays an important role at the architecture level:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>CurrentEdit#getTempImage</code> - Retrieves the temporary image <code>tempImage</code> which stores the filepath of the temporary image in <code>temp</code> folder, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata.</p>
+<p><code>CurrentEdit#getTempImage</code> - Retrieves the temporary image <code>tempImage</code> which stores the filepath of the temporary image in <code>temp</code> directory, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata.</p>
 </li>
 <li>
-<p><code>CurrenEdit#updateTempImage</code> - Replaces the temporary image in <code>temp</code> folder with the newly edited image and update the <code>tempImage</code> instance in the class.</p>
+<p><code>CurrenEdit#updateTempImage</code> - Replaces the temporary image in <code>temp</code> directory with the newly edited image and update the <code>tempImage</code> instance in the class.</p>
 </li>
 <li>
 <p><code>CurrentEdit#addCommand</code> - Adds this command to the edit history [<code>List&lt;Command&gt;</code>] in <code>tempImage</code> for the undo/redo function.</p>
@@ -614,7 +614,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="ulist">
 <ul>
 <li>
-<p>Intermediate images have to be stored and edited in a temp folder first due to our <code>Undo/Redo</code> implementation.</p>
+<p>Intermediate images have to be stored and edited in a temp directory first due to our <code>Undo/Redo</code> implementation.</p>
 </li>
 </ul>
 </div>
@@ -675,10 +675,10 @@ Each image can only have 1 watermark. If the user would like to edit the waterma
 <div class="ulist">
 <ul>
 <li>
-<p><code>CurrentEdit#getTempImage()</code> - Retrieves the temporary image <code>tempImage</code> which stores the filepath of the temporary image in <code>temp</code> folder, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata.</p>
+<p><code>CurrentEdit#getTempImage()</code> - Retrieves the temporary image <code>tempImage</code> which stores the filepath of the temporary image in <code>temp</code> directory, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata.</p>
 </li>
 <li>
-<p><code>CurrenEdit#updateTempImage(BufferedImage)</code> - Replaces the temporary image in <code>temp</code> folder with the newly edited image and update the <code>tempImage</code> instance in the class.</p>
+<p><code>CurrenEdit#updateTempImage(BufferedImage)</code> - Replaces the temporary image in <code>temp</code> directory with the newly edited image and update the <code>tempImage</code> instance in the class.</p>
 </li>
 <li>
 <p><code>CurrentEdit#addCommand(Command)</code> - Adds this command to the edit history [<code>List&lt;Command&gt;</code>] in <code>tempImage</code> for the undo/redo function.</p>
@@ -830,11 +830,11 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="ulist">
 <ul>
 <li>
-<p>Intermediate images have to be stored and edited in a temp folder first due to our <code>undo/redo</code> implementation.</p>
+<p>Intermediate images have to be stored and edited in a temp directory first due to our <code>undo/redo</code> implementation.</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 06:44:21 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 07:05:49 UTC</div></div></div></body></html>
