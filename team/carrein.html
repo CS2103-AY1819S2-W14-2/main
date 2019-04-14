@@ -237,41 +237,6 @@ FomoFoto has an intuitive, human-centric design. Users are able to see the image
 <div class="sect2">
 <h3 id="quick-start"><a class="link" href="#quick-start">Quick Start</a></h3>
 <hr>
-<div class="paragraph">
-<p>System Requirements:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Windows 10 or newer / OS X 10.8 or newer.</strong></p>
-</li>
-<li>
-<p><strong>Java 9 or newer.</strong></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Follow the steps below to set up your computer to run FomoFoto:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Ensure your system meets the system requirements.</p>
-</li>
-<li>
-<p>Download the latest FomoFoto.jar <a href="https://github.com/CS2103-AY1819S2-W14-2/main/releases">here</a>.</p>
-</li>
-<li>
-<p>Copy the JAR to the folder you want to use as the home folder for your FomoFoto application.</p>
-</li>
-<li>
-<p>Double-click the JAR to start the application. The Graphical User Interface should appear in a few seconds.</p>
-</li>
-<li>
-<p>You have just successfully setup FomoFoto on your device. To see the command available in FomoFoto, refer to <a href="#Features">[Features]</a> for details of each command. A step-by-step walkthrough of FomoFoto is available at the next section: <a href="#A Walk Through">[A Walk Through]</a>.</p>
-</li>
-</ol>
-</div>
 </div>
 <div class="sect2">
 <h3 id="import-command"><a class="link" href="#import-command">Import Command</a></h3>
@@ -461,7 +426,36 @@ image such as metadata information like <strong>Date and Time</strong> and <stro
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="{repoURL}/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a>
-All components, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
+The UI consists of a <code>MainWindow</code> that is made up of the following
+components:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>CommandBox</code></p>
+</li>
+<li>
+<p><code>ResultDisplay</code></p>
+</li>
+<li>
+<p><code>ImagePanel</code></p>
+</li>
+<li>
+<p><code>InitPanel</code></p>
+</li>
+<li>
+<p><code>InformationPanel</code></p>
+</li>
+<li>
+<p><code>StatusBarFooter</code></p>
+</li>
+<li>
+<p><code>HelpWindow</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>All components, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
 <p>The <code>InformationPanel</code> comprises of three tabs:</p>
@@ -738,4 +732,4 @@ If FomoFoto is not given the permissions to write <code>assets</code> and <code>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 10:22:31 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 10:40:10 UTC</div></div></div></body></html>
