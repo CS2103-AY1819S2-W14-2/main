@@ -29,16 +29,18 @@
 </li>
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#import-feature">3.1. Import feature</a></li>
-<li><a href="#open-feature">3.2. Open Feature</a></li>
-<li><a href="#list-files-feature">3.3. List Files Feature</a></li>
-<li><a href="#image-filters">3.4. Image Filters</a></li>
-<li><a href="#image-manipulation">3.5. Image Manipulation</a></li>
-<li><a href="#undo-redo-feature">3.6. Undo/Redo feature</a></li>
-<li><a href="#save-feature">3.7. Save Feature</a></li>
-<li><a href="#export-feature">3.8. Export Feature</a></li>
-<li><a href="#watermark-feature">3.9. WaterMark Feature</a></li>
-<li><a href="#logging">3.10. Logging</a></li>
+<li><a href="#export-feature">3.1. Export Feature</a></li>
+<li><a href="#import-feature">3.2. Import feature</a></li>
+<li><a href="#open-feature">3.3. Open Feature</a></li>
+<li><a href="#list-files-feature">3.4. List Files Feature</a></li>
+<li><a href="#image-filters">3.5. Image Filters</a></li>
+<li><a href="#image-manipulation">3.6. Image Manipulation</a></li>
+<li><a href="#undo-redo-feature">3.7. Undo/Redo feature</a></li>
+<li><a href="#save-feature">3.8. Save Feature</a></li>
+<li><a href="#save-preset-feature">3.9. Save Preset Feature</a></li>
+<li><a href="#set-preset-feature">3.10. Set Preset Feature</a></li>
+<li><a href="#watermark-feature">3.11. WaterMark Feature</a></li>
+<li><a href="#logging">3.12. Logging</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -740,12 +742,58 @@ If FomoFoto is not given the permissions to write <code>assets</code> and <code>
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="import-feature"><a class="link" href="#import-feature">3.1. Import feature</a></h3>
+<h3 id="export-feature"><a class="link" href="#export-feature">3.1. Export Feature</a></h3>
+<div class="paragraph">
+<p>The <code>export</code> command exports a file in the album into a specified directory.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">3.1.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The export function is facilitated by <code>Album</code>. It uses the following operations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Album#getImageFromList(String)</code> - returns an image from the album with name matching the input string and null if no image matches the input string.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the <code>export</code> mechanism behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user executes <code>export f/iu.jpg d/C:\Users\randy\Desktop</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. <code>ExportCommandParser</code> checks if user has input the command correctly.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. <code>Album#getImageFromList</code> checks if the file to be exported exists in the album and throws a <code>CommandException</code> if it does not exist.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. <code>ExportCommand#validPath</code> checks if the specified directory is valid and throws a <code>CommandException</code> if it is not.</p>
+</div>
+<div class="paragraph">
+<p>Step 5. If file to be exported exists and directory is valid, the file will be copied to the directory.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the <code>save</code> command works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SaveCommandSequenceDiagram.png" alt="SaveCommandSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 11. Sequence Diagram for Save Command</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="import-feature"><a class="link" href="#import-feature">3.2. Import feature</a></h3>
 <div class="paragraph">
 <p>The Import Command allow users to import a file of an image format into FomoFoto for editing.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">3.1.1. Current implementation</a></h4>
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.2.1. Current implementation</a></h4>
 <div class="paragraph">
 <p>The implementation of the import feature allows for users to either:</p>
 </div>
@@ -864,11 +912,11 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 <div class="content">
 <img src="images/ImportSequenceDiagram.png" alt="ImportSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 11. Sequence Diagram for Import Command</div>
+<div class="title">Figure 12. Sequence Diagram for Import Command</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">3.1.2. Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">3.2.2. Design Considerations</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -902,12 +950,12 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 </div>
 </div>
 <div class="sect2">
-<h3 id="open-feature"><a class="link" href="#open-feature">3.2. Open Feature</a></h3>
+<h3 id="open-feature"><a class="link" href="#open-feature">3.3. Open Feature</a></h3>
 <div class="paragraph">
 <p>This command allows the user to open a previously imported image for image-editing.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.2.1. Current Implementation</a></h4>
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.3.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The <code>open</code> function is facilitated by <code>Album</code> and <code>CurrentEdit</code>. It uses the following operations:</p>
 </div>
@@ -937,10 +985,10 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 <div class="content">
 <img src="images/OpenCommandSequenceDiagram.png" alt="OpenCommandSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 12. Sequence Diagram for Open Command<br></div>
+<div class="title">Figure 13. Sequence Diagram for Open Command<br></div>
 </div>
 <div class="paragraph">
-<p>Given below is an example usage scenario of how <code>open</code> behaves at each step as shown in <a href="#sequencediagram_open">Figure 12, &#8220;Sequence Diagram for Open Command<br>&#8221;</a>.</p>
+<p>Given below is an example usage scenario of how <code>open</code> behaves at each step as shown in <a href="#sequencediagram_open">Figure 13, &#8220;Sequence Diagram for Open Command<br>&#8221;</a>.</p>
 </div>
 <div class="paragraph">
 <p>Step 1. The user executes <code>open sample.png</code>.</p>
@@ -959,7 +1007,7 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.2.2. Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.3.2. Design Considerations</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1022,12 +1070,12 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 </div>
 </div>
 <div class="sect2">
-<h3 id="list-files-feature"><a class="link" href="#list-files-feature">3.3. List Files Feature</a></h3>
+<h3 id="list-files-feature"><a class="link" href="#list-files-feature">3.4. List Files Feature</a></h3>
 <div class="paragraph">
 <p>This command displays the names of all the files in <code>assets</code> directory.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.3.1. Current Implementation</a></h4>
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.4.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The <code>listfiles</code> function is facilitated by <code>Album</code>. It uses the following operations:</p>
 </div>
@@ -1045,10 +1093,10 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 <div class="content">
 <img src="images/ListFilesCommandSequenceDiagram.png" alt="ListFilesCommandSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 13. Sequence Diagram for ListFiles<br></div>
+<div class="title">Figure 14. Sequence Diagram for ListFiles<br></div>
 </div>
 <div class="paragraph">
-<p>Given below is an example usage scenario of how <code>listfiles</code> behaves at each step as shown in <a href="#sequencediagram_listfiles">Figure 13, &#8220;Sequence Diagram for ListFiles<br>&#8221;</a>.</p>
+<p>Given below is an example usage scenario of how <code>listfiles</code> behaves at each step as shown in <a href="#sequencediagram_listfiles">Figure 14, &#8220;Sequence Diagram for ListFiles<br>&#8221;</a>.</p>
 </div>
 <div class="paragraph">
 <p>Step 1. The user executes <code>listfiles</code>.</p>
@@ -1061,16 +1109,16 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.3.2. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.4.2. Design Considerations</a></h4>
 <div class="paragraph">
 <p>This command was created to allow the user to know what files are stored in <code>assets</code> directory so that the <code>FILENAME</code> can be easily referenced for <code>open</code>.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="image-filters"><a class="link" href="#image-filters">3.4. Image Filters</a></h3>
+<h3 id="image-filters"><a class="link" href="#image-filters">3.5. Image Filters</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.4.1. Current Implementation</a></h4>
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">3.5.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The filter mechanism is facilitated by <a href="https://github.com/sksamuel/scrimage"><code>scrimage</code></a>, an external API Library that provides image filters methods for our image editor. The gradle script declares a compile-time dependency on this external API through the coordinates:  <code>group: 'com.sksamuel.scrimage'</code>, <code>name: 'scrimage-filters_2.12'</code>, <code>version: '3.0.0-alpha4'</code>.</p>
 </div>
@@ -1080,16 +1128,19 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 <div class="ulist">
 <ul>
 <li>
-<p><code>CurrentEdit#getTempImage</code> - Retrieves the temporary image <code>tempImage</code> which stores the filepath of the temporary image in <code>temp</code> directory, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata.</p>
+<p><code>CurrentEdit#tempImageDoNotExist()</code> - Returns <code>true</code> if <code>tempImage</code> in <code>CurrentEdit</code> is null. <code>tempImage</code> is null only if <code>open</code> command is never called.</p>
 </li>
 <li>
-<p><code>CurrenEdit#updateTempImage</code> - Replaces the temporary image in <code>temp</code> directory with the newly edited image and update the <code>tempImage</code> instance in the class.</p>
+<p><code>CurrentEdit#getTempImage</code> - Retrieves the temporary image <code>tempImage</code> which stores the filepath of the temporary image in the <code>temp</code> directory, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata.</p>
 </li>
 <li>
-<p><code>CurrentEdit#addCommand</code> - Adds this command to the edit history [<code>List&lt;Command&gt;</code>] in <code>tempImage</code> for the undo/redo function</p>
+<p><code>CurrentEdit#updateTempImage</code> - Replaces the temporary image in the <code>temp</code> directory with the newly edited image and update the <code>tempImage</code> instance in the class.</p>
 </li>
 <li>
-<p><code>CurrenEdit#displayTempImage()</code> - Displays the temporary image stored in directory: "src/main/resources/temp/".</p>
+<p><code>CurrentEdit#addCommand</code> - Adds this command to the edit history [<code>List&lt;Command&gt;</code>] in <code>tempImage</code> for the <code>undo/redo</code> command.</p>
+</li>
+<li>
+<p><code>CurrentEdit#displayTempImage()</code> - Displays the temporary image stored in the <code>temp</code> directory.</p>
 </li>
 </ul>
 </div>
@@ -1099,24 +1150,24 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 <div class="ulist">
 <ul>
 <li>
-<p><code>ContrastCommand</code>: Applies a contrast ratio value on the targetted image. The contrast ratio value is preset to 1.1 if a specified ratio value is not given by the user.  A value above 1 (e.g 1.3) increases the contrast of the image while a positive value below 1 (e.g 0.5) decreases the contrast of the image.</p>
+<p><code>ContrastCommand</code>: Applies a <code>double</code> contrast ratio value on the opened image. The <code>double</code> contrast ratio value is preset to 1.1 if a specified <code>double</code> ratio value is not given by the user.  A value above 1 (e.g 1.3) increases the contrast of the image while a positive value below 1 (e.g 0.5) reduces the contrast of the image.</p>
 </li>
 <li>
-<p><code>BrightnessCommand</code>: Applies a brightness ratio value on the targetted image. The brightness ratio value is preset to 1.1 if a specified ratio value is not given by the user. A value above 1 (e.g 1.3) increases the brightness of the image while a positive value below 1 (e.g 0.5) decreases the brightness of the image.</p>
+<p><code>BrightnessCommand</code>: Applies a <code>double</code> brightness ratio value on the opened image. The <code>double</code> brightness ratio value is preset to 1.1 if a specified <code>double</code> ratio value is not given by the user. A value above 1 (e.g 1.3) increases the brightness of the image while a positive value below 1 (e.g 0.5) reduces the brightness of the image.</p>
 </li>
 <li>
-<p><code>BlackWhiteCommand</code>: Transforms targetted image to a black and white image through a threshold value. The brightness ratio value is preset to 127 if a specified ratio value is not given by the user. Pixels on the image lighter than the threshold value becomes white and pixels darker than the threshold value becomes black.</p>
+<p><code>BlackWhiteCommand</code>: Transforms the opened image to a black and white image given a threshold value. The threshold <code>integer</code> value is preset to 127 if a specified threshold is not given by the user. Pixels on the image lighter than the threshold value becomes white and pixels darker than the threshold value becomes black.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The following describes main operations and processes for each command stated above.</p>
+<p>The following describes the main operations and processes for each command stated above.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="contrast-command"><a class="link" href="#contrast-command">3.4.2. Contrast Command</a></h4>
+<h4 id="contrast-command"><a class="link" href="#contrast-command">3.5.2. Contrast Command</a></h4>
 <div class="paragraph">
-<p>This command calls for an adjustment of contrast on a targetted image. After adjusting the contrast, it adds this specific command called by the user to the <code>List&lt;Commands&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targetted image.</p>
+<p>This command calls for an adjustment of contrast on an opened image. After adjusting the contrast, it adds this specific command called by the user to the <code>List&lt;Commands&gt;</code> belonging to the <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the opened image.</p>
 </div>
 <div class="paragraph">
 <p>Given below is an example usage scenario and how the command should behave at each step. [This applies to the other image filter commands as well.]</p>
@@ -1140,19 +1191,19 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </table>
 </div>
 <div class="paragraph">
-<p>Step 3. During execution, the <code>execute</code> method in the <code>contrastCommand</code> class invokes <code>currentEdit#getTempImage()</code> to get the <code>tempImage</code> from <code>currentEdit</code>.</p>
+<p>Step 3. During execution, the <code>execute</code> method in the <code>contrastCommand</code> class first invokes <code>currentEdit#tempImageDoNotExist</code> to check if an image is opened. If no image is opened, it will throw an error message to tell the user to open an image for editing first. Else, the <code>execute</code> method will invoke <code>currentEdit#getTempImage()</code> to get the <code>tempImage</code> from <code>currentEdit</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 4. Upon retrieving the <code>tempImage</code>, the <code>execute</code> method creates a <code>ContrastFilter</code> instance provided by the external libary [<code>scrimage</code>] which takes in a double-valued contrast ratio value. This <code>ContrastFilter</code> will then be applied on the image retrieved from the filepath: "src/main/resources/temp/" + <code>tempImage#getURL()</code>.</p>
+<p>Step 4. Upon retrieving the <code>tempImage</code>, the <code>execute</code> method creates a <code>ContrastFilter</code> instance provided by the external library [<code>scrimage</code>] which takes in a <code>double</code> contrast ratio value. This <code>ContrastFilter</code> will then be applied on the image retrieved from the filepath of <code>tempImage</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 5. After applying the <code>ContrastFilter</code> on the targetted image, <code>currentEdit#updateTempImage()</code> is invoked to save the newly edited image and replace the previous one in the filepath: "src/main/resources/temp/" + <code>tempImage#getURL()</code>.</p>
+<p>Step 5. After applying the <code>ContrastFilter</code> on the opened image, <code>currentEdit#updateTempImage()</code> is invoked to save the newly edited image and replace the previous one in the filepath of the <code>tempImage</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 6. The <code>execute</code> method then checks if the boolean <code>isNewCommand</code> is true. If it is <code>true</code>, it indicates that the command is a new contrast command called directly from the user and not through an <code>undo/redo</code> command which triggers Step 7 in the line below. Otherwise, the command&#8217;s execution ends in this step.</p>
+<p>Step 6. The <code>execute</code> method then checks if the boolean <code>isNewCommand</code> is true. If it is <code>true</code>, it indicates that the command is a new contrast command called directly from the user and not through an <code>undo/redo</code> command. This triggers Step 7 in the line below. Otherwise, the command&#8217;s execution ends in this step.</p>
 </div>
 <div class="paragraph">
-<p>Step 7. <code>isNewCommand</code> is set to <code>false</code> to signal that this command is not a new contrast command if it is executed again through the undo/redo function.
+<p>Step 7. <code>isNewCommand</code> is set to <code>false</code> to signal that this command is not a new contrast command if it is executed again through the <code>undo/redo</code> command.
 <code>currentEdit#addCommand(this)</code> is invoked to add this command to the <code>List&lt;Command&gt;</code> in <code>tempImage</code> for the undo/redo function and <code>currentEdit#displayTempImage()</code> is used to display the edited image on the graphical user interface.</p>
 </div>
 <div class="sect4">
@@ -1160,7 +1211,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="ulist">
 <ul>
 <li>
-<p>Intermediate images have to be stored and edited in a temp directory first due to our <code>undo/redo</code> implementation.</p>
+<p>Images that are still being edited have to be stored and edited in a temp folder first due to our <code>undo/redo</code> implementation.</p>
 </li>
 </ul>
 </div>
@@ -1168,45 +1219,33 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="content">
 <img src="images/ContrastCommandSequenceDiagram.png" alt="ContrastCommandSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 14. Sequence Diagram for Contrast Command</div>
+<div class="title">Figure 15. Sequence Diagram for Contrast Command</div>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="brightness-command"><a class="link" href="#brightness-command">3.4.3. Brightness Command</a></h4>
+<h4 id="brightness-command"><a class="link" href="#brightness-command">3.5.3. Brightness Command</a></h4>
 <div class="paragraph">
-<p>This command calls for an adjustment of brightness on a targetted image. After adjusting the brightness, it adds this specific command called by the user to the <code>List&lt;Commands&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targetted image.</p>
+<p>This command calls for an adjustment of brightness on an opened image. After adjusting the brightness, it adds this specific command called by the user to the <code>List&lt;Commands&gt;</code> belonging to the <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the opened image.</p>
 </div>
 <div class="paragraph">
-<p>Refer to the example usage scenario and design considerations in <a href="#contrast-command">Section 3.4.2, &#8220;Contrast Command&#8221;</a></p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/BrightnessCommandSequenceDiagram.png" alt="BrightnessCommandSequenceDiagram" width="800">
-</div>
-<div class="title">Figure 15. Sequence Diagram for Brightness Command</div>
+<p>Refer to the example usage scenario, sequence diagram and design considerations in <a href="#contrast-command">Section 3.5.2, &#8220;Contrast Command&#8221;</a>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="blackwhite-command"><a class="link" href="#blackwhite-command">3.4.4. BlackWhite Command</a></h4>
+<h4 id="blackwhite-command"><a class="link" href="#blackwhite-command">3.5.4. BlackWhite Command</a></h4>
 <div class="paragraph">
-<p>This command calls for a transformation of a targetted image to a black and white image. After applying the black and white transformation, it adds this specific command called by the user to the <code>List&lt;Commands&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targetted image.</p>
+<p>This command calls for a transformation of an opened image to a black and white image. After applying the black and white filter, it adds this specific command called by the user to the <code>List&lt;Commands&gt;</code> belonging to the <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the opened image.</p>
 </div>
 <div class="paragraph">
-<p>Refer to the example usage scenario and design considerations in <a href="#contrast-command">Section 3.4.2, &#8220;Contrast Command&#8221;</a></p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/BlackWhiteCommandSequenceDiagram.png" alt="BlackWhiteCommandSequenceDiagram" width="800">
-</div>
-<div class="title">Figure 16. Sequence Diagram for BlackWhite Command</div>
+<p>Refer to the example usage scenario, sequence diagram and design considerations in <a href="#contrast-command">Section 3.5.2, &#8220;Contrast Command&#8221;</a>.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="image-manipulation"><a class="link" href="#image-manipulation">3.5. Image Manipulation</a></h3>
+<h3 id="image-manipulation"><a class="link" href="#image-manipulation">3.6. Image Manipulation</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">3.5.1. Current Implementation</a></h4>
+<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">3.6.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>This segment involves manipulating the physical image itself, such as rotating, cropping and resizing. The implementations of these features are facilitated by <a href="https://github.com/rkalla/imgscalr"><code>ImgScalr Library</code></a>, which is an external API Library that helps process the target image.</p>
 </div>
@@ -1216,16 +1255,19 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="ulist">
 <ul>
 <li>
-<p><code>CurrentEdit#getTempImage</code> - Retrieves the temporary image <code>tempImage</code> which stores the filepath of the temporary image in <code>temp</code> directory, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata.</p>
+<p><code>CurrentEdit#tempImageDoNotExist()</code> - Returns <code>true</code> if <code>tempImage</code> in <code>CurrentEdit</code> is null. <code>tempImage</code> is null only if <code>open</code> command is never called.</p>
 </li>
 <li>
-<p><code>CurrenEdit#updateTempImage</code> - Replaces the temporary image in <code>temp</code> directory with the newly edited image and update the <code>tempImage</code> instance in the class.</p>
+<p><code>CurrentEdit#getTempImage</code> - Retrieves the temporary image <code>tempImage</code> which stores the filepath of the temporary image in the <code>temp</code> directory, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata.</p>
 </li>
 <li>
-<p><code>CurrentEdit#addCommand</code> - Adds this command to the edit history [<code>List&lt;Command&gt;</code>] in <code>tempImage</code> for the undo/redo function.</p>
+<p><code>CurrentEdit#updateTempImage</code> - Replaces the temporary image in <code>temp</code> directory with the newly edited image and update the <code>tempImage</code> instance in the class.</p>
 </li>
 <li>
-<p><code>CurrenEdit#displayTempImage()</code> - Displays the temporary image stored in directory: "src/main/resources/temp/".</p>
+<p><code>CurrentEdit#addCommand</code> - Adds this command to the edit history [<code>List&lt;Command&gt;</code>] in <code>tempImage</code> for the <code>undo/redo</code> command.</p>
+</li>
+<li>
+<p><code>CurrentEdit#displayTempImage()</code> - Displays the temporary image stored in the <code>temp</code> directory.</p>
 </li>
 </ul>
 </div>
@@ -1250,7 +1292,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </div>
 </div>
 <div class="sect3">
-<h4 id="rotate-command"><a class="link" href="#rotate-command">3.5.2. Rotate Command</a></h4>
+<h4 id="rotate-command"><a class="link" href="#rotate-command">3.6.2. Rotate Command</a></h4>
 <div class="paragraph">
 <p>This command allows the user to rotate the targetted image by specifying a degree (90, 180 or 270 only). Upon receiving an input degree from the user, the degree will be checked for its validity and will throw an error if the degree is not within the specified range. The command will then be added to the <code>List&lt;Commands&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targetted image.</p>
 </div>
@@ -1297,11 +1339,11 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="content">
 <img src="images/RotateCommandSequenceDiagram.png" alt="RotateCommandSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 17. Sequence Diagram for Rotate Command</div>
+<div class="title">Figure 16. Sequence Diagram for Rotate Command</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.5.3. Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.6.3. Design Considerations</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1311,40 +1353,40 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </div>
 </div>
 <div class="sect3">
-<h4 id="crop-command"><a class="link" href="#crop-command">3.5.4. Crop Command</a></h4>
+<h4 id="crop-command"><a class="link" href="#crop-command">3.6.4. Crop Command</a></h4>
 <div class="paragraph">
 <p>This command allows the user to crop the targetted image by specifying the coordinates of the top left hand corner of the desired image, the width of the desired image and the height of the desired image. Upon receiving the inputs, the values will be checked for their validity and will throw an error if any value is not within the specified range. The command will then be added to the <code>List&lt;Commands&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targetted image.</p>
 </div>
 <div class="paragraph">
-<p>Refer to the example usage scenario and design considerations in <a href="#rotate-command">Section 3.5.2, &#8220;Rotate Command&#8221;</a>.</p>
+<p>Refer to the example usage scenario and design considerations in <a href="#rotate-command">Section 3.6.2, &#8220;Rotate Command&#8221;</a>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/CropCommandSequenceDiagram.png" alt="CropCommandSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 18. Sequence Diagram for Crop Command</div>
+<div class="title">Figure 17. Sequence Diagram for Crop Command</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="resize-command"><a class="link" href="#resize-command">3.5.5. Resize Command</a></h4>
+<h4 id="resize-command"><a class="link" href="#resize-command">3.6.5. Resize Command</a></h4>
 <div class="paragraph">
 <p>This command allows the user to resize the targetted image by specifying the width and height of the desired image. Upon receiving the inputs, the values will be checked for their validity and will throw an error if any value is not within the specified range. The command will then be added to the <code>List&lt;Commands&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targetted image.</p>
 </div>
 <div class="paragraph">
-<p>Refer to the example usage scenario and design considerations in <a href="#rotate-command">Section 3.5.2, &#8220;Rotate Command&#8221;</a>.</p>
+<p>Refer to the example usage scenario and design considerations in <a href="#rotate-command">Section 3.6.2, &#8220;Rotate Command&#8221;</a>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/ResizeCommandSequenceDiagram.png" alt="ResizeCommandSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 19. Sequence Diagram for Resize Command</div>
+<div class="title">Figure 18. Sequence Diagram for Resize Command</div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.6. Undo/Redo feature</a></h3>
+<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.7. Undo/Redo feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">3.6.1. Current Implementation</a></h4>
+<h4 id="current-implementation-7"><a class="link" href="#current-implementation-7">3.7.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by <code>Image</code>. It contains a list of commands applied to the current image. Additionally, it implements the following operations:</p>
 </div>
@@ -1386,7 +1428,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="content">
 <img src="images/UndoRedoStartingStateListDiagram.png" alt="UndoRedoStartingStateListDiagram" width="600">
 </div>
-<div class="title">Figure 20. State list diagram for undo/redo</div>
+<div class="title">Figure 19. State list diagram for undo/redo</div>
 </div>
 <div class="paragraph">
 <p>Step 2. The user executes a series of transformations on the image. These transformations are stored in the commandHistory list and for each transformation stored, the index is incremented by 1 to point to that transformation.</p>
@@ -1395,13 +1437,13 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="content">
 <img src="images/UndoRedoNewCommand1StateListDiagram.png" alt="UndoRedoNewCommand1StateListDiagram" width="600">
 </div>
-<div class="title">Figure 21. First Transformation</div>
+<div class="title">Figure 20. First Transformation</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/UndoRedoNewCommand2StateListDiagram.png" alt="UndoRedoNewCommand2StateListDiagram" width="600">
 </div>
-<div class="title">Figure 22. Second Transformation</div>
+<div class="title">Figure 21. Second Transformation</div>
 </div>
 <div class="paragraph">
 <p>Step 3. The user wants to undo the previous transformation by using the <code>undo</code> command. It will call <code>CurrentEdit#replaceTempWithOriginal()</code> which will replace the edited image in temp folder with the original image. It will then call <code>CurrentEdit#setUndoTemp()</code> to set the index in <code>tempImage</code> to the required index and retrieve the list with <code>CurrentEdit#getHistoryTemp()</code>. Using the list, it will apply the commands onto the original image till it reaches the command just before the set index.</p>
@@ -1410,7 +1452,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="content">
 <img src="images/UndoRedoNewCommand3StateListDiagram.png" alt="UndoRedoNewCommand3StateListDiagram" width="600">
 </div>
-<div class="title">Figure 23. Undo transformation</div>
+<div class="title">Figure 22. Undo transformation</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1434,7 +1476,7 @@ If a command fails its execution, it will return the image before undo was calle
 <div class="content">
 <img src="images/UndoRedoExecuteUndoStateListDiagram.png" alt="UndoRedoExecuteUndoStateListDiagram" width="600">
 </div>
-<div class="title">Figure 24. State List diagram</div>
+<div class="title">Figure 23. State List diagram</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1455,7 +1497,7 @@ If the <code>Image#index</code> is 0, pointing to the initial image, then there 
 <div class="content">
 <img src="images/UndoRedoSequenceDiagram.png" alt="UndoRedoSequenceDiagram" width="600">
 </div>
-<div class="title">Figure 25. Sequence Diagram</div>
+<div class="title">Figure 24. Sequence Diagram</div>
 </div>
 <div class="paragraph">
 <p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>CurrentEdit#setRedoTemp()</code>, which shifts the <code>index</code> once to the right, pointing to the previously undone command, and executes that command to perform the transformation.</p>
@@ -1477,7 +1519,7 @@ If the <code>index</code> is at index <code>commandHistory.size()</code>, pointi
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.6.2. Design Considerations</a></h4>
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.7.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -1547,19 +1589,19 @@ If the <code>index</code> is at index <code>commandHistory.size()</code>, pointi
 </div>
 </div>
 <div class="sect2">
-<h3 id="save-feature"><a class="link" href="#save-feature">3.7. Save Feature</a></h3>
+<h3 id="save-feature"><a class="link" href="#save-feature">3.8. Save Feature</a></h3>
 <div class="paragraph">
 <p>This command applies the edits to the current image and saves it into <code>assets</code> directory.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-7"><a class="link" href="#current-implementation-7">3.7.1. Current Implementation</a></h4>
+<h4 id="current-implementation-8"><a class="link" href="#current-implementation-8">3.8.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The <code>save</code> function is facilitated by <code>Album</code> and <code>CurrentEdit</code>. It uses the following operations:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>CurrentEdit#tempImageExist()</code> - Returns <code>true</code> if <code>tempImage</code> in <code>CurrentEdit</code> is null. <code>tempImage</code> is null only if <code>open</code> command was never called.</p>
+<p><code>CurrentEdit#tempImageDoNotExist()</code> - Returns <code>true</code> if <code>tempImage</code> in <code>CurrentEdit</code> is null. <code>tempImage</code> is null only if <code>open</code> command was never called.</p>
 </li>
 <li>
 <p><code>CurrentEdit#getTempImage()</code> - Returns the latest edited image stored in <code>tempImage</code> in <code>CurrentEdit</code>.</p>
@@ -1597,10 +1639,10 @@ If the <code>index</code> is at index <code>commandHistory.size()</code>, pointi
 <div class="content">
 <img src="images/SaveCommandSequenceDiagram.png" alt="SaveCommandSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 26. Sequence Diagram for Save Command</div>
+<div class="title">Figure 25. Sequence Diagram for Save Command</div>
 </div>
 <div class="paragraph">
-<p>Given below is an example usage scenario of how <code>save</code> behaves at each step as shown in <a href="#sequencediagram_save">Figure 26, &#8220;Sequence Diagram for Save Command&#8221;</a>.</p>
+<p>Given below is an example usage scenario of how <code>save</code> behaves at each step as shown in <a href="#sequencediagram_save">Figure 25, &#8220;Sequence Diagram for Save Command&#8221;</a>.</p>
 </div>
 <div class="paragraph">
 <p>Step 1. The user executes <code>save</code>.</p>
@@ -1634,7 +1676,7 @@ If the <code>index</code> is at index <code>commandHistory.size()</code>, pointi
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">3.7.2. Design Considerations</a></h4>
+<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">3.8.2. Design Considerations</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1671,53 +1713,15 @@ If the <code>index</code> is at index <code>commandHistory.size()</code>, pointi
 </div>
 </div>
 <div class="sect2">
-<h3 id="export-feature"><a class="link" href="#export-feature">3.8. Export Feature</a></h3>
-<div class="paragraph">
-<p>The <code>export</code> command exports a file in the album into a specified directory.</p>
-</div>
-<div class="sect3">
-<h4 id="current-implementation-8"><a class="link" href="#current-implementation-8">3.8.1. Current Implementation</a></h4>
-<div class="paragraph">
-<p>The export function is facilitated by <code>Album</code>. It uses the following operations:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>Album#getImageFromList(String)</code> - returns an image from the album with name matching the input string and null if no image matches the input string.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Given below is an example usage scenario and how the <code>export</code> mechanism behaves at each step.</p>
-</div>
-<div class="paragraph">
-<p>Step 1. The user executes <code>export f/iu.jpg d/C:\Users\randy\Desktop</code>.</p>
-</div>
-<div class="paragraph">
-<p>Step 2. <code>ExportCommandParser</code> checks if user has input the command correctly.</p>
-</div>
-<div class="paragraph">
-<p>Step 3. <code>Album#getImageFromList</code> checks if the file to be exported exists in the album and throws a <code>CommandException</code> if it does not exist.</p>
-</div>
-<div class="paragraph">
-<p>Step 4. <code>ExportCommand#validPath</code> checks if the specified directory is valid and throws a <code>CommandException</code> if it is not.</p>
-</div>
-<div class="paragraph">
-<p>Step 5. If file to be exported exists and directory is valid, the file will be copied to the directory.</p>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows how the <code>save</code> command works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/SaveCommandSequenceDiagram.png" alt="SaveCommandSequenceDiagram" width="800">
-</div>
-<div class="title">Figure 27. Sequence Diagram for Save Command</div>
-</div>
-</div>
+<h3 id="save-preset-feature"><a class="link" href="#save-preset-feature">3.9. Save Preset Feature</a></h3>
+
 </div>
 <div class="sect2">
-<h3 id="watermark-feature"><a class="link" href="#watermark-feature">3.9. WaterMark Feature</a></h3>
+<h3 id="set-preset-feature"><a class="link" href="#set-preset-feature">3.10. Set Preset Feature</a></h3>
+
+</div>
+<div class="sect2">
+<h3 id="watermark-feature"><a class="link" href="#watermark-feature">3.11. WaterMark Feature</a></h3>
 <div class="paragraph">
 <p>This command allows the user to add a watermark to their image. Upon receiving an input message from the user, the message will be checked for its validity and will throw an error if the message is empty or contains only spaces. Messages can contain words and numbers separated by spaces. The command will then be added to the <code>List&lt;Commands&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targetted image.</p>
 </div>
@@ -1734,7 +1738,7 @@ Each image can only have 1 watermark. If the user would like to edit the waterma
 </table>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-9"><a class="link" href="#current-implementation-9">3.9.1. Current Implementation</a></h4>
+<h4 id="current-implementation-9"><a class="link" href="#current-implementation-9">3.11.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The manipulation feature is facilitated by <code>CurrentEdit</code> and <code>Image</code>. It uses the following operations:</p>
 </div>
@@ -1888,11 +1892,11 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="content">
 <img src="images/WaterMarkCommandSequenceDiagram.png" alt="WaterMarkCommandSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 28. Sequence Diagram for WaterMark Command (Note: Some classes have been omitted for clarity of the diagram)</div>
+<div class="title">Figure 26. Sequence Diagram for WaterMark Command (Note: Some classes have been omitted for clarity of the diagram)</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-8"><a class="link" href="#design-considerations-8">3.9.2. Design Considerations</a></h4>
+<h4 id="design-considerations-8"><a class="link" href="#design-considerations-8">3.11.2. Design Considerations</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1903,7 +1907,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.10. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.12. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
@@ -2001,7 +2005,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 29. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 27. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 <div class="sect2">
@@ -2883,4 +2887,4 @@ Expected: GUI should export the selected Album image to target directory.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 07:58:24 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 08:34:41 UTC</div></div></div></body></html>
