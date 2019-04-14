@@ -32,20 +32,36 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to apply filters on images</strong></p>
+<p><strong>Major enhancement</strong>: I added <strong>the ability to apply filters on images</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: It parses the arguments specified by user, validate the filter commands and apply the filter on a targetted image. Users can key in commands such as <code>contrast</code>, <code>brightness</code> and <code>bw</code> to apply the filters.</p>
+<p>What it does: This feature allows the user to apply filters on images by adjusting their contrast and brightness or transforming them into black and white images. Users can key in commands such as <code>contrast</code>, <code>brightness</code> and <code>bw</code> to apply the respective filters on images. Before our application executes the respective image filter commands, the arguments specified by the user will first be parsed and validated.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because applying filters on images is one of the main feature of our image-editing product, FomoFoto. Users might need to adjust the brightness and contrast of an image as the image they have might be under-exposed and is not well contrasted. The black and white filter is useful for users who like vintage images.</p>
+<p>Justification: This feature improves the product significantly because applying filters on images is an essential feature of an image editor. Users might need to adjust the brightness and contrast of images as the images they have might be under-exposed and are not well contrasted. Also, the black and white filter is useful for users who like vintage images.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation was challenging as it required changes to existing commands. Furthermore, it required the gradle script to declare a compile-time dependency on an external API that provides images editing tools.<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup></p>
+<p>Highlights: This enhancement was challenging to implement as the image filter commands are working on the same image as the image manipulation commands that were implemented by my teammate. It seeks for an in-depth analysis of design alternatives and the implementation of image editing libraries. As my teammate and I had to use two different third-party libraries which returned different objects, we had to ensure that the classes in our code (e.g. <code>CurrentEdit</code>) have helper methods that accept both objects from the two different libraries.</p>
 </li>
 <li>
 <p>Credits: <em>{The processing of images is facilitated by an external API <a href="https://github.com/sksamuel/scrimage"><code>scrimage</code></a>}</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Major enhancement</strong>: I added <strong>the ability to save and set preset commands for faster image-editing</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: This feature allows the user to save and set a list of image-editing commands in advance of their uses. The <code>savepreset</code> command saves a list of commands that were applied to an image so that they can be applied to other images in the future by executing the <code>setpreset</code> command.</p>
+</li>
+<li>
+<p>Justification: This feature improves the product significantly because multiple image filters and manipulations are frequently applied simultaneously. With this feature, users can save multiple image-editing commands as one preset command and use them for other images.  This makes image-editing more efficient as the user can now apply multiple image filters or manipulations on other images with just a command instead of executing the commands one by one.</p>
+</li>
+<li>
+<p>Highlights: This feature requires an in-depth understanding of how the image-editing commands (e.g. image filters and image manipulations) are executed as it has to execute a few of them at a go. Furthermore, as a  preset list of commands might not work on another image (e.g. the cropping command depends on the size of the image), it is necessary to display the exact command in the preset list of commands that cannot be applied on the image to guide the user.</p>
 </li>
 </ul>
 </div>
@@ -72,7 +88,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Managed release <code>v1.3</code> (1 release) on GitHub</p>
+<p>Managed release <code>v1.4</code> (1 release) on GitHub</p>
+</li>
+<li>
+<p>Ensured the standardization of codes in our team to achieve better code quality.</p>
 </li>
 </ul>
 </div>
@@ -82,7 +101,32 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Wrote skeleton for the User Guide: <a href="https://github.com/CS2103-AY1819S2-W14-2/main/issues/132">#132</a></p>
+<p>Wrote the skeleton for the user guide: <a href="https://github.com/CS2103-AY1819S2-W14-2/main/issues/132">#132</a></p>
+</li>
+<li>
+<p>Did the sequence diagrams of the logic component in the developer guide:
+<a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/116">#116</a></p>
+</li>
+<li>
+<p>Wrote the documentation for the image filters in the developer guide
+<a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/131">#131</a></p>
+</li>
+<li>
+<p>Wrote the documentation for the preset commands in the developer guide
+<a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/271">#271</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Enhancements to Existing Features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Wrote tests for image filters and preset commands to increase coverage. (Pull requests <a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/233">#233</a>,
+<a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/220">#220</a>, <a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/219">#219</a>,
+<a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/213">#213</a>,
+<a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/207">#207</a>)</p>
 </li>
 </ul>
 </div>
@@ -92,10 +136,17 @@
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/98">#98</a>, <a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/52">#52</a>, <a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/46">#46</a></p>
+<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/98">#98</a>, <a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/52">#52</a>, <a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/46">#46</a>,
+<a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/236">#236</a>,
+<a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/203">#203</a>,
+<a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/153">#153</a></p>
 </li>
 <li>
-<p>Reported bugs and provided solutions to team: <a href="https://github.com/CS2103-AY1819S2-W14-2/main/issues/99">#99</a>, <a href="https://github.com/CS2103-AY1819S2-W14-2/main/issues/133">#133</a></p>
+<p>Reported bugs and provided solutions to team: <a href="https://github.com/CS2103-AY1819S2-W14-2/main/issues/99">#99</a>, <a href="https://github.com/CS2103-AY1819S2-W14-2/main/issues/133">#133</a>,
+<a href="https://github.com/CS2103-AY1819S2-W14-2/main/issues/270">#270</a>,
+<a href="https://github.com/CS2103-AY1819S2-W14-2/main/issues/209">#209</a>,
+<a href="https://github.com/CS2103-AY1819S2-W14-2/main/issues/199">#199</a>
+<a href="https://github.com/CS2103-AY1819S2-W14-2/main/issues/148">#148</a>,</p>
 </li>
 </ul>
 </div>
@@ -107,16 +158,20 @@
 <li>
 <p>Integrated a third party library (<a href="https://github.com/sksamuel/scrimage"><code>scrimage</code></a>) to the project (<a href="https://github.com">#42</a>)</p>
 </li>
-</ul>
-</div>
+<li>
+<p>Integrated Netlify to the team repository (<a href="https://github.com/CS2103-AY1819S2-W14-2/main/issues/151">#151</a>)</p>
+</li>
+<li>
+<p>Integrated AppVeyor to the team repository
+(<a href="https://github.com/CS2103-AY1819S2-W14-2/main/issues/151">#151</a>)</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -180,7 +235,7 @@ Format: <code>contrast CONTRAST_RATIO</code></p>
 <div class="sect2">
 <h3 id="brightness-code-brightness-code"><a class="link" href="#brightness-code-brightness-code">Brightness: <code>brightness</code></a></h3>
 <div class="paragraph">
-<p>Adjusts the brightness of the opened image based on a decimal value. If the brightness value is not specified, a preset decimal value of 1.1 will be used. Any positive decimal value that is less than 1 (e.g. 0.5) will reduce the brightness of the image while any decimal value that is above 1 (e.g. 1.9) will increase the brightness of the image. Negative decimal value will not be accepted.+
+<p>Adjusts the brightness of the opened image based on a decimal value. If the brightness value is not specified, a preset decimal value of 1.1 will be used. Any positive decimal value that is less than 1 (e.g. 0.5) will reduce the brightness of the image while any decimal value that is above 1 (e.g. 1.9) will increase the brightness of the image. Negative decimal value will not be accepted.<br>
 Format: <code>brightness [BRIGHTNESS_RATIO]</code></p>
 </div>
 <div class="paragraph">
@@ -200,90 +255,45 @@ Format: <code>brightness [BRIGHTNESS_RATIO]</code></p>
 </ul>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="command-summary"><a class="link" href="#command-summary">Command Summary</a></h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="save-preset-code-savepreset-code"><a class="link" href="#save-preset-code-savepreset-code">Save Preset: <code>savepreset</code></a></h3>
 <div class="paragraph">
-<p>Below is a quick summary of all the commands available in FomoFoto.</p>
+<p>Saves a list of commands that were used to edit the opened image under a specified name so that you can apply them on other images in the future. The specified name given must not be used before.<br>
+Format: <code>savepreset PRESETNAME</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Black/White</strong> <code>bw [THRESHOLD_VALUE]</code><br>
-e.g. <code>bw 127</code><br></p>
-</li>
-<li>
-<p><strong>Brightness</strong> <code>brightness [BRIGHTNESS_RATIO]</code><br>
-e.g. <code>brightness 0.8</code><br></p>
-</li>
-<li>
-<p><strong>Clear</strong> <code>clear</code><br></p>
-</li>
-<li>
-<p><strong>Contrast</strong> <code>contrast [CONTRAST_RATIO]</code><br>
-e.g. <code>contrast 1.9</code><br></p>
-</li>
-<li>
-<p><strong>Crop</strong> <code>crop X_POINTCOORD Y_POINTCOORD W_WIDTH H_HEIGHT</code><br>
-e.g. <code>crop 2 4 500 500</code></p>
-</li>
-<li>
-<p><strong>Exit</strong> <code>exit</code><br></p>
-</li>
-<li>
-<p><strong>Export</strong> <code>export f/FILENAME d/DIRECTORY</code><br>
-e.g. <code>export f/newImage.jpg d/C:\Users\randy\Desktop</code></p>
-</li>
-<li>
-<p><strong>Help</strong> <code>help</code><br></p>
-</li>
-<li>
-<p><strong>Import</strong> <code>import FILEPATH</code><br>
-e.g. <code>import Users/Fomo/Pictures/sample.jpg</code><br></p>
-</li>
-<li>
-<p><strong>List Files</strong> <code>listfiles</code><br></p>
-</li>
-<li>
-<p><strong>Open</strong> <code>open FILENAME</code><br>
-e.g. <code>open sample.jpg</code><br></p>
-</li>
-<li>
-<p><strong>Redo</strong> <code>redo</code><br></p>
-</li>
-<li>
-<p><strong>Rotate</strong> <code>rotate ANGLE</code><br>
-e.g. <code>rotate 270</code><br></p>
-</li>
-<li>
-<p><strong>Resize</strong> <code>resize WIDTH HEIGHT</code><br>
-e.g. <code>resize 100 200</code><br></p>
-</li>
-<li>
-<p><strong>Save</strong> <code>save [FILENAME]</code><br>
-e.g. <code>save MyNewImage.png</code><br></p>
-</li>
-<li>
-<p><strong>Save Preset</strong> <code>savepreset PRESETNAME</code><br>
-e.g. <code>savepreset preset1</code></p>
-</li>
-<li>
-<p><strong>Set Preset</strong> <code>setpreset PRESETNAME</code><br>
-e.g. <code>setpreset preset1</code></p>
-</li>
-<li>
-<p><strong>Tab</strong> <code>tab</code><br></p>
-</li>
-<li>
-<p><strong>Undo</strong> <code>undo</code><br></p>
-</li>
-<li>
-<p><strong>WaterMark</strong> <code>wm MESSAGE</code><br>
-e.g. <code>wm FomoFoto</code></p>
+<p><code>rotate 180</code><br>
+<code>brightness 1.3</code><br>
+<code>savepreset preset1</code> (saves <code>rotate 180</code> and <code>brightness 1.3</code> in a list of commands that can be used on other images)</p>
 </li>
 </ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="set-preset-code-setpreset-code"><a class="link" href="#set-preset-code-setpreset-code">Set Preset: <code>setpreset</code></a></h3>
+<div class="paragraph">
+<p>Applies the list of commands saved under the specified preset name on the opened image.<br>
+Format: <code>setpreset PRESETNAME</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>rotate 180</code><br>
+<code>brightness 1.3</code><br>
+<code>savepreset preset1</code> (saves <code>rotate 180</code> and <code>brightness 1.3</code> in a list of commands that can be used on other images)<br>
+<code>open newImage.jpg</code>  (open a new image to edit on)<br>
+<code>setpreset preset1</code>  (applies the list of commands which consists of <code>rotate 180</code> and <code>brightness 1.3</code> on the newly opened image)</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -300,49 +310,6 @@ e.g. <code>wm FomoFoto</code></p>
 </tr>
 </tbody>
 </table>
-<div class="paragraph">
-<p>Given below are the Sequence Diagrams for interactions within the <code>Logic</code> component for the <code>execute("import C:\User\Pictures\image.png")</code> and <code>execute("rotate 90")</code> API call.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/LogicImportSd.png" alt="LogicImportSd" width="800">
-</div>
-<div class="title">Figure 1. Interactions Inside the Logic Component for the <code>import C:\User\Pictures\image.png</code> Command</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/LogicRotateSd.png" alt="LogicRotateSd" width="800">
-</div>
-<div class="title">Figure 2. Interactions Inside the Logic Component for the <code>rotate 90</code> Command</div>
-</div>
-<div class="sect2">
-<h3 id="Design-Storage"><a class="link" href="#Design-Storage">Storage component</a></h3>
-<div class="imageblock">
-<div class="content">
-<img src="../images/StorageArchitectureDiagram.png" alt="StorageArchitectureDiagram" width="800">
-</div>
-<div class="title">Figure 3. Structure of the Storage Component</div>
-</div>
-<div class="paragraph">
-<p>The <code>assets</code> and <code>temp</code> directories form the storage component of FomoFoto.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>The <code>assets</code> directory stores images that the user imported</p>
-</li>
-<li>
-<p>The <code>temp</code> directory stores the image that the program is currently editing on.</p>
-</li>
-<li>
-<p>The <code>Album</code> class contains methods to save and retrieve images from the <code>assets</code> directory.</p>
-</li>
-<li>
-<p>The <code>CurrentEdit</code> class contains methods to overwrite and retrieve the image that the program is currently editing on.</p>
-</li>
-</ul>
-</div>
-</div>
 <div class="sect2">
 <h3 id="image-filters"><a class="link" href="#image-filters">Image Filters</a></h3>
 <div class="sect3">
@@ -401,7 +368,7 @@ e.g. <code>wm FomoFoto</code></p>
 <div class="content">
 <img src="../images/ContrastCommandSequenceDiagram.png" alt="ContrastCommandSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 4. Sequence Diagram for Contrast Command</div>
+<div class="title">Figure 1. Sequence Diagram for Contrast Command</div>
 </div>
 <div class="paragraph">
 <p>Given below is an example usage scenario of how <code>contrast</code> behaves at each step as shown in <a href="#sequencediagram_contrast">Sequence Diagram for Contrast Command</a>. [This applies to the other image filter commands as well.]</p>
@@ -472,11 +439,232 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="savepreset-feature"><a class="link" href="#savepreset-feature">SavePreset Feature</a></h3>
+<div class="paragraph">
+<p>This feature saves a list of commands that were applied to the opened image under a specified name so that they can be applied to other images in the future.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The <code>savepreset</code> function is facilitated by <code>CurrentEdit</code> and <code>TransformationSet</code>. It uses the following operations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>CurrentEdit#tempImageDoNotExist()</code> - Returns <code>true</code> if <code>tempImage</code> in <code>CurrentEdit</code> is null. <code>tempImage</code> is null only if <code>open</code> command is never called.</p>
+</li>
+<li>
+<p><code>CurrentEdit#getTempSubHistory()</code> - Retrieves the <code>List&lt;Command&gt;</code> from the <code>tempImage</code> in <code>CurrentEdit</code>.</p>
+</li>
+<li>
+<p><code>TransformationSet#isPresent(String)</code> - Returns true if there is already a <code>List&lt;Command&gt;</code> saved under the same preset name.</p>
+</li>
+<li>
+<p><code>TransformationSet#addTransformation(String, List&lt;Command&gt;)</code> - Saves the <code>List&lt;Command&gt;</code> to the <code>transformationMap</code> in <code>TransformationSet</code> under the specified preset name.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how <code>savepreset</code> works:</p>
+</div>
+<div id="sequencediagram_savepreset" class="imageblock">
+<div class="content">
+<img src="../images/SavePresetCommandSequenceDiagram.png" alt="SavePresetCommandSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 2. Sequence Diagram for Save Preset Command</div>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario of how <code>savepreset</code> behaves at each step as shown in <a href="#sequencediagram_savepreset">Sequence Diagram for Save Preset Command</a>.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. When the user enters the command (e.g. <code>savepreset preset1</code>), the entered command is parsed and the command will be executed.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If an invalid command is provided, a reminder of how to use the command will be given to the user and no command will be executed.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Step 2. During execution, the <code>execute</code> method in the <code>SavePresetCommand</code> class first invokes <code>CurrentEdit#tempImageDoNotExist</code> to check if an image is opened. If no image is opened, an error message will be displayed to remind the user to open an image for editing first.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. If an image is opened, the <code>execute</code> method will invoke <code>CurrentEdit#getTempSubHistory()</code> to retrieve the <code>List&lt;Command&gt;</code> from the <code>tempImage</code> in <code>CurrentEdit</code> which consists of the image editing commands used on the opened image.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. If the <code>List&lt;Command&gt;</code> is empty, an error message will be displayed to indicate that the opened image is not edited yet and thus there are no commands to be saved as a preset.</p>
+</div>
+<div class="paragraph">
+<p>Step 5. <code>TransformationSet#isPresent(String)</code> is then invoked to check if the preset name specified by the user is used previously. If it is used previously, an error message will be displayed to tell the user to specify a different preset name.</p>
+</div>
+<div class="paragraph">
+<p>Step 6. Lastly, the method <code>TransformationSet#addTransformation(String, List&lt;Command&gt;)</code> is called to add the <code>List&lt;Command</code> in the <code>TransformationSet</code>, saving it as a preset of commands that can be used in the future with the <code>setpreset</code> command.</p>
 </div>
 </div>
-<div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
-<div class="sectionbody">
-
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice)</strong>: The user can only save a preset of commands after applying these edits on an opened image.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: The user can view the effects of the commands on an image first before deciding to save it as a preset.</p>
+</li>
+<li>
+<p>Cons: It might be inconvenient for users who already have the list of commands they want to save as a preset beforehand and do not have to test them out.</p>
+</li>
+</ul>
 </div>
-</div></div><div id="footnotes"><hr><div class="footnote" id="_footnote_1"><a href="#_footnoteref_1">1</a>. Gradle is an open-source build automation tool that is designed to be flexible enough to build almost any type of software.</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 19:09:22 UTC</div></div></div></body></html>
+</li>
+<li>
+<p><strong>Alternative 2</strong>: The user can save a preset of commands by typing out all the commands in a row without testing them on an image.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: It will be convenient for professional editors as they do not have to test the commands out on an opened image first.</p>
+</li>
+<li>
+<p>Cons: Beginners in image editing will have a hard time finding the right commands to save as a preset without testing them out first.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In the end, the first alternative is chosen for this application because our photo editor, FomoFoto, is mainly designed for basic photo editing and thus should be more suitable for beginners to use.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="setpreset-feature"><a class="link" href="#setpreset-feature">SetPreset Feature</a></h3>
+<div class="paragraph">
+<p>This feature applies a preset list of commands that were saved previously using the <code>setpreset</code> command on the opened image.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The <code>setpreset</code> function is facilitated by <code>CurrentEdit</code> and <code>TransformationSet</code>. It uses the following operations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>CurrentEdit#addCommand(Command)</code> - Adds this command to the edit history [<code>List&lt;Command&gt;</code>] in <code>tempImage</code> for the <code>undo/redo</code> command.</p>
+</li>
+<li>
+<p><code>CurrentEdit#displayTempImage()</code> - Displays the temporary image stored in the temporary directory.</p>
+</li>
+<li>
+<p><code>CurrentEdit#getTempImage()</code> - Retrieves the temporary image <code>tempImage</code> which stores the filepath of the temporary image, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata.</p>
+</li>
+<li>
+<p><code>CurrentEdit#replaceTempWithOriginal()</code> - Replaces the temporary image in the filepath of the <code>tempImage</code> with the original image.</p>
+</li>
+<li>
+<p><code>CurrentEdit#tempImageDoNotExist()</code> - Returns <code>true</code> if <code>tempImage</code> in <code>CurrentEdit</code> is null. <code>tempImage</code> is null only if <code>open</code> command is never called.</p>
+</li>
+<li>
+<p><code>TransformationSet#findTransformation(String)</code> - Retrieves the <code>List&lt;Command&gt;</code> in the <code>transformationMap</code> with the specified preset name.</p>
+</li>
+<li>
+<p><code>TransformationSet#hasWaterMarkCommand(String)</code> - Returns true if the <code>List&lt;Command&gt;</code> contains a <code>WaterMarkCommand</code>.</p>
+</li>
+<li>
+<p><code>TransformationSet#isPresent(String)</code> - Returns true if there is a <code>List&lt;Command&gt;</code> saved under the given preset name.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how <code>setpreset</code> works:</p>
+</div>
+<div id="sequencediagram_setpreset" class="imageblock">
+<div class="content">
+<img src="../images/SetPresetCommandSequenceDiagram.png" alt="SetPresetCommandSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 3. Sequence Diagram for Set Preset Command</div>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario of how <code>setpreset</code> behaves at each step as shown in <a href="#sequencediagram_setpreset">Sequence Diagram for Set Preset Command</a>.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. When the user enters the command (e.g. <code>setpreset preset1</code>), the entered command is parsed and the command will be executed.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If an invalid command is provided, a reminder of how to use the command will be given to the user and no command will be executed.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Step 2. During execution, the <code>execute</code> method in the <code>SetPresetCommand</code> class first invokes <code>CurrentEdit#tempImageDoNotExist</code> to check if an image is opened. If no image is opened, an error message will be displayed to remind the user to open an image for editing first.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. If an image is opened, the <code>execute</code> method will invoke <code>CurrentEdit#getTempImage()</code> to retrieve the <code>tempImage</code> from <code>CurrentEdit</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. <code>TransformationSet#isPresent(String)</code> is then invoked to check if there is a preset of commands saved under the name specified by the user. If the method returns false, an error message will be displayed to inform the user that there is no preset of commands saved under the name he/she specified.</p>
+</div>
+<div class="paragraph">
+<p>Step 5. Else, the method <code>TransformationSet#findTransformation(String)</code> is called to retrieve the <code>List&lt;Command&gt;</code> saved under the specified preset name. Also, <code>TransformationSet#hasWaterMarkCommand(String)</code> is also invoked to check if the <code>List&lt;Command&gt;</code> has a <code>WaterMarkCommand</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 6. Commands in the <code>List&lt;Command&gt;</code> will be executed one by one to apply the respective edits to the opened image. If any of the commands throws an exception (e.g. If a watermark is already applied on an image, the execution of a preset of commands which contains a <code>WaterMarkCommand</code> on the same image will throw an error message to indicate that there is already a watermark.), the method <code>CurrentEdit#replaceTempWithOriginal</code> will undo all the changes made to the image.</p>
+</div>
+<div class="paragraph">
+<p>Step 6. Lastly, <code>CurrentEdit#addCommand(this)</code> is invoked to add this command to the <code>List&lt;Command&gt;</code> in <code>tempImage</code> for the undo/redo function and <code>CurrentEdit#displayTempImage()</code> is used to display the edited image on the graphical user interface.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">Design Considerations</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice)</strong>: Allows user to apply the preset of commands on only one image (the image that is opened) at each time.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: The user will be able to see the immediate effect of the commands on the image.</p>
+</li>
+<li>
+<p>Cons: The user have to set the preset of commands on each images one by one which takes a longer time.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2</strong>: Allows user to apply the preset of commands on multiple images.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: The user can save time by applying the commands on many images in just one command instead of having to do it one by one.</p>
+</li>
+<li>
+<p>Cons: The effects of the commands on the images are not shown immediately to the user and user will not be able to determine if the preset of commands is suitable for each of the images.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In the end, the first alternative is chosen as we want users to see the immediate effect of the commands so that they can make changes or undo the edits if they do not like what they see.</p>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 19:37:10 UTC</div></div></div></body></html>
