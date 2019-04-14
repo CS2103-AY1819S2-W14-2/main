@@ -522,7 +522,7 @@ image such as metadata information like <strong>Date and Time</strong> and <stro
 </ol>
 </div>
 <div class="paragraph">
-<p>The <code>UI</code> component is supported by a <code>Notifier</code> class. The class implements Java&#8217;s <code>propertyChangeListener</code> as means of drawing updates to the User Interface.</p>
+<p>The <code>UI</code> component is supplemented by a <code>Notifier</code> class. The class implements Java&#8217;s <code>propertyChangeListener</code> as means of drawing updates to the User Interface.</p>
 </div>
 <div class="paragraph">
 <p>For example, the <code>ImageView</code> component draws updates to an opened image in the following sequence:</p>
@@ -550,7 +550,7 @@ image such as metadata information like <strong>Date and Time</strong> and <stro
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> directory. For example, the layout of the <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/ui/MainWindow.java"><code>InitPanel</code></a> is specified in <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/resources/view/InitPanel.fxml"><code>InitPanel.fxml</code></a>
+The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> directory.
 </td>
 </tr>
 </table>
@@ -840,7 +840,6 @@ If FomoFoto is not given the permissions to write <code>assets</code> and <code>
 </td>
 <td class="content">
 Images with <code>.tif</code> or <code>.tiff</code> formats are not rendered on screen due to a limitation with JavaFX but edits made will still be applied.
-Support for additional formats will be available past V2.0.
 </td>
 </tr>
 </table>
@@ -874,7 +873,7 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 </table>
 </div>
 <div class="paragraph">
-<p>Images found in the given arguments will be copied to an <code>assets</code> directory created at runtime in FomoFoto&#8217;s home directory. Details of this directory can be found here. This is facilitated by the <code>Album</code> class and <code>ImportCommandParser</code> and contains the follow operation:</p>
+<p>Images found in the given arguments will be copied to an <code>assets</code> directory created at runtime in FomoFoto&#8217;s home directory. This is facilitated by the <code>Album</code> class and <code>ImportCommandParser</code> and contains the follow operation:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2887,4 +2886,4 @@ Expected: GUI should export the selected Album image to target directory.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 09:14:05 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 09:49:05 UTC</div></div></div></body></html>
