@@ -1,16 +1,25 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Tay Zhan Peng - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Tay Zhan Peng&#8217;s Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">FomoFoto</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://cs2103-ay1819s2-w14-2.github.io/main/"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Tay Zhan Peng - Project Portfolio</h1></div><div id="content"><div class="sect1">
-<h2 id="project-fomofoto"><a class="link" href="#project-fomofoto">PROJECT: FomoFoto</a></h2>
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">FomoFoto</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://cs2103-ay1819s2-w14-2.github.io/main/"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Tay Zhan Peng&#8217;s Project Portfolio</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
-<hr>
+<div class="literalblock">
+<div class="content">
+<pre>This portfolio seeks to document my contributions to our team's project, FomoFoto.</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="project-title-fomofoto"><a class="link" href="#project-title-fomofoto">Project Title: FomoFoto</a></h2>
+<div class="sectionbody">
+
 </div>
 </div>
 <div class="sect1">
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>My team and I were tasked with enhancing a basic command line addressbook for our Software Engineering project. We decided to morph the project into a image editor.<br></p>
+<p>My team and I were tasked with enhancing a basic command line Address Book for our software engineering project. We decided to morph the project into a image editor.<br></p>
 </div>
 <div class="paragraph">
 <p>FomoFoto is a robust yet simple image-editing tool. Users interact with the application through worded commands from their keyboard, and receive visual feedback from it through the displayed image on the application.<br></p>
@@ -30,22 +39,47 @@
 <p>This section provides a summary of my coding, documentation and other contributions to FomoFoto, our team project.</p>
 </div>
 <div class="sect2">
-<h3 id="strong-major-enhancement-strong-ability-to-open-files"><a class="link" href="#strong-major-enhancement-strong-ability-to-open-files"><strong>Major Enhancement</strong>&#8201;&#8212;&#8201;Ability to open files</a></h3>
+<h3 id="strong-major-enhancement-strong-added-the-feature-to-open-an-image"><a class="link" href="#strong-major-enhancement-strong-added-the-feature-to-open-an-image"><strong>Major Enhancement</strong>&#8201;&#8212;&#8201;Added the feature to open an image.</a></h3>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: It allows users to open an image that was previously imported into the album for editing.</p>
+<p><em>What it does:</em> The <code>open</code> command allows users to open an image that was previously imported into the album for editing.</p>
 </li>
 <li>
-<p>Justification: This feature is essential as it sets up the application to allow image manipulation and image filters commands to work. Upon using the <code>open</code> command, the image is displayed prominently in the main window of the application, allowing users to confirm and know which image they are currently editing.</p>
+<p><em>Why it is important:</em> This feature is essential as it enables users to choose which image they want to edit. Upon using the <code>open</code> command, the chosen image is displayed prominently in the main window of the application, allowing users to know which image they are about to apply their edits on.</p>
 </li>
 <li>
-<p>Highlights: This enhancement requires in depth analysis on how the temporary image is stored. It retrieves the opened image from <code>assets</code> folder and creates two copies of it in <code>temp</code> folder named <code>ori_img.png</code> and <code>temp_img.png</code>. Subsequent edits will update and replace the <code>temp_img.png</code>. The <code>ori_img.png</code> is utilised during an <code>undo</code> or <code>redo</code>. The implementation was challenging as it required many changes to the <code>Model</code> to ensure components access only folders that they are related to.</p>
-</li>
-<li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103-AY1819S2-W14-2/main/commits?author=itszp">List of commits</a>]</p>
+<p><em>Highlights:</em> The <code>open</code> command duplicates the opened image in a temporary folder so that users are able to recover the original image should they decide to abandon their edits or in the unlikely event of an application crash. Therefore, this enhancement requires in depth analysis on how the temporary image is stored. When an image is opened, two copies named <code>ori_img.png</code> and <code>temp_img.png</code> are created in the temporary folder. Subsequent edits will update and overwrite <code>temp_img.png</code> while <code>ori_img.png</code> is used for <code>undo</code> and <code>redo</code> operations.</p>
 </li>
 </ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="strong-major-enhancement-strong-added-the-feature-to-save-an-image"><a class="link" href="#strong-major-enhancement-strong-added-the-feature-to-save-an-image"><strong>Major Enhancement</strong>&#8201;&#8212;&#8201;Added the feature to save an image.</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><em>What it does:</em> The <code>save</code> command allows users to apply their edits to the image and save it as a new image.</p>
+</li>
+<li>
+<p><em>Why it is important:</em> This feature completes the image editor by enabling users to apply their edits permanently onto the image. It also gives users the ability to save their current work and resume editing at another time.</p>
+</li>
+<li>
+<p><em>Highlights:</em> The <code>save</code> command gives users the choice to either save the edited image with a new name or overwrite the original image. To save as a new image, users simply type <code>save newName.png</code> and an image named <code>newName.png</code> will be created in the album. To overwrite the original image, a simple <code>save</code> would suffice. After saving, users may continue to edit the image.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="strong-minor-enhancement-strong-added-the-feature-to-list-file-names"><a class="link" href="#strong-minor-enhancement-strong-added-the-feature-to-list-file-names"><strong>Minor Enhancement</strong>&#8201;&#8212;&#8201;Added the feature to list file names.</a></h3>
+<div class="paragraph">
+<p>The <code>listfiles</code> command displays all the names of the images in the album. It provides a quick reference to the images so that users may type the name correctly when using <code>open</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="strong-code-contributed-strong"><a class="link" href="#strong-code-contributed-strong"><strong>Code Contributed</strong></a></h3>
+<div class="paragraph">
+<p>Here are the code contributions that I have made. [<a href="https://github.com/CS2103-AY1819S2-W14-2/main/commits?author=itszp">List of Commits</a>]  [<a href="https://nus-cs2103-ay1819s2.github.io/cs2103-dashboard/#search=itszp">Project Code Dashboard</a>]</p>
 </div>
 </div>
 <div class="sect2">
@@ -57,7 +91,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Managed release <code>v1.2</code> and <code>v1.3</code> (2 releases) on GitHub</p>
+<p>Managed release <code>v1.2</code>, <code>v1.3</code>, <code>v1.3.1</code> and <code>v1.4</code> (4 releases) on GitHub.</p>
+</li>
+<li>
+<p>Managed labels, milestones and issues for issue tracking on GitHub.</p>
 </li>
 </ul>
 </div>
@@ -67,7 +104,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Wrote features implemented for the User Guide: <a href="https://github.com/CS2103-AY1819S2-W14-2/main/issues/132">#132</a></p>
+<p>Wrote features implemented for the User Guide: <a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/58">#58</a></p>
 </li>
 <li>
 <p>Wrote model and features for the Developer Guide: <a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/129">#129</a></p>
@@ -80,10 +117,18 @@
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/39">#39</a></p>
+<p>Pull requests (with non-trival comments) reviewed: <a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/39">#39</a>,
+<a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/239">#239</a>,
+<a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/242">#242</a></p>
 </li>
 <li>
-<p>Reported bugs and provided solutions to team: <a href="https://github.com/CS2103-AY1819S2-W14-2/main/issues/103">#103</a>, <a href="https://github.com/CS2103-AY1819S2-W14-2/main/issues/93">#93</a>, <a href="https://github.com/CS2103-AY1819S2-W14-2/main/pull/39">#39</a>, <a href="https://github.com/CS2103-AY1819S2-W14-2/main/issues/70">#70</a>, <a href="https://github.com/CS2103-AY1819S2-W14-2/main/issues/89">#89</a></p>
+<p>Reported bugs and provided solutions to team:
+<a href="https://github.com/CS2103-AY1819S2-W14-2/main/issues/89">#89</a>,
+<a href="https://github.com/CS2103-AY1819S2-W14-2/main/issues/93">#93</a>,  <a href="https://github.com/CS2103-AY1819S2-W14-2/main/issues/70">#70</a>,
+<a href="https://github.com/CS2103-AY1819S2-W14-2/main/issues/103">#103</a>,
+<a href="https://github.com/CS2103-AY1819S2-W14-2/main/issues/128">#128</a>,
+<a href="https://github.com/CS2103-AY1819S2-W14-2/main/issues/159">#159</a>,
+<a href="https://github.com/CS2103-AY1819S2-W14-2/main/issues/189">#189</a></p>
 </li>
 </ul>
 </div>
@@ -106,133 +151,17 @@
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="sect1">
-<h2 id="a-walk-through"><a class="link" href="#a-walk-through">A Walk Through</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Let&#8217;s start on our image editing journey. In this walk through, we will be demonstrating some simple commands to edit a sample image.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Head over to this <a href="https://twistedsifter.files.wordpress.com/2012/03/squirrel-photobomb-banff.jpg"><code>link</code></a> to get a suggested sample image to start from.</p>
-</li>
-<li>
-<p>Save the image in any desired folder you like on your device, like your Pictures folder for example. Name your image <strong>squirrel.jpg</strong>.</p>
-</li>
-<li>
-<p>Start FomoFoto by referring to <a href="#Quick Start">[Quick Start]</a>.</p>
-</li>
-<li>
-<p>Open the folder that the image file is stored in. Then, to get the file path of the image:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>In Windows: Hold on to the <kbd>Shift</kbd> key and <strong>right click</strong> on your image file. Click the option <strong>Copy path</strong>.</p>
-</li>
-<li>
-<p>In Mac: Go to terminal and navigate to your image file. Type 'pwd' to get the filepath to your image file and copy paste.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Go back to the FomoFoto application. Import the image into FomoFoto by typing as follows:</p>
-<div class="imageblock">
-<div class="content">
-<img src="../images/import.PNG" alt="import" width="912">
-</div>
-<div class="title">Figure 1. Import Command</div>
-</div>
-</li>
-<li>
-<p>Paste the file path by simultaneously pressing <kbd>Ctrl</kbd> and <kbd>V</kbd> keys.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>In Windows: Remove the <kbd>"</kbd> and <kbd>"</kbd> signs at the two ends of the filepath.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Ensure your final command looks similar to the figure below (filepath may differ):</p>
-<div class="imageblock">
-<div class="content">
-<img src="../images/importCommand.PNG" alt="importCommand" width="915">
-</div>
-<div class="title">Figure 2. Import with Filepath</div>
-</div>
-</li>
-<li>
-<p>Press <kbd>Enter</kbd> to execute the import command. Your image should be now displayed on the Album tab on the FomoFoto application as shown in the figure below.</p>
-<div class="imageblock">
-<div class="content">
-<img src="../images/importSuccess.PNG" alt="importSuccess" width="917">
-</div>
-<div class="title">Figure 3. Import Success</div>
-</div>
-</li>
-<li>
-<p>Open the imported image in FomoFoto by typing as follows:</p>
-<div class="imageblock">
-<div class="content">
-<img src="../images/open.PNG" alt="open" width="917">
-</div>
-<div class="title">Figure 4. Open Command</div>
-</div>
-</li>
-<li>
-<p>Press <kbd>Enter</kbd> to execute the open command. Your image should be now displayed on the FomoFoto application as shown in the figure below.</p>
-<div class="imageblock">
-<div class="content">
-<img src="../images/openImage.PNG" alt="openImage" width="917">
-</div>
-<div class="title">Figure 5. Open Success</div>
-</div>
-</li>
-<li>
-<p>Increase the brightness of the image by typing the following command: <code>brightness 2.0</code>. This doubles the brightness of the image.</p>
-<div class="imageblock">
-<div class="content">
-<img src="../images/brightnessCommand.PNG" alt="brightnessCommand" width="915">
-</div>
-<div class="title">Figure 6. Brightness Command</div>
-</div>
-</li>
-<li>
-<p>Press <kbd>Enter</kbd>. Your image should be brighter as shown in the figure below.</p>
-<div class="imageblock">
-<div class="content">
-<img src="../images/brightnessSuccess.PNG" alt="brightnessSuccess" width="917">
-</div>
-<div class="title">Figure 7. Brightness Success</div>
-</div>
-</li>
-<li>
-<p>Crop your photo by typing the following command: <code>crop 310 250 140 200</code>. Press <kbd>Enter</kbd>. Your image should look similar as the figure below.</p>
-<div class="imageblock">
-<div class="content">
-<img src="../images/cropSuccess.PNG" alt="cropSuccess" width="918">
-</div>
-<div class="title">Figure 8. Crop Success</div>
-</div>
-</li>
-</ol>
-</div>
 <div class="sect2">
 <h3 id="list-files-code-listfiles-code"><a class="link" href="#list-files-code-listfiles-code">List Files: <code>listfiles</code></a></h3>
 <div class="paragraph">
-<p>Lists all files in assets folder.<br>
+<p>Lists all the names of the files in the album.<br>
 Format: <code>listfiles</code></p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="open-an-image-code-open-code"><a class="link" href="#open-an-image-code-open-code">Open an image : <code>open</code></a></h3>
 <div class="paragraph">
-<p>Opens an image inside assets folder for editing.<br>
+<p>Opens an image from the album for editing.<br>
 Format: <code>open FILENAME</code></p>
 </div>
 <div class="paragraph">
@@ -249,8 +178,8 @@ Format: <code>open FILENAME</code></p>
 <div class="sect2">
 <h3 id="save-image-code-save-code"><a class="link" href="#save-image-code-save-code">Save image : <code>save</code></a></h3>
 <div class="paragraph">
-<p>Applies and saves your edits.<br>
-Format: <code>save</code> or <code>save FILENAME</code></p>
+<p>Applies your edits and saves the image.<br>
+Format: <code>save [FILENAME]</code></p>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -258,9 +187,41 @@ Format: <code>save</code> or <code>save FILENAME</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>save MyNewImage.png</code></p>
+<p><code>save</code></p>
+</li>
+<li>
+<p><code>save newname.jpg</code></p>
 </li>
 </ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>For a file name to be valid, it must end with either of the following: <code>.jpg</code>, <code>.png</code>, <code>.gif</code>, <code>.bmp</code>, <code>.jpeg</code>, <code>.tif</code> or <code>tiff</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ug_invalidsave.PNG" alt="ug invalidsave" width="800">
+</div>
+<div class="title">Figure 1. Invalid Save Name</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ug_validsave.PNG" alt="ug validsave" width="800">
+</div>
+<div class="title">Figure 2. Valid Save Name</div>
+</div>
+<div class="paragraph">
+<p><em>Figure 10</em> shows an example of how FomoFoto does not allow saving with invalid names. Ensure that your file name is valid before saving. There should be a message to indicate that the save is successful as seen in <em>Figure 11</em>. To overwrite the original image, simply use <code>save</code> without the file name.</p>
 </div>
 </div>
 </div>
@@ -284,7 +245,7 @@ Format: <code>save</code> or <code>save FILENAME</code></p>
 <div class="content">
 <img src="../images/ModelComponents.png" alt="ModelComponents" width="800">
 </div>
-<div class="title">Figure 9. Structure of the Model Component</div>
+<div class="title">Figure 3. Structure of the Model Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="{repoURL}/src/main/java/seedu/address/model/CurrentEdit.java"><code>CurrentEdit.java</code></a>, <a href="{repoURL}/src/main/java/seedu/address/model/Album.java"><code>Album.java</code></a>, <a href="{repoURL}/src/main/java/seedu/address/model/Album.java"><code>Image.java</code></a></p>
@@ -318,12 +279,12 @@ Format: <code>save</code> or <code>save FILENAME</code></p>
 <div class="sect2">
 <h3 id="open-feature"><a class="link" href="#open-feature">Open Feature</a></h3>
 <div class="paragraph">
-<p>The open command allows users to open a previously imported image for image-editing.</p>
+<p>This command allows the user to open a previously imported image for image-editing.</p>
 </div>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
 <div class="paragraph">
-<p>The open function is facilitated by <code>Album</code> and <code>CurrentEdit</code>. It uses the following operations:</p>
+<p>The <code>open</code> function is facilitated by <code>Album</code> and <code>CurrentEdit</code>. It uses the following operations:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -331,45 +292,45 @@ Format: <code>save</code> or <code>save FILENAME</code></p>
 <p><code>Album#checkFileExist(String)</code> - Checks if file name specified by the <code>String</code> exists in assets folder.</p>
 </li>
 <li>
-<p><code>Album#retrieveImage(String)</code> - Return an <code>Image</code> specified by the <code>String</code> in assets folder.</p>
+<p><code>Album#retrieveImage(String)</code> - Returns an <code>Image</code> specified by the <code>String</code> in assets folder.</p>
 </li>
 <li>
 <p><code>CurrentEdit#openImage(Image)</code> - Creates two copies of the opened image in <code>temp</code> folder. The duplicated images are instantiated as <code>tempImage</code> and <code>originalImage</code>.</p>
 </li>
 <li>
-<p><code>CurrentEdit#updateExIF(Image)</code> - Updates the Exif data of the image.</p>
+<p><code>CurrentEdit#updateExif()</code> - Updates the Exif data of the image.</p>
 </li>
 <li>
-<p><code>CurrenEdit#displayTempImage()</code> - Displays the temporary image stored in directory: "src/main/resources/temp/".</p>
+<p><code>CurrentEdit#displayTempImage()</code> - Displays the temporary image stored in directory: "src/main/resources/temp/".</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Given below is an example usage scenario and how the <code>open</code> mechanism behaves at each step.</p>
-</div>
-<div class="paragraph">
-<p>Step 1. The user executes <code>open sample.png</code>.</p>
-</div>
-<div class="paragraph">
-<p>Step 2. <code>Album#checkFileExist(String)</code> is called to check if the file specified by the <code>String</code> exist in <code>assets</code> folder. If it exists, <code>Album#retrieveImage(String)</code> is called to create an <code>Image</code> object from the specified file. Otherwise, <code>CommandException</code> is thrown.</p>
-</div>
-<div class="paragraph">
-<p>Step 3. The <code>Image</code> is passed to <code>CurrentEdit#openImage(Image)</code> to create two copies of <code>Image</code>, named <code>temp_img.png</code> and <code>ori_img.png</code>, in <code>temp</code> folder. These copies are then instantiated as <code>tempImage</code> and <code>originalImage</code>.</p>
-</div>
-<div class="paragraph">
-<p>Step 4. <code>CurrentEdit#updateExIF(Image)</code> is called to updates the information of the opened image in the GUI.</p>
-</div>
-<div class="paragraph">
-<p>Step 5. <code>CurrenEdit#displayTempImage()</code> displays the opened image on the GUI.</p>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows how the <code>open</code> command works:</p>
+<p>The following sequence diagram shows how <code>open</code> works:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/OpenCommandSequenceDiagram.png" alt="OpenCommandSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 10. Sequence Diagram for Open Command</div>
+<div class="title">Figure 4. Sequence Diagram for Open Command<br></div>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario of how <code>open</code> behaves at each step as shown in <em>Figure 11</em>.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user executes <code>open sample.png</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. <code>Album#checkFileExist(String)</code> is called to check if the file specified by the <code>String</code> is in <code>assets</code> folder. If it exists, <code>Album#retrieveImage(String)</code> is called to create an <code>Image</code> object from the specified file. Otherwise, <code>CommandException</code> is thrown.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. The <code>Image</code> is passed to <code>CurrentEdit#openImage(Image)</code> to create two copies of it, named <code>temp_img.png</code> and <code>ori_img.png</code>, in <code>temp</code> folder. These copies are then instantiated as <code>tempImage</code> and <code>originalImage</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. <code>CurrentEdit#updateExif()</code> is called to updates the information of the opened image in the GUI.</p>
+</div>
+<div class="paragraph">
+<p>Step 5. <code>CurrentEdit#displayTempImage()</code> is called to display the opened image on the GUI.</p>
 </div>
 </div>
 <div class="sect3">
@@ -377,44 +338,73 @@ Format: <code>save</code> or <code>save FILENAME</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice)</strong>: Users can only open and edit one image at a time.</p>
+<p><strong>Alternative 1 (current choice)</strong>: The user can only open and edit one image at a time.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy to implement. <code>temp</code> folder only stores one original image and one temporary image. Clear to users that edits are done to the only opened image.</p>
+<p>Advantages:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Easy to implement.</p>
 </li>
 <li>
-<p>Cons: Users are unable to open other images while editing.</p>
+<p>Saves space as <code>temp</code> folder only stores one original image and one temporary image.</p>
+</li>
+<li>
+<p>Clear to users that edits are done to the only opened image.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2</strong> : Users can open and edit multiple images.</p>
+<p>Disadvantage: Only one image can be edited at a time.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2</strong> : The user can open and edit multiple images.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Users are able to edit multiple images simultaneously.</p>
+<p>Advantage: Images can be edited simultaneously.</p>
 </li>
 <li>
-<p>Cons: Open has to distinguish whether user is opening an image from <code>assets</code> folder or <code>temp</code> folder. Requires many duplicates with different names. This may be confusing for the user.</p>
+<p>Disadvantages:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>open</code> has to distinguish whether user is opening an image from <code>assets</code> or <code>temp</code> folder.</p>
+</li>
+<li>
+<p>Requires many duplicates with different temporary names.</p>
+</li>
+<li>
+<p>May be confusing for the user.</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Alternative 1 was chosen as it is less complicated, requires lesser space and more user-friendly.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="list-files-feature"><a class="link" href="#list-files-feature">List Files Feature</a></h3>
 <div class="paragraph">
-<p>The <code>listfiles</code> command displays a list of all the files in <code>assets</code> folder.</p>
+<p>This command displays the names of all the files in <code>assets</code> folder.</p>
 </div>
 <div class="sect3">
 <h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
 <div class="paragraph">
-<p>The listfiles function is facilitated by <code>Album</code>. It uses the following operations:</p>
+<p>The <code>listfiles</code> function is facilitated by <code>Album</code>. It uses the following operations:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -424,60 +414,66 @@ Format: <code>save</code> or <code>save FILENAME</code></p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Given below is an example usage scenario and how the <code>listfiles</code> mechanism behaves at each step.</p>
-</div>
-<div class="paragraph">
-<p>Step 1. The user executes <code>listfiles</code>.</p>
-</div>
-<div class="paragraph">
-<p>Step 2. <code>Album#getFileNames()</code> accesses <code>assets</code> folder and returns all the file names in a String array.</p>
-</div>
-<div class="paragraph">
-<p>Step 3. The String array is displayed on the GUI.</p>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows how the <code>listfiles</code> command works:</p>
+<p>The following sequence diagram shows how <code>listfiles</code> works:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/ListFilesCommandSequenceDiagram.png" alt="ListFilesCommandSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 11. Sequence Diagram for ListFiles</div>
+<div class="title">Figure 5. Sequence Diagram for ListFiles<br></div>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario of how <code>listfiles</code> behaves at each step as shown in <em>Figure 11</em>.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user executes <code>listfiles</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. <code>Album#getFileNames()</code> accesses <code>assets</code> folder and returns all the file names in a <code>String</code> array.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. The <code>String</code> array is displayed on the GUI.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
 <div class="paragraph">
-<p><code>listfiles</code> command was created to allow users to know what files are stored in <code>assets</code> folder so that they can call <code>open</code> using the right file names.</p>
+<p>This command was created to allow the user to know what files are stored in <code>assets</code> folder so that the <code>FILENAME</code> can be easily referenced for <code>open</code>.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="save-feature"><a class="link" href="#save-feature">Save Feature</a></h3>
 <div class="paragraph">
-<p>The <code>save</code> command applies the edits to the current edit image and saves it into <code>assets</code> folder.</p>
+<p>This command applies the edits to the current image and saves it into <code>assets</code> folder.</p>
 </div>
 <div class="sect3">
 <h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">Current Implementation</a></h4>
 <div class="paragraph">
-<p>The save function is facilitated by <code>Album</code> and <code>CurrentEdit</code>. It uses the following operations:</p>
+<p>The <code>save</code> function is facilitated by <code>Album</code> and <code>CurrentEdit</code>. It uses the following operations:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>CurrentEdit#tempImageExist()</code> - Returns true <code>tempImage</code> in <code>CurrentEdit</code> is null. <code>tempImage</code> is null only if <code>open</code> command was never called.</p>
+<p><code>CurrentEdit#tempImageExist()</code> - Returns <code>true</code> if <code>tempImage</code> in <code>CurrentEdit</code> is null. <code>tempImage</code> is null only if <code>open</code> command was never called.</p>
 </li>
 <li>
 <p><code>CurrentEdit#getTempImage()</code> - Returns the latest edited image stored in <code>tempImage</code> in <code>CurrentEdit</code>.</p>
 </li>
 <li>
-<p><code>CurrentEdit#getOriginalName()</code> - Returns original name of opened image.</p>
+<p><code>CurrentEdit#getOriginalName()</code> - Returns the original name of opened image.</p>
 </li>
 <li>
 <p><code>CurrentEdit#overwriteOriginal(String)</code> - Replaces <code>ori_img.png</code> with <code>temp_img.png' in `temp</code> folder. Updates <code>originalImage</code> to <code>tempImage</code> and <code>originalImageName</code> to <code>String</code> in <code>CurrentEdit</code>.</p>
 </li>
 <li>
-<p><code>Album#checkFileExist(String)</code> - Checks if file name specified by the <code>String</code> exists in assets folder.</p>
+<p><code>CurrentEdit#deleteHistory()</code> - Clears the history in <code>CurrentEdit</code>.</p>
+</li>
+<li>
+<p><code>CurrentEdit#updateExif()</code> - Updates the Exif data of the new image.</p>
+</li>
+<li>
+<p><code>Album#checkFileExist(String)</code> - Checks if the file name specified by the <code>String</code> exists in assets folder.</p>
 </li>
 <li>
 <p><code>Album#saveToAssets(Image, String)</code> - Saves the <code>Image</code> as <code>String</code> into <code>assets</code> folder.</p>
@@ -491,19 +487,28 @@ Format: <code>save</code> or <code>save FILENAME</code></p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Given below is an example usage scenario and how the <code>save</code> mechanism behaves at each step.</p>
+<p>The following sequence diagram shows how <code>save</code> works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SaveCommandSequenceDiagram.png" alt="SaveCommandSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 6. Sequence Diagram for Save Command<br></div>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario of how <code>save</code> behaves at each step as shown in <em>Figure 19</em>.</p>
 </div>
 <div class="paragraph">
 <p>Step 1. The user executes <code>save</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 2. <code>CurrentEdit#tempImageExist()</code> checks if an image was previously opened. If no <code>open</code> was called previously, <code>CommandException</code> is thrown.</p>
+<p>Step 2. <code>CurrentEdit#tempImageExist()</code> is called to check if an image was previously opened. If <code>open</code> was not called previously, <code>CommandException</code> is thrown.</p>
 </div>
 <div class="paragraph">
-<p>Step 3. <code>CurrentEdit#getTempImage()</code> retrieves the <code>tempImage</code> from <code>CurrentEdit</code>.</p>
+<p>Step 3. <code>CurrentEdit#getTempImage()</code> is called to retrieve the <code>tempImage</code> from <code>CurrentEdit</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 4. If user did not input a <code>String</code> after <code>save</code> previously, <code>CurrentEdit#getOriginalName()</code> will retrieve the <code>originalImageName</code> from <code>CurrentEdit</code>. Otherwise, <code>Album#checkFileExist(String)</code> will be called to check if a file name is similar to <code>String</code>. If it is a duplicate, <code>CommandException</code> will be thrown.</p>
+<p>Step 4. If the user did not input a <code>String</code> after <code>save</code> previously, <code>CurrentEdit#getOriginalName()</code> will retrieve the <code>originalImageName</code> from <code>CurrentEdit</code>. Otherwise, <code>Album#checkFileExist(String)</code> will be called to check if a file name is similar to <code>String</code>. If it is a duplicate, <code>CommandException</code> will be thrown.</p>
 </div>
 <div class="paragraph">
 <p>Step 5. <code>Album#saveToAssets(Image, String)</code> takes in the previously retrieved <code>Image</code> and <code>String</code> to create a new image file in <code>assets</code> folder.</p>
@@ -512,19 +517,16 @@ Format: <code>save</code> or <code>save FILENAME</code></p>
 <p>Step 6. <code>CurrentEdit#overwriteOriginal(String)</code> is called to update the files in <code>temp</code> folder and their respective instances in <code>CurrentEdit</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 7. <code>Album#populateAlbum()</code> updates the list of image in <code>Album</code> class to ensure it reflects all the files in <code>assets</code> folder.</p>
+<p>Step 7. <code>CurrentEdit#deleteHistory()</code> is called to delete the edit history in <code>CurrentEdit</code> so that the user can no longer perform <code>undo</code> on the saved image.</p>
 </div>
 <div class="paragraph">
-<p>Step 8.<code>Album#refreshAlbum()</code> is called to update the Information Panel on the GUI.</p>
+<p>Step 8.<code>CurrentEdit#updateExif()</code> is called to update the Exif data of the new image.</p>
 </div>
 <div class="paragraph">
-<p>The following sequence diagram shows how the <code>save</code> command works:</p>
+<p>Step 9. <code>Album#populateAlbum()</code> is called to update the list of image in <code>Album</code> class and to ensure it reflects all the files in <code>assets</code> folder.</p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/SaveCommandSequenceDiagram.png" alt="SaveCommandSequenceDiagram" width="800">
-</div>
-<div class="title">Figure 12. Sequence Diagram for Save Command</div>
+<div class="paragraph">
+<p>Step 10.<code>Album#refreshAlbum()</code> is called to update the Information Panel on the GUI.</p>
 </div>
 </div>
 <div class="sect3">
@@ -532,32 +534,35 @@ Format: <code>save</code> or <code>save FILENAME</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1</strong>: User must input a string to name the the new image.</p>
+<p><strong>Alternative 1</strong>: The user must give a name to the new image.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Name of the new image is clear to the user.</p>
+<p>Advantage: Name of the new image is clear to the user.</p>
 </li>
 <li>
-<p>Cons: Tedious for user to type in a name each time <code>save</code> is performed.</p>
+<p>Disadvantage: May be tedious for the user to type in a name each time <code>save</code> is performed.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2 (current choice)</strong> : User can choose to input a string to name the new image or overwrite the opened image.</p>
+<p><strong>Alternative 2 (current choice)</strong> : The user can choose to save as a new name or overwrite the original image</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Convenient for user to <code>save</code> quickly without having to type a new name everytime.</p>
+<p>Advantage: Convenient for user to <code>save</code> quickly without having to type a new name everytime.</p>
 </li>
 <li>
-<p>Cons: User may unintentionally overwrite the opened image.</p>
+<p>Disadvantage: The user may unintentionally overwrite the original image.</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>Alternative 2 was chosen as the user is likely to use <code>save</code> frequently. Since the <code>assets</code> folder functions like an album, images can be re-imported if they are accidentally overwritten. The user is able to <code>save</code> easily and choose to resume editing immediately or at a later time.</p>
 </div>
 </div>
 </div>
@@ -660,10 +665,4 @@ Format: <code>save</code> or <code>save FILENAME</code></p>
 </tbody>
 </table>
 </div>
-</div>
-<div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
-<div class="sectionbody">
-
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 18:13:07 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 05:07:00 UTC</div></div></div></body></html>

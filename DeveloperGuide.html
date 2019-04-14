@@ -900,12 +900,12 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 <div class="sect2">
 <h3 id="open-feature"><a class="link" href="#open-feature">3.2. Open Feature</a></h3>
 <div class="paragraph">
-<p>The open command allows users to open a previously imported image for image-editing.</p>
+<p>This command allows the user to open a previously imported image for image-editing.</p>
 </div>
 <div class="sect3">
 <h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.2.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>The open function is facilitated by <code>Album</code> and <code>CurrentEdit</code>. It uses the following operations:</p>
+<p>The <code>open</code> function is facilitated by <code>Album</code> and <code>CurrentEdit</code>. It uses the following operations:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -913,45 +913,45 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 <p><code>Album#checkFileExist(String)</code> - Checks if file name specified by the <code>String</code> exists in assets folder.</p>
 </li>
 <li>
-<p><code>Album#retrieveImage(String)</code> - Return an <code>Image</code> specified by the <code>String</code> in assets folder.</p>
+<p><code>Album#retrieveImage(String)</code> - Returns an <code>Image</code> specified by the <code>String</code> in assets folder.</p>
 </li>
 <li>
 <p><code>CurrentEdit#openImage(Image)</code> - Creates two copies of the opened image in <code>temp</code> folder. The duplicated images are instantiated as <code>tempImage</code> and <code>originalImage</code>.</p>
 </li>
 <li>
-<p><code>CurrentEdit#updateExIF(Image)</code> - Updates the Exif data of the image.</p>
+<p><code>CurrentEdit#updateExif()</code> - Updates the Exif data of the image.</p>
 </li>
 <li>
-<p><code>CurrenEdit#displayTempImage()</code> - Displays the temporary image stored in directory: "src/main/resources/temp/".</p>
+<p><code>CurrentEdit#displayTempImage()</code> - Displays the temporary image stored in directory: "src/main/resources/temp/".</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Given below is an example usage scenario and how the <code>open</code> mechanism behaves at each step.</p>
-</div>
-<div class="paragraph">
-<p>Step 1. The user executes <code>open sample.png</code>.</p>
-</div>
-<div class="paragraph">
-<p>Step 2. <code>Album#checkFileExist(String)</code> is called to check if the file specified by the <code>String</code> exist in <code>assets</code> folder. If it exists, <code>Album#retrieveImage(String)</code> is called to create an <code>Image</code> object from the specified file. Otherwise, <code>CommandException</code> is thrown.</p>
-</div>
-<div class="paragraph">
-<p>Step 3. The <code>Image</code> is passed to <code>CurrentEdit#openImage(Image)</code> to create two copies of <code>Image</code>, named <code>temp_img.png</code> and <code>ori_img.png</code>, in <code>temp</code> folder. These copies are then instantiated as <code>tempImage</code> and <code>originalImage</code>.</p>
-</div>
-<div class="paragraph">
-<p>Step 4. <code>CurrentEdit#updateExIF(Image)</code> is called to updates the information of the opened image in the GUI.</p>
-</div>
-<div class="paragraph">
-<p>Step 5. <code>CurrenEdit#displayTempImage()</code> displays the opened image on the GUI.</p>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows how the <code>open</code> command works:</p>
+<p>The following sequence diagram shows how <code>open</code> works:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/OpenCommandSequenceDiagram.png" alt="OpenCommandSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 12. Sequence Diagram for Open Command</div>
+<div class="title">Figure 12. Sequence Diagram for Open Command<br></div>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario of how <code>open</code> behaves at each step as shown in <em>Figure 11</em>.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user executes <code>open sample.png</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. <code>Album#checkFileExist(String)</code> is called to check if the file specified by the <code>String</code> is in <code>assets</code> folder. If it exists, <code>Album#retrieveImage(String)</code> is called to create an <code>Image</code> object from the specified file. Otherwise, <code>CommandException</code> is thrown.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. The <code>Image</code> is passed to <code>CurrentEdit#openImage(Image)</code> to create two copies of it, named <code>temp_img.png</code> and <code>ori_img.png</code>, in <code>temp</code> folder. These copies are then instantiated as <code>tempImage</code> and <code>originalImage</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. <code>CurrentEdit#updateExif()</code> is called to updates the information of the opened image in the GUI.</p>
+</div>
+<div class="paragraph">
+<p>Step 5. <code>CurrentEdit#displayTempImage()</code> is called to display the opened image on the GUI.</p>
 </div>
 </div>
 <div class="sect3">
@@ -959,44 +959,73 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice)</strong>: Users can only open and edit one image at a time.</p>
+<p><strong>Alternative 1 (current choice)</strong>: The user can only open and edit one image at a time.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy to implement. <code>temp</code> folder only stores one original image and one temporary image. Clear to users that edits are done to the only opened image.</p>
+<p>Advantages:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Easy to implement.</p>
 </li>
 <li>
-<p>Cons: Users are unable to open other images while editing.</p>
+<p>Saves space as <code>temp</code> folder only stores one original image and one temporary image.</p>
+</li>
+<li>
+<p>Clear to users that edits are done to the only opened image.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2</strong> : Users can open and edit multiple images.</p>
+<p>Disadvantage: Only one image can be edited at a time.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2</strong> : The user can open and edit multiple images.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Users are able to edit multiple images simultaneously.</p>
+<p>Advantage: Images can be edited simultaneously.</p>
 </li>
 <li>
-<p>Cons: Open has to distinguish whether user is opening an image from <code>assets</code> folder or <code>temp</code> folder. Requires many duplicates with different names. This may be confusing for the user.</p>
+<p>Disadvantages:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>open</code> has to distinguish whether user is opening an image from <code>assets</code> or <code>temp</code> folder.</p>
+</li>
+<li>
+<p>Requires many duplicates with different temporary names.</p>
+</li>
+<li>
+<p>May be confusing for the user.</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Alternative 1 was chosen as it is less complicated, requires lesser space and more user-friendly.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="list-files-feature"><a class="link" href="#list-files-feature">3.3. List Files Feature</a></h3>
 <div class="paragraph">
-<p>The <code>listfiles</code> command displays a list of all the files in <code>assets</code> folder.</p>
+<p>This command displays the names of all the files in <code>assets</code> folder.</p>
 </div>
 <div class="sect3">
 <h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.3.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>The listfiles function is facilitated by <code>Album</code>. It uses the following operations:</p>
+<p>The <code>listfiles</code> function is facilitated by <code>Album</code>. It uses the following operations:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1006,31 +1035,31 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 </ul>
 </div>
 <div class="paragraph">
-<p>Given below is an example usage scenario and how the <code>listfiles</code> mechanism behaves at each step.</p>
-</div>
-<div class="paragraph">
-<p>Step 1. The user executes <code>listfiles</code>.</p>
-</div>
-<div class="paragraph">
-<p>Step 2. <code>Album#getFileNames()</code> accesses <code>assets</code> folder and returns all the file names in a String array.</p>
-</div>
-<div class="paragraph">
-<p>Step 3. The String array is displayed on the GUI.</p>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows how the <code>listfiles</code> command works:</p>
+<p>The following sequence diagram shows how <code>listfiles</code> works:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/ListFilesCommandSequenceDiagram.png" alt="ListFilesCommandSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 13. Sequence Diagram for ListFiles</div>
+<div class="title">Figure 13. Sequence Diagram for ListFiles<br></div>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario of how <code>listfiles</code> behaves at each step as shown in <em>Figure 11</em>.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user executes <code>listfiles</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. <code>Album#getFileNames()</code> accesses <code>assets</code> folder and returns all the file names in a <code>String</code> array.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. The <code>String</code> array is displayed on the GUI.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.3.2. Design Considerations</a></h4>
 <div class="paragraph">
-<p><code>listfiles</code> command was created to allow users to know what files are stored in <code>assets</code> folder so that they can call <code>open</code> using the right file names.</p>
+<p>This command was created to allow the user to know what files are stored in <code>assets</code> folder so that the <code>FILENAME</code> can be easily referenced for <code>open</code>.</p>
 </div>
 </div>
 </div>
@@ -1518,29 +1547,35 @@ If the <code>index</code> is at index <code>commandHistory.size()</code>, pointi
 <div class="sect2">
 <h3 id="save-feature"><a class="link" href="#save-feature">3.7. Save Feature</a></h3>
 <div class="paragraph">
-<p>The <code>save</code> command applies the edits to the current edit image and saves it into <code>assets</code> folder.</p>
+<p>This command applies the edits to the current image and saves it into <code>assets</code> folder.</p>
 </div>
 <div class="sect3">
 <h4 id="current-implementation-7"><a class="link" href="#current-implementation-7">3.7.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>The save function is facilitated by <code>Album</code> and <code>CurrentEdit</code>. It uses the following operations:</p>
+<p>The <code>save</code> function is facilitated by <code>Album</code> and <code>CurrentEdit</code>. It uses the following operations:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>CurrentEdit#tempImageExist()</code> - Returns true <code>tempImage</code> in <code>CurrentEdit</code> is null. <code>tempImage</code> is null only if <code>open</code> command was never called.</p>
+<p><code>CurrentEdit#tempImageExist()</code> - Returns <code>true</code> if <code>tempImage</code> in <code>CurrentEdit</code> is null. <code>tempImage</code> is null only if <code>open</code> command was never called.</p>
 </li>
 <li>
 <p><code>CurrentEdit#getTempImage()</code> - Returns the latest edited image stored in <code>tempImage</code> in <code>CurrentEdit</code>.</p>
 </li>
 <li>
-<p><code>CurrentEdit#getOriginalName()</code> - Returns original name of opened image.</p>
+<p><code>CurrentEdit#getOriginalName()</code> - Returns the original name of opened image.</p>
 </li>
 <li>
 <p><code>CurrentEdit#overwriteOriginal(String)</code> - Replaces <code>ori_img.png</code> with <code>temp_img.png' in `temp</code> folder. Updates <code>originalImage</code> to <code>tempImage</code> and <code>originalImageName</code> to <code>String</code> in <code>CurrentEdit</code>.</p>
 </li>
 <li>
-<p><code>Album#checkFileExist(String)</code> - Checks if file name specified by the <code>String</code> exists in assets folder.</p>
+<p><code>CurrentEdit#deleteHistory()</code> - Clears the history in <code>CurrentEdit</code>.</p>
+</li>
+<li>
+<p><code>CurrentEdit#updateExif()</code> - Updates the Exif data of the new image.</p>
+</li>
+<li>
+<p><code>Album#checkFileExist(String)</code> - Checks if the file name specified by the <code>String</code> exists in assets folder.</p>
 </li>
 <li>
 <p><code>Album#saveToAssets(Image, String)</code> - Saves the <code>Image</code> as <code>String</code> into <code>assets</code> folder.</p>
@@ -1554,19 +1589,28 @@ If the <code>index</code> is at index <code>commandHistory.size()</code>, pointi
 </ul>
 </div>
 <div class="paragraph">
-<p>Given below is an example usage scenario and how the <code>save</code> mechanism behaves at each step.</p>
+<p>The following sequence diagram shows how <code>save</code> works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SaveCommandSequenceDiagram.png" alt="SaveCommandSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 20. Sequence Diagram for Save Command<br></div>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario of how <code>save</code> behaves at each step as shown in <em>Figure 19</em>.</p>
 </div>
 <div class="paragraph">
 <p>Step 1. The user executes <code>save</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 2. <code>CurrentEdit#tempImageExist()</code> checks if an image was previously opened. If no <code>open</code> was called previously, <code>CommandException</code> is thrown.</p>
+<p>Step 2. <code>CurrentEdit#tempImageExist()</code> is called to check if an image was previously opened. If <code>open</code> was not called previously, <code>CommandException</code> is thrown.</p>
 </div>
 <div class="paragraph">
-<p>Step 3. <code>CurrentEdit#getTempImage()</code> retrieves the <code>tempImage</code> from <code>CurrentEdit</code>.</p>
+<p>Step 3. <code>CurrentEdit#getTempImage()</code> is called to retrieve the <code>tempImage</code> from <code>CurrentEdit</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 4. If user did not input a <code>String</code> after <code>save</code> previously, <code>CurrentEdit#getOriginalName()</code> will retrieve the <code>originalImageName</code> from <code>CurrentEdit</code>. Otherwise, <code>Album#checkFileExist(String)</code> will be called to check if a file name is similar to <code>String</code>. If it is a duplicate, <code>CommandException</code> will be thrown.</p>
+<p>Step 4. If the user did not input a <code>String</code> after <code>save</code> previously, <code>CurrentEdit#getOriginalName()</code> will retrieve the <code>originalImageName</code> from <code>CurrentEdit</code>. Otherwise, <code>Album#checkFileExist(String)</code> will be called to check if a file name is similar to <code>String</code>. If it is a duplicate, <code>CommandException</code> will be thrown.</p>
 </div>
 <div class="paragraph">
 <p>Step 5. <code>Album#saveToAssets(Image, String)</code> takes in the previously retrieved <code>Image</code> and <code>String</code> to create a new image file in <code>assets</code> folder.</p>
@@ -1575,19 +1619,16 @@ If the <code>index</code> is at index <code>commandHistory.size()</code>, pointi
 <p>Step 6. <code>CurrentEdit#overwriteOriginal(String)</code> is called to update the files in <code>temp</code> folder and their respective instances in <code>CurrentEdit</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 7. <code>Album#populateAlbum()</code> updates the list of image in <code>Album</code> class to ensure it reflects all the files in <code>assets</code> folder.</p>
+<p>Step 7. <code>CurrentEdit#deleteHistory()</code> is called to delete the edit history in <code>CurrentEdit</code> so that the user can no longer perform <code>undo</code> on the saved image.</p>
 </div>
 <div class="paragraph">
-<p>Step 8.<code>Album#refreshAlbum()</code> is called to update the Information Panel on the GUI.</p>
+<p>Step 8.<code>CurrentEdit#updateExif()</code> is called to update the Exif data of the new image.</p>
 </div>
 <div class="paragraph">
-<p>The following sequence diagram shows how the <code>save</code> command works:</p>
+<p>Step 9. <code>Album#populateAlbum()</code> is called to update the list of image in <code>Album</code> class and to ensure it reflects all the files in <code>assets</code> folder.</p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="images/SaveCommandSequenceDiagram.png" alt="SaveCommandSequenceDiagram" width="800">
-</div>
-<div class="title">Figure 20. Sequence Diagram for Save Command</div>
+<div class="paragraph">
+<p>Step 10.<code>Album#refreshAlbum()</code> is called to update the Information Panel on the GUI.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1595,32 +1636,35 @@ If the <code>index</code> is at index <code>commandHistory.size()</code>, pointi
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1</strong>: User must input a string to name the the new image.</p>
+<p><strong>Alternative 1</strong>: The user must give a name to the new image.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Name of the new image is clear to the user.</p>
+<p>Advantage: Name of the new image is clear to the user.</p>
 </li>
 <li>
-<p>Cons: Tedious for user to type in a name each time <code>save</code> is performed.</p>
+<p>Disadvantage: May be tedious for the user to type in a name each time <code>save</code> is performed.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2 (current choice)</strong> : User can choose to input a string to name the new image or overwrite the opened image.</p>
+<p><strong>Alternative 2 (current choice)</strong> : The user can choose to save as a new name or overwrite the original image</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Convenient for user to <code>save</code> quickly without having to type a new name everytime.</p>
+<p>Advantage: Convenient for user to <code>save</code> quickly without having to type a new name everytime.</p>
 </li>
 <li>
-<p>Cons: User may unintentionally overwrite the opened image.</p>
+<p>Disadvantage: The user may unintentionally overwrite the original image.</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>Alternative 2 was chosen as the user is likely to use <code>save</code> frequently. Since the <code>assets</code> folder functions like an album, images can be re-imported if they are accidentally overwritten. The user is able to <code>save</code> easily and choose to resume editing immediately or at a later time.</p>
 </div>
 </div>
 </div>
@@ -3392,4 +3436,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 18:13:07 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 05:07:00 UTC</div></div></div></body></html>
