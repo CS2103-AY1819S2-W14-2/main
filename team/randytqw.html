@@ -507,7 +507,7 @@ If the <code>Image#index</code> is 0, pointing to the initial photo, then there 
 <div class="paragraph">
 <p>The following sequence diagram shows how the undo operation works:
 .Sequence Diagram
-image::UndoRedoSequenceDiagram.png[width="600"]</p>
+image::UndoRedoSequenceDiagram.png[width="800"]</p>
 </div>
 <div class="paragraph">
 <p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>CurrentEdit#setRedoTemp()</code>, which shifts the <code>index</code> once to the right, pointing to the previously undone command, and executes that command to perform the transformation.</p>
@@ -613,4 +613,4 @@ If the <code>index</code> is at index <code>commandHistory.size()</code>, pointi
 <div class="sectionbody">
 
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 05:27:45 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 05:35:54 UTC</div></div></div></body></html>
