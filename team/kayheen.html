@@ -564,7 +564,7 @@ The following class plays an important role at the architecture level:</p>
 <div class="sect3">
 <h4 id="rotate-command"><a class="link" href="#rotate-command">Rotate Command</a></h4>
 <div class="paragraph">
-<p>This command allows the user to rotate the targetted image by specifying a degree (90, 180 or 270 only). Upon receiving an input degree from the user, the degree will be checked for its validity and will throw an error if the degree is not within the specified range. The command will then be added to the <code>List&lt;Commands&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targetted image.</p>
+<p>This command allows the user to rotate the targeted image by specifying a degree (90, 180 or 270 only). Upon receiving an input degree from the user, the degree will be checked for its validity and will throw an error if the degree is not within the specified range. The command will then be added to the <code>List&lt;Commands&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targeted image.</p>
 </div>
 <div class="paragraph">
 <p>Given below is an example usage scenario and how the command should behave at each step [This applies to the other image manipulation commands as well.]:</p>
@@ -594,13 +594,13 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <p>Step 4. Upon retrieving the <code>tempImage</code>, the <code>execute</code> method in <code>RotateCommand</code> gets a <code>BufferedImage</code> instance from <code>tempImage</code>.The method then calls the external library <a href="https://github.com/rkalla/imgscalr"><code>ImgScalr</code></a>'s class <code>rotate</code> and passes the <code>BufferedImage</code> object in.</p>
 </div>
 <div class="paragraph">
-<p>Step 5. A <code>BufferedImage</code> object is returned from the external library and <code>currentEdit#updateTempImage()</code> is invoked to overwrite the current image in the filepath: "src/main/resources/temp/" + <code>tempImage#getUrl</code> with a new <code>BufferedImage</code> object.</p>
+<p>Step 5. A <code>BufferedImage</code> object is returned from the external library and <code>currentEdit#updateTempImage()</code> is invoked to save the newly edited <code>BufferedImage</code> and replace the previous image in the filepath of the <code>tempImage</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 6. The <code>execute</code> method then checks if the boolean <code>isNewCommand</code> is true. If it is true, it indicates that the command is a new <code>Rotate</code> command called directly from the user and not through an <code>Undo/Redo</code> command which triggers Step 7 in the line below. Otherwise, the command’s execution ends in this step.</p>
+<p>Step 6. The <code>execute</code> method then checks if the boolean <code>isNewCommand</code> is true. If it is true, it indicates that the command is a new <code>Rotate</code> command called directly from the user and not through an <code>undo/redo</code> command which triggers Step 7 in the line below. Otherwise, the command’s execution ends in this step.</p>
 </div>
 <div class="paragraph">
-<p>Step 7. <code>isNewCommand</code> is set to false to signal that this command is not a new rotate command if it is executed again through the <code>Undo/Redo</code> function. <code>currentEdit#addCommand(this)</code> is invoked to add this command to the <code>List&lt;Command&gt;</code> in <code>tempImage</code> for the <code>Undo/Redo</code> function and <code>currentEdit#displayTempImage()</code> is used to display the edited image on the graphical user interface.<br></p>
+<p>Step 7. <code>isNewCommand</code> is set to false to signal that this command is not a new rotate command if it is executed again through the <code>Undo/Redo</code> function. <code>currentEdit#addCommand(this)</code> is invoked to add this command to the <code>List&lt;Command&gt;</code> in <code>tempImage</code> for the <code>undo/redo</code> function and <code>currentEdit#displayTempImage()</code> is used to display the edited image on the graphical user interface.<br></p>
 </div>
 <div class="paragraph">
 <p>The diagram below illustrates how the <code>Rotate</code> Command works:</p>
@@ -617,7 +617,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="ulist">
 <ul>
 <li>
-<p>Intermediate images have to be stored and edited in a temp directory first due to our <code>Undo/Redo</code> implementation.</p>
+<p>Intermediate images have to be stored and edited in a temp directory first due to our <code>undo/redo</code> implementation.</p>
 </li>
 </ul>
 </div>
@@ -625,31 +625,19 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="sect3">
 <h4 id="crop-command"><a class="link" href="#crop-command">Crop Command</a></h4>
 <div class="paragraph">
-<p>This command allows the user to crop the targetted image by specifying the coordinates of the top left hand corner of the desired image, the width of the desired image and the height of the desired image. Upon receiving the inputs, the values will be checked for their validity and will throw an error if any value is not within the specified range. The command will then be added to the <code>List&lt;Commands&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targetted image.</p>
+<p>This command allows the user to crop the targeted image by specifying the coordinates of the top left hand corner of the desired image, the width of the desired image and the height of the desired image. Upon receiving the inputs, the values will be checked for their validity and will throw an error if any value is not within the specified range. The command will then be added to the <code>List&lt;Command&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targeted image.</p>
 </div>
 <div class="paragraph">
-<p>Refer to the example usage scenario and design considerations in <a href="#rotate-command">Rotate Command</a>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/CropCommandSequenceDiagram.png" alt="CropCommandSequenceDiagram" width="800">
-</div>
-<div class="title">Figure 14. Sequence Diagram for Crop Command</div>
+<p>Refer to the example usage scenario, sequence diagram and design considerations in <a href="#rotate-command">Rotate Command</a>.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="resize-command"><a class="link" href="#resize-command">Resize Command</a></h4>
 <div class="paragraph">
-<p>This command allows the user to resize the targetted image by specifying the width and height of the desired image. Upon receiving the inputs, the values will be checked for their validity and will throw an error if any value is not within the specified range. The command will then be added to the <code>List&lt;Commands&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targetted image.</p>
+<p>This command allows the user to resize the targeted image by specifying the width and height of the desired image. Upon receiving the inputs, the values will be checked for their validity and will throw an error if any value is not within the specified range. The command will then be added to the <code>List&lt;Command&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targeted image.</p>
 </div>
 <div class="paragraph">
-<p>Refer to the example usage scenario and design considerations in <a href="#rotate-command">Rotate Command</a>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/ResizeCommandSequenceDiagram.png" alt="ResizeCommandSequenceDiagram" width="800">
-</div>
-<div class="title">Figure 15. Sequence Diagram for Resize Command</div>
+<p>Refer to the example usage scenario, sequence diagram and design considerations in <a href="#rotate-command">Rotate Command</a>.</p>
 </div>
 </div>
 </div>
@@ -825,7 +813,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="content">
 <img src="../images/WaterMarkCommandSequenceDiagram.png" alt="WaterMarkCommandSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 16. Sequence Diagram for WaterMark Command (Note: Some classes have been omitted for clarity of the diagram)</div>
+<div class="title">Figure 14. Sequence Diagram for WaterMark Command (Note: Some classes have been omitted for clarity of the diagram)</div>
 </div>
 </div>
 <div class="sect3">
@@ -840,4 +828,4 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 09:49:05 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 09:55:16 UTC</div></div></div></body></html>

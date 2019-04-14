@@ -1203,7 +1203,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </div>
 <div class="paragraph">
 <p>Step 7. <code>isNewCommand</code> is set to <code>false</code> to signal that this command is not a new contrast command if it is executed again through the <code>undo/redo</code> command.
-<code>currentEdit#addCommand(this)</code> is invoked to add this command to the <code>List&lt;Command&gt;</code> in <code>tempImage</code> for the undo/redo function and <code>currentEdit#displayTempImage()</code> is used to display the edited image on the graphical user interface.</p>
+<code>currentEdit#addCommand(this)</code> is invoked to add this command to the <code>List&lt;Command&gt;</code> in <code>tempImage</code> for the <code>undo/redo</code> function and <code>currentEdit#displayTempImage()</code> is used to display the edited image on the graphical user interface.</p>
 </div>
 <div class="sect4">
 <h5 id="design-considerations-4"><a class="link" href="#design-considerations-4">Design Considerations</a></h5>
@@ -1293,7 +1293,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="sect3">
 <h4 id="rotate-command"><a class="link" href="#rotate-command">3.6.2. Rotate Command</a></h4>
 <div class="paragraph">
-<p>This command allows the user to rotate the targetted image by specifying a degree (90, 180 or 270 only). Upon receiving an input degree from the user, the degree will be checked for its validity and will throw an error if the degree is not within the specified range. The command will then be added to the <code>List&lt;Commands&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targetted image.</p>
+<p>This command allows the user to rotate the targeted image by specifying a degree (90, 180 or 270 only). Upon receiving an input degree from the user, the degree will be checked for its validity and will throw an error if the degree is not within the specified range. The command will then be added to the <code>List&lt;Commands&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targeted image.</p>
 </div>
 <div class="paragraph">
 <p>Given below is an example usage scenario and how the command should behave at each step [This applies to the other image manipulation commands as well.]:</p>
@@ -1323,13 +1323,13 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <p>Step 4. Upon retrieving the <code>tempImage</code>, the <code>execute</code> method in <code>RotateCommand</code> gets a <code>BufferedImage</code> instance from <code>tempImage</code>.The method then calls the external library <a href="https://github.com/rkalla/imgscalr"><code>ImgScalr</code></a>'s class <code>rotate</code> and passes the <code>BufferedImage</code> object in.</p>
 </div>
 <div class="paragraph">
-<p>Step 5. A <code>BufferedImage</code> object is returned from the external library and <code>currentEdit#updateTempImage()</code> is invoked to overwrite the current image in the filepath: "src/main/resources/temp/" + <code>tempImage#getUrl</code> with a new <code>BufferedImage</code> object.</p>
+<p>Step 5. A <code>BufferedImage</code> object is returned from the external library and <code>currentEdit#updateTempImage()</code> is invoked to save the newly edited <code>BufferedImage</code> and replace the previous image in the filepath of the <code>tempImage</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 6. The <code>execute</code> method then checks if the boolean <code>isNewCommand</code> is true. If it is true, it indicates that the command is a new <code>Rotate</code> command called directly from the user and not through an <code>Undo/Redo</code> command which triggers Step 7 in the line below. Otherwise, the command’s execution ends in this step.</p>
+<p>Step 6. The <code>execute</code> method then checks if the boolean <code>isNewCommand</code> is true. If it is true, it indicates that the command is a new <code>Rotate</code> command called directly from the user and not through an <code>undo/redo</code> command which triggers Step 7 in the line below. Otherwise, the command’s execution ends in this step.</p>
 </div>
 <div class="paragraph">
-<p>Step 7. <code>isNewCommand</code> is set to false to signal that this command is not a new rotate command if it is executed again through the <code>Undo/Redo</code> function. <code>currentEdit#addCommand(this)</code> is invoked to add this command to the <code>List&lt;Command&gt;</code> in <code>tempImage</code> for the <code>Undo/Redo</code> function and <code>currentEdit#displayTempImage()</code> is used to display the edited image on the graphical user interface.<br></p>
+<p>Step 7. <code>isNewCommand</code> is set to false to signal that this command is not a new rotate command if it is executed again through the <code>Undo/Redo</code> function. <code>currentEdit#addCommand(this)</code> is invoked to add this command to the <code>List&lt;Command&gt;</code> in <code>tempImage</code> for the <code>undo/redo</code> function and <code>currentEdit#displayTempImage()</code> is used to display the edited image on the graphical user interface.<br></p>
 </div>
 <div class="paragraph">
 <p>The diagram below illustrates how the <code>Rotate</code> Command works:</p>
@@ -1346,7 +1346,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="ulist">
 <ul>
 <li>
-<p>Intermediate images have to be stored and edited in a temp directory first due to our <code>Undo/Redo</code> implementation.</p>
+<p>Intermediate images have to be stored and edited in a temp directory first due to our <code>undo/redo</code> implementation.</p>
 </li>
 </ul>
 </div>
@@ -1354,31 +1354,19 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="sect3">
 <h4 id="crop-command"><a class="link" href="#crop-command">3.6.4. Crop Command</a></h4>
 <div class="paragraph">
-<p>This command allows the user to crop the targetted image by specifying the coordinates of the top left hand corner of the desired image, the width of the desired image and the height of the desired image. Upon receiving the inputs, the values will be checked for their validity and will throw an error if any value is not within the specified range. The command will then be added to the <code>List&lt;Commands&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targetted image.</p>
+<p>This command allows the user to crop the targeted image by specifying the coordinates of the top left hand corner of the desired image, the width of the desired image and the height of the desired image. Upon receiving the inputs, the values will be checked for their validity and will throw an error if any value is not within the specified range. The command will then be added to the <code>List&lt;Command&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targeted image.</p>
 </div>
 <div class="paragraph">
-<p>Refer to the example usage scenario and design considerations in <a href="#rotate-command">Section 3.6.2, &#8220;Rotate Command&#8221;</a>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/CropCommandSequenceDiagram.png" alt="CropCommandSequenceDiagram" width="800">
-</div>
-<div class="title">Figure 17. Sequence Diagram for Crop Command</div>
+<p>Refer to the example usage scenario, sequence diagram and design considerations in <a href="#rotate-command">Section 3.6.2, &#8220;Rotate Command&#8221;</a>.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="resize-command"><a class="link" href="#resize-command">3.6.5. Resize Command</a></h4>
 <div class="paragraph">
-<p>This command allows the user to resize the targetted image by specifying the width and height of the desired image. Upon receiving the inputs, the values will be checked for their validity and will throw an error if any value is not within the specified range. The command will then be added to the <code>List&lt;Commands&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targetted image.</p>
+<p>This command allows the user to resize the targeted image by specifying the width and height of the desired image. Upon receiving the inputs, the values will be checked for their validity and will throw an error if any value is not within the specified range. The command will then be added to the <code>List&lt;Command&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targeted image.</p>
 </div>
 <div class="paragraph">
-<p>Refer to the example usage scenario and design considerations in <a href="#rotate-command">Section 3.6.2, &#8220;Rotate Command&#8221;</a>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/ResizeCommandSequenceDiagram.png" alt="ResizeCommandSequenceDiagram" width="800">
-</div>
-<div class="title">Figure 18. Sequence Diagram for Resize Command</div>
+<p>Refer to the example usage scenario, sequence diagram and design considerations in <a href="#rotate-command">Section 3.6.2, &#8220;Rotate Command&#8221;</a>.</p>
 </div>
 </div>
 </div>
@@ -1427,7 +1415,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="content">
 <img src="images/UndoRedoStartingStateListDiagram.png" alt="UndoRedoStartingStateListDiagram" width="600">
 </div>
-<div class="title">Figure 19. State list diagram for undo/redo</div>
+<div class="title">Figure 17. State list diagram for undo/redo</div>
 </div>
 <div class="paragraph">
 <p>Step 2. The user executes a series of transformations on the image. These transformations are stored in the commandHistory list and for each transformation stored, the index is incremented by 1 to point to that transformation.</p>
@@ -1436,13 +1424,13 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="content">
 <img src="images/UndoRedoNewCommand1StateListDiagram.png" alt="UndoRedoNewCommand1StateListDiagram" width="600">
 </div>
-<div class="title">Figure 20. First Transformation</div>
+<div class="title">Figure 18. First Transformation</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/UndoRedoNewCommand2StateListDiagram.png" alt="UndoRedoNewCommand2StateListDiagram" width="600">
 </div>
-<div class="title">Figure 21. Second Transformation</div>
+<div class="title">Figure 19. Second Transformation</div>
 </div>
 <div class="paragraph">
 <p>Step 3. The user wants to undo the previous transformation by using the <code>undo</code> command. It will call <code>CurrentEdit#replaceTempWithOriginal()</code> which will replace the edited image in temp folder with the original image. It will then call <code>CurrentEdit#setUndoTemp()</code> to set the index in <code>tempImage</code> to the required index and retrieve the list with <code>CurrentEdit#getHistoryTemp()</code>. Using the list, it will apply the commands onto the original image till it reaches the command just before the set index.</p>
@@ -1451,7 +1439,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="content">
 <img src="images/UndoRedoNewCommand3StateListDiagram.png" alt="UndoRedoNewCommand3StateListDiagram" width="600">
 </div>
-<div class="title">Figure 22. Undo transformation</div>
+<div class="title">Figure 20. Undo transformation</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1475,7 +1463,7 @@ If a command fails its execution, it will return the image before undo was calle
 <div class="content">
 <img src="images/UndoRedoExecuteUndoStateListDiagram.png" alt="UndoRedoExecuteUndoStateListDiagram" width="600">
 </div>
-<div class="title">Figure 23. State List diagram</div>
+<div class="title">Figure 21. State List diagram</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1496,7 +1484,7 @@ If the <code>Image#index</code> is 0, pointing to the initial image, then there 
 <div class="content">
 <img src="images/UndoRedoSequenceDiagram.png" alt="UndoRedoSequenceDiagram" width="600">
 </div>
-<div class="title">Figure 24. Sequence Diagram</div>
+<div class="title">Figure 22. Sequence Diagram</div>
 </div>
 <div class="paragraph">
 <p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>CurrentEdit#setRedoTemp()</code>, which shifts the <code>index</code> once to the right, pointing to the previously undone command, and executes that command to perform the transformation.</p>
@@ -1638,10 +1626,10 @@ If the <code>index</code> is at index <code>commandHistory.size()</code>, pointi
 <div class="content">
 <img src="images/SaveCommandSequenceDiagram.png" alt="SaveCommandSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 25. Sequence Diagram for Save Command</div>
+<div class="title">Figure 23. Sequence Diagram for Save Command</div>
 </div>
 <div class="paragraph">
-<p>Given below is an example usage scenario of how <code>save</code> behaves at each step as shown in <a href="#sequencediagram_save">Figure 25, &#8220;Sequence Diagram for Save Command&#8221;</a>.</p>
+<p>Given below is an example usage scenario of how <code>save</code> behaves at each step as shown in <a href="#sequencediagram_save">Figure 23, &#8220;Sequence Diagram for Save Command&#8221;</a>.</p>
 </div>
 <div class="paragraph">
 <p>Step 1. The user executes <code>save</code>.</p>
@@ -1891,7 +1879,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="content">
 <img src="images/WaterMarkCommandSequenceDiagram.png" alt="WaterMarkCommandSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 26. Sequence Diagram for WaterMark Command (Note: Some classes have been omitted for clarity of the diagram)</div>
+<div class="title">Figure 24. Sequence Diagram for WaterMark Command (Note: Some classes have been omitted for clarity of the diagram)</div>
 </div>
 </div>
 <div class="sect3">
@@ -2004,7 +1992,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 27. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 25. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 <div class="sect2">
@@ -2886,4 +2874,4 @@ Expected: GUI should export the selected Album image to target directory.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 09:49:05 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 09:55:16 UTC</div></div></div></body></html>
