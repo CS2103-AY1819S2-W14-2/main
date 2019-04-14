@@ -600,7 +600,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <p>Step 6. The <code>execute</code> method then checks if the boolean <code>isNewCommand</code> is true. If it is true, it indicates that the command is a new <code>Rotate</code> command called directly from the user and not through an <code>undo/redo</code> command which triggers Step 7 in the line below. Otherwise, the command’s execution ends in this step.</p>
 </div>
 <div class="paragraph">
-<p>Step 7. <code>isNewCommand</code> is set to false to signal that this command is not a new rotate command if it is executed again through the <code>Undo/Redo</code> function. <code>currentEdit#addCommand(this)</code> is invoked to add this command to the <code>List&lt;Command&gt;</code> in <code>tempImage</code> for the <code>undo/redo</code> function and <code>currentEdit#displayTempImage()</code> is used to display the edited image on the graphical user interface.<br></p>
+<p>Step 7. <code>isNewCommand</code> is set to false to signal that this command is not a new rotate command if it is executed again through the <code>undo/redo</code> command. <code>currentEdit#addCommand(this)</code> is invoked to add this command to the <code>List&lt;Command&gt;</code> in <code>tempImage</code> for the <code>undo/redo</code> function and <code>currentEdit#displayTempImage()</code> is used to display the edited image on the graphical user interface.<br></p>
 </div>
 <div class="paragraph">
 <p>The diagram below illustrates how the <code>Rotate</code> Command works:</p>
@@ -617,7 +617,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="ulist">
 <ul>
 <li>
-<p>Intermediate images have to be stored and edited in a temp directory first due to our <code>undo/redo</code> implementation.</p>
+<p>Images that are still being edited have to be stored and edited in a temp directory first due to our <code>undo/redo</code> implementation.</p>
 </li>
 </ul>
 </div>
@@ -661,21 +661,24 @@ Each image can only have 1 watermark. If the user would like to edit the waterma
 <div class="sect3">
 <h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
 <div class="paragraph">
-<p>The manipulation feature is facilitated by <code>CurrentEdit</code> and <code>Image</code>. It uses the following operations:</p>
+<p>The manipulation feature is facilitated by <code>CurrentEdit</code>. It uses the following operations:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>CurrentEdit#getTempImage()</code> - Retrieves the temporary image <code>tempImage</code> which stores the filepath of the temporary image in <code>temp</code> directory, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata.</p>
+<p><code>CurrentEdit#tempImageDoNotExist()</code> - Returns <code>true</code> if <code>tempImage</code> in <code>CurrentEdit</code> is null. <code>tempImage</code> is null only if <code>open</code> command is never called.</p>
 </li>
 <li>
-<p><code>CurrenEdit#updateTempImage(BufferedImage)</code> - Replaces the temporary image in <code>temp</code> directory with the newly edited image and update the <code>tempImage</code> instance in the class.</p>
+<p><code>CurrentEdit#getTempImage</code> - Retrieves the temporary image <code>tempImage</code> which stores the filepath of the temporary image in the <code>temp</code> directory, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata.</p>
 </li>
 <li>
-<p><code>CurrentEdit#addCommand(Command)</code> - Adds this command to the edit history [<code>List&lt;Command&gt;</code>] in <code>tempImage</code> for the undo/redo function.</p>
+<p><code>CurrentEdit#updateTempImage</code> - Replaces the temporary image in <code>temp</code> directory with the newly edited image and update the <code>tempImage</code> instance in the class.</p>
 </li>
 <li>
-<p><code>CurrenEdit#displayTempImage()</code> - Displays the temporary image stored in directory: "src/main/resources/temp/".</p>
+<p><code>CurrentEdit#addCommand</code> - Adds this command to the edit history [<code>List&lt;Command&gt;</code>] in <code>tempImage</code> for the <code>undo/redo</code> command.</p>
+</li>
+<li>
+<p><code>CurrentEdit#displayTempImage()</code> - Displays the temporary image stored in the <code>temp</code> directory.</p>
 </li>
 <li>
 <p><code>Image#hasWaterMark()</code> - Checks if the <code>Image</code> already has a watermark.</p>
@@ -701,7 +704,7 @@ Each image can only have 1 watermark. If the user would like to edit the waterma
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If an invalid command is provided, a reminder of how to use the command will be given to the user and no command will be run.
+If an invalid command is provided, a reminder of how to use the command will be given to the user and no command will be executed.
 </td>
 </tr>
 </table>
@@ -710,7 +713,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <p>Step 3. During execution, the <code>execute</code> method in the <code>WaterMarkCommand</code> class invokes <code>currentEdit#getTempImage()</code> to get the <code>tempImage</code> from the <code>currentEdit</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 4. Upon retrieving the <code>tempImage</code>, the <code>execute</code> method in the <code>WaterMarkCommand</code> gets the  <code>BufferedImage</code> instance of the <code>tempImage</code> object and copies the <code>BufferedImage</code> object to a temporary <code>BufferedImage</code> object with the same width, height and image type. The <code>execute</code> method then initialises the necessary graphic properties using the <code>Graphics2D</code> Java class. The message is centralised and overlayed on the temporary <code>BufferedImage</code> object.</p>
+<p>Step 4. Upon retrieving the <code>tempImage</code>, the <code>execute</code> method in the <code>WaterMarkCommand</code> gets the  <code>BufferedImage</code> instance of the <code>tempImage</code> object and copies the <code>BufferedImage</code> object to a temporary <code>BufferedImage</code> object with the same width, height and image type. The <code>execute</code> method then initialises the necessary graphic properties using the <code>Graphics2D</code> Java class. The message is centralised and overlays the temporary <code>BufferedImage</code> object.</p>
 </div>
 <div class="paragraph">
 <p>Step 5. The <code>execute</code> method then checks for a few conditions listed below:</p>
@@ -718,7 +721,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><code>isNewCommand</code>: Checks if the <code>WaterMark</code> command is from an input by the user, from an <code>Undo</code> or <code>Redo</code> command or from a <code>SetPreset</code> command.</p>
+<p><code>isNewCommand</code>: Checks if the <code>WaterMark</code> command is from an input by the user, from an <code>undo/redo</code> command or from a <code>SetPreset</code> command.</p>
 </li>
 <li>
 <p><code>isPreset</code>: Checks if the <code>WaterMark</code> command is from a Preset.</p>
@@ -741,7 +744,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <p>Invokes <code>initialImage#setWaterMark(True)</code> to indicate that the image has a watermark.<br></p>
 </li>
 <li>
-<p>Invokes <code>currentEdit#updateTempImage()</code> to overwrite the current image in filepath: "src/main/resources/temp/" + <code>tempImage#getUrl</code> with a new <code>BufferedImage</code> object.</p>
+<p>Invokes <code>currentEdit#updateTempImage()</code> to  save the newly edited <code>BufferedImage</code> and replace the previous image in the filepath of the <code>tempImage</code>.</p>
 </li>
 <li>
 <p>Sets <code>isNewCommand</code> to false to signal that this command is not a new rotate command if it is executed again through the <code>undo/redo</code> function.</p>
@@ -773,7 +776,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <p>Invokes <code>initialImage#setWaterMark(true)</code> to indicate that the image has a watermark.</p>
 </li>
 <li>
-<p>Invokes <code>currentEdit#updateTempImage()</code> to overwrite the current image in filepath: "src/main/resources/temp/" + <code>tempImage#getUrl</code> with a new <code>BufferedImage</code> object.</p>
+<p>Invokes <code>currentEdit#updateTempImage()</code> to save the newly edited <code>BufferedImage</code> and replace the previous image in the filepath of the <code>tempImage</code>.</p>
 </li>
 </ul>
 </div>
@@ -789,7 +792,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <p>Invokes <code>initialImage#setWaterMark(true)</code> to indicate that the image has a watermark.</p>
 </li>
 <li>
-<p>Invokes <code>currentEdit#updateTempImage()</code> to overwrite the current image in filepath: "src/main/resources/temp/" + <code>tempImage#getUrl</code> with a new <code>BufferedImage</code> object.</p>
+<p>Invokes <code>currentEdit#updateTempImage()</code> to save the newly edited <code>BufferedImage</code> and replace the previous image in the filepath of the <code>tempImage</code>.</p>
 </li>
 </ul>
 </div>
@@ -821,11 +824,11 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="ulist">
 <ul>
 <li>
-<p>Intermediate images have to be stored and edited in a temp directory first due to our <code>undo/redo</code> implementation.</p>
+<p>Images that are still being edited have to be stored and edited in a temp directory first due to our <code>undo/redo</code> implementation.</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 11:01:47 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 12:22:22 UTC</div></div></div></body></html>
