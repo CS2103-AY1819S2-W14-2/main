@@ -39,11 +39,8 @@
 <li><a href="#savepreset-feature">3.8. SavePreset Feature</a></li>
 <li><a href="#setpreset-feature">3.9. SetPreset Feature</a></li>
 <li><a href="#undo-redo-feature">3.10. Undo/Redo feature</a></li>
-<li><a href="#save-feature-2">3.11. Save Feature</a></li>
-<li><a href="#save-preset-feature">3.12. Save Preset Feature</a></li>
-<li><a href="#set-preset-feature">3.13. Set Preset Feature</a></li>
-<li><a href="#watermark-feature">3.14. WaterMark Feature</a></li>
-<li><a href="#logging">3.15. Logging</a></li>
+<li><a href="#watermark-feature">3.11. WaterMark Feature</a></li>
+<li><a href="#logging">3.12. Logging</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -1940,136 +1937,7 @@ If the <code>index</code> is at index <code>commandHistory.size()</code>, pointi
 </div>
 </div>
 <div class="sect2">
-<h3 id="save-feature-2"><a class="link" href="#save-feature-2">3.11. Save Feature</a></h3>
-<div class="paragraph">
-<p>This command applies the edits to the current image and saves it into <code>assets</code> directory.</p>
-</div>
-<div class="sect3">
-<h4 id="current-implementation-11"><a class="link" href="#current-implementation-11">3.11.1. Current Implementation</a></h4>
-<div class="paragraph">
-<p>The <code>save</code> function is facilitated by <code>Album</code> and <code>CurrentEdit</code>. It uses the following operations:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>CurrentEdit#tempImageDoNotExist()</code> - Returns <code>true</code> if <code>tempImage</code> in <code>CurrentEdit</code> is null. <code>tempImage</code> is null only if <code>open</code> command was never called.</p>
-</li>
-<li>
-<p><code>CurrentEdit#getTempImage()</code> - Returns the latest edited image stored in <code>tempImage</code> in <code>CurrentEdit</code>.</p>
-</li>
-<li>
-<p><code>CurrentEdit#getOriginalName()</code> - Returns the original name of opened image.</p>
-</li>
-<li>
-<p><code>CurrentEdit#overwriteOriginal(String)</code> - Replaces <code>ori_img.png</code> with <code>temp_img.png</code> in <code>temp</code> directory. Updates <code>originalImage</code> to <code>tempImage</code> and <code>originalImageName</code> to <code>String</code> in <code>CurrentEdit</code>.</p>
-</li>
-<li>
-<p><code>CurrentEdit#deleteHistory()</code> - Clears the history in <code>CurrentEdit</code>.</p>
-</li>
-<li>
-<p><code>CurrentEdit#updateExif()</code> - Updates the Exif data of the new image.</p>
-</li>
-<li>
-<p><code>Album#checkFileExist(String)</code> - Checks if the file name specified by the <code>String</code> exists in assets directory.</p>
-</li>
-<li>
-<p><code>Album#saveToAssets(Image, String)</code> - Saves the <code>Image</code> as <code>String</code> into <code>assets</code> directory.</p>
-</li>
-<li>
-<p><code>Album#populateAlbum()</code> - Updates list of images in <code>Album</code> class.</p>
-</li>
-<li>
-<p><code>Album#refreshAlbum()</code> - Updates and displays the latest images in <code>assets</code> directory on the GUI.</p>
-</li>
-</ul>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/SaveCommandSequenceDiagram.png" alt="SaveCommandSequenceDiagram" width="800">
-</div>
-<div class="title">Figure 26. Sequence Diagram for Save Command</div>
-</div>
-<div class="paragraph">
-<p>Given below is an example usage scenario of how <code>save</code> behaves at each step as shown in the figure above.</p>
-</div>
-<div class="paragraph">
-<p>Step 1. The user executes <code>save</code>.</p>
-</div>
-<div class="paragraph">
-<p>Step 2. <code>CurrentEdit#tempImageExist()</code> is called to check if an image was previously opened. If <code>open</code> was not called previously, <code>CommandException</code> is thrown.</p>
-</div>
-<div class="paragraph">
-<p>Step 3. <code>CurrentEdit#getTempImage()</code> is called to retrieve the <code>tempImage</code> from <code>CurrentEdit</code>.</p>
-</div>
-<div class="paragraph">
-<p>Step 4. If the user did not input a <code>String</code> after <code>save</code> previously, <code>CurrentEdit#getOriginalName()</code> will retrieve the <code>originalImageName</code> from <code>CurrentEdit</code>. Otherwise, <code>Album#checkFileExist(String)</code> will be called to check if a file name is similar to <code>String</code>. If it is a duplicate, <code>CommandException</code> will be thrown.</p>
-</div>
-<div class="paragraph">
-<p>Step 5. <code>Album#saveToAssets(Image, String)</code> takes in the previously retrieved <code>Image</code> and <code>String</code> to create a new image file in <code>assets</code> directory.</p>
-</div>
-<div class="paragraph">
-<p>Step 6. <code>CurrentEdit#overwriteOriginal(String)</code> is called to update the files in <code>temp</code> directory and their respective instances in <code>CurrentEdit</code>.</p>
-</div>
-<div class="paragraph">
-<p>Step 7. <code>CurrentEdit#deleteHistory()</code> is called to delete the edit history in <code>CurrentEdit</code> so that the user can no longer perform <code>undo</code> on the saved image.</p>
-</div>
-<div class="paragraph">
-<p>Step 8.<code>CurrentEdit#updateExif()</code> is called to update the Exif data of the new image.</p>
-</div>
-<div class="paragraph">
-<p>Step 9. <code>Album#populateAlbum()</code> is called to update the list of image in <code>Album</code> class and to ensure it reflects all the files in <code>assets</code> directory.</p>
-</div>
-<div class="paragraph">
-<p>Step 10.<code>Album#refreshAlbum()</code> is called to update the Information Panel on the GUI.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-10"><a class="link" href="#design-considerations-10">3.11.2. Design Considerations</a></h4>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1</strong>: The user must give a name to the new image.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Advantage: Name of the new image is clear to the user.</p>
-</li>
-<li>
-<p>Disadvantage: May be tedious for the user to type in a name each time <code>save</code> is performed.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2 (current choice)</strong> : The user can choose to save as a new name or overwrite the original image</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Advantage: Convenient for user to <code>save</code> quickly without having to type a new name everytime.</p>
-</li>
-<li>
-<p>Disadvantage: The user may unintentionally overwrite the original image.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Alternative 2 was chosen as the user is likely to use <code>save</code> frequently. Since the <code>assets</code> directory functions like an album, images can be re-imported if they are accidentally overwritten. The user is able to <code>save</code> easily and choose to resume editing immediately or at a later time.</p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="save-preset-feature"><a class="link" href="#save-preset-feature">3.12. Save Preset Feature</a></h3>
-
-</div>
-<div class="sect2">
-<h3 id="set-preset-feature"><a class="link" href="#set-preset-feature">3.13. Set Preset Feature</a></h3>
-
-</div>
-<div class="sect2">
-<h3 id="watermark-feature"><a class="link" href="#watermark-feature">3.14. WaterMark Feature</a></h3>
+<h3 id="watermark-feature"><a class="link" href="#watermark-feature">3.11. WaterMark Feature</a></h3>
 <div class="paragraph">
 <p>This command allows the user to add a watermark to their image. Upon receiving an input message from the user, the message will be checked for its validity and will throw an error if the message is empty or contains only spaces. Messages can contain words and numbers separated by spaces. The command will then be added to the <code>List&lt;Commands&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targetted image.</p>
 </div>
@@ -2086,7 +1954,7 @@ Each image can only have 1 watermark. If the user would like to edit the waterma
 </table>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-12"><a class="link" href="#current-implementation-12">3.14.1. Current Implementation</a></h4>
+<h4 id="current-implementation-11"><a class="link" href="#current-implementation-11">3.11.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The manipulation feature is facilitated by <code>CurrentEdit</code>. It uses the following operations:</p>
 </div>
@@ -2243,11 +2111,11 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="content">
 <img src="images/WaterMarkCommandSequenceDiagram.png" alt="WaterMarkCommandSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 27. Sequence Diagram for WaterMark Command</div>
+<div class="title">Figure 26. Sequence Diagram for WaterMark Command</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-11"><a class="link" href="#design-considerations-11">3.14.2. Design Considerations</a></h4>
+<h4 id="design-considerations-10"><a class="link" href="#design-considerations-10">3.11.2. Design Considerations</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2258,7 +2126,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.15. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.12. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
@@ -2356,7 +2224,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 28. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 27. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 <div class="sect2">
@@ -3250,4 +3118,4 @@ Expected: GUI should export the selected Album image to target directory.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 17:43:50 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 19:09:22 UTC</div></div></div></body></html>
