@@ -468,9 +468,13 @@ Format: <code>redo</code></p>
 <div class="title">Figure 3. Second Transformation</div>
 </div>
 <div class="paragraph">
-<p>Step 3. The user wants to undo the previous transformation by using the <code>undo</code> command. It will call <code>CurrentEdit#replaceTempWithOriginal()</code> which will replace the edited image in temp folder with the original image. It will then call <code>CurrentEdit#setUndoTemp()</code> to set the index in <code>tempImage</code> to the required index and retrieve the list with <code>CurrentEdit#getHistoryTemp()</code>. Using the list, it will apply the commands onto the original image till it reaches the command just before the set index.
-.Undo transformation
-image::UndoRedoNewCommand3StateListDiagram.png[width="600"]</p>
+<p>Step 3. The user wants to undo the previous transformation by using the <code>undo</code> command. It will call <code>CurrentEdit#replaceTempWithOriginal()</code> which will replace the edited image in temp folder with the original image. It will then call <code>CurrentEdit#setUndoTemp()</code> to set the index in <code>tempImage</code> to the required index and retrieve the list with <code>CurrentEdit#getHistoryTemp()</code>. Using the list, it will apply the commands onto the original image till it reaches the command just before the set index.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/UndoRedoNewCommand3StateListDiagram.png" alt="UndoRedoNewCommand3StateListDiagram" width="600">
+</div>
+<div class="title">Figure 4. Undo transformation</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -488,9 +492,13 @@ If a command fails its execution, it will return the image before undo was calle
 <p>Step 4. After executing Undo, <code>index</code> will be less than size of commandHistory. If redo is not executed before a new command is added, all commands in the list after <code>index</code> will be deleted.</p>
 </div>
 <div class="paragraph">
-<p>For redo, it will call <code>setRedo</code> and retrieve that command to apply it on the current image.
-.State List diagram
-image::UndoRedoExecuteUndoStateListDiagram.png[width="600"]</p>
+<p>For redo, it will call <code>setRedo</code> and retrieve that command to apply it on the current image.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/UndoRedoExecuteUndoStateListDiagram.png" alt="UndoRedoExecuteUndoStateListDiagram" width="600">
+</div>
+<div class="title">Figure 5. State List diagram</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -505,9 +513,13 @@ If the <code>Image#index</code> is 0, pointing to the initial photo, then there 
 </table>
 </div>
 <div class="paragraph">
-<p>The following sequence diagram shows how the undo operation works:
-.Sequence Diagram
-image::UndoRedoSequenceDiagram.png[width="800"]</p>
+<p>The following sequence diagram shows how the undo operation works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/UndoRedoSequenceDiagram.png" alt="UndoRedoSequenceDiagram" width="600">
+</div>
+<div class="title">Figure 6. Sequence Diagram</div>
 </div>
 <div class="paragraph">
 <p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>CurrentEdit#setRedoTemp()</code>, which shifts the <code>index</code> once to the right, pointing to the previously undone command, and executes that command to perform the transformation.</p>
@@ -526,14 +538,6 @@ If the <code>index</code> is at index <code>commandHistory.size()</code>, pointi
 </div>
 <div class="paragraph">
 <p>Step 5. The user executes <code>saves</code>, which calls <code>CurrentEdit#saveToAssets()</code>. This replaces the original image with the temp image since a name is not specified. When this happens, the user can no longer call <code>undo</code> as there is no original image to work on. The command history is also cleared.</p>
-</div>
-<div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a new command:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoActivityDiagram.png" alt="UndoRedoActivityDiagram" width="600">
-</div>
 </div>
 </div>
 <div class="sect3">
@@ -613,4 +617,4 @@ If the <code>index</code> is at index <code>commandHistory.size()</code>, pointi
 <div class="sectionbody">
 
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 05:35:54 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 05:37:37 UTC</div></div></div></body></html>
