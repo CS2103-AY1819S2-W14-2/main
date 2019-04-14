@@ -18,20 +18,22 @@
 <li><a href="#brightness-code-brightness-code">4.2. Brightness: <code>brightness</code></a></li>
 <li><a href="#clear-album-code-clear-code">4.3. Clear Album: <code>clear</code></a></li>
 <li><a href="#contrast-code-contrast-code">4.4. Contrast: <code>contrast</code></a></li>
-<li><a href="#crop-an-image-code-crop-code">4.5. Crop an image : <code>crop</code></a></li>
-<li><a href="#exit-the-program-code-exit-code">4.6. Exit the program : <code>exit</code></a></li>
-<li><a href="#export-edited-image-code-export-code">4.7. Export edited image : <code>export</code></a></li>
-<li><a href="#help-view-code-help-code">4.8. Help view: <code>help</code></a></li>
-<li><a href="#import-an-image-code-import-code">4.9. Import an image : <code>import</code></a></li>
+<li><a href="#crop-an-image-code-crop-code">4.5. Crop an Image : <code>crop</code></a></li>
+<li><a href="#exit-the-program-code-exit-code">4.6. Exit the Program : <code>exit</code></a></li>
+<li><a href="#export-edited-image-code-export-code">4.7. Export edited Image : <code>export</code></a></li>
+<li><a href="#help-view-code-help-code">4.8. Help View: <code>help</code></a></li>
+<li><a href="#import-an-image-code-import-code">4.9. Import an Image : <code>import</code></a></li>
 <li><a href="#list-files-code-listfiles-code">4.10. List Files: <code>listfiles</code></a></li>
-<li><a href="#open-an-image-code-open-code">4.11. Open an image : <code>open</code></a></li>
-<li><a href="#redo-edit-steps-code-redo-code">4.12. Redo edit steps : <code>redo</code></a></li>
-<li><a href="#rotate-an-image-code-rotate-code">4.13. Rotate an image : <code>rotate</code></a></li>
-<li><a href="#resize-an-image-code-resize-code">4.14. Resize an image : <code>resize</code></a></li>
-<li><a href="#save-image-code-save-code">4.15. Save image : <code>save</code></a></li>
-<li><a href="#tab-switching-code-tab-code">4.16. Tab Switching: <code>tab</code></a></li>
-<li><a href="#undo-edit-steps-code-undo-code">4.17. Undo edit steps : <code>undo</code></a></li>
-<li><a href="#watermark-code-wm-code">4.18. WaterMark : <code>wm</code></a></li>
+<li><a href="#open-an-image-code-open-code">4.11. Open an Image : <code>open</code></a></li>
+<li><a href="#redo-edit-steps-code-redo-code">4.12. Redo Edit Steps : <code>redo</code></a></li>
+<li><a href="#rotate-an-image-code-rotate-code">4.13. Rotate an Image : <code>rotate</code></a></li>
+<li><a href="#resize-an-image-code-resize-code">4.14. Resize an Image : <code>resize</code></a></li>
+<li><a href="#save-image-code-save-code">4.15. Save Image : <code>save</code></a></li>
+<li><a href="#save-preset-code-savepreset-code">4.16. Save Preset: <code>savepreset</code></a></li>
+<li><a href="#set-preset-code-setpreset-code">4.17. Set Preset: <code>setpreset</code></a></li>
+<li><a href="#tab-switching-code-tab-code">4.18. Tab Switching: <code>tab</code></a></li>
+<li><a href="#undo-edit-steps-code-undo-code">4.19. Undo Edit Steps : <code>undo</code></a></li>
+<li><a href="#watermark-code-wm-code">4.20. WaterMark : <code>wm</code></a></li>
 </ul>
 </li>
 <li><a href="#upcoming-features-in-v2-0">5. Upcoming Features (in v2.0)</a>
@@ -248,7 +250,8 @@ e.g <code>brightness [BRIGHTNESS_RATIO]</code> can be used as <code>brightness</
 <div class="sect2">
 <h3 id="black-and-white-filter-code-bw-code"><a class="link" href="#black-and-white-filter-code-bw-code">4.1. Black and White Filter : <code>bw</code></a></h3>
 <div class="paragraph">
-<p>Applies black and white filter on opened image based on an integer threshold value. If threshold value is not specified, the black and white filter will use a preset threshold value of 127. Pixels lighter than the threshold value will become white and pixels darker than the threshold value will become black.<br>
+<p>Applies a black and white filter on the opened image based on an integer
+threshold value. If the threshold value is not specified, the black and white filter will use a preset threshold value of 127. Pixels in the image lighter than the threshold value will become white and pixels in the image darker than the threshold value will become black. The higher the threshold value, the larger the proportion of black and the smaller the proportion of white. <br>
 Format: <code>bw [THRESHOLD_VALUE]</code></p>
 </div>
 <div class="paragraph">
@@ -268,7 +271,7 @@ Format: <code>bw [THRESHOLD_VALUE]</code></p>
 <div class="sect2">
 <h3 id="brightness-code-brightness-code"><a class="link" href="#brightness-code-brightness-code">4.2. Brightness: <code>brightness</code></a></h3>
 <div class="paragraph">
-<p>Adjusts the brightness of the opened image based on a double-valued ratio. If the brightness ratio is not specified, a preset ratio value of 1.1 will be used.<br>
+<p>Adjusts the brightness of the opened image based on a decimal value. If the brightness value is not specified, a preset decimal value of 1.1 will be used. Any decimal value that is less than 1 (e.g. 0.5) will reduce the brightness of the image while any decimal value that is more than 1 (e.g. 1.9) will increase the brightness of the image.<br>
 Format: <code>brightness [BRIGHTNESS_RATIO]</code></p>
 </div>
 <div class="paragraph">
@@ -277,7 +280,7 @@ Format: <code>brightness [BRIGHTNESS_RATIO]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>brightness</code> (brightness ratio preset to 1.1)</p>
+<p><code>brightness</code> (brightness decimal value is preset to 1.1 which increases the brightness slightly)</p>
 </li>
 <li>
 <p><code>brightness 1.9</code> (increases brightness)</p>
@@ -291,7 +294,7 @@ Format: <code>brightness [BRIGHTNESS_RATIO]</code></p>
 <div class="sect2">
 <h3 id="clear-album-code-clear-code"><a class="link" href="#clear-album-code-clear-code">4.3. Clear Album: <code>clear</code></a></h3>
 <div class="paragraph">
-<p>Clear all images imported in to the Album.<br>
+<p>Clears all images imported in to the Album.<br>
 Format: <code>clear</code></p>
 </div>
 <div class="admonitionblock note">
@@ -312,7 +315,7 @@ Format: <code>clear</code></p>
 <div class="sect2">
 <h3 id="contrast-code-contrast-code"><a class="link" href="#contrast-code-contrast-code">4.4. Contrast: <code>contrast</code></a></h3>
 <div class="paragraph">
-<p>Adjusts the contrast of the opened image based on a double-valued ratio. If the contrast ratio is not specified, a preset ratio value of 1.1 will be used.+
+<p>Adjusts the contrast of the opened image based on a decimal value. If the contrast value is not specified, a preset decimal value of 1.1 will be used. Any decimal value that is lower than 1 (e.g. 0.5) will reduce the contrast of the image while any decimal value that is higher than 1 (e.g. 1.9) will increase the contrast of the image.+
 Format: <code>contrast CONTRAST_RATIO</code></p>
 </div>
 <div class="paragraph">
@@ -321,7 +324,7 @@ Format: <code>contrast CONTRAST_RATIO</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>contrast</code> (contrast ratio preset to 1.1)</p>
+<p><code>contrast</code> (contrast decimal value is preset to 1.1 which increases the contrast slightly)</p>
 </li>
 <li>
 <p><code>contrast 1.4</code> (increases contrast)</p>
@@ -333,7 +336,7 @@ Format: <code>contrast CONTRAST_RATIO</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="crop-an-image-code-crop-code"><a class="link" href="#crop-an-image-code-crop-code">4.5. Crop an image : <code>crop</code></a></h3>
+<h3 id="crop-an-image-code-crop-code"><a class="link" href="#crop-an-image-code-crop-code">4.5. Crop an Image : <code>crop</code></a></h3>
 <div class="paragraph">
 <p>Crops an image based on given top left hand corner coordinates, width and height of final cropped image wanted.<br>
 Format: <code>crop X_POINTCOORD Y_POINTCOORD WIDTH HEIGHT</code></p>
@@ -361,14 +364,14 @@ Format: <code>crop X_POINTCOORD Y_POINTCOORD WIDTH HEIGHT</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exit-the-program-code-exit-code"><a class="link" href="#exit-the-program-code-exit-code">4.6. Exit the program : <code>exit</code></a></h3>
+<h3 id="exit-the-program-code-exit-code"><a class="link" href="#exit-the-program-code-exit-code">4.6. Exit the Program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="export-edited-image-code-export-code"><a class="link" href="#export-edited-image-code-export-code">4.7. Export edited image : <code>export</code></a></h3>
+<h3 id="export-edited-image-code-export-code"><a class="link" href="#export-edited-image-code-export-code">4.7. Export edited Image : <code>export</code></a></h3>
 <div class="paragraph">
 <p>Exports the edited image into the specified Directory<br>
 Format: <code>export f/FILENAME d/DIRECTORY</code></p>
@@ -385,14 +388,14 @@ Format: <code>export f/FILENAME d/DIRECTORY</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="help-view-code-help-code"><a class="link" href="#help-view-code-help-code">4.8. Help view: <code>help</code></a></h3>
+<h3 id="help-view-code-help-code"><a class="link" href="#help-view-code-help-code">4.8. Help View: <code>help</code></a></h3>
 <div class="paragraph">
 <p>Displays help view to user.
 Format: <code>help</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="import-an-image-code-import-code"><a class="link" href="#import-an-image-code-import-code">4.9. Import an image : <code>import</code></a></h3>
+<h3 id="import-an-image-code-import-code"><a class="link" href="#import-an-image-code-import-code">4.9. Import an Image : <code>import</code></a></h3>
 <div class="paragraph">
 <p>Imports images to FomoFoto&#8217;s Album from a specified filepath or a directory.<br>
 Format: <code>import FILEPATH</code></p>
@@ -463,7 +466,7 @@ Format: <code>listfiles</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="open-an-image-code-open-code"><a class="link" href="#open-an-image-code-open-code">4.11. Open an image : <code>open</code></a></h3>
+<h3 id="open-an-image-code-open-code"><a class="link" href="#open-an-image-code-open-code">4.11. Open an Image : <code>open</code></a></h3>
 <div class="paragraph">
 <p>Opens an image from the album for editing.<br>
 Format: <code>open FILENAME</code></p>
@@ -480,7 +483,7 @@ Format: <code>open FILENAME</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="redo-edit-steps-code-redo-code"><a class="link" href="#redo-edit-steps-code-redo-code">4.12. Redo edit steps : <code>redo</code></a></h3>
+<h3 id="redo-edit-steps-code-redo-code"><a class="link" href="#redo-edit-steps-code-redo-code">4.12. Redo Edit Steps : <code>redo</code></a></h3>
 <div class="paragraph">
 <p>Returns to a previously undone state.<br>
 Format: <code>redo</code></p>
@@ -522,7 +525,7 @@ Format: <code>redo</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="rotate-an-image-code-rotate-code"><a class="link" href="#rotate-an-image-code-rotate-code">4.13. Rotate an image : <code>rotate</code></a></h3>
+<h3 id="rotate-an-image-code-rotate-code"><a class="link" href="#rotate-an-image-code-rotate-code">4.13. Rotate an Image : <code>rotate</code></a></h3>
 <div class="paragraph">
 <p>Rotates the photo by a given degree provided by the user. Only 90, 180 or 270 degrees of rotation is allowed.<br>
 Format: <code>rotate ANGLE</code></p>
@@ -539,7 +542,7 @@ Format: <code>rotate ANGLE</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="resize-an-image-code-resize-code"><a class="link" href="#resize-an-image-code-resize-code">4.14. Resize an image : <code>resize</code></a></h3>
+<h3 id="resize-an-image-code-resize-code"><a class="link" href="#resize-an-image-code-resize-code">4.14. Resize an Image : <code>resize</code></a></h3>
 <div class="paragraph">
 <p>Resizes the image to a given width and height provided by the user.<br>
 Format: <code>resize WIDTH HEIGHT</code></p>
@@ -556,7 +559,7 @@ Format: <code>resize WIDTH HEIGHT</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="save-image-code-save-code"><a class="link" href="#save-image-code-save-code">4.15. Save image : <code>save</code></a></h3>
+<h3 id="save-image-code-save-code"><a class="link" href="#save-image-code-save-code">4.15. Save Image : <code>save</code></a></h3>
 <div class="paragraph">
 <p>Applies your edits and saves the image.<br>
 Format: <code>save [FILENAME]</code></p>
@@ -605,7 +608,47 @@ Format: <code>save [FILENAME]</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="tab-switching-code-tab-code"><a class="link" href="#tab-switching-code-tab-code">4.16. Tab Switching: <code>tab</code></a></h3>
+<h3 id="save-preset-code-savepreset-code"><a class="link" href="#save-preset-code-savepreset-code">4.16. Save Preset: <code>savepreset</code></a></h3>
+<div class="paragraph">
+<p>Saves a list of commands that was used to edit the opened image under a specified name so that you can apply them on other images in the future. The specified name given must not be used before.<br>
+Format: <code>savepreset PRESETNAME</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>rotate 180</code><br>
+<code>brightness 1.3</code><br>
+<code>savepreset preset1</code> (saves <code>rotate 180</code> and <code>brightness 1.3</code> in a list of commands that can be used on other images)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="set-preset-code-setpreset-code"><a class="link" href="#set-preset-code-setpreset-code">4.17. Set Preset: <code>setpreset</code></a></h3>
+<div class="paragraph">
+<p>Applies the list of commands saved under the specified preset name on the opened image.<br>
+Format: <code>setpreset PRESETNAME</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>rotate 180</code><br>
+<code>brightness 1.3</code><br>
+<code>savepreset preset1</code> (saves <code>rotate 180</code> and <code>brightness 1.3</code> in a list of commands that can be used on other images)<br>
+<code>open newImage.jpg</code>  (open a new image to edit on)<br>
+<code>setpreset preset1</code>  (applies the list of commands which consists of <code>rotate 180</code> and <code>brightness 1.3</code> on the newly opened image)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tab-switching-code-tab-code"><a class="link" href="#tab-switching-code-tab-code">4.18. Tab Switching: <code>tab</code></a></h3>
 <div class="paragraph">
 <p>Cycle between available tabs in the side <strong>Information Panel</strong>.<br>
 Format: <code>tab</code></p>
@@ -650,7 +693,7 @@ image such as metadata information like <strong>Date and Time</strong> and <stro
 </div>
 </div>
 <div class="sect2">
-<h3 id="undo-edit-steps-code-undo-code"><a class="link" href="#undo-edit-steps-code-undo-code">4.17. Undo edit steps : <code>undo</code></a></h3>
+<h3 id="undo-edit-steps-code-undo-code"><a class="link" href="#undo-edit-steps-code-undo-code">4.19. Undo Edit Steps : <code>undo</code></a></h3>
 <div class="paragraph">
 <p>Goes back to the previous state of the image.<br>
 Format: <code>undo</code></p>
@@ -671,7 +714,7 @@ Format: <code>undo</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="watermark-code-wm-code"><a class="link" href="#watermark-code-wm-code">4.18. WaterMark : <code>wm</code></a></h3>
+<h3 id="watermark-code-wm-code"><a class="link" href="#watermark-code-wm-code">4.20. WaterMark : <code>wm</code></a></h3>
 <div class="paragraph">
 <p>Adds a watermark to the image with a &#169; at the start of the input message.<br>
 Format: <code>wm MESSAGE</code></p>
@@ -823,6 +866,14 @@ e.g. <code>resize 100 200</code><br></p>
 e.g. <code>save MyNewImage.png</code><br></p>
 </li>
 <li>
+<p><strong>Save Preset</strong> <code>savepreset PRESETNAME</code><br>
+e.g. <code>savepreset preset1</code></p>
+</li>
+<li>
+<p><strong>Set Preset</strong> <code>setpreset PRESETNAME</code><br>
+e.g. <code>setpreset preset1</code></p>
+</li>
+<li>
 <p><strong>Tab</strong> <code>tab</code><br></p>
 </li>
 <li>
@@ -835,4 +886,4 @@ e.g. <code>wm FomoFoto</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 06:20:40 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 06:43:42 UTC</div></div></div></body></html>
