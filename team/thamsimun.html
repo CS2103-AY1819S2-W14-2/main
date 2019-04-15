@@ -315,7 +315,7 @@ Format: <code>setpreset PRESETNAME</code></p>
 <p><code>CurrentEdit#getTempImage</code> - Retrieves the temporary image <code>tempImage</code> which stores the filepath of the temporary image, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata.</p>
 </li>
 <li>
-<p><code>CurrentEdit#updateTempImage</code> - Replaces the temporary image in the <code>temp</code> directory with the newly edited image and update the <code>tempImage</code> instance in the class.</p>
+<p><code>CurrentEdit#updateTempImage</code> - Replaces the temporary image in the <code>temp</code> directory with the newly edited image and updates the <code>tempImage</code> instance in the class.</p>
 </li>
 <li>
 <p><code>CurrentEdit#addCommand</code> - Adds this command to the edit history [<code>List&lt;Command&gt;</code>] in <code>tempImage</code> for the <code>undo/redo</code> command.</p>
@@ -378,7 +378,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </table>
 </div>
 <div class="paragraph">
-<p>Step 3. During execution, the <code>execute</code> method in the <code>ContrastCommand</code> class first invokes <code>CurrentEdit#tempImageDoNotExist</code> to check if an image is opened. If no image is opened, it will throw an error message to tell the user to open an image for editing first. Else, the <code>execute</code> method will invoke <code>CurrentEdit#getTempImage()</code> to get the <code>tempImage</code> from <code>CurrentEdit</code>.</p>
+<p>Step 3. During execution, the <code>execute</code> method in the <code>ContrastCommand</code> class first invokes <code>CurrentEdit#tempImageDoNotExist</code> to check if an image is opened. If no image is opened, it will throw an error message to inform the user to open an image for editing first. Else, the <code>execute</code> method will invoke <code>CurrentEdit#getTempImage()</code> to get the <code>tempImage</code> from <code>CurrentEdit</code>.</p>
 </div>
 <div class="paragraph">
 <p>Step 4. Upon retrieving the <code>tempImage</code>, the <code>execute</code> method creates a <code>ContrastFilter</code> instance provided by the external library [<code>scrimage</code>] which takes in a <code>double</code> contrast ratio value. This <code>ContrastFilter</code> will then be applied to the image retrieved from the file path of <code>tempImage</code>.</p>
@@ -400,7 +400,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="ulist">
 <ul>
 <li>
-<p>Intermediate images that are still being edited have to be stored in a temp folder first due to our <code>undo/redo</code> implementation.</p>
+<p>Intermediate images that are still being edited have to be stored in a temporary folder first due to our <code>undo/redo</code> implementation.</p>
 </li>
 </ul>
 </div>
@@ -561,4 +561,4 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 14:39:36 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 15:03:57 UTC</div></div></div></body></html>
