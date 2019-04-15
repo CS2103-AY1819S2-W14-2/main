@@ -3,14 +3,14 @@
 <link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">FomoFoto</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://cs2103-ay1819s2-w14-2.github.io/main/"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Tham Si Mun - Project Portfolio</h1></div><div id="content"><div class="sect1">
 <h2 id="project-fomofoto"><a class="link" href="#project-fomofoto">PROJECT: FomoFoto</a></h2>
 <div class="sectionbody">
-<hr>
+
 </div>
 </div>
 <div class="sect1">
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>My team and I were tasked with enhancing a basic command line addressbook for our Software Engineering project. We decided to morph the project into a image editor.<br></p>
+<p>My team and I were tasked with enhancing a basic command line addressbook for our Software Engineering project. We decided to morph the project into an image editor.<br></p>
 </div>
 <div class="paragraph">
 <p>FomoFoto is a robust yet simple image-editing tool. Users interact with the application through worded commands from their keyboard, and receive visual feedback from it through the displayed image on the application.<br></p>
@@ -42,10 +42,10 @@
 <p>Justification: This feature improves the product significantly because applying filters on images is an essential feature of an image editor. Users might need to adjust the brightness and contrast of images as the images they have might be under-exposed and are not well contrasted. Also, the black and white filter is useful for users who like vintage images.</p>
 </li>
 <li>
-<p>Highlights: This enhancement was challenging to implement as the image filter commands are working on the same image as the image manipulation commands that were implemented by my teammate. It seeks for an in-depth analysis of design alternatives and the implementation of image editing libraries. As my teammate and I had to use two different third-party libraries which returned different objects, we had to ensure that the classes in our code (e.g. <code>CurrentEdit</code>) have helper methods that accept both objects from the two different libraries.</p>
+<p>Highlights: This enhancement was challenging to implement as the image filter commands are working on the same image as the image manipulation commands that were implemented by my teammate. It seeks for an in-depth analysis of design alternatives and the implementation of image editing libraries. As my teammate and I had to use two different third-party libraries which return different objects, we had to ensure that the classes in our code (e.g. <code>CurrentEdit</code>) have helper methods that accept both objects from the two different libraries.</p>
 </li>
 <li>
-<p>Credits: <em>{The processing of images is facilitated by an external API <a href="https://github.com/sksamuel/scrimage"><code>scrimage</code></a>}</em></p>
+<p>Credits: The processing of images is facilitated by an external API <a href="https://github.com/sksamuel/scrimage"><code>scrimage</code></a></p>
 </li>
 </ul>
 </div>
@@ -159,11 +159,7 @@
 <p>Integrated a third party library (<a href="https://github.com/sksamuel/scrimage"><code>scrimage</code></a>) to the project (<a href="https://github.com">#42</a>)</p>
 </li>
 <li>
-<p>Integrated Netlify to the team repository (<a href="https://github.com/CS2103-AY1819S2-W14-2/main/issues/151">#151</a>)</p>
-</li>
-<li>
-<p>Integrated AppVeyor to the team repository
-(<a href="https://github.com/CS2103-AY1819S2-W14-2/main/issues/151">#151</a>)</p>
+<p>Integrated Netlify and Appveyor to the team repository (<a href="https://github.com/CS2103-AY1819S2-W14-2/main/issues/151">#151</a>)</p>
 </li>
 </ul>
 </div>
@@ -188,27 +184,6 @@
 </tr>
 </tbody>
 </table>
-<div class="sect2">
-<h3 id="black-and-white-filter-code-bw-code"><a class="link" href="#black-and-white-filter-code-bw-code">Black and White Filter : <code>bw</code></a></h3>
-<div class="paragraph">
-<p>Applies a black and white filter on the opened image based on an integer
-threshold value. If the threshold value is not specified, the black and white filter will use a preset threshold value of 127. Pixels in the image lighter than the threshold value will become white and pixels in the image darker than the threshold value will become black. The higher the threshold value, the larger the proportion of black and the smaller the proportion of white. <br>
-Format: <code>bw [THRESHOLD_VALUE]</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>bw</code> (threshold value preset to 127)</p>
-</li>
-<li>
-<p><code>bw 130</code></p>
-</li>
-</ul>
-</div>
-</div>
 <div class="sect2">
 <h3 id="contrast-code-contrast-code"><a class="link" href="#contrast-code-contrast-code">Contrast: <code>contrast</code></a></h3>
 <div class="paragraph">
@@ -291,6 +266,17 @@ Format: <code>setpreset PRESETNAME</code></p>
 <code>savepreset preset1</code> (saves <code>rotate 180</code> and <code>brightness 1.3</code> in a list of commands that can be used on other images)<br>
 <code>open newImage.jpg</code>  (open a new image to edit on)<br>
 <code>setpreset preset1</code>  (applies the list of commands which consists of <code>rotate 180</code> and <code>brightness 1.3</code> on the newly opened image)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="strong-other-works-contributed-strong"><a class="link" href="#strong-other-works-contributed-strong"><strong>Other Works Contributed</strong></a></h3>
+<hr>
+<div class="ulist">
+<ul>
+<li>
+<p>Black/White feature</p>
 </li>
 </ul>
 </div>
@@ -440,118 +426,12 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </div>
 </div>
 <div class="sect2">
-<h3 id="savepreset-feature"><a class="link" href="#savepreset-feature">SavePreset Feature</a></h3>
-<div class="paragraph">
-<p>This feature saves a list of commands that were applied to the opened image under a specified name so that they can be applied to other images in the future.</p>
-</div>
-<div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
-<div class="paragraph">
-<p>The <code>savepreset</code> function is facilitated by <code>CurrentEdit</code> and <code>TransformationSet</code>. It uses the following operations:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>CurrentEdit#tempImageDoNotExist()</code> - Returns <code>true</code> if <code>tempImage</code> in <code>CurrentEdit</code> is null. <code>tempImage</code> is null only if <code>open</code> command is never called.</p>
-</li>
-<li>
-<p><code>CurrentEdit#getTempSubHistory()</code> - Retrieves the <code>List&lt;Command&gt;</code> from the <code>tempImage</code> in <code>CurrentEdit</code>.</p>
-</li>
-<li>
-<p><code>TransformationSet#isPresent(String)</code> - Returns true if there is already a <code>List&lt;Command&gt;</code> saved under the same preset name.</p>
-</li>
-<li>
-<p><code>TransformationSet#addTransformation(String, List&lt;Command&gt;)</code> - Saves the <code>List&lt;Command&gt;</code> to the <code>transformationMap</code> in <code>TransformationSet</code> under the specified preset name.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows how <code>savepreset</code> works:</p>
-</div>
-<div id="sequencediagram_savepreset" class="imageblock">
-<div class="content">
-<img src="../images/SavePresetCommandSequenceDiagram.png" alt="SavePresetCommandSequenceDiagram" width="800">
-</div>
-<div class="title">Figure 2. Sequence Diagram for Save Preset Command</div>
-</div>
-<div class="paragraph">
-<p>Given below is an example usage scenario of how <code>savepreset</code> behaves at each step as shown in <a href="#sequencediagram_savepreset">Sequence Diagram for Save Preset Command</a>.</p>
-</div>
-<div class="paragraph">
-<p>Step 1. When the user enters the command (e.g. <code>savepreset preset1</code>), the entered command is parsed and the command will be executed.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If an invalid command is provided, a reminder of how to use the command will be given to the user and no command will be executed.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 2. During execution, the <code>execute</code> method in the <code>SavePresetCommand</code> class first invokes <code>CurrentEdit#tempImageDoNotExist</code> to check if an image is opened. If no image is opened, an error message will be displayed to remind the user to open an image for editing first.</p>
-</div>
-<div class="paragraph">
-<p>Step 3. If an image is opened, the <code>execute</code> method will invoke <code>CurrentEdit#getTempSubHistory()</code> to retrieve the <code>List&lt;Command&gt;</code> from the <code>tempImage</code> in <code>CurrentEdit</code> which consists of the image editing commands used on the opened image.</p>
-</div>
-<div class="paragraph">
-<p>Step 4. If the <code>List&lt;Command&gt;</code> is empty, an error message will be displayed to indicate that the opened image is not edited yet and thus there are no commands to be saved as a preset.</p>
-</div>
-<div class="paragraph">
-<p>Step 5. <code>TransformationSet#isPresent(String)</code> is then invoked to check if the preset name specified by the user is used previously. If it is used previously, an error message will be displayed to tell the user to specify a different preset name.</p>
-</div>
-<div class="paragraph">
-<p>Step 6. Lastly, the method <code>TransformationSet#addTransformation(String, List&lt;Command&gt;)</code> is called to add the <code>List&lt;Command</code> in the <code>TransformationSet</code>, saving it as a preset of commands that can be used in the future with the <code>setpreset</code> command.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice)</strong>: The user can only save a preset of commands after applying these edits on an opened image.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: The user can view the effects of the commands on an image first before deciding to save it as a preset.</p>
-</li>
-<li>
-<p>Cons: It might be inconvenient for users who already have the list of commands they want to save as a preset beforehand and do not have to test them out.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2</strong>: The user can save a preset of commands by typing out all the commands in a row without testing them on an image.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: It will be convenient for professional editors as they do not have to test the commands out on an opened image first.</p>
-</li>
-<li>
-<p>Cons: Beginners in image editing will have a hard time finding the right commands to save as a preset without testing them out first.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>In the end, the first alternative is chosen for this application because our photo editor, FomoFoto, is mainly designed for basic photo editing and thus should be more suitable for beginners to use.</p>
-</div>
-</div>
-</div>
-<div class="sect2">
 <h3 id="setpreset-feature"><a class="link" href="#setpreset-feature">SetPreset Feature</a></h3>
 <div class="paragraph">
 <p>This feature applies a preset list of commands that were saved previously using the <code>setpreset</code> command on the opened image.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">Current Implementation</a></h4>
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
 <div class="paragraph">
 <p>The <code>setpreset</code> function is facilitated by <code>CurrentEdit</code> and <code>TransformationSet</code>. It uses the following operations:</p>
 </div>
@@ -590,7 +470,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="content">
 <img src="../images/SetPresetCommandSequenceDiagram.png" alt="SetPresetCommandSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 3. Sequence Diagram for Set Preset Command</div>
+<div class="title">Figure 2. Sequence Diagram for Set Preset Command</div>
 </div>
 <div class="paragraph">
 <p>Given below is an example usage scenario of how <code>setpreset</code> behaves at each step as shown in <a href="#sequencediagram_setpreset">Sequence Diagram for Set Preset Command</a>.</p>
@@ -630,7 +510,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -666,5 +546,19 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="strong-other-works-contributed-strong-2"><a class="link" href="#strong-other-works-contributed-strong-2"><strong>Other Works Contributed</strong></a></h3>
+<hr>
+<div class="ulist">
+<ul>
+<li>
+<p>Save Preset feature</p>
+</li>
+<li>
+<p>Logic Component sequence diagrams</p>
+</li>
+</ul>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 07:44:23 UTC</div></div></div></body></html>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 08:57:06 UTC</div></div></div></body></html>
