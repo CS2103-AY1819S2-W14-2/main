@@ -360,7 +360,7 @@ Format: <code>setpreset PRESETNAME</code></p>
 <p>Given below is an example usage scenario of how <code>contrast</code> behaves at each step as shown in <a href="#sequencediagram_contrast">Sequence Diagram for Contrast Command</a>. [This applies to the other image filter commands as well.]</p>
 </div>
 <div class="paragraph">
-<p>Step 1. When the user runs an <code>open</code> command to edit an image, it invokes a method which creates an instance of an <code>Image</code> that stores the filepath of the image, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata. This <code>Image</code> object is saved under the variable name <code>tempImage</code> in <code>CurrentEdit</code> for editing.</p>
+<p>Step 1. When the user runs an <code>open</code> command to edit an image, it invokes a method which creates an instance of an <code>Image</code> that stores the file path of the image, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata. This <code>Image</code> object is saved under the variable name <code>tempImage</code> in <code>CurrentEdit</code> for editing.</p>
 </div>
 <div class="paragraph">
 <p>Step 2. When the user enters the command (e.g. <code>contrast 0.3</code>), the entered command is parsed and the command will be executed.</p>
@@ -381,10 +381,10 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <p>Step 3. During execution, the <code>execute</code> method in the <code>ContrastCommand</code> class first invokes <code>CurrentEdit#tempImageDoNotExist</code> to check if an image is opened. If no image is opened, it will throw an error message to tell the user to open an image for editing first. Else, the <code>execute</code> method will invoke <code>CurrentEdit#getTempImage()</code> to get the <code>tempImage</code> from <code>CurrentEdit</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 4. Upon retrieving the <code>tempImage</code>, the <code>execute</code> method creates a <code>ContrastFilter</code> instance provided by the external library [<code>scrimage</code>] which takes in a <code>double</code> contrast ratio value. This <code>ContrastFilter</code> will then be applied on the image retrieved from the filepath of <code>tempImage</code>.</p>
+<p>Step 4. Upon retrieving the <code>tempImage</code>, the <code>execute</code> method creates a <code>ContrastFilter</code> instance provided by the external library [<code>scrimage</code>] which takes in a <code>double</code> contrast ratio value. This <code>ContrastFilter</code> will then be applied to the image retrieved from the file path of <code>tempImage</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 5. After applying the <code>ContrastFilter</code> on the opened image, <code>CurrentEdit#updateTempImage()</code> is invoked to save the newly edited image and replace the previous one in the filepath of the <code>tempImage</code>.</p>
+<p>Step 5. After applying the <code>ContrastFilter</code> on the opened image, <code>CurrentEdit#updateTempImage()</code> is invoked to save the newly edited image and replace the previous one in the file path of the <code>tempImage</code>.</p>
 </div>
 <div class="paragraph">
 <p>Step 6. The <code>execute</code> method then checks if the boolean <code>isNewCommand</code> is true. If it is <code>true</code>, it indicates that the command is a new contrast command called directly from the user and not through an <code>undo/redo</code> command. This triggers Step 7 in the line below. Otherwise, the command&#8217;s execution ends in this step.</p>
@@ -521,7 +521,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <p>Pros: The user will be able to see the immediate effect of the commands on the image.</p>
 </li>
 <li>
-<p>Cons: The user have to set the preset of commands on each images one by one which takes a longer time.</p>
+<p>Cons: The user has to set the preset of commands on each image one by one which takes a longer time.</p>
 </li>
 </ul>
 </div>
@@ -561,4 +561,4 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 11:50:36 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 11:51:34 UTC</div></div></div></body></html>

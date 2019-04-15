@@ -127,7 +127,7 @@ Windows developers are highly recommended to use JDK <code>9</code>.
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-IntelliJ by default has Gradle and JavaFx plugins installed.<br>
+IntelliJ by default has Gradle and JavaFX plugins installed.<br>
 Do not disable them. If you have disabled them, go to <code>File</code> &gt; <code>Settings</code> &gt; <code>Plugins</code> to re-enable them.
 </td>
 </tr>
@@ -145,7 +145,7 @@ Do not disable them. If you have disabled them, go to <code>File</code> &gt; <co
 <p>Fork this repo, and clone the fork to your computer</p>
 </li>
 <li>
-<p>Open IntelliJ (if you are not in the welcome screen, click <code>File</code> &gt; <code>Close Project</code> to close the existing project dialog first)</p>
+<p>Open IntelliJ (if you are not in the welcome screen, click <code>File</code> &gt; <code>Close Project</code> to close the existing project dialogue first)</p>
 </li>
 <li>
 <p>Set up the correct JDK version for Gradle</p>
@@ -174,7 +174,7 @@ Do not disable them. If you have disabled them, go to <code>File</code> &gt; <co
 </li>
 <li>
 <p>Open a console and run the command <code>gradlew processResources</code> (Mac/Linux: <code>./gradlew processResources</code>). It should finish with the <code>BUILD SUCCESSFUL</code> message.<br>
-This will generate all resources required by the application and tests.</p>
+This will generate all the resources required by the application and tests.</p>
 </li>
 <li>
 <p>Open <a href="https://github.com/CS2103-AY1819S2-W14-2/main/tree/master/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow.java</code></a> and check for any code errors</p>
@@ -386,7 +386,7 @@ The following class plays an important role at the architecture level:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Each of the first three components do the following:</p>
+<p>Each of the first three components does the following:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -523,7 +523,7 @@ image such as metadata information like <strong>Date and Time</strong> and <stro
 </ol>
 </div>
 <div class="paragraph">
-<p>The <code>UI</code> component is supplemented by a <code>Notifier</code> class. The class implements Java&#8217;s <code>propertyChangeListener</code> as means of drawing updates to the User Interface.</p>
+<p>The <code>UI</code> component is supplemented by a <code>Notifier</code> class. The class implements Java&#8217;s <code>propertyChangeListener</code> as a means of drawing updates to the User Interface.</p>
 </div>
 <div class="paragraph">
 <p>For example, the <code>ImageView</code> component draws updates to an opened image in the following sequence:</p>
@@ -627,7 +627,7 @@ The <code>UI</code> component uses JavaFx UI framework. The layout of these UI p
 <p>stores an <code>Image</code> instance in <code>tempImage</code> and <code>originalImage</code> when an image is opened.</p>
 </li>
 <li>
-<p>creates a copy of the opened image and the current edited image in <code>temp</code> directory.</p>
+<p>creates a copy of the opened image and the currently edited image in <code>temp</code> directory.</p>
 </li>
 <li>
 <p><code>tempImage</code> is updated each time a command to edit the image is called. (e.g. <code>RotateCommand</code>, <code>ContrastCommand</code>)</p>
@@ -687,7 +687,7 @@ The <code>UI</code> component uses JavaFx UI framework. The layout of these UI p
 <div class="ulist">
 <ul>
 <li>
-<p>Validation checks to see if raw image is a valid Image.</p>
+<p>Validation checks to see if a raw image is a valid Image.</p>
 </li>
 <li>
 <p>Keeps a command history of edits executed on this Image.</p>
@@ -723,7 +723,7 @@ The <code>UI</code> component uses JavaFx UI framework. The layout of these UI p
 </ul>
 </div>
 <div class="paragraph">
-<p>The <code>assets</code> and <code>temp</code> directory from the storage component of FomoFoto. Both directory are created during runtime of the application.</p>
+<p>The <code>assets</code> and <code>temp</code> directory from the storage component of FomoFoto. Both directories are created during runtime of the application.</p>
 </div>
 <div class="paragraph">
 <p>The <code>assets</code> directory is created in the same directory where FomoFoto is first launched and persist between sessions. The <code>assets</code> directory is marked as <code>FomoFoto.assets</code>.</p>
@@ -782,7 +782,7 @@ If FomoFoto is not given the permissions to write <code>assets</code> and <code>
 <p>Step 1. The user executes <code>export f/iu.jpg d/C:\Users\randy\Desktop</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 2. <code>ExportCommandParser</code> checks if user has input the command correctly.</p>
+<p>Step 2. <code>ExportCommandParser</code> checks if the user has input the command correctly.</p>
 </div>
 <div class="paragraph">
 <p>Step 3. <code>Album#getImageFromList</code> checks if the file to be exported exists in the album and throws a <code>CommandException</code> if it does not exist.</p>
@@ -791,7 +791,7 @@ If FomoFoto is not given the permissions to write <code>assets</code> and <code>
 <p>Step 4. <code>ExportCommand#validPath</code> checks if the specified directory is valid and throws a <code>CommandException</code> if it is not.</p>
 </div>
 <div class="paragraph">
-<p>Step 5. If file to be exported exists and directory is valid, the file will be copied to the directory.</p>
+<p>Step 5. If the file to be exported exists and directory is valid, the file will be copied to the directory.</p>
 </div>
 <div class="paragraph">
 <p>The following sequence diagram shows how the <code>export</code> command works:</p>
@@ -807,7 +807,7 @@ If FomoFoto is not given the permissions to write <code>assets</code> and <code>
 <div class="sect2">
 <h3 id="import-feature"><a class="link" href="#import-feature">3.2. Import feature</a></h3>
 <div class="paragraph">
-<p>The Import Command allow users to import a file of an image format into FomoFoto for editing.</p>
+<p>The Import Command allows users to import a file of an image format into FomoFoto for editing.</p>
 </div>
 <div class="sect3">
 <h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.2.1. Current implementation</a></h4>
@@ -873,7 +873,7 @@ Images with <code>.tif</code> or <code>.tiff</code> formats are not rendered on 
 <p>Not be over 10MB in size.</p>
 </li>
 <li>
-<p>Not have the same name of an existing image in the Album.</p>
+<p>Not have the same name as an existing image in the Album.</p>
 </li>
 </ol>
 </div>
@@ -890,7 +890,7 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 </table>
 </div>
 <div class="paragraph">
-<p>Images found in the given arguments will be copied to an <code>assets</code> directory created at runtime in FomoFoto&#8217;s home directory. This is facilitated by the <code>Album</code> class and <code>ImportCommandParser</code> and contains the follow operation:</p>
+<p>Images found in the given arguments will be copied to an <code>assets</code> directory created at runtime in FomoFoto&#8217;s home directory. This is facilitated by the <code>Album</code> class and <code>ImportCommandParser</code> and contains the following operation:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -911,10 +911,10 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User launches application and enters <code>import C:\Users\Addison\Desktop\sample.png</code></p>
+<p>The user launches the application and enters <code>import C:\Users\Addison\Desktop\sample.png</code></p>
 </li>
 <li>
-<p><code>ImportCommandParser</code> takes in arguments and performs validation on given path. Image is copied to <code>assets</code> directory and added to Album if it is valid.</p>
+<p><code>ImportCommandParser</code> takes in arguments and performs validation on a given path. Image is copied to <code>assets</code> directory and added to Album if it is valid.</p>
 </li>
 <li>
 <p><code>Album</code> display the imported image to UI by calling the <code>Notifier</code> class which calls on the display panel listening to the notifier.</p>
@@ -943,13 +943,13 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 <p>Pros: Easy to implement.</p>
 </li>
 <li>
-<p>Cons: Importing multiple images from same directory needs repeated commands.</p>
+<p>Cons: Importing multiple images from the same directory needs repeated commands.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2 (Current Choice)</strong>: Import images from directory as well.</p>
+<p><strong>Alternative 2 (Current Choice)</strong>: Import images from a directory as well.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1061,13 +1061,13 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 <div class="ulist">
 <ul>
 <li>
-<p><code>open</code> has to distinguish whether user is opening an image from <code>assets</code> or <code>temp</code> directory.</p>
+<p><code>open</code> has to distinguish whether the user is opening an image from <code>assets</code> or <code>temp</code> directory.</p>
 </li>
 <li>
 <p>Requires many duplicates with different temporary names.</p>
 </li>
 <li>
-<p>May be confusing for the user.</p>
+<p>Might be confusing for the user.</p>
 </li>
 </ul>
 </div>
@@ -1085,7 +1085,7 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 <div class="sect2">
 <h3 id="list-files-feature"><a class="link" href="#list-files-feature">3.4. List Files Feature</a></h3>
 <div class="paragraph">
-<p>This command displays the names of all the files in <code>assets</code> directory.</p>
+<p>This command displays the names of all the files in the <code>assets</code> directory.</p>
 </div>
 <div class="sect3">
 <h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.4.1. Current Implementation</a></h4>
@@ -1189,7 +1189,7 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 <p>Given below is an example usage scenario of how <code>contrast</code> behaves at each step as shown in <a href="#sequencediagram_contrast">Figure 15, &#8220;Sequence Diagram for Contrast Command&#8221;</a>. [This applies to the other image filter commands as well.]</p>
 </div>
 <div class="paragraph">
-<p>Step 1. When the user runs an <code>open</code> command to edit an image, it invokes a method which creates an instance of an <code>Image</code> that stores the filepath of the image, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata. This <code>Image</code> object is saved under the variable name <code>tempImage</code> in <code>CurrentEdit</code> for editing.</p>
+<p>Step 1. When the user runs an <code>open</code> command to edit an image, it invokes a method which creates an instance of an <code>Image</code> that stores the file path of the image, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata. This <code>Image</code> object is saved under the variable name <code>tempImage</code> in <code>CurrentEdit</code> for editing.</p>
 </div>
 <div class="paragraph">
 <p>Step 2. When the user enters the command (e.g. <code>contrast 0.3</code>), the entered command is parsed and the command will be executed.</p>
@@ -1210,10 +1210,10 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <p>Step 3. During execution, the <code>execute</code> method in the <code>ContrastCommand</code> class first invokes <code>CurrentEdit#tempImageDoNotExist</code> to check if an image is opened. If no image is opened, it will throw an error message to tell the user to open an image for editing first. Else, the <code>execute</code> method will invoke <code>CurrentEdit#getTempImage()</code> to get the <code>tempImage</code> from <code>CurrentEdit</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 4. Upon retrieving the <code>tempImage</code>, the <code>execute</code> method creates a <code>ContrastFilter</code> instance provided by the external library [<code>scrimage</code>] which takes in a <code>double</code> contrast ratio value. This <code>ContrastFilter</code> will then be applied on the image retrieved from the filepath of <code>tempImage</code>.</p>
+<p>Step 4. Upon retrieving the <code>tempImage</code>, the <code>execute</code> method creates a <code>ContrastFilter</code> instance provided by the external library [<code>scrimage</code>] which takes in a <code>double</code> contrast ratio value. This <code>ContrastFilter</code> will then be applied to the image retrieved from the file path of <code>tempImage</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 5. After applying the <code>ContrastFilter</code> on the opened image, <code>CurrentEdit#updateTempImage()</code> is invoked to save the newly edited image and replace the previous one in the filepath of the <code>tempImage</code>.</p>
+<p>Step 5. After applying the <code>ContrastFilter</code> on the opened image, <code>CurrentEdit#updateTempImage()</code> is invoked to save the newly edited image and replace the previous one in the file path of the <code>tempImage</code>.</p>
 </div>
 <div class="paragraph">
 <p>Step 6. The <code>execute</code> method then checks if the boolean <code>isNewCommand</code> is true. If it is <code>true</code>, it indicates that the command is a new contrast command called directly from the user and not through an <code>undo/redo</code> command. This triggers Step 7 in the line below. Otherwise, the command&#8217;s execution ends in this step.</p>
@@ -1300,7 +1300,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </ul>
 </div>
 <div class="paragraph">
-<p>The following describes main operations and processes for each command stated above.</p>
+<p>The following describes the main operations and processes for each command stated above.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1321,7 +1321,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <p>Given below is an example usage scenario and how the command should behave at each step (This applies to the other image manipulation commands as well.):</p>
 </div>
 <div class="paragraph">
-<p>Step 1. When the user runs an open command to edit an image, it invokes a method which creates an instance of an <code>Image</code> that stores the filepath of the image, its history of edits <code>List&lt;Command&gt;</code> and its metadata. This <code>Image</code> object is saved under the variable name <code>tempImage</code> in <code>currentEdit</code> for editing.</p>
+<p>Step 1. When the user runs an open command to edit an image, it invokes a method which creates an instance of an <code>Image</code> that stores the file path of the image, its history of edits <code>List&lt;Command&gt;</code> and its metadata. This <code>Image</code> object is saved under the variable name <code>tempImage</code> in <code>currentEdit</code> for editing.</p>
 </div>
 <div class="paragraph">
 <p>Step 2. When the user enters the command (e.g. <code>rotate 90</code>), the entered command is parsed and the command will be executed.</p>
@@ -1345,7 +1345,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <p>Step 4. Upon retrieving the <code>tempImage</code>, the <code>execute</code> method in <code>RotateCommand</code> gets a <code>BufferedImage</code> instance from <code>tempImage</code>.The method then calls the external library <a href="https://github.com/rkalla/imgscalr"><code>ImgScalr</code></a>'s class <code>rotate</code> and passes the <code>BufferedImage</code> object in.</p>
 </div>
 <div class="paragraph">
-<p>Step 5. A <code>BufferedImage</code> object is returned from the external library and <code>currentEdit#updateTempImage()</code> is invoked to save the newly edited <code>BufferedImage</code> and replace the previous image in the filepath of the <code>tempImage</code>.</p>
+<p>Step 5. A <code>BufferedImage</code> object is returned from the external library and <code>currentEdit#updateTempImage()</code> is invoked to save the newly edited <code>BufferedImage</code> and replace the previous image in the file path of the <code>tempImage</code>.</p>
 </div>
 <div class="paragraph">
 <p>Step 6. The <code>execute</code> method then checks if the boolean <code>isNewCommand</code> is true. If it is true, it indicates that the command is a new <code>Rotate</code> command called directly from the user and not through an <code>undo/redo</code> command which triggers Step 7 in the line below. Otherwise, the command’s execution ends in this step.</p>
@@ -1367,7 +1367,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="sect3">
 <h4 id="crop-command"><a class="link" href="#crop-command">3.6.3. Crop Command</a></h4>
 <div class="paragraph">
-<p>This command allows the user to crop the targeted image by specifying the coordinates of the top left hand corner of the desired image, the width of the desired image and the height of the desired image. Upon receiving the inputs, the values will be checked for their validity and will throw an error if any value is not within the specified range. The command will then be added to the <code>List&lt;Command&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targeted image.</p>
+<p>This command allows the user to crop the targeted image by specifying the coordinates of the top left-hand corner of the desired image, the width of the desired image and the height of the desired image. Upon receiving the inputs, the values will be checked for their validity and will throw an error if any value is not within the specified range. The command will then be added to the <code>List&lt;Command&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targeted image.</p>
 </div>
 <div class="paragraph">
 <p>Refer to the example usage scenario, sequence diagram and design considerations in <a href="#rotate-command">Section 3.6.2, &#8220;Rotate Command&#8221;</a>.</p>
@@ -1414,7 +1414,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <p><code>CurrentEdit#updateExif()</code> - Updates the Exif data of the new image.</p>
 </li>
 <li>
-<p><code>Album#checkFileExist(String)</code> - Checks if the file name specified by the <code>String</code> exists in assets directory.</p>
+<p><code>Album#checkFileExist(String)</code> - Checks if the file name specified by the <code>String</code> exists in the assets directory.</p>
 </li>
 <li>
 <p><code>Album#saveToAssets(Image, String)</code> - Saves the <code>Image</code> as <code>String</code> into <code>assets</code> directory.</p>
@@ -1461,7 +1461,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <p>Step 8.<code>CurrentEdit#updateExif()</code> is called to update the Exif data of the new image.</p>
 </div>
 <div class="paragraph">
-<p>Step 9. <code>Album#populateAlbum()</code> is called to update the list of image in <code>Album</code> class and to ensure it reflects all the files in <code>assets</code> directory.</p>
+<p>Step 9. <code>Album#populateAlbum()</code> is called to update the list of images in the <code>Album</code> class and to ensure it reflects all the files in the <code>assets</code> directory.</p>
 </div>
 <div class="paragraph">
 <p>Step 10.<code>Album#refreshAlbum()</code> is called to update the Information Panel on the GUI.</p>
@@ -1485,11 +1485,11 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </div>
 </li>
 <li>
-<p><strong>Alternative 2 (current choice)</strong> : The user can choose to save as a new name or overwrite the original image</p>
+<p>*Alternative 2 (current choice) *: The user can choose to save as a new name or overwrite the original image</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Advantage: Convenient for user to <code>save</code> quickly without having to type a new name everytime.</p>
+<p>Advantage: Convenient for the user to <code>save</code> quickly without having to type a new name every time.</p>
 </li>
 <li>
 <p>Disadvantage: The user may unintentionally overwrite the original image.</p>
@@ -1706,7 +1706,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <p>Pros: The user will be able to see the immediate effect of the commands on the image.</p>
 </li>
 <li>
-<p>Cons: The user have to set the preset of commands on each images one by one which takes a longer time.</p>
+<p>Cons: The user has to set the preset of commands on each image one by one which takes a longer time.</p>
 </li>
 </ul>
 </div>
@@ -1794,7 +1794,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="title">Figure 22. Second Transformation</div>
 </div>
 <div class="paragraph">
-<p>Step 3. The user wants to undo the previous transformation by using the <code>undo</code> command. It will call <code>CurrentEdit#replaceTempWithOriginal()</code> which will replace the edited image in temp folder with the original image. It will then call <code>CurrentEdit#setUndoTemp()</code> to set the index in <code>tempImage</code> to the required index and retrieve the list with <code>CurrentEdit#getHistoryTemp()</code>. Using the list, it will apply the commands onto the original image till it reaches the command just before the set index.</p>
+<p>Step 3. The user wants to undo the previous transformation by using the <code>undo</code> command. It will call <code>CurrentEdit#replaceTempWithOriginal()</code> which will replace the edited image in temp folder with the original image. It will then call <code>CurrentEdit#setUndoTemp()</code> to set the index in <code>tempImage</code> to the required index and retrieve the list with <code>CurrentEdit#getHistoryTemp()</code>. Using the list, it will apply the commands onto the original image until it reaches the command just before the set index.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1815,7 +1815,7 @@ If a command fails its execution, it will return the image before undo was calle
 </table>
 </div>
 <div class="paragraph">
-<p>Step 4. After executing Undo, <code>index</code> will be less than size of commandHistory. If redo is not executed before a new command is added, all commands in the list after <code>index</code> will be deleted.</p>
+<p>Step 4. After executing Undo, <code>index</code> will be less than the size of commandHistory. If redo is not executed before a new command is added, all commands in the list after <code>index</code> will be deleted.</p>
 </div>
 <div class="paragraph">
 <p>For redo, it will call <code>setRedo</code> and retrieve that command to apply it on the current image.</p>
@@ -1857,7 +1857,7 @@ If the <code>Image#index</code> is 0, pointing to the initial image, then there 
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the <code>index</code> is at index <code>commandHistory.size()</code>, pointing to the latest image state, then there are no undone transformation to restore. The <code>redo</code> command uses <code>CurrentEdit#canRedoTemp()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
+If the <code>index</code> is at index <code>commandHistory.size()</code>, pointing to the latest image state, then there is no undone transformation to restore. The <code>redo</code> command uses <code>CurrentEdit#canRedoTemp()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
 </td>
 </tr>
 </table>
@@ -1893,7 +1893,7 @@ If the <code>index</code> is at index <code>commandHistory.size()</code>, pointi
 <p>Pros: Will use less memory</p>
 </li>
 <li>
-<p>Cons: We must ensure that the implementation of each individual command are correct.</p>
+<p>Cons: We must ensure that the implementation of each individual command is correct.</p>
 </li>
 </ul>
 </div>
@@ -1906,7 +1906,7 @@ If the <code>index</code> is at index <code>commandHistory.size()</code>, pointi
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of commands. We chose this so as to preserve good object oriented programming principles.</p>
+<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of commands. We chose this so as to preserve good object-oriented programming principles.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1996,7 +1996,7 @@ Each image can only have 1 watermark. If the user would like to edit the waterma
 <p>Given below is an example usage scenario and how the command should behave at each step:</p>
 </div>
 <div class="paragraph">
-<p>Step 1. When the user runs an open command to edit an image, it invokes a method which creates an instance of an <code>Image</code> that stores the filepath of the image, its history of edits <code>List&lt;Command&gt;</code> and its metadata. This <code>Image</code> object is saved under the variable name <code>tempImage</code> in <code>currentEdit</code> for editing.</p>
+<p>Step 1. When the user runs an open command to edit an image, it invokes a method which creates an instance of an <code>Image</code> that stores the file path of the image, its history of edits <code>List&lt;Command&gt;</code> and its metadata. This <code>Image</code> object is saved under the variable name <code>tempImage</code> in <code>currentEdit</code> for editing.</p>
 </div>
 <div class="paragraph">
 <p>Step 2. When the user enters the command (e.g. <code>wm FomoFoto</code>), the entered command is parsed and the command will be executed.</p>
@@ -2017,7 +2017,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <p>Step 3. During execution, the <code>execute</code> method in the <code>WaterMarkCommand</code> class first invokes <code>CurrentEdit#tempImageDoNotExist</code> to check if an image is opened. If no image is opened, it will throw an error message to tell the user to open an image for editing first. Else, the <code>execute</code> method will invoke <code>CurrentEdit#getTempImage()</code> to get the <code>tempImage</code> from <code>CurrentEdit</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 4. Upon retrieving the <code>tempImage</code>, the <code>execute</code> method in the <code>WaterMarkCommand</code> gets the  <code>BufferedImage</code> instance of the <code>tempImage</code> object and copies the <code>BufferedImage</code> object to a temporary <code>BufferedImage</code> object with the same width, height and image type. The <code>execute</code> method then initialises the necessary graphic properties using the <code>Graphics2D</code> Java class. The message is centralised and overlays the temporary <code>BufferedImage</code> object.</p>
+<p>Step 4. Upon retrieving the <code>tempImage</code>, the <code>execute</code> method in the <code>WaterMarkCommand</code> gets the  <code>BufferedImage</code> instance of the <code>tempImage</code> object and copies the <code>BufferedImage</code> object to a temporary <code>BufferedImage</code> object with the same width, height and image type. The <code>execute</code> method then initialises the necessary graphics properties using the <code>Graphics2D</code> Java class. The message is centralised and overlays the temporary <code>BufferedImage</code> object.</p>
 </div>
 <div class="paragraph">
 <p>Step 5. The <code>execute</code> method then checks for a few conditions listed below:</p>
@@ -2149,16 +2149,16 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="ulist">
 <ul>
 <li>
-<p><code>SEVERE</code> : Critical problem detected which may possibly cause the termination of the application</p>
+<p><code>SEVERE</code>: Critical problem detected which may possibly cause the termination of the application</p>
 </li>
 <li>
-<p><code>WARNING</code> : Can continue, but with caution</p>
+<p><code>WARNING</code>: Can continue, but with caution</p>
 </li>
 <li>
-<p><code>INFO</code> : Information showing the noteworthy actions by the App</p>
+<p><code>INFO</code>: Information showing the noteworthy actions by the App</p>
 </li>
 <li>
-<p><code>FINE</code> : Details that is not usually noteworthy but may be useful in debugging e.g. print the actual list instead of just its size</p>
+<p><code>FINE</code>: Details that are not usually noteworthy but may be useful in debugging e.g. print the actual list instead of just its size</p>
 </li>
 </ul>
 </div>
@@ -2593,7 +2593,7 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 </ul>
 </div>
 <div class="paragraph">
-<p><strong>Value proposition</strong>: Edit photos quicker and more intuitively than a typical mouse/GUI driven app. Also provides a easy way to view tagged metadata on images.</p>
+<p><strong>Value proposition</strong>: Edit photos quicker and more intuitively than a typical mouse/GUI driven app. Also provides an easy way to view tagged metadata on images.</p>
 </div>
 </div>
 </div>
@@ -2733,7 +2733,7 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>1a. The filepath does not contain an image. FomoFoto throws an error message.</p>
+<p>1a. The file path does not contain an image. FomoFoto throws an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2773,7 +2773,7 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>1a. The filepath does not contain an image. FomoFoto throws an error message.</p>
+<p>1a. The file path does not contain an image. FomoFoto throws an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2814,7 +2814,7 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>1a. The filepath does not contain an image. FomoFoto throws an error message.</p>
+<p>1a. The file path does not contain an image. FomoFoto throws an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2839,7 +2839,7 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User save image to Album.</p>
+<p>User saves the image to Album.</p>
 </li>
 <li>
 <p>User export image from Album.</p>
@@ -2861,7 +2861,7 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 </div>
 </li>
 <li>
-<p>2a. The filepath for export is invalid. FomoFoto throws an error message.</p>
+<p>2a. The file path for export is invalid. FomoFoto throws an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2947,7 +2947,7 @@ Expected: Shows the GUI with an empty Album. The window size may not be optimum.
 </li>
 <li>
 <p>Re-launch the app by double-clicking the jar file.<br>
-Expected: The most recent window size and location is retained.</p>
+Expected: The most recent window size and the location is retained.</p>
 </li>
 </ol>
 </div>
@@ -2993,7 +2993,7 @@ Expected: GUI should populate Album Images with a sample list of images.</p>
 <ol class="loweralpha" type="a">
 <li>
 <p>Enter <code>import FILEPATH</code><br>
-Expected: GUI should populate Album Images with image from indicated filepath.</p>
+Expected: GUI should populate Album Images with an image from the indicated file path.</p>
 </li>
 </ol>
 </div>
@@ -3004,7 +3004,7 @@ Expected: GUI should populate Album Images with image from indicated filepath.</
 <ol class="loweralpha" type="a">
 <li>
 <p>Enter <code>import FILEPATH</code><br>
-Expected: GUI should populate Album Images with images from indicated directory.</p>
+Expected: GUI should populate Album Images with images from an indicated directory.</p>
 </li>
 </ol>
 </div>
@@ -3046,7 +3046,7 @@ Expected: GUI should open and display image from Album.</p>
 <ol class="loweralpha" type="a">
 <li>
 <p>Enter <code>contrast</code><br>
-Expected: GUI should apply edit to the opened image with default contrast value.</p>
+Expected: GUI should apply the edit to the opened image with default contrast value.</p>
 </li>
 </ol>
 </div>
@@ -3101,7 +3101,7 @@ Expected: GUI should save the currently opened image as an image in Album with t
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Prerequisites: Given FILEPATH should be an a valid, writable path. Album should contain at least a single imported image.</p>
+<p>Prerequisites: Given FILEPATH should be a valid, writable path. The Album should contain at least a single imported image.</p>
 </li>
 <li>
 <p>Export an image from Album.</p>
@@ -3109,7 +3109,7 @@ Expected: GUI should save the currently opened image as an image in Album with t
 <ol class="loweralpha" type="a">
 <li>
 <p>Enter <code>export f/IMAGE_NAME d/DIRECTORY_NAME</code><br>
-Expected: GUI should export the selected Album image to target directory.</p>
+Expected: GUI should export the selected Album image to the target directory.</p>
 </li>
 </ol>
 </div>
@@ -3118,4 +3118,4 @@ Expected: GUI should export the selected Album image to target directory.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 11:50:37 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 11:51:34 UTC</div></div></div></body></html>

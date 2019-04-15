@@ -6,7 +6,7 @@
 <div class="sect2">
 <h3 id="overview"><a class="link" href="#overview">Overview</a></h3>
 <div class="paragraph">
-<p>FomoFoto is a robust yet simple image-editing tool. Users interact with the application through worded commands from their keyboard, and receive visual feedback from it through the displayed image on the application.<br></p>
+<p>FomoFoto is a robust yet simple image-editing tool. Users interact with the application through worded commands from their keyboard and receive visual feedback from it through the displayed image on the application.<br></p>
 </div>
 <div class="paragraph">
 <p>Unlike other heavy image editors, FomoFoto has a gentle learning curve, removing clutter while still retaining essential features. All features and their implementations are well documented in guides for both users and developers respectively.</p>
@@ -47,11 +47,11 @@ This enhancement is tough to implement as it requires many checks to ensure the 
 FomoFoto has an intuitive, human-centric design. Users are able to see the images they are editing, the information of images in the Album, their details and all edits applied.</p>
 </li>
 <li>
-<p><strong>Justification:</strong> A good user interface facilitates easy usage of the editor. Users are able to get a good overview on the edits they are doing simply by observing the image and information available on screen. This feature comprises of five components:</p>
+<p><strong>Justification:</strong> A good user interface facilitates easy usage of the editor. Users are able to get a good overview of the edits they are doing simply by observing the image and information available on the screen. This feature comprises of five components:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>Initial Panel</code> - Contains a quick start message on FomoFoto&#8217;s first start, giving users a high level overview on the commands available.</p>
+<p><code>Initial Panel</code> - Contains a quick start message on FomoFoto&#8217;s first start, giving users a high-level overview of the commands available.</p>
 </li>
 <li>
 <p><code>Image Panel</code> - Displays the image currently opened for editing.</p>
@@ -86,7 +86,7 @@ FomoFoto has an intuitive, human-centric design. Users are able to see the image
 <div class="ulist">
 <ul>
 <li>
-<p>Added a Tab Command that allows user to interact with the Information Panel without using a mouse.</p>
+<p>Added a Tab Command that allows the user to interact with the Information Panel without using a mouse.</p>
 </li>
 </ul>
 </div>
@@ -274,7 +274,7 @@ FomoFoto has an intuitive, human-centric design. Users are able to see the image
 </div>
 </li>
 <li>
-<p>You have just successfully setup FomoFoto on your device. To see the command available in FomoFoto, refer to <a href="#Features">[Features]</a> for details of each command. A step-by-step walkthrough of FomoFoto is available at the next section: <a href="#A Walk Through">[A Walk Through]</a>.</p>
+<p>You have just successfully setup FomoFoto on your device. To see the command available in FomoFoto, refer to <a href="#Features">[Features]</a> for details of each command. A step-by-step walkthrough of FomoFoto is available in the next section: <a href="#A Walk Through">[A Walk Through]</a>.</p>
 </li>
 </ol>
 </div>
@@ -286,11 +286,11 @@ FomoFoto has an intuitive, human-centric design. Users are able to see the image
 <div class="sect2">
 <h3 id="import-an-image-code-import-code"><a class="link" href="#import-an-image-code-import-code">Import an Image : <code>import</code></a></h3>
 <div class="paragraph">
-<p>Imports images to FomoFoto&#8217;s Album from a specified filepath or a folder.<br>
+<p>Imports images to FomoFoto&#8217;s Album from a specified file path or a folder.<br>
 Format: <code>import FILEPATH</code></p>
 </div>
 <div class="paragraph">
-<p>Example of single filepath import:</p>
+<p>Example of single file path import:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -342,7 +342,7 @@ Images should be of the following formats: <code>bmp</code>, <code>jpg</code> , 
 <p>Not be over 10MB in size.</p>
 </li>
 <li>
-<p>Not have the same name of an existing image in the Album.</p>
+<p>Not have the same name as an existing image in the Album.</p>
 </li>
 </ol>
 </div>
@@ -445,7 +445,7 @@ image such as metadata information like <strong>Date and Time</strong> and <stro
 <div class="ulist">
 <ul>
 <li>
-<p>Validation checks to see if raw image is a valid Image.</p>
+<p>Validation checks to see if a raw image is a valid Image.</p>
 </li>
 <li>
 <p>Keeps a command history of edits executed on this Image.</p>
@@ -537,7 +537,7 @@ image such as metadata information like <strong>Date and Time</strong> and <stro
 </ol>
 </div>
 <div class="paragraph">
-<p>The <code>UI</code> component is supplemented by a <code>Notifier</code> class. The class implements Java&#8217;s <code>propertyChangeListener</code> as means of drawing updates to the User Interface.</p>
+<p>The <code>UI</code> component is supplemented by a <code>Notifier</code> class. The class implements Java&#8217;s <code>propertyChangeListener</code> as a means of drawing updates to the User Interface.</p>
 </div>
 <div class="paragraph">
 <p>For example, the <code>ImageView</code> component draws updates to an opened image in the following sequence:</p>
@@ -578,7 +578,7 @@ The <code>UI</code> component uses JavaFx UI framework. The layout of these UI p
 <div class="sect2">
 <h3 id="import-feature"><a class="link" href="#import-feature">Import feature</a></h3>
 <div class="paragraph">
-<p>The Import Command allow users to import a file of an image format into FomoFoto for editing.</p>
+<p>The Import Command allows users to import a file of an image format into FomoFoto for editing.</p>
 </div>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">Current implementation</a></h4>
@@ -644,7 +644,7 @@ Images with <code>.tif</code> or <code>.tiff</code> formats are not rendered on 
 <p>Not be over 10MB in size.</p>
 </li>
 <li>
-<p>Not have the same name of an existing image in the Album.</p>
+<p>Not have the same name as an existing image in the Album.</p>
 </li>
 </ol>
 </div>
@@ -661,7 +661,7 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 </table>
 </div>
 <div class="paragraph">
-<p>Images found in the given arguments will be copied to an <code>assets</code> directory created at runtime in FomoFoto&#8217;s home directory. This is facilitated by the <code>Album</code> class and <code>ImportCommandParser</code> and contains the follow operation:</p>
+<p>Images found in the given arguments will be copied to an <code>assets</code> directory created at runtime in FomoFoto&#8217;s home directory. This is facilitated by the <code>Album</code> class and <code>ImportCommandParser</code> and contains the following operation:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -682,10 +682,10 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User launches application and enters <code>import C:\Users\Addison\Desktop\sample.png</code></p>
+<p>The user launches the application and enters <code>import C:\Users\Addison\Desktop\sample.png</code></p>
 </li>
 <li>
-<p><code>ImportCommandParser</code> takes in arguments and performs validation on given path. Image is copied to <code>assets</code> directory and added to Album if it is valid.</p>
+<p><code>ImportCommandParser</code> takes in arguments and performs validation on a given path. Image is copied to <code>assets</code> directory and added to Album if it is valid.</p>
 </li>
 <li>
 <p><code>Album</code> display the imported image to UI by calling the <code>Notifier</code> class which calls on the display panel listening to the notifier.</p>
@@ -714,13 +714,13 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 <p>Pros: Easy to implement.</p>
 </li>
 <li>
-<p>Cons: Importing multiple images from same directory needs repeated commands.</p>
+<p>Cons: Importing multiple images from the same directory needs repeated commands.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2 (Current Choice)</strong>: Import images from directory as well.</p>
+<p><strong>Alternative 2 (Current Choice)</strong>: Import images from a directory as well.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -740,7 +740,7 @@ Implementation of these checks can be found in <code>ImportCommandParser</code>.
 <h3 id="assets-and-temp-folder"><a class="link" href="#assets-and-temp-folder">Assets and Temp Folder</a></h3>
 <hr>
 <div class="paragraph">
-<p>The <code>assets</code> and <code>temp</code> directory from the storage component of FomoFoto. Both directory are created during runtime of the application.</p>
+<p>The <code>assets</code> and <code>temp</code> directory from the storage component of FomoFoto. Both directories are created during runtime of the application.</p>
 </div>
 <div class="paragraph">
 <p>The <code>assets</code> directory is created in the same directory where FomoFoto is first launched and persist between sessions. The <code>assets</code> directory is marked as <code>FomoFoto.assets</code>.</p>
@@ -773,4 +773,4 @@ If FomoFoto is not given the permissions to write <code>assets</code> and <code>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 11:50:37 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 11:51:34 UTC</div></div></div></body></html>

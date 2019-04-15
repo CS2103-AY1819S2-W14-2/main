@@ -170,7 +170,7 @@
 <h3 id="strong-features-strong"><a class="link" href="#strong-features-strong"><strong>Features</strong></a></h3>
 <hr>
 <div class="paragraph">
-<p>This section describes all the commands available in FomoFoto. It provides a short description of what each command does, their formats as well as examples on how to use them. The commands are listed in alphabetical order.</p>
+<p>This section describes all the commands available in FomoFoto. It provides a short description of what each command does, their formats as well as examples of how to use them. The commands are listed in alphabetical order.</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -370,13 +370,13 @@ Format: <code>save [FILENAME]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>open</code> has to distinguish whether user is opening an image from <code>assets</code> or <code>temp</code> directory.</p>
+<p><code>open</code> has to distinguish whether the user is opening an image from <code>assets</code> or <code>temp</code> directory.</p>
 </li>
 <li>
 <p>Requires many duplicates with different temporary names.</p>
 </li>
 <li>
-<p>May be confusing for the user.</p>
+<p>Might be confusing for the user.</p>
 </li>
 </ul>
 </div>
@@ -395,7 +395,7 @@ Format: <code>save [FILENAME]</code></p>
 <h3 id="strong-list-files-feature-strong"><a class="link" href="#strong-list-files-feature-strong"><strong>List Files Feature</strong></a></h3>
 <hr>
 <div class="paragraph">
-<p>This command displays the names of all the files in <code>assets</code> directory.</p>
+<p>This command displays the names of all the files in the <code>assets</code> directory.</p>
 </div>
 <div class="sect3">
 <h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
@@ -467,7 +467,7 @@ Format: <code>save [FILENAME]</code></p>
 <p><code>CurrentEdit#updateExif()</code> - Updates the Exif data of the new image.</p>
 </li>
 <li>
-<p><code>Album#checkFileExist(String)</code> - Checks if the file name specified by the <code>String</code> exists in assets directory.</p>
+<p><code>Album#checkFileExist(String)</code> - Checks if the file name specified by the <code>String</code> exists in the assets directory.</p>
 </li>
 <li>
 <p><code>Album#saveToAssets(Image, String)</code> - Saves the <code>Image</code> as <code>String</code> into <code>assets</code> directory.</p>
@@ -514,7 +514,7 @@ Format: <code>save [FILENAME]</code></p>
 <p>Step 8.<code>CurrentEdit#updateExif()</code> is called to update the Exif data of the new image.</p>
 </div>
 <div class="paragraph">
-<p>Step 9. <code>Album#populateAlbum()</code> is called to update the list of image in <code>Album</code> class and to ensure it reflects all the files in <code>assets</code> directory.</p>
+<p>Step 9. <code>Album#populateAlbum()</code> is called to update the list of images in the <code>Album</code> class and to ensure it reflects all the files in the <code>assets</code> directory.</p>
 </div>
 <div class="paragraph">
 <p>Step 10.<code>Album#refreshAlbum()</code> is called to update the Information Panel on the GUI.</p>
@@ -538,11 +538,11 @@ Format: <code>save [FILENAME]</code></p>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2 (current choice)</strong> : The user can choose to save as a new name or overwrite the original image</p>
+<p>*Alternative 2 (current choice) *: The user can choose to save as a new name or overwrite the original image</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Advantage: Convenient for user to <code>save</code> quickly without having to type a new name everytime.</p>
+<p>Advantage: Convenient for the user to <code>save</code> quickly without having to type a new name every time.</p>
 </li>
 <li>
 <p>Disadvantage: The user may unintentionally overwrite the original image.</p>
@@ -569,4 +569,4 @@ Format: <code>save [FILENAME]</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 11:50:36 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 11:51:34 UTC</div></div></div></body></html>

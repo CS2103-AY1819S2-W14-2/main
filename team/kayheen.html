@@ -327,7 +327,7 @@ Format: <code>wm MESSAGE</code></p>
 </ul>
 </div>
 <div class="paragraph">
-<p>The following describes main operations and processes for each command stated above.</p>
+<p>The following describes the main operations and processes for each command stated above.</p>
 </div>
 </div>
 <div class="sect3">
@@ -348,7 +348,7 @@ Format: <code>wm MESSAGE</code></p>
 <p>Given below is an example usage scenario and how the command should behave at each step (This applies to the other image manipulation commands as well.):</p>
 </div>
 <div class="paragraph">
-<p>Step 1. When the user runs an open command to edit an image, it invokes a method which creates an instance of an <code>Image</code> that stores the filepath of the image, its history of edits <code>List&lt;Command&gt;</code> and its metadata. This <code>Image</code> object is saved under the variable name <code>tempImage</code> in <code>currentEdit</code> for editing.</p>
+<p>Step 1. When the user runs an open command to edit an image, it invokes a method which creates an instance of an <code>Image</code> that stores the file path of the image, its history of edits <code>List&lt;Command&gt;</code> and its metadata. This <code>Image</code> object is saved under the variable name <code>tempImage</code> in <code>currentEdit</code> for editing.</p>
 </div>
 <div class="paragraph">
 <p>Step 2. When the user enters the command (e.g. <code>rotate 90</code>), the entered command is parsed and the command will be executed.</p>
@@ -372,7 +372,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <p>Step 4. Upon retrieving the <code>tempImage</code>, the <code>execute</code> method in <code>RotateCommand</code> gets a <code>BufferedImage</code> instance from <code>tempImage</code>.The method then calls the external library <a href="https://github.com/rkalla/imgscalr"><code>ImgScalr</code></a>'s class <code>rotate</code> and passes the <code>BufferedImage</code> object in.</p>
 </div>
 <div class="paragraph">
-<p>Step 5. A <code>BufferedImage</code> object is returned from the external library and <code>currentEdit#updateTempImage()</code> is invoked to save the newly edited <code>BufferedImage</code> and replace the previous image in the filepath of the <code>tempImage</code>.</p>
+<p>Step 5. A <code>BufferedImage</code> object is returned from the external library and <code>currentEdit#updateTempImage()</code> is invoked to save the newly edited <code>BufferedImage</code> and replace the previous image in the file path of the <code>tempImage</code>.</p>
 </div>
 <div class="paragraph">
 <p>Step 6. The <code>execute</code> method then checks if the boolean <code>isNewCommand</code> is true. If it is true, it indicates that the command is a new <code>Rotate</code> command called directly from the user and not through an <code>undo/redo</code> command which triggers Step 7 in the line below. Otherwise, the command’s execution ends in this step.</p>
@@ -453,7 +453,7 @@ Each image can only have 1 watermark. If the user would like to edit the waterma
 <p>Given below is an example usage scenario and how the command should behave at each step:</p>
 </div>
 <div class="paragraph">
-<p>Step 1. When the user runs an open command to edit an image, it invokes a method which creates an instance of an <code>Image</code> that stores the filepath of the image, its history of edits <code>List&lt;Command&gt;</code> and its metadata. This <code>Image</code> object is saved under the variable name <code>tempImage</code> in <code>currentEdit</code> for editing.</p>
+<p>Step 1. When the user runs an open command to edit an image, it invokes a method which creates an instance of an <code>Image</code> that stores the file path of the image, its history of edits <code>List&lt;Command&gt;</code> and its metadata. This <code>Image</code> object is saved under the variable name <code>tempImage</code> in <code>currentEdit</code> for editing.</p>
 </div>
 <div class="paragraph">
 <p>Step 2. When the user enters the command (e.g. <code>wm FomoFoto</code>), the entered command is parsed and the command will be executed.</p>
@@ -474,7 +474,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <p>Step 3. During execution, the <code>execute</code> method in the <code>WaterMarkCommand</code> class first invokes <code>CurrentEdit#tempImageDoNotExist</code> to check if an image is opened. If no image is opened, it will throw an error message to tell the user to open an image for editing first. Else, the <code>execute</code> method will invoke <code>CurrentEdit#getTempImage()</code> to get the <code>tempImage</code> from <code>CurrentEdit</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 4. Upon retrieving the <code>tempImage</code>, the <code>execute</code> method in the <code>WaterMarkCommand</code> gets the  <code>BufferedImage</code> instance of the <code>tempImage</code> object and copies the <code>BufferedImage</code> object to a temporary <code>BufferedImage</code> object with the same width, height and image type. The <code>execute</code> method then initialises the necessary graphic properties using the <code>Graphics2D</code> Java class. The message is centralised and overlays the temporary <code>BufferedImage</code> object.</p>
+<p>Step 4. Upon retrieving the <code>tempImage</code>, the <code>execute</code> method in the <code>WaterMarkCommand</code> gets the  <code>BufferedImage</code> instance of the <code>tempImage</code> object and copies the <code>BufferedImage</code> object to a temporary <code>BufferedImage</code> object with the same width, height and image type. The <code>execute</code> method then initialises the necessary graphics properties using the <code>Graphics2D</code> Java class. The message is centralised and overlays the temporary <code>BufferedImage</code> object.</p>
 </div>
 <div class="paragraph">
 <p>Step 5. The <code>execute</code> method then checks for a few conditions listed below:</p>
@@ -590,4 +590,4 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 11:50:36 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 11:51:34 UTC</div></div></div></body></html>
