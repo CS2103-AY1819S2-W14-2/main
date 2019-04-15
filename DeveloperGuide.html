@@ -425,7 +425,7 @@ The following class plays an important role at the architecture level:</p>
 </div>
 <h4 id="how-the-architecture-components-interact-with-each-other" class="discrete">How the Architecture Components Interact with Each Other</h4>
 <div class="paragraph">
-<p>The <em>Sequence Diagrams</em> below show how the components interact with each other for the scenarios where the user issues the commands <code>import C:\Users\XXX\Desktop\Pictures</code> and <code>rotate 90</code>.</p>
+<p>The <em>Sequence Diagrams</em> below show how the components interact with each other for the scenarios where the user keys in the commands <code>import C:\Users\XXX\Desktop\Pictures</code> and <code>rotate 90</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1309,6 +1309,15 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <p>This command allows the user to rotate the targeted image by specifying a degree (90, 180 or 270 only). Upon receiving an input degree from the user, the degree will be checked for its validity and will throw an error if the degree is not within the specified range. The command will then be added to the <code>List&lt;Commands&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targeted image.</p>
 </div>
 <div class="paragraph">
+<p>The diagram below illustrates how the <code>Rotate</code> Command works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/RotateCommandSequenceDiagram.png" alt="RotateCommandSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 16. Sequence Diagram for Rotate Command</div>
+</div>
+<div class="paragraph">
 <p>Given below is an example usage scenario and how the command should behave at each step [This applies to the other image manipulation commands as well.]:</p>
 </div>
 <div class="paragraph">
@@ -1330,7 +1339,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </table>
 </div>
 <div class="paragraph">
-<p>Step 3. During execution, the <code>execute</code> method in the <code>RotateCommand</code> class invokes <code>currentEdit#getTempImage()</code> to get the <code>tempImage</code> from the <code>currentEdit</code>.</p>
+<p>Step 3. During execution, the <code>execute</code> method in the <code>RotateCommand</code> class first invokes <code>CurrentEdit#tempImageDoNotExist</code> to check if an image is opened. If no image is opened, it will throw an error message to tell the user to open an image for editing first. Else, the <code>execute</code> method will invoke <code>CurrentEdit#getTempImage()</code> to get the <code>tempImage</code> from <code>CurrentEdit</code>.</p>
 </div>
 <div class="paragraph">
 <p>Step 4. Upon retrieving the <code>tempImage</code>, the <code>execute</code> method in <code>RotateCommand</code> gets a <code>BufferedImage</code> instance from <code>tempImage</code>.The method then calls the external library <a href="https://github.com/rkalla/imgscalr"><code>ImgScalr</code></a>'s class <code>rotate</code> and passes the <code>BufferedImage</code> object in.</p>
@@ -1343,15 +1352,6 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </div>
 <div class="paragraph">
 <p>Step 7. <code>isNewCommand</code> is set to false to signal that this command is not a new rotate command if it is executed again through the <code>undo/redo</code> command. <code>currentEdit#addCommand(this)</code> is invoked to add this command to the <code>List&lt;Command&gt;</code> in <code>tempImage</code> for the <code>undo/redo</code> function and <code>currentEdit#displayTempImage()</code> is used to display the edited image on the graphical user interface.<br></p>
-</div>
-<div class="paragraph">
-<p>The diagram below illustrates how the <code>Rotate</code> Command works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/RotateCommandSequenceDiagram.png" alt="RotateCommandSequenceDiagram" width="800">
-</div>
-<div class="title">Figure 16. Sequence Diagram for Rotate Command</div>
 </div>
 <div class="sect4">
 <h5 id="design-considerations-5"><a class="link" href="#design-considerations-5">Design Considerations</a></h5>
@@ -1956,7 +1956,7 @@ Each image can only have 1 watermark. If the user would like to edit the waterma
 <div class="sect3">
 <h4 id="current-implementation-11"><a class="link" href="#current-implementation-11">3.11.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>The manipulation feature is facilitated by <code>CurrentEdit</code>. It uses the following operations:</p>
+<p>The manipulation feature is facilitated by <code>CurrentEdit</code> and <code>Image</code>. It uses the following operations:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1984,6 +1984,15 @@ Each image can only have 1 watermark. If the user would like to edit the waterma
 </ul>
 </div>
 <div class="paragraph">
+<p>The diagram below illustrates how the WaterMark Command works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/WaterMarkCommandSequenceDiagram.png" alt="WaterMarkCommandSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 26. Sequence Diagram for WaterMark Command</div>
+</div>
+<div class="paragraph">
 <p>Given below is an example usage scenario and how the command should behave at each step:</p>
 </div>
 <div class="paragraph">
@@ -2005,7 +2014,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </table>
 </div>
 <div class="paragraph">
-<p>Step 3. During execution, the <code>execute</code> method in the <code>WaterMarkCommand</code> class invokes <code>currentEdit#getTempImage()</code> to get the <code>tempImage</code> from the <code>currentEdit</code>.</p>
+<p>Step 3. During execution, the <code>execute</code> method in the <code>WaterMarkCommand</code> class first invokes <code>CurrentEdit#tempImageDoNotExist</code> to check if an image is opened. If no image is opened, it will throw an error message to tell the user to open an image for editing first. Else, the <code>execute</code> method will invoke <code>CurrentEdit#getTempImage()</code> to get the <code>tempImage</code> from <code>CurrentEdit</code>.</p>
 </div>
 <div class="paragraph">
 <p>Step 4. Upon retrieving the <code>tempImage</code>, the <code>execute</code> method in the <code>WaterMarkCommand</code> gets the  <code>BufferedImage</code> instance of the <code>tempImage</code> object and copies the <code>BufferedImage</code> object to a temporary <code>BufferedImage</code> object with the same width, height and image type. The <code>execute</code> method then initialises the necessary graphic properties using the <code>Graphics2D</code> Java class. The message is centralised and overlays the temporary <code>BufferedImage</code> object.</p>
@@ -2022,7 +2031,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <p><code>isPreset</code>: Checks if the <code>WaterMark</code> command is from a Preset.</p>
 </li>
 <li>
-<p><code>initialImage#hasWaterMark()</code>: Checks if the <code>tempImage</code> already has a watermark.</p>
+<p><code>tempImage#hasWaterMark()</code>: Checks if the <code>tempImage</code> already has a watermark.</p>
 </li>
 </ol>
 </div>
@@ -2032,11 +2041,11 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><code>isNewCommand</code> = <code>True</code> and <code>initialImage#hasWaterMark()</code> = <code>False</code>:</p>
+<p><code>isNewCommand</code> = <code>True</code> and <code>tempImage#hasWaterMark()</code> = <code>False</code>:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Invokes <code>initialImage#setWaterMark(True)</code> to indicate that the image has a watermark.<br></p>
+<p>Invokes <code>tempImage#setWaterMark(True)</code> to indicate that the image has a watermark.<br></p>
 </li>
 <li>
 <p>Invokes <code>currentEdit#updateTempImage()</code> to  save the newly edited <code>BufferedImage</code> and replace the previous image in the filepath of the <code>tempImage</code>.</p>
@@ -2051,7 +2060,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </div>
 </li>
 <li>
-<p><code>isNewCommand</code> = <code>True</code> and <code>initialImage#hasWaterMark()</code> = <code>True</code>:</p>
+<p><code>isNewCommand</code> = <code>True</code> and <code>tempImage#hasWaterMark()</code> = <code>True</code>:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -2068,7 +2077,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <p>Indicates that it is an <code>undo/redo</code> function.</p>
 </li>
 <li>
-<p>Invokes <code>initialImage#setWaterMark(true)</code> to indicate that the image has a watermark.</p>
+<p>Invokes <code>tempImage#setWaterMark(true)</code> to indicate that the image has a watermark.</p>
 </li>
 <li>
 <p>Invokes <code>currentEdit#updateTempImage()</code> to save the newly edited <code>BufferedImage</code> and replace the previous image in the filepath of the <code>tempImage</code>.</p>
@@ -2077,14 +2086,14 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </div>
 </li>
 <li>
-<p><code>isNewCommand</code> = <code>False</code> and <code>isPreset</code> = <code>True</code> and <code>initialImage#hasWaterMark()</code> = <code>False</code>:</p>
+<p><code>isNewCommand</code> = <code>False</code> and <code>isPreset</code> = <code>True</code> and <code>tempImage#hasWaterMark()</code> = <code>False</code>:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Indicates that a preset is added to a image with no watermark.</p>
+<p>Indicates that a preset is added to an image with no watermark.</p>
 </li>
 <li>
-<p>Invokes <code>initialImage#setWaterMark(true)</code> to indicate that the image has a watermark.</p>
+<p>Invokes <code>tempImage#setWaterMark(true)</code> to indicate that the image has a watermark.</p>
 </li>
 <li>
 <p>Invokes <code>currentEdit#updateTempImage()</code> to save the newly edited <code>BufferedImage</code> and replace the previous image in the filepath of the <code>tempImage</code>.</p>
@@ -2103,15 +2112,6 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </div>
 </li>
 </ol>
-</div>
-<div class="paragraph">
-<p>The diagram below illustrates how the WaterMark Command works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/WaterMarkCommandSequenceDiagram.png" alt="WaterMarkCommandSequenceDiagram" width="800">
-</div>
-<div class="title">Figure 26. Sequence Diagram for WaterMark Command</div>
 </div>
 </div>
 <div class="sect3">
@@ -3118,4 +3118,4 @@ Expected: GUI should export the selected Album image to target directory.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 08:57:06 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 09:02:47 UTC</div></div></div></body></html>
