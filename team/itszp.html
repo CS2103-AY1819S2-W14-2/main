@@ -156,16 +156,9 @@
 <div class="sect1">
 <h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
 <div class="sectionbody">
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I that contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
-</tr>
-</tbody>
-</table>
+<div class="paragraph">
+<p>This section highlights my contributions to the User Guide. It showcases my ability to write documentation targeting end-users.</p>
+</div>
 <div class="sect2">
 <h3 id="strong-features-strong"><a class="link" href="#strong-features-strong"><strong>Features</strong></a></h3>
 <hr>
@@ -263,16 +256,9 @@ Format: <code>save [FILENAME]</code></p>
 <div class="sect1">
 <h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
 <div class="sectionbody">
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections that I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
-</tr>
-</tbody>
-</table>
+<div class="paragraph">
+<p>The section highlights my contributions to the Developer Guide. It showcases my ability to write technical documentation and the technical depth of my contributions to the project.</p>
+</div>
 <div class="sect2">
 <h3 id="strong-open-feature-strong"><a class="link" href="#strong-open-feature-strong"><strong>Open Feature</strong></a></h3>
 <hr>
@@ -370,13 +356,13 @@ Format: <code>save [FILENAME]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>open</code> has to distinguish whether the user is opening an image from <code>assets</code> or <code>temp</code> directory.</p>
+<p>Hard to distinguish whether the user is opening an image from <code>assets</code> or <code>temp</code> directory.</p>
 </li>
 <li>
 <p>Requires many duplicates with different temporary names.</p>
 </li>
 <li>
-<p>Might be confusing for the user.</p>
+<p>May be confusing for the user.</p>
 </li>
 </ul>
 </div>
@@ -400,7 +386,7 @@ Format: <code>save [FILENAME]</code></p>
 <div class="sect3">
 <h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
 <div class="paragraph">
-<p>The <code>listfiles</code> function is facilitated by <code>Album</code>. It uses the following operations:</p>
+<p>The <code>listfiles</code> function is facilitated by <code>Album</code>. It uses the following operation:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -493,7 +479,7 @@ Format: <code>save [FILENAME]</code></p>
 <p>Step 1. The user executes <code>save</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 2. <code>CurrentEdit#tempImageExist()</code> is called to check if an image was previously opened. If <code>open</code> was not called previously, <code>CommandException</code> is thrown.</p>
+<p>Step 2. <code>CurrentEdit#tempImageDoNotExist()</code> is called to check if an image was previously opened. If <code>open</code> was not called previously, <code>CommandException</code> is thrown.</p>
 </div>
 <div class="paragraph">
 <p>Step 3. <code>CurrentEdit#getTempImage()</code> is called to retrieve the <code>tempImage</code> from <code>CurrentEdit</code>.</p>
@@ -569,4 +555,4 @@ Format: <code>save [FILENAME]</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 15:03:58 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 15:04:52 UTC</div></div></div></body></html>
