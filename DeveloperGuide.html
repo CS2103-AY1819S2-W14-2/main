@@ -1273,10 +1273,10 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <p><code>CurrentEdit#getTempImage</code> - Retrieves the temporary image <code>tempImage</code> which stores the filepath of the temporary image, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata.</p>
 </li>
 <li>
-<p><code>CurrentEdit#updateTempImage</code> - Replaces the temporary image in <code>temp</code> directory with the newly edited image and update the <code>tempImage</code> instance in the class.</p>
+<p><code>CurrentEdit#updateTempImage</code> - Replaces the temporary image in <code>temp</code> directory with the newly edited image and updates the <code>tempImage</code> instance in the class.</p>
 </li>
 <li>
-<p><code>CurrentEdit#addCommand</code> - Adds this command to the edit history [<code>List&lt;Command&gt;</code>] in <code>tempImage</code> for the <code>undo/redo</code> command.</p>
+<p><code>CurrentEdit#addCommand</code> - Adds this command to the edit history <code>List&lt;Command&gt;</code> in <code>tempImage</code> for the <code>undo/redo</code> command.</p>
 </li>
 <li>
 <p><code>CurrentEdit#displayTempImage()</code> - Displays the temporary image stored in the <code>temp</code> directory.</p>
@@ -1289,13 +1289,13 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="ulist">
 <ul>
 <li>
-<p><code>RotateCommand</code>: Allows user to rotate images by specifying a degree (90, 180 or 270 only).</p>
+<p><code>RotateCommand</code>: Allows users to rotate images by specifying a degree (90, 180 or 270 only).</p>
 </li>
 <li>
-<p><code>CropCommand</code>: Allows user to crop images by specifying the coordinates of the top left corner, the width and the height of the desired cropped image.</p>
+<p><code>CropCommand</code>: Allows users to crop images by specifying the coordinates of the top left corner, the width and the height of the desired cropped image.</p>
 </li>
 <li>
-<p><code>ResizeCommand</code>: Allows user to resize images to the desired width and height.</p>
+<p><code>ResizeCommand</code>: Allows users to resize images to the desired width and height.</p>
 </li>
 </ul>
 </div>
@@ -1318,7 +1318,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="title">Figure 16. Sequence Diagram for Rotate Command</div>
 </div>
 <div class="paragraph">
-<p>Given below is an example usage scenario and how the command should behave at each step (This applies to the other image manipulation commands as well.):</p>
+<p>Given below is an example usage scenario and how the command should behave at each step. (This applies to the other image manipulation commands as well.):</p>
 </div>
 <div class="paragraph">
 <p>Step 1. When the user runs an open command to edit an image, it invokes a method which creates an instance of an <code>Image</code> that stores the file path of the image, its history of edits <code>List&lt;Command&gt;</code> and its metadata. This <code>Image</code> object is saved under the variable name <code>tempImage</code> in <code>currentEdit</code> for editing.</p>
@@ -1339,7 +1339,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </table>
 </div>
 <div class="paragraph">
-<p>Step 3. During execution, the <code>execute</code> method in the <code>RotateCommand</code> class first invokes <code>CurrentEdit#tempImageDoNotExist</code> to check if an image is opened. If no image is opened, it will throw an error message to tell the user to open an image for editing first. Else, the <code>execute</code> method will invoke <code>CurrentEdit#getTempImage()</code> to get the <code>tempImage</code> from <code>CurrentEdit</code>.</p>
+<p>Step 3. During execution, the <code>execute</code> method in the <code>RotateCommand</code> class first invokes <code>currentEdit#tempImageDoNotExist</code> to check if an image is opened. If no image is opened, it will throw an error message to inform the user to open an image for editing. Else, the <code>execute</code> method will invoke <code>currentEdit#getTempImage()</code> to get the <code>tempImage</code> from <code>CurrentEdit</code>.</p>
 </div>
 <div class="paragraph">
 <p>Step 4. Upon retrieving the <code>tempImage</code>, the <code>execute</code> method in <code>RotateCommand</code> gets a <code>BufferedImage</code> instance from <code>tempImage</code>.The method then calls the external library <a href="https://github.com/rkalla/imgscalr"><code>ImgScalr</code></a>'s class <code>rotate</code> and passes the <code>BufferedImage</code> object in.</p>
@@ -1358,7 +1358,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <div class="ulist">
 <ul>
 <li>
-<p>Images that are still being edited have to be stored and edited in a temp directory first due to our <code>undo/redo</code> implementation.</p>
+<p>Images that are still being edited have to be stored and edited in a temporary directory first due to our <code>undo/redo</code> implementation.</p>
 </li>
 </ul>
 </div>
@@ -1939,7 +1939,7 @@ If the <code>index</code> is at index <code>commandHistory.size()</code>, pointi
 <div class="sect2">
 <h3 id="watermark-feature"><a class="link" href="#watermark-feature">3.11. WaterMark Feature</a></h3>
 <div class="paragraph">
-<p>This command allows the user to add a watermark to their image. Upon receiving an input message from the user, the message will be checked for its validity and will throw an error if the message is empty or contains only spaces. Messages can contain words and numbers separated by spaces. The command will then be added to the <code>List&lt;Commands&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targetted image.</p>
+<p>This command allows the user to add a watermark to their image. Upon receiving an input message from the user, the message will be checked for its validity and will throw an error if the message is empty or contains only spaces. Messages can contain words and numbers separated by spaces. The command will then be added to the <code>List&lt;Commands&gt;</code> belonging to <code>tempImage</code> found in <code>currentEdit</code> which saves the editing history of the targeted image.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1967,10 +1967,10 @@ Each image can only have 1 watermark. If the user would like to edit the waterma
 <p><code>CurrentEdit#getTempImage</code> - Retrieves the temporary image <code>tempImage</code> which stores the filepath of the temporary image in the <code>temp</code> directory, its history of edits [<code>List&lt;Command&gt;</code>] and its metadata.</p>
 </li>
 <li>
-<p><code>CurrentEdit#updateTempImage</code> - Replaces the temporary image in <code>temp</code> directory with the newly edited image and update the <code>tempImage</code> instance in the class.</p>
+<p><code>CurrentEdit#updateTempImage</code> - Replaces the temporary image in <code>temp</code> directory with the newly edited image and updates the <code>tempImage</code> instance in the class.</p>
 </li>
 <li>
-<p><code>CurrentEdit#addCommand</code> - Adds this command to the edit history [<code>List&lt;Command&gt;</code>] in <code>tempImage</code> for the <code>undo/redo</code> command.</p>
+<p><code>CurrentEdit#addCommand</code> - Adds this command to the edit history <code>List&lt;Command&gt;</code> in <code>tempImage</code> for the <code>undo/redo</code> command.</p>
 </li>
 <li>
 <p><code>CurrentEdit#displayTempImage()</code> - Displays the temporary image stored in the <code>temp</code> directory.</p>
@@ -1979,7 +1979,7 @@ Each image can only have 1 watermark. If the user would like to edit the waterma
 <p><code>Image#hasWaterMark()</code> - Checks if the <code>Image</code> already has a watermark.</p>
 </li>
 <li>
-<p><code>Image#setWaterMark(boolean)</code> - Sets the <code>Image</code> object&#8217;s <code>hasWaterMark</code> field accordingly, if the <code>Image</code> object has or does not have a watermark.</p>
+<p><code>Image#setWaterMark(boolean)</code> - Sets the <code>Image</code> object&#8217;s <code>hasWaterMark</code> field accordingly - if the <code>Image</code> object has or does not have a watermark.</p>
 </li>
 </ul>
 </div>
@@ -2014,7 +2014,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </table>
 </div>
 <div class="paragraph">
-<p>Step 3. During execution, the <code>execute</code> method in the <code>WaterMarkCommand</code> class first invokes <code>CurrentEdit#tempImageDoNotExist</code> to check if an image is opened. If no image is opened, it will throw an error message to tell the user to open an image for editing first. Else, the <code>execute</code> method will invoke <code>CurrentEdit#getTempImage()</code> to get the <code>tempImage</code> from <code>CurrentEdit</code>.</p>
+<p>Step 3. During execution, the <code>execute</code> method in the <code>WaterMarkCommand</code> class first invokes <code>currentEdit#tempImageDoNotExist</code> to check if an image is opened. If no image is opened, it will throw an error message to inform the user to open an image for editing. Else, the <code>execute</code> method will invoke <code>currentEdit#getTempImage()</code> to get the <code>tempImage</code> from <code>CurrentEdit</code>.</p>
 </div>
 <div class="paragraph">
 <p>Step 4. Upon retrieving the <code>tempImage</code>, the <code>execute</code> method in the <code>WaterMarkCommand</code> gets the  <code>BufferedImage</code> instance of the <code>tempImage</code> object and copies the <code>BufferedImage</code> object to a temporary <code>BufferedImage</code> object with the same width, height and image type. The <code>execute</code> method then initialises the necessary graphics properties using the <code>Graphics2D</code> Java class. The message is centralised and overlays the temporary <code>BufferedImage</code> object.</p>
@@ -2028,7 +2028,7 @@ If an invalid command is provided, a reminder of how to use the command will be 
 <p><code>isNewCommand</code>: Checks if the <code>WaterMark</code> command is from an input by the user, from an <code>undo/redo</code> command or from a <code>SetPreset</code> command.</p>
 </li>
 <li>
-<p><code>isPreset</code>: Checks if the <code>WaterMark</code> command is from a Preset.</p>
+<p><code>isPreset</code>: Checks if the <code>WaterMark</code> command is from a preset.</p>
 </li>
 <li>
 <p><code>tempImage#hasWaterMark()</code>: Checks if the <code>tempImage</code> already has a watermark.</p>
@@ -3118,4 +3118,4 @@ Expected: GUI should export the selected Album image to the target directory.</p
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 14:35:06 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 14:39:36 UTC</div></div></div></body></html>
