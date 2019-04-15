@@ -188,7 +188,7 @@
 <h3 id="contrast-code-contrast-code"><a class="link" href="#contrast-code-contrast-code">Contrast: <code>contrast</code></a></h3>
 <div class="paragraph">
 <p>Adjusts the contrast of the opened image based on a decimal value. If the contrast value is not specified, a preset decimal value of 1.1 will be used. Any positive decimal value that is lower than 1 (e.g. 0.5) will reduce the contrast of the image while any decimal value that is above 1 (e.g. 1.9) will increase the contrast of the image. Negative decimal value will not be accepted.<br>
-Format: <code>contrast CONTRAST_RATIO</code></p>
+Format: <code>contrast [CONTRAST_VALUE]</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -211,7 +211,7 @@ Format: <code>contrast CONTRAST_RATIO</code></p>
 <h3 id="brightness-code-brightness-code"><a class="link" href="#brightness-code-brightness-code">Brightness: <code>brightness</code></a></h3>
 <div class="paragraph">
 <p>Adjusts the brightness of the opened image based on a decimal value. If the brightness value is not specified, a preset decimal value of 1.1 will be used. Any positive decimal value that is less than 1 (e.g. 0.5) will reduce the brightness of the image while any decimal value that is above 1 (e.g. 1.9) will increase the brightness of the image. Negative decimal value will not be accepted.<br>
-Format: <code>brightness [BRIGHTNESS_RATIO]</code></p>
+Format: <code>brightness [BRIGHTNESS_VALUE]</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -264,7 +264,7 @@ Format: <code>setpreset PRESETNAME</code></p>
 <p><code>rotate 180</code><br>
 <code>brightness 1.3</code><br>
 <code>savepreset preset1</code> (saves <code>rotate 180</code> and <code>brightness 1.3</code> in a list of commands that can be used on other images)<br>
-<code>open newImage.jpg</code>  (open a new image to edit on)<br>
+<code>open newImage.jpg</code>  (opens a new image to edit on)<br>
 <code>setpreset preset1</code>  (applies the list of commands which consists of <code>rotate 180</code> and <code>brightness 1.3</code> on the newly opened image)</p>
 </li>
 </ul>
@@ -561,4 +561,4 @@ If an invalid command is provided, a reminder of how to use the command will be 
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 10:12:19 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 10:42:21 UTC</div></div></div></body></html>
